@@ -1,0 +1,99 @@
+/* Global Header Styles */
+
+.l-header {
+    @apply h-16 bg-white dark:bg-[#0f172a] text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-700 flex items-center justify-between px-4 z-50 transition-colors duration-300;
+}
+
+/* Left Section */
+.l-header__left {
+    @apply flex items-center gap-4;
+}
+
+.l-header__toggle-btn {
+    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors flex items-center justify-center;
+}
+
+.l-header__icon {
+    @apply w-5 h-5;
+}
+
+.l-header__icon--sm {
+    @apply w-4 h-4;
+}
+
+.l-header__brand {
+    @apply flex items-center gap-3;
+}
+
+.l-header__logo {
+    @apply w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 overflow-hidden shadow-lg;
+}
+
+.l-header__logo-text {
+    @apply text-white font-bold text-xs;
+}
+
+.l-header__title {
+    @apply text-lg font-bold text-slate-900 dark:text-white leading-none;
+}
+
+/* Right Section */
+.l-header__right {
+    @apply flex items-center gap-4;
+}
+
+.l-header__theme-wrapper {
+    @apply relative;
+}
+
+.l-header__theme-btn {
+    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded-lg transition-colors flex items-center justify-center;
+}
+
+.l-header__theme-menu {
+    @apply absolute right-0 top-full mt-2 w-32 bg-white dark:bg-slate-800 rounded-lg shadow-xl border border-slate-200 dark:border-slate-700 py-1 z-50;
+}
+
+.l-header__theme-item {
+    @apply w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2;
+}
+
+.l-header__user-wrapper {
+    @apply flex items-center gap-4;
+}
+
+.l-header__user-info {
+    @apply flex items-center gap-3 text-right;
+}
+
+.l-header__user-text {
+    @apply hidden md:block;
+}
+
+.l-header__user-name {
+    @apply text-sm font-medium text-slate-900 dark:text-white;
+}
+
+.l-header__user-rank {
+    @apply text-xs text-slate-500 dark:text-slate-400;
+}
+
+.l-header__user-avatar {
+    @apply w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 flex items-center justify-center overflow-hidden;
+}
+
+.l-header__user-icon {
+    @apply w-4 h-4 text-blue-600 dark:text-slate-300;
+}
+
+.l-header__logout-btn {
+    @apply text-blue-600 dark:text-slate-400 hover:text-red-500 transition-colors p-2 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800;
+}
+
+.l-header__login-wrapper {
+    /* Empty class for structure */
+}
+
+.l-header__login-btn {
+    @apply flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg text-sm font-medium transition-colors;
+}

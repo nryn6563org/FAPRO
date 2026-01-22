@@ -1,0 +1,17 @@
+/* Dialog Component Styles */
+
+.c-dialog {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+}
+
+.c-dialog__backdrop {
+    @apply fixed inset-0 bg-black/50 transition-opacity;
+}
+
+.c-dialog__content {
+    @apply z-50 bg-background rounded-lg shadow-lg border w-full relative sm:rounded-lg;
+}
+
+.c-dialog__close {
+    @apply absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground;
+}

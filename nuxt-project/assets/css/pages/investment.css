@@ -1,0 +1,166 @@
+/* Investment Domain Page Styles */
+
+.p-investment {
+    @apply space-y-6;
+}
+
+/* Page Header */
+.p-investment__header {
+    /* Container */
+}
+
+.p-investment__title {
+    @apply text-2xl font-bold;
+}
+
+.p-investment__desc {
+    @apply text-slate-600 mt-1;
+}
+
+/* Common Content Card */
+.c-content-card {
+    @apply bg-white rounded-lg border shadow-sm overflow-hidden;
+}
+
+.c-content-card--hover {
+    @apply hover:shadow-lg transition-shadow;
+}
+
+.c-content-card__header {
+    @apply bg-gradient-to-r from-blue-50 to-purple-50 border-b p-6 py-4;
+}
+
+.c-content-card__header-content {
+    @apply flex flex-wrap gap-4 items-center justify-between;
+}
+
+.c-content-card__title {
+    @apply text-lg font-semibold;
+}
+
+.c-content-card__subtitle {
+    @apply text-sm text-slate-600 font-medium;
+}
+
+.c-content-card__body {
+    @apply p-6;
+    /* padding-top might be 0 in some cases, handle via utility or modifier if needed */
+}
+
+.c-content-card__body--no-padding-top {
+    @apply pt-0;
+}
+
+/* Tab/Button Groups within Header */
+.c-content-card__actions {
+    @apply flex gap-2;
+}
+
+/* Charts Containers */
+.c-chart-container-lg {
+    @apply h-[500px];
+}
+
+.c-chart-container-md {
+    @apply h-[300px];
+}
+
+.c-chart-container-sm {
+    @apply h-[200px];
+}
+
+/* Data Tables */
+.c-data-table-wrapper {
+    @apply overflow-x-auto;
+}
+
+.c-data-table {
+    @apply w-full;
+}
+
+.c-data-table__head {
+    /* thead */
+}
+
+.c-data-table__row-head {
+    @apply border-b-2 border-slate-300;
+}
+
+.c-data-table__th {
+    @apply text-left py-3 px-4 font-semibold text-slate-700 text-sm;
+}
+
+.c-data-table__th--right {
+    @apply text-right;
+}
+
+.c-data-table__th--center {
+    @apply text-center;
+}
+
+.c-data-table__row {
+    @apply border-b border-slate-200 hover:bg-slate-50 transition-colors;
+}
+
+.c-data-table__td {
+    @apply py-3 px-4 text-sm text-slate-600;
+}
+
+.c-data-table__td--font-medium {
+    @apply font-medium text-slate-900;
+}
+
+.c-data-table__td--right {
+    @apply text-right;
+}
+
+.c-data-table__td--center {
+    @apply text-center;
+}
+
+/* Bubble Chart Specifics (Today Issue) */
+.c-bubble-chart-wrapper {
+    @apply relative h-[500px] bg-slate-50 rounded-lg overflow-hidden;
+}
+
+.c-bubble-chart-svg {
+    @apply w-full h-full;
+}
+
+.c-bubble-group {
+    @apply cursor-pointer hover:opacity-100 transition-opacity;
+}
+
+.c-bubble-text {
+    @apply pointer-events-none select-none;
+}
+
+.c-bubble-legend {
+    @apply absolute bottom-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-slate-200;
+}
+
+/* Analysis Layouts */
+.l-analysis-grid {
+    @apply grid grid-cols-1 md:grid-cols-2 gap-6;
+}
+
+.l-analysis-grid--lg {
+    @apply lg:grid-cols-2;
+}
+
+/* Trend Colors */
+.u-text-up {
+    @apply text-red-600;
+}
+
+.u-text-down {
+    @apply text-blue-600;
+}
+
+.u-bg-up {
+    @apply bg-red-100;
+}
+
+.u-bg-down {
+    @apply bg-blue-100;
+}

@@ -1,0 +1,219 @@
+/* Clients Page Styles */
+
+.p-clients {
+    @apply space-y-6;
+}
+
+.p-clients__header {
+    @apply flex items-center justify-between;
+}
+
+.p-clients__title {
+    @apply text-2xl font-bold;
+}
+
+.p-clients__subtitle {
+    @apply text-slate-600 mt-1;
+}
+
+/* Search Box */
+.p-clients__search-box {
+    @apply bg-white rounded-lg border shadow-sm p-6;
+}
+
+.p-clients__search-title {
+    @apply text-lg font-semibold mb-1;
+}
+
+.p-clients__search-desc {
+    @apply text-sm text-slate-500;
+}
+
+.p-clients__search-form {
+    @apply flex gap-4 mt-4;
+}
+
+.p-clients__search-input-wrapper {
+    @apply flex-1 relative;
+}
+
+.p-clients__search-icon {
+    @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5;
+}
+
+.p-clients__search-input {
+    @apply pl-10;
+}
+
+/* Sort Bar */
+.p-clients__sort-bar {
+    @apply flex gap-2 items-center justify-between;
+}
+
+.p-clients__count {
+    @apply text-sm text-slate-600 font-medium;
+}
+
+.p-clients__sort-actions {
+    @apply flex gap-2 items-center;
+}
+
+.p-clients__sort-label {
+    @apply flex items-center gap-2 text-sm text-slate-600 font-medium;
+}
+
+.p-clients__sort-icon {
+    @apply w-4 h-4;
+}
+
+.p-clients__sort-btn-group {
+    @apply flex gap-2;
+}
+
+/* Grid */
+.p-clients__grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4;
+}
+
+/* Client Card */
+.c-client-card {
+    @apply bg-white rounded-lg border shadow-sm hover:shadow-lg transition-shadow overflow-hidden;
+}
+
+.c-client-card__header {
+    @apply p-6 pb-3;
+}
+
+.c-client-card__top {
+    @apply flex items-start justify-between;
+}
+
+.c-client-card__info {
+    @apply flex items-center gap-2;
+}
+
+.c-client-card__avatar {
+    @apply w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold;
+}
+
+.c-client-card__name {
+    @apply text-base font-semibold;
+}
+
+.c-client-card__badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.c-client-card__fav-btn {
+    @apply inline-flex items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 hover:bg-slate-100 hover:text-slate-900 h-8 w-8 -mt-1 -mr-2;
+}
+
+.c-client-card__fav-icon {
+    @apply w-4 h-4 text-slate-400 hover:text-yellow-500;
+}
+
+.c-client-card__fav-icon--active {
+    @apply fill-yellow-500 text-yellow-500;
+}
+
+.c-client-card__body {
+    @apply p-6 pt-0 space-y-3;
+}
+
+.c-client-card__stats {
+    @apply grid grid-cols-2 gap-2;
+}
+
+.c-client-card__stat-label {
+    @apply text-xs text-slate-500;
+}
+
+.c-client-card__stat-val {
+    @apply text-sm font-semibold;
+}
+
+.c-client-card__returns {
+    @apply text-sm font-semibold;
+}
+
+.c-client-card__contact {
+    @apply space-y-1.5 pt-2 border-t text-xs;
+}
+
+.c-client-card__contact-row {
+    @apply flex items-center gap-2 text-slate-600;
+}
+
+.c-client-card__actions {
+    @apply flex gap-2 pt-2;
+}
+
+/* Dialogs - Add Client */
+.p-clients__add-dialog {
+    @apply bg-white rounded-lg p-6;
+}
+
+.p-clients__form-grid {
+    @apply grid grid-cols-2 gap-4 mt-4;
+}
+
+.p-clients__form-group {
+    @apply space-y-2;
+}
+
+.p-clients__form-label {
+    @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70;
+}
+
+.p-clients__dialog-footer {
+    @apply flex justify-end gap-2 mt-4;
+}
+
+/* Client Detail View */
+.c-client-detail {
+    @apply bg-white rounded-lg;
+}
+
+.c-client-detail__header {
+    @apply p-6 pb-4 border-b;
+}
+
+.c-client-detail__header-content {
+    @apply flex items-center gap-3;
+}
+
+.c-client-detail__avatar {
+    @apply w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-xl;
+}
+
+.c-client-detail__name-group {
+    /* Group for name and badge */
+}
+
+.c-client-detail__name {
+    @apply text-2xl font-semibold;
+}
+
+.c-client-detail__badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 mt-1;
+}
+
+.c-client-detail__body {
+    @apply p-6 space-y-6;
+}
+
+.c-client-detail__metrics {
+    @apply grid grid-cols-2 gap-4;
+}
+
+.c-client-detail__metric-card {
+    @apply rounded-lg border bg-card text-card-foreground shadow-sm p-6;
+}
+
+.c-client-detail__metric-label {
+    @apply text-sm text-slate-500;
+}
+
+.c-client-detail__metric-val {
+    @apply text-2xl font-bold;
+}

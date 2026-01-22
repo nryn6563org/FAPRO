@@ -1,0 +1,78 @@
+/* Market Page Styles */
+
+.p-market {
+    @apply space-y-6;
+}
+
+/* Header */
+.p-market__header {
+    @apply mb-6;
+}
+
+.p-market__title {
+    @apply text-2xl font-bold text-slate-900;
+}
+
+.p-market__desc {
+    @apply text-slate-600 mt-1;
+}
+
+/* Tabs */
+.p-market__tabs {
+    @apply bg-slate-100 p-1 rounded-lg inline-flex mb-6;
+}
+
+.p-market__tab-btn {
+    @apply px-3 py-1.5 text-sm font-medium rounded-md transition-all text-slate-500 hover:text-slate-900;
+}
+
+.p-market__tab-btn--active {
+    @apply bg-white text-slate-900 shadow-sm;
+}
+
+/* Grids */
+.p-market__indices-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-4 mb-6;
+}
+
+.p-market__indices-grid--international {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-6;
+}
+
+.p-market__indices-grid--forex,
+.p-market__indices-grid--commodities {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4;
+}
+
+/* Chart Section */
+.c-market-chart {
+    @apply bg-white rounded-lg border border-slate-200 shadow-sm p-6;
+}
+
+.c-market-chart__header {
+    @apply flex items-center justify-between mb-4;
+}
+
+.c-market-chart__title {
+    @apply text-lg font-bold text-slate-900;
+}
+
+.c-market-chart__actions {
+    @apply flex gap-2 flex-wrap;
+}
+
+.c-market-chart__action-btn {
+    @apply px-3 py-1 rounded-lg text-sm transition-colors text-slate-700 bg-slate-100 hover:bg-slate-200;
+}
+
+.c-market-chart__action-btn--active {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+.c-market-chart__body {
+    @apply h-80;
+}
+
+.c-market-chart__canvas {
+    @apply h-full w-full;
+}

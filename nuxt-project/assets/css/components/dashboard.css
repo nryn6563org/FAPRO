@@ -1,0 +1,247 @@
+/* Dashboard Component Styles with BEM naming */
+
+/* Main Container */
+.c-dashboard {
+    @apply space-y-6;
+}
+
+/* Header Section */
+.c-dashboard__header {
+    @apply flex items-center justify-between;
+}
+
+.c-dashboard__header-content {
+    /* Container for title and description */
+}
+
+.c-dashboard__title {
+    @apply text-2xl font-bold dark:text-white;
+}
+
+.c-dashboard__desc {
+    @apply text-slate-600 dark:text-slate-400 mt-1 text-[13px];
+}
+
+.c-dashboard__header-actions {
+    @apply flex gap-2;
+}
+
+.c-dashboard__btn-edit {
+    @apply gap-2 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700;
+}
+
+.c-dashboard__btn-add {
+    @apply gap-2;
+}
+
+/* Edit Mode Floating Bar */
+.c-dashboard__edit-bar {
+    @apply fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 text-white px-6 py-3 rounded-full shadow-xl backdrop-blur-sm flex items-center gap-4 animate-in slide-in-from-bottom-4 duration-200;
+}
+
+.c-dashboard__edit-label {
+    @apply text-sm font-medium mr-2;
+}
+
+.c-dashboard__edit-btn-cancel {
+    @apply text-xs bg-slate-700 hover:bg-slate-600 px-3 py-1.5 rounded-md transition-colors;
+}
+
+.c-dashboard__edit-btn-save {
+    @apply text-xs bg-blue-600 hover:bg-blue-500 px-3 py-1.5 rounded-md transition-colors font-bold shadow-sm;
+}
+
+/* Widget Grid */
+.c-dashboard__grid {
+    @apply grid gap-4 pb-20 grid-flow-dense auto-rows-[200px];
+    grid-template-columns: repeat(auto-fill, 200px);
+    justify-content: start;
+}
+
+.c-dashboard__grid-item {
+    @apply transition-transform duration-200;
+}
+
+.c-dashboard__grid-item--w-1 {
+    @apply col-span-1;
+}
+.c-dashboard__grid-item--w-2 {
+    @apply col-span-1 md:col-span-2;
+}
+.c-dashboard__grid-item--w-3 {
+    @apply col-span-1 md:col-span-2 lg:col-span-3;
+}
+.c-dashboard__grid-item--w-4 {
+    @apply col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4;
+}
+
+.c-dashboard__grid-item--h-1 {
+    @apply row-span-1;
+}
+.c-dashboard__grid-item--h-2 {
+    @apply row-span-2;
+}
+
+
+.c-dashboard__grid-item-inner {
+    @apply relative group h-full;
+}
+
+.c-dashboard__drag-handle {
+    @apply absolute -left-3 top-[-10px] z-20 cursor-move bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-full p-1.5 shadow-md hover:scale-110 transition-transform hover:border-blue-500 group-hover:opacity-100;
+}
+
+/* Empty State */
+.c-dashboard__empty {
+    @apply flex items-center justify-center p-16 border dark:border-slate-700 rounded-lg bg-white dark:bg-slate-800 transition-colors;
+}
+
+.c-dashboard__empty-content {
+    @apply text-center;
+}
+
+.c-dashboard__empty-icon {
+    @apply w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4;
+}
+
+.c-dashboard__empty-title {
+    @apply text-xl font-semibold mb-2 dark:text-white;
+}
+
+.c-dashboard__empty-desc {
+    @apply text-slate-600 dark:text-slate-400 mb-6;
+}
+
+/* Dialog Styles */
+/* Note: Dialog component itself might need its own CSS, but we are styling the content passed to it */
+.c-widget-dialog {
+    @apply flex h-full;
+}
+
+.c-widget-dialog__sidebar {
+    @apply w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col;
+}
+
+.c-widget-dialog__sidebar-header {
+    @apply p-6 border-b border-slate-100 dark:border-slate-700;
+}
+
+.c-widget-dialog__sidebar-title {
+    @apply text-lg font-bold text-slate-900 dark:text-white;
+}
+
+.c-widget-dialog__sidebar-desc {
+    @apply text-xs text-slate-500 dark:text-slate-400 mt-1;
+}
+
+.c-widget-dialog__category-list {
+    @apply flex-1 overflow-y-auto py-4;
+}
+
+.c-widget-dialog__category-btn {
+    @apply w-full text-left px-6 py-3 text-sm font-medium transition-colors flex items-center justify-between text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700;
+}
+
+.c-widget-dialog__category-btn--active {
+    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-r-2 border-blue-600;
+}
+
+.c-widget-dialog__category-count {
+    @apply text-xs bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full;
+}
+
+.c-widget-dialog__footer {
+    @apply p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50;
+}
+
+.c-widget-dialog__footer-actions {
+    @apply flex items-center justify-between mb-3 px-1;
+}
+
+.c-widget-dialog__btn-cancel {
+    @apply flex-1 mr-2 border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300;
+}
+
+.c-widget-dialog__btn-apply {
+    @apply flex-1 bg-blue-600 hover:bg-blue-700 shadow-md;
+}
+
+.c-widget-dialog__content {
+    @apply flex-1 flex flex-col bg-slate-50/50 dark:bg-slate-900/50 min-h-0;
+}
+
+.c-widget-dialog__content-header {
+    @apply p-6 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-between;
+}
+
+.c-widget-dialog__content-title {
+    @apply font-bold text-lg text-slate-800 dark:text-slate-100;
+}
+
+.c-widget-dialog__search-wrapper {
+    @apply relative;
+}
+
+.c-widget-dialog__search-icon {
+    @apply absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400;
+}
+
+.c-widget-dialog__search-input {
+    @apply pl-9 pr-4 py-1.5 text-sm border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-64;
+}
+
+.c-widget-dialog__grid-wrapper {
+    @apply flex-1 overflow-y-auto p-6 min-h-0;
+}
+
+.c-widget-dialog__grid {
+    @apply grid grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.c-widget-card {
+    @apply relative group flex flex-col items-start p-5 rounded-xl border-2 transition-all duration-200 text-left bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-sm;
+}
+
+.c-widget-card--selected {
+    @apply border-blue-500 shadow-md ring-1 ring-blue-500;
+}
+
+.c-widget-card__checkbox {
+    @apply absolute top-4 right-4 w-5 h-5 rounded border flex items-center justify-center transition-colors border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700 group-hover:border-blue-400;
+}
+
+.c-widget-card__checkbox--checked {
+    @apply bg-blue-500 border-blue-500;
+}
+
+.c-widget-card__icon-wrapper {
+    @apply w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 custom-group-hover-bg;
+}
+
+.c-widget-card__icon-wrapper--selected {
+    @apply bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400;
+}
+
+.c-widget-card__content {
+    @apply flex-1 w-full relative z-10;
+}
+
+.c-widget-card__title {
+    @apply font-bold text-sm mb-2 text-slate-900 dark:text-slate-100;
+}
+
+.c-widget-card__title--selected {
+    @apply text-blue-900 dark:text-blue-300;
+}
+
+.c-widget-card__size-options {
+    @apply flex flex-wrap gap-1;
+}
+
+.c-widget-card__size-btn {
+    @apply text-[10px] px-2 py-1 rounded border transition-colors bg-slate-50 dark:bg-slate-700 text-slate-500 dark:text-slate-400 border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-600;
+}
+
+.c-widget-card__size-btn--selected {
+    @apply bg-blue-600 text-white border-blue-600 font-semibold;
+}

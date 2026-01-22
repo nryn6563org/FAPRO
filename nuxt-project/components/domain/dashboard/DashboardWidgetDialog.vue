@@ -1,0 +1,196 @@
+<template>
+  <Dialog :open="isOpen" @update:open="updateOpen" className="c-widget-dialog__dialog-content">
+      <div class="c-widget-dialog">
+          <!-- 좌측 사이드바: 카테고리 목록 -->
+          <div class="c-widget-dialog__sidebar">
+              <div class="c-widget-dialog__sidebar-header">
+                  <h2 class="c-widget-dialog__sidebar-title">위젯 추가</h2>
+                  <p class="c-widget-dialog__sidebar-desc">대시보드에 추가할 위젯을 선택하세요.</p>
+              </div>
+              <div class="c-widget-dialog__category-list">
+                  <button 
+                      v-for="category in Object.keys(categorizedWidgets)" 
+                      :key="category"
+                      @click="activeCategory = category"
+                      :class="['c-widget-dialog__category-btn', activeCategory === category ? 'c-widget-dialog__category-btn--active' : '']"
+                  >
+                      <span>{{ category }}</span>
+                      <span class="c-widget-dialog__category-count">
+                          {{ categorizedWidgets[category].length }}
+                      </span>
+                  </button>
+              </div>
+              <div class="c-widget-dialog__footer">
+                  <div class="c-widget-dialog__footer-actions">
+                      <Button @click="closeDialog" variant="outline" class="c-widget-dialog__btn-cancel">
+                          취소
+                      </Button>
+                      <Button @click="saveWidgets" class="c-widget-dialog__btn-apply">
+                          적용하기
+                      </Button>
+                  </div>
+              </div>
+          </div>
+
+          <!-- 우측 콘텐츠 영역: 위젯 그리드 -->
+          <div class="c-widget-dialog__content">
+              <div class="c-widget-dialog__content-header">
+                   <h3 class="c-widget-dialog__content-title">
+                      {{ activeCategory }}
+                      <span class="c-widget-dialog__content-subtitle">카테고리 위젯 목록</span>
+                   </h3>
+                   <div class="c-widget-dialog__actions">
+                       <div class="c-widget-dialog__search-wrapper">
+                           <Search class="c-widget-dialog__search-icon" />
+                           <input type="text" placeholder="위젯 검색..." class="c-widget-dialog__search-input" />
+                       </div>
+                   </div>
+              </div>
+
+              <div class="c-widget-dialog__grid-wrapper">
+                  <div class="c-widget-dialog__grid">
+                      <button
+                          v-for="widget in categorizedWidgets[activeCategory]"
+                          :key="widget.id"
+                          @click="toggleTempWidget(widget.id)"
+                          :class="[
+                              'c-widget-card',
+                              tempSelectedWidgets.includes(widget.id) ? 'c-widget-card--selected' : ''
+                          ]"
+                      >
+                          <!-- 선택 체크박스 -->
+                          <div :class="['c-widget-card__checkbox', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__checkbox--checked' : '']">
+                              <Check v-if="tempSelectedWidgets.includes(widget.id)" class="c-widget-card__check-icon" />
+                          </div>
+
+                          <!-- 위젯 아이콘 -->
+                          <div :class="['c-widget-card__icon-wrapper', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__icon-wrapper--selected' : '']">
+                              <component :is="widget.icon" class="c-widget-card__icon" />
+                          </div>
+
+                          <!-- 위젯 정보 및 사이즈 선택 -->
+                          <div class="c-widget-card__content">
+                              <h4 :class="['c-widget-card__title', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__title--selected' : '']">{{ widget.title }}</h4>
+                              
+                              <div class="c-widget-card__size-options" @click.stop>
+                                  <button 
+                                      v-for="layout in [{w:2, h:1, label:'2x1'}, {w:2, h:2, label:'2x2'}]"
+                                      :key="layout.label"
+                                      @click="selectWidgetSize(widget.id, layout)"
+                                      :class="['c-widget-card__size-btn', 
+                                          isWidgetSelectedAndSize(widget.id, layout) 
+                                          ? 'c-widget-card__size-btn--selected' 
+                                          : ''
+                                      ]"
+                                  >
+                                      {{ layout.label }}
+                                  </button>
+                              </div>
+                          </div>
+                      </button>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </Dialog>
+
+</template>
+
+<script>
+import Dialog from '@/components/common/Dialog.vue';
+import Button from '@/components/common/Button.vue';
+import { Search, Check, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart } from 'lucide-vue';
+import { AVAILABLE_WIDGETS } from '@/utils/dashboard-data';
+
+export default {
+    name: 'DashboardWidgetDialog',
+    components: {
+        Dialog,
+        Button,
+        Search, Check,
+        // Icon imports for dynamic components
+        TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart
+    },
+    props: {
+        isOpen: {
+            type: Boolean,
+            required: true
+        },
+        currentWidgets: {
+            type: Array,
+            default: () => []
+        },
+        currentWidgetSizes: {
+            type: Object,
+            default: () => ({})
+        }
+    },
+    data() {
+        return {
+            activeCategory: '국내 지수',
+            tempSelectedWidgets: [],
+            tempWidgetSizes: {}
+        };
+    },
+    computed: {
+        categorizedWidgets() {
+            const acc = {};
+            AVAILABLE_WIDGETS.forEach(widget => {
+                if (!acc[widget.category]) {
+                acc[widget.category] = [];
+                }
+                acc[widget.category].push(widget);
+            });
+            return acc;
+        }
+    },
+    watch: {
+        isOpen(val) {
+            if (val) {
+                this.tempSelectedWidgets = [...this.currentWidgets];
+                this.tempWidgetSizes = JSON.parse(JSON.stringify(this.currentWidgetSizes));
+            }
+        }
+    },
+    methods: {
+        updateOpen(val) {
+            this.$emit('update:open', val);
+        },
+        closeDialog() {
+            this.$emit('close');
+        },
+        saveWidgets() {
+            this.$emit('save', {
+                widgets: this.tempSelectedWidgets,
+                sizes: this.tempWidgetSizes
+            });
+        },
+        getTempWidgetSize(widgetId) {
+            return this.tempWidgetSizes[widgetId] || { w: 2, h: 1 };
+        },
+        isWidgetSelectedAndSize(widgetId, layout) {
+            if (!this.tempSelectedWidgets.includes(widgetId)) return false;
+            const size = this.getTempWidgetSize(widgetId);
+            return size.w === layout.w && size.h === layout.h;
+        },
+        selectWidgetSize(widgetId, layout) {
+            if (!this.tempSelectedWidgets.includes(widgetId)) {
+                this.tempSelectedWidgets.push(widgetId);
+            }
+            this.$set(this.tempWidgetSizes, widgetId, { w: layout.w, h: layout.h });
+        },
+        toggleTempWidget(widgetId) {
+            if (this.tempSelectedWidgets.includes(widgetId)) {
+                this.tempSelectedWidgets = this.tempSelectedWidgets.filter(w => w !== widgetId);
+            } else {
+                this.tempSelectedWidgets.push(widgetId);
+                if (!this.tempWidgetSizes[widgetId]) {
+                    this.$set(this.tempWidgetSizes, widgetId, this.currentWidgetSizes[widgetId] || { w:2, h:1 });
+                }
+            }
+        }
+    }
+}
+</script>
+
+<style src="@/assets/css/components/domain/dashboard/dashboard.css"></style>

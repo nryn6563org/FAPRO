@@ -1,0 +1,319 @@
+/* AI Page Styles */
+
+/* Page Container */
+.p-ai {
+    @apply space-y-6;
+}
+
+/* Header */
+.p-ai__header {
+    @apply mb-6;
+}
+
+.p-ai__title {
+    @apply text-2xl font-bold text-slate-900;
+}
+
+.p-ai__desc {
+    @apply text-slate-600 mt-1;
+}
+
+/* Chat Interface */
+.c-chat-interface {
+    @apply flex flex-col h-[700px] bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden;
+}
+
+.c-chat-interface__header {
+    @apply p-6 border-b border-slate-100 flex items-center gap-3 bg-white;
+}
+
+.c-chat-interface__bot-icon-wrapper {
+    @apply w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md;
+}
+
+.c-chat-interface__bot-icon {
+    @apply w-6 h-6 text-white;
+}
+
+.c-chat-interface__title {
+    @apply text-lg font-bold text-slate-900;
+}
+
+.c-chat-interface__subtitle {
+    @apply text-sm text-slate-500;
+}
+
+.c-chat-interface__messages-wrapper {
+    @apply bg-white flex-1 flex flex-col p-0 overflow-hidden relative rounded-b-lg;
+}
+
+.c-chat-interface__messages {
+    @apply flex-1 p-6 overflow-y-auto space-y-4 bg-slate-50;
+}
+
+.c-chat-interface__input-area {
+    @apply border-t border-slate-200 p-4 bg-white;
+}
+
+.c-chat-interface__input-wrapper {
+    @apply flex gap-2;
+}
+
+.c-chat-interface__btn-icon {
+    @apply w-4 h-4;
+}
+
+/* Chat Message */
+.c-chat-message {
+    @apply flex gap-3;
+}
+
+.c-chat-message--user {
+    @apply flex-row-reverse;
+}
+
+.c-chat-message__avatar {
+    @apply w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0;
+}
+
+.c-chat-message__avatar--bot {
+    @apply bg-gradient-to-br from-blue-500 to-purple-600 shadow-sm;
+}
+
+.c-chat-message__avatar--user {
+    @apply bg-blue-600 shadow-sm;
+}
+
+.c-chat-message__content {
+    @apply max-w-[80%] rounded-2xl p-4 shadow-sm text-sm leading-relaxed;
+}
+
+.c-chat-message__content--bot {
+    @apply bg-white text-slate-800 border border-slate-100;
+}
+
+.c-chat-message__content--user {
+    @apply bg-blue-600 text-white;
+}
+
+.c-chat-message__time {
+    @apply text-xs mt-1 px-1;
+}
+
+.c-chat-message__icon {
+    @apply w-5 h-5 text-white;
+}
+
+.c-chat-message__typing-dots {
+    @apply bg-white rounded-2xl p-4 border border-slate-100 shadow-sm flex gap-1;
+}
+
+.c-chat-message__dot {
+    @apply w-2 h-2 rounded-full bg-slate-400 animate-bounce;
+}
+
+/* Suggested Questions Side Panel */
+.c-suggested-panel {
+    @apply h-[700px] flex flex-col bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden;
+}
+
+.c-suggested-panel__header {
+    @apply p-6 pb-3 border-b border-slate-100;
+}
+
+.c-suggested-panel__title {
+    @apply text-lg font-bold text-slate-900;
+}
+
+.c-suggested-panel__tabs {
+    @apply flex gap-2 mt-3;
+}
+
+.c-suggested-panel__tab-btn {
+    @apply flex-1 px-3 py-2 rounded-lg text-sm font-medium transition-colors bg-slate-100 text-slate-600 hover:bg-slate-200;
+}
+
+.c-suggested-panel__tab-btn--active {
+    @apply bg-blue-600 text-white shadow-md;
+}
+
+.c-suggested-panel__list {
+    @apply flex-1 p-4 overflow-y-auto space-y-2;
+}
+
+.c-question-item {
+    @apply w-full p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all text-left bg-white;
+}
+
+.c-question-item__icon {
+    @apply w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5 transition-transform;
+}
+
+.c-question-item:hover .c-question-item__icon {
+    @apply scale-110;
+}
+
+/* Signal Card */
+.c-signal-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden hover:shadow-lg transition-all duration-200;
+}
+
+.c-signal-card__header {
+    @apply p-6 pb-4 border-b border-slate-100 flex items-start justify-between;
+}
+
+.c-signal-card__body {
+    @apply p-6 space-y-4;
+}
+
+.c-signal-card__stats {
+    @apply grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-xl border border-slate-100;
+}
+
+/* Signal Summary Stats */
+.c-signal-summary {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-6 flex justify-between items-center;
+}
+
+.c-signal-summary__label {
+    @apply text-sm font-medium text-slate-500;
+}
+
+.c-signal-summary__value {
+    @apply text-3xl font-bold mt-2 text-slate-900;
+}
+
+.c-signal-summary__icon-wrapper {
+    @apply w-12 h-12 rounded-full flex items-center justify-center border;
+}
+
+.c-signal-summary__icon {
+    @apply w-6 h-6;
+}
+
+/* Signal Filter Bar */
+.c-signal-filter {
+    @apply bg-white rounded-lg border shadow-sm p-6;
+}
+
+.c-signal-filter__tabs {
+    @apply bg-slate-100 p-1 rounded-lg inline-flex w-full;
+}
+
+.c-signal-filter__tab-btn {
+    @apply flex-1 px-3 py-1.5 text-sm font-medium rounded-md transition-all text-slate-500 hover:text-slate-900;
+}
+
+.c-signal-filter__tab-btn--active {
+    @apply bg-white text-slate-900 shadow-sm;
+}
+
+/* Signal List Item Detail */
+.c-signal-card__info-wrapper {
+    @apply flex items-center gap-3;
+}
+
+.c-signal-card__type-icon-wrapper {
+    @apply w-12 h-12 rounded-lg border-2 flex items-center justify-center;
+}
+
+.c-signal-card__type-icon {
+    @apply w-5 h-5;
+}
+
+.c-signal-card__ticker-row {
+    @apply flex items-center gap-2;
+}
+
+.c-signal-card__ticker {
+    @apply text-lg font-semibold;
+}
+
+.c-signal-card__badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+}
+
+.c-signal-card__name {
+    @apply text-sm text-slate-600 mt-1;
+}
+
+.c-signal-card__meta {
+    @apply text-right;
+}
+
+.c-signal-card__timestamp {
+    @apply flex items-center gap-1 text-sm text-slate-500 justify-end;
+}
+
+.c-signal-card__timeframe {
+    @apply text-xs text-slate-500 mt-1;
+}
+
+.c-signal-card__price-grid {
+    @apply grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-lg;
+}
+
+.c-signal-card__price-label {
+    @apply text-xs text-slate-500 mb-1;
+}
+
+.c-signal-card__price-val {
+    @apply font-semibold;
+}
+
+.c-signal-card__confidence-section {
+    @apply space-y-3;
+}
+
+.c-signal-card__confidence-row {
+    @apply flex items-center justify-between;
+}
+
+.c-signal-card__progress-wrapper {
+    @apply flex items-center gap-2;
+}
+
+.c-signal-card__progress-bar {
+    @apply w-32 h-2 bg-slate-200 rounded-full overflow-hidden;
+}
+
+.c-signal-card__progress-fill {
+    @apply h-full;
+}
+
+.c-signal-card__reason-label {
+    @apply text-xs text-slate-500 mb-1;
+}
+
+.c-signal-card__reason-text {
+    @apply text-sm text-slate-700;
+}
+
+.c-signal-card__indicator-list {
+    @apply flex gap-2;
+}
+
+.c-signal-card__actions {
+    @apply flex gap-2 pt-4 border-t;
+}
+
+.c-signal-card__btn {
+    @apply flex-1 gap-2;
+}
+
+/* Empty State */
+.c-signal-empty {
+    @apply bg-white rounded-lg border shadow-sm py-16 text-center;
+}
+
+.c-signal-empty__icon {
+    @apply w-16 h-16 text-slate-300 mx-auto mb-4;
+}
+
+.c-signal-empty__title {
+    @apply text-xl font-semibold mb-2;
+}
+
+.c-signal-empty__desc {
+    @apply text-slate-600;
+}
