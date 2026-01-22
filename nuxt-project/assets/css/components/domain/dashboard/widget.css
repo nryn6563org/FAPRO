@@ -29,7 +29,7 @@
 }
 
 .c-widget__content {
-    @apply flex-1 p-4 pt-0 min-h-0 relative;
+    @apply flex-1 p-4 pt-0 min-h-0 relative w-full;
 }
 
 /* Market Widget Content */

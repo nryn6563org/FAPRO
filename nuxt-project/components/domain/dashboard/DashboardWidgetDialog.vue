@@ -73,18 +73,26 @@
                               <h4 :class="['c-widget-card__title', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__title--selected' : '']">{{ widget.title }}</h4>
                               
                               <div class="c-widget-card__size-options" @click.stop>
-                                  <button 
-                                      v-for="layout in [{w:2, h:1, label:'2x1'}, {w:2, h:2, label:'2x2'}]"
-                                      :key="layout.label"
-                                      @click="selectWidgetSize(widget.id, layout)"
-                                      :class="['c-widget-card__size-btn', 
-                                          isWidgetSelectedAndSize(widget.id, layout) 
-                                          ? 'c-widget-card__size-btn--selected' 
-                                          : ''
-                                      ]"
-                                  >
-                                      {{ layout.label }}
-                                  </button>
+                                  <div class="c-widget-card__size-control">
+                                      <span class="c-widget-card__size-label">W</span>
+                                      <select 
+                                          :value="getTempWidgetSize(widget.id).w" 
+                                          @change="updateWidgetSize(widget.id, 'w', $event.target.value)"
+                                          class="c-widget-card__size-select"
+                                      >
+                                          <option v-for="n in 4" :key="n" :value="n">{{n}}</option>
+                                      </select>
+                                  </div>
+                                  <div class="c-widget-card__size-control">
+                                      <span class="c-widget-card__size-label">H</span>
+                                      <select 
+                                          :value="getTempWidgetSize(widget.id).h" 
+                                          @change="updateWidgetSize(widget.id, 'h', $event.target.value)"
+                                          class="c-widget-card__size-select"
+                                      >
+                                          <option v-for="n in 4" :key="n" :value="n">{{n}}</option>
+                                      </select>
+                                  </div>
                               </div>
                           </div>
                       </button>
@@ -178,6 +186,16 @@ export default {
                 this.tempSelectedWidgets.push(widgetId);
             }
             this.$set(this.tempWidgetSizes, widgetId, { w: layout.w, h: layout.h });
+        },
+        updateWidgetSize(widgetId, dimension, value) {
+            const currentSize = this.getTempWidgetSize(widgetId);
+            const newSize = { ...currentSize, [dimension]: parseInt(value) };
+            
+            this.$set(this.tempWidgetSizes, widgetId, newSize);
+            
+            if (!this.tempSelectedWidgets.includes(widgetId)) {
+                this.tempSelectedWidgets.push(widgetId);
+            }
         },
         toggleTempWidget(widgetId) {
             if (this.tempSelectedWidgets.includes(widgetId)) {
