@@ -5,67 +5,67 @@
       <p class="p-investment__desc">주요 테마 및 업종별 시황 분석</p>
     </div>
 
-    <div class="flex items-center space-x-4 mb-4">
+    <div class="l-tab-actions">
       <Button
-        :class="activeTab === '테마' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+        :class="['c-tab-btn', activeTab === '테마' ? 'c-tab-btn--active' : '']"
         @click="activeTab = '테마'"
       >
         테마
       </Button>
       <Button
-        :class="activeTab === '업종' ? 'bg-blue-500 text-white' : 'bg-gray-200 text-gray-700'"
+        :class="['c-tab-btn', activeTab === '업종' ? 'c-tab-btn--active' : '']"
         @click="activeTab = '업종'"
       >
         업종
       </Button>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+    <div class="l-theme-grid">
       <div v-for="theme in currentData" :key="theme.id" class="c-content-card c-content-card--hover">
-        <div class="c-content-card__header border-0 bg-white shadow-none pb-0">
-          <div class="flex items-center justify-between">
-            <div class="flex items-center gap-2">
-              <div :class="['w-10 h-10 rounded-lg flex items-center justify-center', theme.change >= 0 ? 'bg-green-100' : 'bg-red-100']">
-                 <Layers :class="['w-5 h-5', theme.change >= 0 ? 'text-green-600' : 'text-red-600']" />
+        <div class="c-theme-card__header">
+          <div class="u-flex-between">
+            <div class="u-flex-center-gap-2">
+              <div :class="['c-theme-card__icon-box', theme.change >= 0 ? 'u-bg-up-light' : 'u-bg-down-light']">
+                 <Layers :class="['c-theme-card__icon', theme.change >= 0 ? 'u-text-up' : 'u-text-down']" />
               </div>
               <div>
-                <h3 class="text-sm font-semibold">{{ theme.name }}</h3>
-                <p class="text-[10px] text-slate-500">{{ theme.stockCount }}개</p>
+                <h3 class="c-theme-card__name">{{ theme.name }}</h3>
+                <p class="c-theme-card__count">{{ theme.stockCount }}개</p>
               </div>
             </div>
-            <div :class="['text-right', theme.change >= 0 ? 'text-red-600' : 'text-blue-600']">
-              <div class="flex items-center gap-1 justify-end">
-                <TrendingUp v-if="theme.change >= 0" class="w-4 h-4" />
-                <TrendingDown v-else class="w-4 h-4" />
-                <span class="text-sm font-bold">{{ theme.change >= 0 ? '+' : '' }}{{ theme.change }}%</span>
+            <div :class="['c-theme-card__change-box', theme.change >= 0 ? 'u-text-up' : 'u-text-down']">
+              <div class="c-theme-card__change-content">
+                <TrendingUp v-if="theme.change >= 0" class="u-icon-sm" />
+                <TrendingDown v-else class="u-icon-sm" />
+                <span class="c-theme-card__change-value">{{ theme.change >= 0 ? '+' : '' }}{{ theme.change }}%</span>
               </div>
             </div>
           </div>
         </div>
-        <div class="c-content-card__body pt-3">
+        <div class="c-theme-card__body">
           <div class="c-data-table-wrapper">
-            <table class="w-full">
+            <table class="c-theme-table">
               <thead>
-                <tr class="border-b border-slate-300">
-                  <th class="text-left py-1 px-1 font-semibold text-slate-700 text-[10px]">종목명</th>
-                  <th class="text-right py-1 px-1 font-semibold text-slate-700 text-[10px]">현재가</th>
-                  <th class="text-right py-1 px-1 font-semibold text-slate-700 text-[10px]">등락률</th>
+                <tr class="c-theme-table__row-head">
+                  <th class="c-theme-table__th">종목명</th>
+                  <th class="c-theme-table__th--right">현재가</th>
+                  <th class="c-theme-table__th--right">등락률</th>
                 </tr>
               </thead>
               <tbody>
-                <tr v-for="(stock, idx) in theme.topStocks" :key="idx" class="border-b border-slate-100 hover:bg-slate-50 transition-colors">
-                  <td class="py-1.5 px-1 font-medium text-slate-900 text-[10px]">
-                    <div class="flex items-center gap-1">
-                      <div :class="['w-4 h-4 rounded-full flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0', getStockColor(stock.name)]">
+                <tr v-for="(stock, idx) in theme.topStocks" :key="idx" class="c-theme-table__row">
+                  <td class="c-theme-table__td">
+                    <div class="u-flex-center-gap-1">
+                      <div :class="['c-theme-table__stock-icon', getStockColor(stock.name)]">
                         {{ stock.name.charAt(0) }}
                       </div>
-                      <span class="truncate">{{ stock.name }}</span>
+                      <span class="u-truncate">{{ stock.name }}</span>
                     </div>
                   </td>
-                  <td class="py-1.5 px-1 text-right font-semibold text-slate-900 text-[10px]">
+                  <td class="c-theme-table__td--right">
                     {{ stock.currentPrice.toLocaleString() }}
                   </td>
-                  <td :class="['py-1.5 px-1 text-right font-semibold text-[10px]', stock.changeRate > 0 ? 'u-text-up' : stock.changeRate < 0 ? 'u-text-down' : 'text-slate-600']">
+                  <td :class="['c-theme-table__td--status', stock.changeRate > 0 ? 'u-text-up' : stock.changeRate < 0 ? 'u-text-down' : 'u-text-slate-600']">
                     {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
                   </td>
                 </tr>
@@ -189,10 +189,10 @@ export default {
   methods: {
     getStockColor(stockName) {
       const colors = [
-        'bg-blue-500', 'bg-indigo-500', 'bg-purple-500', 'bg-pink-500',
-        'bg-red-500', 'bg-orange-500', 'bg-amber-500', 'bg-yellow-500',
-        'bg-lime-500', 'bg-green-500', 'bg-emerald-500', 'bg-teal-500',
-        'bg-cyan-500', 'bg-sky-500', 'bg-violet-500', 'bg-fuchsia-500'
+        'u-stock-bg-blue', 'u-stock-bg-indigo', 'u-stock-bg-purple', 'u-stock-bg-pink',
+        'u-stock-bg-red', 'u-stock-bg-orange', 'u-stock-bg-amber', 'u-stock-bg-yellow',
+        'u-stock-bg-lime', 'u-stock-bg-green', 'u-stock-bg-emerald', 'u-stock-bg-teal',
+        'u-stock-bg-cyan', 'u-stock-bg-sky', 'u-stock-bg-violet', 'u-stock-bg-fuchsia'
       ];
       const index = stockName.charCodeAt(0) % colors.length;
       return colors[index];

@@ -5,6 +5,18 @@
     @apply space-y-6;
 }
 
+.p-ai__grid {
+    @apply grid grid-cols-1 lg:grid-cols-3 gap-6;
+}
+
+.p-ai__chat-area {
+    @apply lg:col-span-2;
+}
+
+.p-ai__sidebar {
+    @apply space-y-4;
+}
+
 /* Header */
 .p-ai__header {
     @apply mb-6;
@@ -63,6 +75,10 @@
     @apply w-4 h-4;
 }
 
+.c-chat-interface__send-btn {
+    @apply gap-2 bg-blue-600 hover:bg-blue-700 text-white;
+}
+
 /* Chat Message */
 .c-chat-message {
     @apply flex gap-3;
@@ -94,6 +110,18 @@
 
 .c-chat-message__content--user {
     @apply bg-blue-600 text-white;
+}
+
+.c-chat-message__body {
+    @apply flex-1;
+}
+
+.c-chat-message__body--user {
+    @apply flex justify-end;
+}
+
+.c-chat-message__text {
+    @apply whitespace-pre-wrap text-sm;
 }
 
 .c-chat-message__time {
@@ -145,6 +173,18 @@
     @apply w-full p-4 rounded-xl border border-slate-200 hover:border-blue-500 hover:bg-blue-50 transition-all text-left bg-white;
 }
 
+.c-question-item__inner {
+    @apply flex items-start gap-3;
+}
+
+.c-question-item__text {
+    @apply text-sm font-medium text-slate-700 transition-colors;
+}
+
+.c-question-item:hover .c-question-item__text {
+    @apply text-blue-700;
+}
+
 .c-question-item__icon {
     @apply w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5 transition-transform;
 }
@@ -190,6 +230,11 @@
 .c-signal-summary__icon {
     @apply w-6 h-6;
 }
+
+.c-signal-summary__icon-wrapper--blue { @apply bg-blue-50 border-blue-100; }
+.c-signal-summary__icon-wrapper--green { @apply bg-green-50 border-green-100; }
+.c-signal-summary__icon-wrapper--red { @apply bg-red-50 border-red-100; }
+.c-signal-summary__icon-wrapper--yellow { @apply bg-yellow-50 border-yellow-100; }
 
 /* Signal Filter Bar */
 .c-signal-filter {
@@ -317,3 +362,27 @@
 .c-signal-empty__desc {
     @apply text-slate-600;
 }
+
+/* Utils for AI Pages */
+.u-text-blue { @apply text-blue-600; }
+.u-text-up { @apply text-green-600; }
+.u-text-down { @apply text-red-600; }
+.u-text-yellow { @apply text-yellow-600; }
+
+.u-bg-up { @apply bg-green-500; }
+.u-bg-yellow { @apply bg-yellow-500; }
+.u-bg-down { @apply bg-red-500; }
+
+.u-icon-sm { @apply w-4 h-4; }
+.u-gap-2 { @apply gap-2; }
+.u-flex-1 { @apply flex-1; }
+
+.u-flex-between-mb-6 {
+    @apply flex items-center justify-between mb-6;
+}
+
+.u-text-sm-slate-600 { @apply text-sm text-slate-600; }
+.u-text-sm-bold { @apply text-sm font-semibold; }
+
+.u-text-right { @apply text-right; }
+.u-text-slate-400 { @apply text-slate-400; }

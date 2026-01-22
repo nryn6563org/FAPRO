@@ -5,58 +5,58 @@
       <p class="p-investment__desc">증권사 애널리스트 리포트 및 목표가 분석</p>
     </div>
 
-    <div class="grid grid-cols-1 gap-4">
+    <div class="l-list-grid">
       <div v-for="report in mockReports" :key="report.id" class="c-content-card c-content-card--hover">
-        <div class="c-content-card__header bg-white border-b-slate-100 shadow-none pb-0">
-           <div class="flex items-start justify-between">
-              <div class="flex items-center gap-3 flex-1">
-                 <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                    <FileBarChart class="w-6 h-6 text-blue-600" />
-                 </div>
-                 <div class="flex-1">
-                    <h3 class="text-lg font-semibold mb-1">{{ report.title }}</h3>
-                    <div class="flex items-center gap-2 text-sm text-slate-500">
-                       <Building2 class="w-4 h-4" />
-                       <span>{{ report.firm }}</span>
-                       <span>•</span>
-                       <span>{{ report.analyst }}</span>
-                       <span>•</span>
-                       <span>{{ report.date }}</span>
-                    </div>
-                 </div>
+        <div class="c-report-card__header">
+           <div class="u-flex-between-start">
+              <div class="u-flex-center-gap-3-flex-1">
+                  <div class="c-report-card__icon-box">
+                     <FileBarChart class="c-report-card__icon" />
+                  </div>
+                  <div class="u-flex-1">
+                     <h3 class="c-report-card__title">{{ report.title }}</h3>
+                     <div class="c-report-card__meta">
+                        <Building2 class="u-icon-sm" />
+                        <span>{{ report.firm }}</span>
+                        <span>•</span>
+                        <span>{{ report.analyst }}</span>
+                        <span>•</span>
+                        <span>{{ report.date }}</span>
+                     </div>
+                  </div>
               </div>
-              <span :class="['px-2.5 py-0.5 rounded-full text-xs font-semibold border', getRatingColor(report.rating)]">
+              <span :class="['c-badge', getRatingColor(report.rating)]">
                  {{ getRatingLabel(report.rating) }}
               </span>
            </div>
         </div>
-        <div class="c-content-card__body pt-4">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-lg">
+        <div class="c-report-card__body">
+            <div class="c-report-card__data-grid">
                 <div>
-                   <p class="text-xs text-slate-500 mb-1">종목명</p>
-                   <p class="font-semibold">{{ report.stockName }}</p>
-                   <p class="text-xs text-slate-500">{{ report.ticker }}</p>
+                   <p class="c-report-card__data-label">종목명</p>
+                   <p class="c-report-card__data-value">{{ report.stockName }}</p>
+                   <p class="c-report-card__data-subtext">{{ report.ticker }}</p>
                 </div>
                 <div>
-                   <p class="text-xs text-slate-500 mb-1">현재가</p>
-                   <p class="font-semibold">{{ report.currentPrice.toLocaleString() }}원</p>
+                   <p class="c-report-card__data-label">현재가</p>
+                   <p class="c-report-card__data-value">{{ report.currentPrice.toLocaleString() }}원</p>
                 </div>
                 <div>
-                   <p class="text-xs text-slate-500 mb-1">목표가</p>
-                   <p class="font-semibold text-blue-600">{{ report.targetPrice.toLocaleString() }}원</p>
+                   <p class="c-report-card__data-label">목표가</p>
+                   <p class="c-report-card__data-value u-text-primary">{{ report.targetPrice.toLocaleString() }}원</p>
                 </div>
                 <div>
-                   <p class="text-xs text-slate-500 mb-1">상승여력</p>
-                   <div class="flex items-center gap-1">
-                      <TrendingUp class="w-4 h-4 text-green-600" />
-                      <p class="font-semibold text-green-600">+{{ report.upside }}%</p>
+                   <p class="c-report-card__data-label">상승여력</p>
+                   <div class="u-flex-center-gap-1">
+                      <TrendingUp class="u-icon-sm u-text-up" />
+                      <p class="c-report-card__data-value u-text-up">+{{ report.upside }}%</p>
                    </div>
                 </div>
             </div>
 
-            <div class="flex gap-2 mt-4">
-               <Button variant="outline" class="flex-1">리포트 전문 보기</Button>
-               <Button class="flex-1">종목 상세보기</Button>
+            <div class="c-report-card__actions">
+               <Button variant="outline" class="u-flex-1">리포트 전문 보기</Button>
+               <Button class="u-flex-1">종목 상세보기</Button>
             </div>
         </div>
       </div>
@@ -137,13 +137,13 @@ export default {
     getRatingColor(rating) {
       switch (rating) {
         case 'Buy':
-          return 'bg-green-100 text-green-700 border-green-300';
+          return 'c-badge--buy';
         case 'Hold':
-          return 'bg-yellow-100 text-yellow-700 border-yellow-300';
+          return 'c-badge--hold';
         case 'Sell':
-          return 'bg-red-100 text-red-700 border-red-300';
+          return 'c-badge--sell';
         default:
-          return 'bg-gray-100 text-gray-700 border-gray-300';
+          return 'c-badge--default';
       }
     },
     getRatingLabel(rating) {

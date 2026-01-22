@@ -55,3 +55,7 @@
 .c-index-card__chart {
     @apply h-24;
 }
+
+.u-full {
+    @apply h-full w-full;
+}

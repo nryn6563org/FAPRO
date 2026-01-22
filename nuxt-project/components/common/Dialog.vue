@@ -10,7 +10,7 @@
          class="c-dialog__close"
          @click="$emit('update:open', false)"
        >
-         <X class="w-4 h-4" />
+         <X class="u-icon-sm" />
          <span class="sr-only">Close</span>
        </button>
     </div>

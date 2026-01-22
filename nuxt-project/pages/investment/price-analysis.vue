@@ -14,7 +14,7 @@
              <Button 
                :variant="viewMode === '시간별' ? 'default' : 'outline'" 
                size="sm"
-               :class="viewMode === '시간별' ? 'bg-blue-600 text-white' : ''"
+               :class="viewMode === '시간별' ? 'c-tab-btn--active' : ''"
                @click="viewMode = '시간별'"
              >
                시간별 지수보기
@@ -22,7 +22,7 @@
              <Button 
                :variant="viewMode === '날짜별' ? 'default' : 'outline'" 
                size="sm"
-               :class="viewMode === '날짜별' ? 'bg-blue-600 text-white' : ''"
+               :class="viewMode === '날짜별' ? 'c-tab-btn--active' : ''"
                @click="viewMode = '날짜별'"
              >
                날짜별 지수보기
@@ -34,61 +34,61 @@
          <div class="l-analysis-grid">
             <!-- KOSPI Chart -->
             <div>
-               <div class="mb-4">
-                  <div class="flex items-baseline gap-3 mb-3">
-                     <h3 class="text-lg font-semibold text-slate-700">코스피</h3>
-                     <span class="text-2xl font-bold text-slate-900">4,897.17</span>
-                     <span class="flex items-center text-red-600 font-semibold text-sm">
+               <div class="u-mb-4">
+                  <div class="c-price-market-header">
+                     <h3 class="u-text-lg-bold-slate-700">코스피</h3>
+                     <span class="u-text-2xl-bold-slate-900">4,897.17</span>
+                     <span class="c-price-change--up">
                         <TrendingUp class="w-4 h-4 mr-1" />
                         11.42
                      </span>
-                     <span class="text-red-600 font-semibold text-sm">+0.23%</span>
+                     <span class="c-price-pct--up">+0.23%</span>
                   </div>
-                  <div class="flex gap-2">
+                  <div class="u-flex-gap-2">
                      <Button 
                        v-for="period in ['1일', '3개월', '1년']" 
                        :key="period"
                        :variant="kospiPeriod === period ? 'default' : 'outline'"
                        size="sm"
-                       :class="kospiPeriod === period ? 'bg-blue-600 text-white' : ''"
+                       :class="kospiPeriod === period ? 'c-tab-btn--active' : ''"
                        @click="kospiPeriod = period"
                      >
                        {{ period }}
                      </Button>
                   </div>
                </div>
-               <div class="h-[200px]">
-                   <AreaChart :chart-data="getKospiChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="h-full w-full" />
+               <div class="c-price-chart-container">
+                   <AreaChart :chart-data="getKospiChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="u-full" />
                </div>
             </div>
 
             <!-- KOSDAQ Chart -->
             <div>
-               <div class="mb-4">
-                  <div class="flex items-baseline gap-3 mb-3">
-                     <h3 class="text-lg font-semibold text-slate-700">코스닥</h3>
-                     <span class="text-2xl font-bold text-slate-900">950.07</span>
-                     <span class="flex items-center text-blue-600 font-semibold text-sm">
+               <div class="u-mb-4">
+                  <div class="c-price-market-header">
+                     <h3 class="u-text-lg-bold-slate-700">코스닥</h3>
+                     <span class="u-text-2xl-bold-slate-900">950.07</span>
+                     <span class="c-price-change--down">
                         <TrendingDown class="w-4 h-4 mr-1" />
                         26.3
                      </span>
-                     <span class="text-blue-600 font-semibold text-sm">-2.69%</span>
+                     <span class="c-price-pct--down">-2.69%</span>
                   </div>
-                  <div class="flex gap-2">
+                  <div class="u-flex-gap-2">
                      <Button 
                        v-for="period in ['1일', '3개월', '1년']" 
                        :key="period"
                        :variant="kosdaqPeriod === period ? 'default' : 'outline'"
                        size="sm"
-                       :class="kosdaqPeriod === period ? 'bg-blue-600 text-white' : ''"
+                       :class="kosdaqPeriod === period ? 'c-tab-btn--active' : ''"
                        @click="kosdaqPeriod = period"
                      >
                        {{ period }}
                      </Button>
                   </div>
                </div>
-               <div class="h-[200px]">
-                   <AreaChart :chart-data="getKosdaqChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="h-full w-full" />
+               <div class="c-price-chart-container">
+                   <AreaChart :chart-data="getKosdaqChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="u-full" />
                </div>
             </div>
          </div>
@@ -96,16 +96,16 @@
     </div>
 
     <!-- Stock Status Table -->
-    <div class="bg-white rounded-lg border shadow-sm">
-       <div class="bg-gradient-to-r from-blue-50 to-purple-50 border-b p-6 py-4">
-          <h3 class="text-lg font-semibold mb-4">시세 현황</h3>
-          <div class="flex gap-2 flex-wrap">
+    <div class="c-price-table-card">
+       <div class="c-price-table-header-box">
+          <h3 class="u-text-lg-bold mb-4">시세 현황</h3>
+          <div class="u-flex-gap-2 flex-wrap">
              <Button 
                v-for="tab in tabs" 
                :key="tab"
                :variant="selectedTab === tab ? 'default' : 'outline'"
                size="sm"
-               :class="selectedTab === tab ? 'bg-blue-600 text-white' : ''"
+               :class="selectedTab === tab ? 'c-tab-btn--active' : ''"
                @click="selectedTab = tab"
              >
                {{ tab }}
@@ -114,34 +114,34 @@
        </div>
 
        <div class="p-6">
-          <div class="flex justify-end mb-4">
-             <span class="text-sm text-slate-600">
+          <div class="u-flex-end-mb-4">
+             <span class="u-text-sm-slate-600">
                업데이트 {{ currentDate }} {{ currentTime }}
              </span>
           </div>
 
-          <div class="overflow-x-auto">
-             <table class="w-full">
+          <div class="u-overflow-x-auto">
+             <table class="u-w-full">
                 <thead>
-                   <tr class="border-b-2 border-slate-300">
-                      <th class="text-left py-3 px-4 font-semibold text-slate-700 text-sm">날짜</th>
-                      <th class="text-left py-3 px-4 font-semibold text-slate-700 text-sm">종목명</th>
-                      <th class="text-right py-3 px-4 font-semibold text-slate-700 text-sm">현재가</th>
-                      <th class="text-right py-3 px-4 font-semibold text-slate-700 text-sm">등락률</th>
-                      <th class="text-left py-3 px-4 font-semibold text-slate-700 text-sm">이슈내용</th>
+                   <tr class="c-price-table-thead-tr">
+                      <th class="c-price-table-th">날짜</th>
+                      <th class="c-price-table-th">종목명</th>
+                      <th class="c-price-table-th--right">현재가</th>
+                      <th class="c-price-table-th--right">등락률</th>
+                      <th class="c-price-table-th">이슈내용</th>
                    </tr>
                 </thead>
                 <tbody>
-                   <tr v-for="(stock, index) in currentData" :key="index" class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                      <td class="py-3 px-4 text-sm text-slate-600">{{ stock.date }} {{ stock.time }}</td>
-                      <td class="py-3 px-4 font-medium text-slate-900">{{ stock.stockName }}</td>
-                      <td class="py-3 px-4 text-right font-medium text-sm">
+                   <tr v-for="(stock, index) in currentData" :key="index" class="c-price-table-tr">
+                      <td class="c-price-table-td">{{ stock.date }} {{ stock.time }}</td>
+                      <td class="c-price-table-td--name">{{ stock.stockName }}</td>
+                      <td class="c-price-table-td--right">
                          {{ stock.currentPrice === 0 ? '-' : stock.currentPrice.toLocaleString() }}
                       </td>
-                      <td :class="['py-3 px-4 text-right font-semibold text-sm', stock.changeRate > 0 ? 'text-red-600' : stock.changeRate < 0 ? 'text-blue-600' : 'text-slate-600']">
+                      <td :class="['c-price-table-td--right font-semibold', stock.changeRate > 0 ? 'text-red-600' : stock.changeRate < 0 ? 'text-blue-600' : 'text-slate-600']">
                          {{ stock.changeRate === 0 ? '-' : (stock.changeRate > 0 ? '+' : '') + stock.changeRate.toFixed(2) + '%' }}
                       </td>
-                      <td class="py-3 px-4 text-sm text-slate-700">{{ stock.issueContent }}</td>
+                      <td class="c-price-table-td">{{ stock.issueContent }}</td>
                    </tr>
                 </tbody>
              </table>

@@ -217,3 +217,89 @@
 .c-client-detail__metric-val {
     @apply text-2xl font-bold;
 }
+
+/* Utilities */
+.u-gap-2 {
+    @apply gap-2;
+}
+
+.u-icon-sm {
+    @apply w-4 h-4;
+}
+
+.u-w-40 {
+    @apply w-40;
+}
+
+.u-mr-2 {
+    @apply mr-2;
+}
+
+.u-mb-4 {
+    @apply mb-4;
+}
+
+.u-text-sm {
+    @apply text-sm;
+}
+
+.u-space-y-1 {
+    @apply space-y-1;
+}
+
+.u-text-green-600 {
+    @apply text-green-600;
+}
+
+.u-text-red-600 {
+    @apply text-red-600;
+}
+
+.u-icon-xs {
+    @apply w-3 h-3;
+}
+
+.u-truncate {
+    @apply truncate;
+}
+
+.u-mr-1 {
+    @apply mr-1;
+}
+
+.u-flex-1 {
+    @apply flex-1;
+}
+
+.u-text-xs {
+    @apply text-xs;
+}
+
+.c-dialog-add {
+    @apply max-w-2xl;
+}
+
+.u-text-lg-semibold {
+    @apply text-lg font-semibold;
+}
+
+.u-col-span-2 {
+    @apply col-span-2;
+}
+
+.c-dialog-detail {
+    @apply max-w-3xl max-h-[80vh] overflow-y-auto;
+}
+
+/* Risk Badges (Dynamic) */
+.u-badge-conservative {
+    @apply bg-green-100 text-green-700 border-green-200;
+}
+
+.u-badge-moderate {
+    @apply bg-yellow-100 text-yellow-700 border-yellow-200;
+}
+
+.u-badge-aggressive {
+    @apply bg-red-100 text-red-700 border-red-200;
+}

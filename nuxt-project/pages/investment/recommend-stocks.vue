@@ -8,11 +8,11 @@
     <div class="c-content-card">
       <div class="c-content-card__body p-6">
          <!-- Tabs -->
-         <div class="grid grid-cols-3 bg-slate-100 p-1 rounded-lg mb-6">
+         <div class="c-recommend-tabs">
            <button 
              v-for="tab in tabOptions" 
              :key="tab.value"
-             :class="['text-sm font-medium py-2 rounded-md transition-all', activeTab === tab.value ? 'bg-white text-slate-900 shadow-sm' : 'text-slate-500 hover:text-slate-900']"
+             :class="['c-recommend-tab-btn', activeTab === tab.value ? 'c-recommend-tab-btn--active' : 'c-recommend-tab-btn--inactive']"
              @click="activeTab = tab.value"
            >
              {{ tab.label }}
@@ -21,56 +21,56 @@
 
          <div class="space-y-4">
              <div v-for="stock in currentStocks" :key="stock.ticker" class="c-content-card c-content-card--hover">
-                <div class="c-content-card__header bg-white border-b-slate-100 shadow-none pb-0">
-                   <div class="flex items-start justify-between">
-                      <div class="flex items-center gap-3">
-                         <div class="w-12 h-12 rounded-lg bg-blue-100 flex items-center justify-center">
-                            <Lightbulb class="w-6 h-6 text-blue-600" />
+                <div class="c-recommend-card-header">
+                   <div class="u-flex-between-start">
+                      <div class="u-flex-center-gap-3">
+                         <div class="c-recommend-card__icon-box">
+                            <Lightbulb class="u-icon-lg-blue" />
                          </div>
                          <div>
-                            <h3 class="text-lg font-semibold">{{ stock.name }}</h3>
-                            <p class="text-sm text-slate-500">{{ stock.ticker }}</p>
+                            <h3 class="u-text-lg-bold">{{ stock.name }}</h3>
+                            <p class="u-text-sm-slate-500">{{ stock.ticker }}</p>
                          </div>
                       </div>
                       <div class="text-right">
-                         <span class="block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-500 text-white mb-2">
+                         <span class="c-recommend-card__score-badge">
                             AI {{ stock.aiScore }}점
                          </span>
-                         <p class="text-xs text-slate-500">신뢰도 {{ stock.confidence }}%</p>
+                         <p class="u-text-xs-slate-500">신뢰도 {{ stock.confidence }}%</p>
                       </div>
                    </div>
                 </div>
-                <div class="p-6 space-y-4">
-                   <div class="grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-lg">
+                <div class="c-recommend-card__body">
+                   <div class="c-recommend-stats-grid">
                       <div>
-                         <p class="text-xs text-slate-500 mb-1">현재가</p>
-                         <p class="font-semibold">{{ stock.currentPrice.toLocaleString() }}원</p>
+                         <p class="u-text-xs-slate-500 mb-1">현재가</p>
+                         <p class="u-font-semibold">{{ stock.currentPrice.toLocaleString() }}원</p>
                       </div>
                       <div>
-                         <p class="text-xs text-slate-500 mb-1">목표가</p>
-                         <p class="font-semibold text-blue-600">{{ stock.targetPrice.toLocaleString() }}원</p>
+                         <p class="u-text-xs-slate-500 mb-1">목표가</p>
+                         <p class="u-font-semibold u-text-blue-600">{{ stock.targetPrice.toLocaleString() }}원</p>
                       </div>
                       <div>
-                         <p class="text-xs text-slate-500 mb-1">기대수익</p>
-                         <div class="flex items-center gap-1">
-                            <TrendingUp class="w-4 h-4 text-green-600" />
-                            <p class="font-semibold text-green-600">+{{ stock.upside }}%</p>
+                         <p class="u-text-xs-slate-500 mb-1">기대수익</p>
+                         <div class="u-flex-center-gap-1">
+                            <TrendingUp class="u-icon-sm u-text-green-600" />
+                            <p class="u-font-semibold u-text-green-600">+{{ stock.upside }}%</p>
                          </div>
                       </div>
                    </div>
 
-                   <div class="flex items-start gap-2 p-3 bg-blue-50 border-l-4 border-blue-500 rounded-r">
-                      <Target class="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                   <div class="c-recommend-reason-box">
+                      <Target class="u-icon-base u-text-blue-600 u-flex-shrink-0 u-mt-0_5" />
                       <div>
-                         <p class="text-sm font-semibold text-blue-900">{{ stock.reason }}</p>
-                         <div class="flex items-center gap-1 mt-1 text-xs text-blue-700">
-                            <Clock class="w-3 h-3" />
+                         <p class="u-text-sm-bold-blue-900">{{ stock.reason }}</p>
+                         <div class="c-recommend-period-box">
+                            <Clock class="u-icon-sm" />
                             <span>목표 기간: {{ stock.period }}</span>
                          </div>
                       </div>
                    </div>
 
-                   <Button class="w-full">상세 분석 보기</Button>
+                   <Button class="u-w-full">상세 분석 보기</Button>
                 </div>
              </div>
          </div>

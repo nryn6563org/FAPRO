@@ -31,13 +31,13 @@
               :is="item.icon" 
               :class="[
                 'l-sidebar__icon',
-                isActive(item.id) ? 'l-sidebar__icon--active' : (currentTheme !== 'dark' ? item.color : 'text-slate-400')
+                isActive(item.id) ? 'l-sidebar__icon--active' : (currentTheme !== 'dark' ? item.color : 'l-sidebar__icon--inactive')
               ]" 
             />
             <span v-if="sidebarOpen" class="l-sidebar__text">{{ item.label }}</span>
             <template v-if="sidebarOpen && item.children">
-              <ChevronDown v-if="expandedMenus.includes(item.id)" class="w-4 h-4 flex-shrink-0" />
-              <ChevronRight v-else class="w-4 h-4 flex-shrink-0" />
+              <ChevronDown v-if="expandedMenus.includes(item.id)" class="u-icon-sm-shrink-0" />
+              <ChevronRight v-else class="u-icon-sm-shrink-0" />
             </template>
           </button>
           
@@ -53,8 +53,8 @@
                 <component 
                   :is="subItem.icon" 
                   :class="[
-                    'w-4 h-4 flex-shrink-0 transition-colors',
-                     isActive(subItem.id) ? 'text-blue-600 dark:text-blue-300' : (currentTheme !== 'dark' ? subItem.color : 'text-slate-400 dark:text-slate-500')
+                    'u-icon-sm-shrink-0 transition-colors',
+                     isActive(subItem.id) ? 'l-sidebar__subicon--active' : (currentTheme !== 'dark' ? subItem.color : 'l-sidebar__subicon--inactive')
                   ]" 
                 />
                 <span v-if="sidebarOpen" class="">{{ subItem.label }}</span>
@@ -72,12 +72,12 @@
                     <component 
                       :is="subSubItem.icon" 
                       :class="[
-                        'w-3.5 h-3.5 flex-shrink-0 transition-colors',
-                        isActive(subSubItem.id) ? 'text-blue-600 dark:text-blue-300' : (currentTheme !== 'dark' ? subSubItem.color : 'text-slate-400 dark:text-slate-500')
+                        'u-icon-xs-shrink-0 transition-colors',
+                        isActive(subSubItem.id) ? 'l-sidebar__subicon--active' : (currentTheme !== 'dark' ? subSubItem.color : 'l-sidebar__subicon--inactive')
                       ]" 
                     />
                     <span v-if="sidebarOpen">{{ subSubItem.label }}</span>
-                  </button>
+                   </button>
                 </div>
               </div>
             </div>
@@ -90,19 +90,19 @@
     <div class="l-main">
       <!-- Header -->
       <header class="l-main__header">
-        <div class="flex flex-col gap-3">
+        <div class="u-flex-col-gap-3">
           <!-- Welcome Message -->
           <div class="l-main__welcome">
             <div>
-              <p class="text-lg font-bold">안녕하세요! 김승원FA님, 오늘도 좋은 하루 보내세요!</p>
+              <p class="u-text-lg-bold">안녕하세요! 김승원FA님, 오늘도 좋은 하루 보내세요!</p>
             </div>
             <div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">2026년 1월 20일 화요일</p>
+              <p class="u-text-xs-slate">2026년 1월 20일 화요일</p>
             </div>
           </div>
           
           <!-- Search and Indices -->
-          <div class="flex flex-col gap-3">
+          <div class="u-flex-col-gap-3">
             <div class="l-main__search-wrapper">
               <Search class="l-main__search-icon" />
               <Input
@@ -126,7 +126,7 @@
                     
                     <!-- Decorative Chart Line -->
                     <div class="c-mini-card__chart">
-                        <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
+                        <svg viewBox="0 0 100 40" class="u-full" preserveAspectRatio="none">
                             <path d="M0 30 Q 25 35, 50 20 T 100 10 V 40 H 0 Z" :fill="index.change >= 0 ? '#ef4444' : '#3b82f6'" />
                         </svg>
                     </div>
@@ -144,7 +144,7 @@
        <!-- Footer -->
        <footer class="l-footer">
           <div class="l-footer__inner">
-            <div class="flex items-center gap-6">
+            <div class="u-flex-center-gap-6">
               <p>© 2026 RASSI FApro. All rights reserved.</p>
               <div class="l-footer__links">
                 <a href="#" class="l-footer__link">이용약관</a>
@@ -152,7 +152,7 @@
                 <a href="#" class="l-footer__link">고객센터</a>
               </div>
             </div>
-            <div class="flex items-center gap-2">
+            <div class="u-flex-center-gap-2">
               <span>고객문의: 1588-1234</span>
               <span>|</span>
               <span>support@rassi.co.kr</span>

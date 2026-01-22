@@ -5,9 +5,9 @@
       <p class="p-ai__desc">투자 정보와 금융 지식을 대화로 편하게 물어보세요.</p>
     </div>
 
-     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+     <div class="p-ai__grid">
       <!-- Chat Interface -->
-      <div class="lg:col-span-2 c-chat-interface">
+      <div class="p-ai__chat-area c-chat-interface">
         <div class="c-chat-interface__header">
             <div class="c-chat-interface__bot-icon-wrapper">
               <Bot class="c-chat-interface__bot-icon" />
@@ -31,13 +31,13 @@
                     <User v-if="message.role === 'user'" class="c-chat-message__icon" />
                     <Bot v-else class="c-chat-message__icon" />
                   </div>
-                  <div :class="['flex-1', message.role === 'user' ? 'flex justify-end' : '']">
+                  <div :class="['c-chat-message__body', message.role === 'user' ? 'c-chat-message__body--user' : '']">
                     <div :class="['c-chat-message__content', 
                       message.role === 'user' ? 'c-chat-message__content--user' : 'c-chat-message__content--bot'
                     ]">
-                      <p class="whitespace-pre-wrap text-sm">{{ message.content }}</p>
+                      <p class="c-chat-message__text">{{ message.content }}</p>
                     </div>
-                    <p :class="['c-chat-message__time', message.role === 'user' ? 'text-right text-slate-400' : 'text-slate-400']">
+                    <p :class="['c-chat-message__time', message.role === 'user' ? 'u-text-right u-text-slate-400' : 'u-text-slate-400']">
                         {{ new Date(message.timestamp).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) }}
                     </p>
                   </div>
@@ -61,13 +61,13 @@
                   v-model="input"
                   @keypress.enter.native="handleSend"
                   placeholder="투자 관련 질문을 입력하세요..."
-                  class="flex-1"
+                  class="u-flex-1"
                   :disabled="isTyping"
                 />
                 <Button 
                   @click="handleSend" 
                   :disabled="!input.trim() || isTyping"
-                  class="gap-2 bg-blue-600 hover:bg-blue-700 text-white"
+                  class="c-chat-interface__send-btn"
                 >
                   <Send class="c-chat-interface__btn-icon" />
                   전송
@@ -78,7 +78,7 @@
       </div>
 
       <!-- Suggested Questions -->
-      <div class="space-y-4">
+      <div class="p-ai__sidebar">
         <div class="c-suggested-panel">
           <div class="c-suggested-panel__header">
             <h3 class="c-suggested-panel__title">질문 목록</h3>
@@ -100,9 +100,9 @@
                 @click="handleSuggestedQuestion(item.question)"
                 class="c-question-item"
               >
-                <div class="flex items-start gap-3">
+                <div class="c-question-item__inner">
                   <component :is="item.icon" class="c-question-item__icon" />
-                  <span class="text-sm font-medium text-slate-700 group-hover:text-blue-700">{{ item.question }}</span>
+                  <span class="c-question-item__text">{{ item.question }}</span>
                 </div>
               </button>
           </div>

@@ -8,10 +8,10 @@
     <div class="c-content-card">
       <div class="c-content-card__header">
          <div class="c-content-card__header-content">
-           <div class="flex items-center gap-3">
-             <CalendarDays class="w-6 h-6 text-blue-600" />
-             <h3 class="text-xl font-bold">{{ currentData.date }}</h3>
-             <span v-if="currentPage === 0" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-500 text-white">
+           <div class="u-flex-center-gap-3">
+             <CalendarDays class="u-icon-md-blue" />
+             <h3 class="u-text-xl-bold">{{ currentData.date }}</h3>
+             <span v-if="currentPage === 0" class="c-daily-today-badge">
                 오늘
              </span>
            </div>
@@ -22,7 +22,7 @@
                @click="currentPage++"
                :disabled="!canGoPrev"
              >
-               <ChevronLeft class="w-4 h-4" />
+               <ChevronLeft class="u-icon-sm" />
              </Button>
              <Button
                variant="outline"
@@ -30,57 +30,57 @@
                @click="currentPage--"
                :disabled="!canGoNext"
              >
-               <ChevronRight class="w-4 h-4" />
+               <ChevronRight class="u-icon-sm" />
              </Button>
            </div>
          </div>
       </div>
       
       <div class="p-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-           <div v-for="pick in currentData.picks" :key="pick.ticker" class="bg-white rounded-lg border shadow-sm relative overflow-hidden">
-              <div class="absolute top-2 right-2">
-                 <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-purple-100 text-purple-700 border border-purple-200">
+        <div class="c-daily-grid">
+           <div v-for="pick in currentData.picks" :key="pick.ticker" class="c-daily-card">
+              <div class="c-daily-card__score-pos">
+                 <span class="c-daily-card__score-badge">
                     AI {{ pick.aiScore }}점
                  </span>
               </div>
               <div class="p-4 pb-3">
-                 <div class="flex items-center gap-2">
-                    <div class="w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
-                       <Star class="w-5 h-5 text-blue-600" />
+                 <div class="u-flex-center-gap-2">
+                    <div class="c-daily-card__icon-box">
+                       <Star class="u-icon-md-blue" />
                     </div>
                     <div>
-                       <h3 class="text-lg font-semibold">{{ pick.name }}</h3>
-                       <p class="text-xs text-slate-500">{{ pick.ticker }}</p>
+                       <h3 class="u-text-lg-bold">{{ pick.name }}</h3>
+                       <p class="u-text-xs-slate-500">{{ pick.ticker }}</p>
                     </div>
                  </div>
               </div>
               <div class="p-4 pt-0">
-                 <div v-if="pick.result !== null" :class="['p-4 rounded-lg mb-3', pick.result >= 0 ? 'bg-green-50' : 'bg-red-50']">
-                    <p class="text-xs text-slate-600 mb-1">수익률</p>
-                    <p :class="['text-2xl font-bold', pick.result >= 0 ? 'text-green-600' : 'text-red-600']">
+                 <div v-if="pick.result !== null" :class="['c-daily-card__result-box', pick.result >= 0 ? 'c-daily-card__result-box--profit' : 'c-daily-card__result-box--loss']">
+                    <p class="u-text-xs-slate-600 mb-1">수익률</p>
+                    <p :class="['c-daily-card__result-val', pick.result >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
                        {{ pick.result >= 0 ? '+' : '' }}{{ pick.result }}%
                     </p>
                  </div>
-                 <div v-else class="p-4 rounded-lg bg-slate-50 mb-3">
-                    <p class="text-sm text-slate-600 text-center">진행 중</p>
+                 <div v-else class="c-daily-card__result-box c-daily-card__result-box--pending">
+                    <p class="u-text-sm u-text-slate-600 u-text-center">진행 중</p>
                  </div>
-                 <Button variant="outline" class="w-full" size="sm">상세보기</Button>
+                 <Button variant="outline" class="u-w-full" size="sm">상세보기</Button>
               </div>
            </div>
         </div>
 
-        <div v-if="hasResults" class="mt-6 p-4 bg-slate-50 rounded-lg">
-           <div class="flex items-center justify-between">
+        <div v-if="hasResults" class="c-daily-stats-box">
+           <div class="u-flex-between">
               <div>
-                 <p class="text-sm text-slate-600 mb-1">일평균 수익률</p>
-                 <p class="text-2xl font-bold text-green-600">
+                 <p class="u-text-sm-slate-600 mb-1">일평균 수익률</p>
+                 <p class="u-text-2xl-bold u-text-green-600">
                     +{{ averageReturn }}%
                  </p>
               </div>
-              <div class="text-right">
-                 <p class="text-sm text-slate-600 mb-1">적중률</p>
-                 <p class="text-2xl font-bold text-blue-600">
+              <div class="u-text-right">
+                 <p class="u-text-sm-slate-600 mb-1">적중률</p>
+                 <p class="u-text-2xl-bold u-text-blue-600">
                     {{ hitRate }}%
                  </p>
               </div>

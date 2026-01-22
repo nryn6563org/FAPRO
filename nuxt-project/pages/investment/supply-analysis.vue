@@ -7,12 +7,12 @@
 
     <div class="c-content-card">
       <div class="c-content-card__header">
-        <h3 class="c-content-card__title mb-4">수급 현황</h3>
+        <h3 class="c-content-card__title u-mb-4">수급 현황</h3>
         <div class="c-content-card__actions flex-wrap">
            <Button v-for="tab in tabs" :key="tab"
              :variant="selectedTab === tab ? 'default' : 'outline'"
              size="sm"
-             :class="selectedTab === tab ? 'bg-blue-600 text-white' : ''"
+             :class="selectedTab === tab ? 'c-tab-btn--active' : ''"
              @click="selectedTab = tab"
            >
              {{ tab }}
@@ -21,31 +21,31 @@
       </div>
 
       <div class="c-content-card__body">
-        <div class="flex justify-end mb-4">
-           <span class="text-sm text-slate-600">업데이트 {{ currentDate }} {{ currentTime }}</span>
+        <div class="u-flex-end-mb-4">
+           <span class="u-text-sm-slate-600">업데이트 {{ currentDate }} {{ currentTime }}</span>
         </div>
 
         <div v-if="selectedTab === '순매수'" class="l-analysis-grid">
              <!-- Pure Buy Logic (4 tables) -->
              <div v-for="section in ['기관 코스피', '기관 코스닥', '외국인 코스피', '외국인 코스닥']" :key="section">
-                 <h3 class="text-sm font-semibold mb-2 text-slate-800">{{ section }}</h3>
-                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                 <h3 class="u-text-sm-bold-slate-800 mb-2">{{ section }}</h3>
+                 <div class="u-overflow-x-auto">
+                    <table class="u-w-full">
                         <thead>
-                            <tr class="border-b-2 border-slate-300">
-                                <th class="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs text-nowrap">종목명</th>
-                                <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs text-nowrap">순매수금액</th>
-                                <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs text-nowrap">등락률</th>
+                            <tr class="c-price-table-thead-tr">
+                                <th class="c-supply-table-th">종목명</th>
+                                <th class="c-supply-table-th--right">순매수금액</th>
+                                <th class="c-supply-table-th--right">등락률</th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr v-for="(stock, idx) in mockDataByTab['순매수'].slice(0, 5)" :key="idx" class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                <td class="py-1.5 px-1.5 font-medium text-slate-900 text-xs flex items-center gap-1.5">
-                                    <div :class="['w-5 h-5 rounded-full flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
+                            <tr v-for="(stock, idx) in mockDataByTab['순매수'].slice(0, 5)" :key="idx" class="c-price-table-tr">
+                                <td class="c-supply-table-td--name">
+                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
                                     <span class="truncate">{{ stock.stockName }}</span>
                                 </td>
-                                <td class="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{{ stock.netBuyAmount }}억</td>
-                                <td :class="['py-1.5 px-1.5 text-right font-semibold text-xs', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
+                                <td class="c-supply-table-td--amount">{{ stock.netBuyAmount }}억</td>
+                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
                                     {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
                                 </td>
                             </tr>
@@ -55,29 +55,29 @@
              </div>
         </div>
 
-        <div v-else class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div v-else class="c-supply-grid-split">
             <!-- Normal Tab (2 tables: Inst vs Foreign) -->
             <div>
-                 <h3 class="text-sm font-semibold mb-2 text-slate-800">기관</h3>
-                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                 <h3 class="u-text-sm-bold-slate-800 mb-2">기관</h3>
+                 <div class="u-overflow-x-auto">
+                    <table class="u-w-full">
                        <thead>
-                           <tr class="border-b-2 border-slate-300">
-                               <th class="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
-                               <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
-                               <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
+                           <tr class="c-price-table-thead-tr">
+                               <th class="c-supply-table-th">종목명</th>
+                               <th class="c-supply-table-th--right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
+                               <th class="c-supply-table-th--right">등락률</th>
                            </tr>
                        </thead>
                        <tbody>
-                           <tr v-for="(stock, idx) in institutionData" :key="idx" class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                <td class="py-1.5 px-1.5 font-medium text-slate-900 text-xs flex items-center gap-1.5">
-                                    <div :class="['w-5 h-5 rounded-full flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
+                           <tr v-for="(stock, idx) in institutionData" :key="idx" class="c-price-table-tr">
+                                <td class="c-supply-table-td--name">
+                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
                                     <span>{{ stock.stockName }}</span>
                                 </td>
-                                <td class="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
+                                <td class="c-supply-table-td--amount">
                                     {{ selectedTab === '순매수 상위 신규진입' ? stock.netBuyAmount + '억' : stock.buyRatio + '%' }}
                                 </td>
-                                <td :class="['py-1.5 px-1.5 text-right font-semibold text-xs', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
+                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
                                     {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
                                 </td>
                            </tr>
@@ -87,26 +87,26 @@
             </div>
 
             <div>
-                 <h3 class="text-sm font-semibold mb-2 text-slate-800">외국인</h3>
-                 <div class="overflow-x-auto">
-                    <table class="w-full">
+                 <h3 class="u-text-sm-bold-slate-800 mb-2">외국인</h3>
+                 <div class="u-overflow-x-auto">
+                    <table class="u-w-full">
                        <thead>
-                           <tr class="border-b-2 border-slate-300">
-                               <th class="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
-                               <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
-                               <th class="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
+                           <tr class="c-price-table-thead-tr">
+                               <th class="c-supply-table-th">종목명</th>
+                               <th class="c-supply-table-th--right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
+                               <th class="c-supply-table-th--right">등락률</th>
                            </tr>
                        </thead>
                        <tbody>
-                           <tr v-for="(stock, idx) in foreignData" :key="idx" class="border-b border-slate-200 hover:bg-slate-50 transition-colors">
-                                <td class="py-1.5 px-1.5 font-medium text-slate-900 text-xs flex items-center gap-1.5">
-                                    <div :class="['w-5 h-5 rounded-full flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
+                           <tr v-for="(stock, idx) in foreignData" :key="idx" class="c-price-table-tr">
+                                <td class="c-supply-table-td--name">
+                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
                                     <span>{{ stock.stockName }}</span>
                                 </td>
-                                <td class="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
+                                <td class="c-supply-table-td--amount">
                                     {{ selectedTab === '순매수 상위 신규진입' ? stock.netBuyAmount + '억' : stock.buyRatio + '%' }}
                                 </td>
-                                <td :class="['py-1.5 px-1.5 text-right font-semibold text-xs', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
+                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
                                     {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
                                 </td>
                            </tr>

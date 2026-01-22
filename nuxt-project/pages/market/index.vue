@@ -6,7 +6,7 @@
     </div>
 
     <!-- Tabs Container -->
-    <div class="space-y-6">
+    <div class="l-p-market__stack">
         <!-- Tabs Header -->
         <div class="p-market__tabs">
             <button 
@@ -20,7 +20,7 @@
         </div>
 
         <!-- Domestic Content -->
-        <div v-if="activeTab === 'domestic'" class="space-y-6">
+        <div v-if="activeTab === 'domestic'" class="l-p-market__stack">
              <div class="p-market__indices-grid">
                 <IndexCard v-for="index in domesticIndices" :key="index.name" v-bind="index" />
              </div>
@@ -47,7 +47,7 @@
         </div>
 
         <!-- International Content -->
-        <div v-if="activeTab === 'international'" class="space-y-6">
+        <div v-if="activeTab === 'international'" class="l-p-market__stack">
              <div class="p-market__indices-grid--international">
                 <IndexCard v-for="index in internationalIndices" :key="index.name" v-bind="index" />
              </div>
@@ -68,20 +68,20 @@
                      </div>
                  </div>
                  <div class="c-market-chart__body">
-                      <LineChart v-if="selectedInternationalData" :chart-data="getDetailedChartData(selectedInternationalData)" :options="detailedChartOptions" class="c-market-chart__canvas" />
+                       <LineChart v-if="selectedInternationalData" :chart-data="getDetailedChartData(selectedInternationalData)" :options="detailedChartOptions" class="c-market-chart__canvas" />
                  </div>
              </div>
         </div>
 
         <!-- Forex Content -->
-        <div v-if="activeTab === 'forex'" class="space-y-6">
+        <div v-if="activeTab === 'forex'" class="l-p-market__stack">
              <div class="p-market__indices-grid--forex">
                 <IndexCard v-for="rate in exchangeRates" :key="rate.name" v-bind="rate" />
              </div>
         </div>
 
         <!-- Commodities Content -->
-        <div v-if="activeTab === 'commodities'" class="space-y-6">
+        <div v-if="activeTab === 'commodities'" class="l-p-market__stack">
              <div class="p-market__indices-grid--commodities">
                 <IndexCard v-for="commodity in commodities" :key="commodity.name" v-bind="commodity" />
              </div>

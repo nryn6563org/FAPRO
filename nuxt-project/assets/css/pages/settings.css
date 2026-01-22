@@ -43,6 +43,7 @@
 }
 
 /* Profile Tab */
+
 /* Content Cards */
 .p-settings__card {
     @apply bg-white rounded-xl border shadow-sm p-6;
@@ -76,9 +77,6 @@
     @apply mt-2;
 }
 
-.p-settings__profile-role {
-    @apply text-sm text-slate-500;
-}
 
 .p-settings__form-grid {
     @apply grid grid-cols-2 gap-4;
@@ -94,6 +92,10 @@
 
 .p-settings__actions {
     @apply pt-4 flex justify-end;
+}
+
+.p-settings__save-btn {
+    @apply bg-blue-600 hover:bg-blue-700 text-white;
 }
 
 /* Notification Tab */

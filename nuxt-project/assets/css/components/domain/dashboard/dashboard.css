@@ -43,6 +43,7 @@
         transform: translate(-50%, 1rem);
         opacity: 0;
     }
+
     to {
         transform: translate(-50%, 0);
         opacity: 1;
@@ -52,6 +53,7 @@
 /* Edit Bar */
 .c-dashboard__edit-bar {
     @apply fixed bottom-8 left-1/2 -translate-x-1/2 z-50 bg-slate-900/90 text-white px-6 py-3 rounded-full shadow-xl backdrop-blur-sm flex items-center gap-4;
+
     animation: slide-in-bottom 0.2s ease-out forwards;
 }
 
@@ -70,6 +72,7 @@
 /* Dashboard Grid */
 .c-dashboard__grid {
     @apply grid gap-4 pb-20 grid-flow-dense auto-rows-[200px];
+
     grid-template-columns: repeat(auto-fill, 200px);
     justify-content: start;
 }
@@ -263,7 +266,11 @@
 }
 
 .c-widget-card:hover .c-widget-card__icon-wrapper {
-    @apply bg-blue-50 dark:bg-blue-900/40;
+    @apply bg-blue-50;
+}
+
+.dark .c-widget-card:hover .c-widget-card__icon-wrapper {
+    @apply bg-blue-900/40;
 }
 
 .c-widget-card__icon-wrapper--selected {

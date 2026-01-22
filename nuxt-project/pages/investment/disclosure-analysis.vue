@@ -5,31 +5,29 @@
       <p class="p-investment__desc">실시간 공시 정보 및 영향 분석</p>
     </div>
 
-    <div class="grid grid-cols-1 gap-4">
+    <div class="c-disclosure-grid">
       <div v-for="disclosure in mockDisclosures" :key="disclosure.id" class="c-content-card c-content-card--hover">
         <div class="c-content-card__body">
-          <div class="flex items-start justify-between mb-4">
-             <div class="flex items-center gap-3 flex-1">
-                <div :class="['w-12 h-12 rounded-lg flex items-center justify-center', 
-                   disclosure.importance === 'high' ? 'bg-red-100' :
-                   disclosure.importance === 'medium' ? 'bg-yellow-100' : 'bg-blue-100']">
-                   <ClipboardList :class="['w-6 h-6', 
-                      disclosure.importance === 'high' ? 'text-red-600' :
-                      disclosure.importance === 'medium' ? 'text-yellow-600' : 'text-blue-600']" />
+          <div class="c-disclosure-card__header">
+             <div class="u-flex-center-gap-3 u-flex-1">
+                <div :class="['c-disclosure-card__icon-box', `c-disclosure-card__icon-box--${disclosure.importance}`]">
+                   <ClipboardList :class="['u-icon-lg', 
+                      disclosure.importance === 'high' ? 'u-text-red-600' :
+                      disclosure.importance === 'medium' ? 'u-text-yellow-600' : 'u-text-blue-600']" />
                 </div>
-                <div class="flex-1">
-                   <div class="flex items-center gap-2 mb-1">
-                      <h3 class="text-lg font-semibold">{{ disclosure.stockName }}</h3>
-                      <span :class="['px-2.5 py-0.5 rounded-full text-xs font-semibold border', getImportanceColor(disclosure.importance)]">
+                <div class="u-flex-1">
+                   <div class="u-flex-center-gap-2 mb-1">
+                      <h3 class="u-text-lg-bold">{{ disclosure.stockName }}</h3>
+                      <span :class="['c-disclosure-card__badge', getImportanceColor(disclosure.importance)]">
                          {{ getImportanceLabel(disclosure.importance) }}
                       </span>
-                      <span :class="['px-2.5 py-0.5 rounded-full text-xs font-semibold', getTypeColor(disclosure.type)]">
+                      <span :class="['c-disclosure-card__type-badge', getTypeColor(disclosure.type)]">
                          {{ disclosure.type }}
                       </span>
                    </div>
-                   <p class="text-sm text-slate-600 mb-1">{{ disclosure.title }}</p>
-                   <div class="flex items-center gap-2 text-xs text-slate-500">
-                      <Clock class="w-3 h-3" />
+                   <p class="c-disclosure-card__title">{{ disclosure.title }}</p>
+                   <div class="u-flex-center-gap-2 u-text-meta">
+                      <Clock class="u-icon-sm" />
                       <span>{{ disclosure.time }}</span>
                       <span>•</span>
                       <span>{{ disclosure.ticker }}</span>
@@ -39,16 +37,16 @@
           </div>
           
           <div class="space-y-4">
-             <div class="p-4 bg-slate-50 rounded-lg">
-                <p class="text-sm text-slate-700">{{ disclosure.summary }}</p>
-                <p v-if="disclosure.amount" class="text-sm font-semibold text-blue-600 mt-2">
+             <div class="c-disclosure-card__summary-box">
+                <p class="u-text-sm u-text-slate-700">{{ disclosure.summary }}</p>
+                <p v-if="disclosure.amount" class="c-disclosure-card__amount">
                    계약금액: {{ (disclosure.amount / 100000000).toFixed(0) }}억원
                 </p>
              </div>
 
-             <div class="flex gap-2">
-                <Button variant="outline" class="flex-1">공시 전문 보기</Button>
-                <Button class="flex-1">종목 분석</Button>
+             <div class="u-flex-gap-2">
+                <Button variant="outline" class="u-flex-1">공시 전문 보기</Button>
+                <Button class="u-flex-1">종목 분석</Button>
              </div>
           </div>
         </div>
@@ -137,10 +135,10 @@ export default {
   methods: {
     getImportanceColor(importance) {
       switch (importance) {
-        case 'high': return 'bg-red-100 text-red-700 border-red-300';
-        case 'medium': return 'bg-yellow-100 text-yellow-700 border-yellow-300';
-        case 'low': return 'bg-blue-100 text-blue-700 border-blue-300';
-        default: return 'bg-gray-100 text-gray-700 border-gray-300';
+        case 'high': return 'c-disclosure-card__badge--high';
+        case 'medium': return 'c-disclosure-card__badge--medium';
+        case 'low': return 'c-disclosure-card__badge--low';
+        default: return 'c-disclosure-card__badge--low';
       }
     },
     getImportanceLabel(importance) {
@@ -153,12 +151,12 @@ export default {
     },
     getTypeColor(type) {
       const colors = {
-        '매출': 'bg-green-100 text-green-700',
-        'M&A': 'bg-purple-100 text-purple-700',
-        '자사주': 'bg-blue-100 text-blue-700',
-        '기타': 'bg-gray-100 text-gray-700'
+        '매출': 'c-disclosure-card__type-badge--sales',
+        'M&A': 'c-disclosure-card__type-badge--ma',
+        '자사주': 'c-disclosure-card__type-badge--stock',
+        '기타': 'c-disclosure-card__type-badge--etc'
       };
-      return colors[type] || 'bg-gray-100 text-gray-700';
+      return colors[type] || 'c-disclosure-card__type-badge--etc';
     }
   }
 }

@@ -54,6 +54,7 @@
 /* Widget Grid */
 .c-dashboard__grid {
     @apply grid gap-4 pb-20 grid-flow-dense auto-rows-[200px];
+
     grid-template-columns: repeat(auto-fill, 200px);
     justify-content: start;
 }
@@ -65,12 +66,15 @@
 .c-dashboard__grid-item--w-1 {
     @apply col-span-1;
 }
+
 .c-dashboard__grid-item--w-2 {
     @apply col-span-1 md:col-span-2;
 }
+
 .c-dashboard__grid-item--w-3 {
     @apply col-span-1 md:col-span-2 lg:col-span-3;
 }
+
 .c-dashboard__grid-item--w-4 {
     @apply col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4;
 }
@@ -78,6 +82,7 @@
 .c-dashboard__grid-item--h-1 {
     @apply row-span-1;
 }
+
 .c-dashboard__grid-item--h-2 {
     @apply row-span-2;
 }
@@ -113,6 +118,7 @@
 }
 
 /* Dialog Styles */
+
 /* Note: Dialog component itself might need its own CSS, but we are styling the content passed to it */
 .c-widget-dialog {
     @apply flex h-full;

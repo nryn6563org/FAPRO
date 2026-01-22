@@ -56,7 +56,7 @@
              </div>
              
              <div class="p-settings__actions">
-                 <Button class="bg-blue-600 hover:bg-blue-700">변경사항 저장</Button>
+                 <Button class="p-settings__save-btn">변경사항 저장</Button>
              </div>
          </div>
 

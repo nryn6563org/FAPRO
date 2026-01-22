@@ -186,3 +186,8 @@
 .c-widget__fallback-text {
     @apply text-xs text-slate-400;
 }
+
+/* Utils for Widget */
+.u-icon-sm { @apply w-4 h-4; }
+.u-full { @apply h-full w-full; }
+.u-flex-1-min-h-0-relative-w-full { @apply flex-1 min-h-0 relative w-full; }

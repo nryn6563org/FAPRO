@@ -4,6 +4,10 @@
     @apply space-y-6;
 }
 
+.l-p-market__stack {
+    @apply space-y-6;
+}
+
 /* Header */
 .p-market__header {
     @apply mb-6;

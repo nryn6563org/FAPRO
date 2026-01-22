@@ -9,10 +9,10 @@
     <div class="c-content-card">
         <div class="c-content-card__header">
              <div class="c-content-card__header-content">
-                <div class="flex items-center gap-2">
-                   <Sparkles class="w-5 h-5 text-blue-600" />
+                <div class="u-flex-center-gap-2">
+                   <Sparkles class="u-icon-md-blue" />
                    <h3 class="c-content-card__title">AI이슈포착</h3>
-                   <span v-if="selectedKeyword" class="ml-2 bg-blue-600 text-white text-xs px-2 py-0.5 rounded-full">{{ selectedKeyword }}</span>
+                   <span v-if="selectedKeyword" class="c-issue-keyword-badge">{{ selectedKeyword }}</span>
                 </div>
                 <div class="c-content-card__subtitle">
                    {{ currentDate }}
@@ -22,21 +22,21 @@
         <div class="c-content-card__body">
             <div class="l-analysis-grid l-analysis-grid--lg">
                 <!-- Left: Bubble Chart -->
-                <div class="relative">
-                    <div class="flex items-center justify-center mb-4 gap-2">
+                <div class="c-issue-bubble-section">
+                    <div class="c-issue-bubble-tabs">
                         <Button
                            v-for="tab in [{id:'domestic', label:'국내이슈포착'}, {id:'us', label:'미국이슈포착'}]"
                            :key="tab.id"
                            :variant="selectedTab === tab.id ? 'default' : 'outline'"
                            size="sm"
                            @click="changeTab(tab.id)"
-                           :class="selectedTab === tab.id ? 'bg-blue-600 text-white' : ''"
+                           :class="selectedTab === tab.id ? 'c-tab-btn--active' : ''"
                         >
                             {{ tab.label }}
                         </Button>
                     </div>
 
-                    <div class="relative h-[500px] bg-slate-50 rounded-lg overflow-hidden">
+                    <div class="c-issue-bubble-chart">
                         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
                             <g v-for="(bubble, idx) in currentBubbles" 
                                :key="idx" 
@@ -68,50 +68,50 @@
                         </svg>
 
                         <!-- Time & Refresh -->
-                        <div class="absolute bottom-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-slate-200">
-                             <div class="text-xs text-slate-600">
-                                <div class="font-semibold">{{ currentDate }}</div>
-                                <div class="text-slate-500">{{ currentTime }}</div>
+                        <div class="c-issue-bubble-legend">
+                             <div class="u-text-xs u-text-slate-600">
+                                <div class="u-font-semibold">{{ currentDate }}</div>
+                                <div class="u-text-slate-500">{{ currentTime }}</div>
                              </div>
-                             <div class="w-px h-8 bg-slate-300"></div>
-                             <button @click="handleRefresh" class="h-8 w-8 flex items-center justify-center hover:bg-blue-50 rounded-full">
-                                <RefreshCw class="w-4 h-4 text-blue-600" />
+                             <div class="u-divider-vertical"></div>
+                             <button @click="handleRefresh" class="u-w-8 u-h-8 u-flex-center justify-center hover:bg-blue-50 rounded-full">
+                                <RefreshCw class="u-icon-sm u-text-blue-600" />
                              </button>
                         </div>
                     </div>
                 </div>
 
                 <!-- Right: Chart and Analysis -->
-                <div class="flex flex-col h-[500px] space-y-4">
-                    <div class="flex-1 flex flex-col">
-                         <div class="flex items-center justify-between mb-3">
-                             <h3 class="font-semibold text-blue-600">
+                <div class="c-issue-right-panel">
+                    <div class="u-flex-1 flex flex-col">
+                         <div class="c-issue-chart-header">
+                             <h3 class="u-font-semibold u-text-blue-600">
                                  {{ selectedKeyword }} 검색빈도 및 종목 누적 등락률
                              </h3>
-                             <button class="text-xs text-slate-500 hover:text-slate-800">더보기 →</button>
+                             <button class="u-text-xs-slate-500 u-hover-text-slate-800">더보기 →</button>
                          </div>
-                         <div class="flex-1 min-h-0 relative">
-                             <LineChart v-if="chartDataConfig" :chart-data="chartDataConfig" :options="chartOptions" class="h-full w-full" />
+                         <div class="c-issue-chart-area">
+                             <LineChart v-if="chartDataConfig" :chart-data="chartDataConfig" :options="chartOptions" class="u-full" />
                          </div>
                     </div>
 
-                    <div class="flex-1 overflow-auto">
+                    <div class="c-issue-stock-section">
                         <h4 class="font-semibold mb-2">오늘의 주요 종목</h4>
-                         <div class="space-y-2">
-                            <div v-for="(stock, idx) in currentData.stocks" :key="idx" class="flex items-center justify-between p-3 bg-slate-50 rounded-lg hover:bg-slate-100 transition-colors">
-                                 <span class="font-medium">{{ stock.name }}</span>
-                                 <span class="text-red-600 font-semibold">{{ stock.rate }}</span>
+                         <div class="c-issue-stock-list">
+                            <div v-for="(stock, idx) in currentData.stocks" :key="idx" class="c-issue-stock-item">
+                                 <span class="u-font-medium">{{ stock.name }}</span>
+                                 <span class="u-text-issue-up">{{ stock.rate }}</span>
                             </div>
                          </div>
                     </div>
 
-                    <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-semibold text-blue-800 mb-1 flex items-center gap-2">
-                            <FileText class="w-4 h-4" />
+                    <div class="c-issue-news-box">
+                        <h4 class="u-font-semibold u-text-blue-800 u-mb-1 u-flex-center-gap-2">
+                            <FileText class="u-icon-sm" />
                             AI 뉴스 요약
                         </h4>
-                        <h5 class="font-medium text-sm text-blue-900 mb-1">{{ currentData.news.title }}</h5>
-                         <p class="text-xs text-slate-600 line-clamp-2">{{ currentData.news.content }}</p>
+                        <h5 class="u-font-medium u-text-sm u-text-blue-900 u-mb-1">{{ currentData.news.title }}</h5>
+                         <p class="u-text-summary">{{ currentData.news.content }}</p>
                     </div>
                 </div>
             </div>
@@ -119,31 +119,31 @@
     </div>
 
     <!-- Issue List -->
-    <div class="bg-white rounded-lg border shadow-sm p-6">
-        <h3 class="text-lg font-semibold mb-4 text-blue-600">{{ selectedKeyword }} 관련 이슈</h3>
+    <div class="c-issue-list-card">
+        <h3 class="c-issue-list-title">{{ selectedKeyword }} 관련 이슈</h3>
         <div class="space-y-4">
-            <div v-for="issue in currentIssues" :key="issue.id" class="p-4 rounded-lg bg-slate-50 border border-slate-100 hover:border-blue-200 transition-colors">
-                 <div class="flex items-start justify-between mb-2">
-                     <div class="flex items-center gap-2">
-                         <span class="px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-700">{{ issue.date }}</span>
+            <div v-for="issue in currentIssues" :key="issue.id" class="c-issue-list-item">
+                 <div class="c-issue-list-item__header">
+                     <div class="u-flex-center-gap-2">
+                         <span class="c-issue-list-item__date">{{ issue.date }}</span>
                          <h4 class="font-semibold text-lg">{{ issue.title }}</h4>
                      </div>
-                     <span :class="['flex items-center text-sm font-bold', issue.trend === 'up' ? 'text-red-500' : 'text-blue-500']">
-                        <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4 mr-1" />
+                     <span :class="['u-flex-center u-text-sm u-font-bold', issue.trend === 'up' ? 'u-text-red-500' : 'u-text-blue-500']">
+                        <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="u-icon-sm u-mr-1" />
                         {{ issue.changeRate }}%
                      </span>
                  </div>
-                 <p class="text-sm text-slate-700 font-medium mb-2">{{ issue.summary }}</p>
-                 <p class="text-sm text-slate-500 line-clamp-2">{{ issue.newsContent }}</p>
+                 <p class="u-text-sm u-text-slate-700 u-font-medium u-mb-2">{{ issue.summary }}</p>
+                 <p class="u-text-summary">{{ issue.newsContent }}</p>
                  <div class="mt-3 flex justify-end">
-                     <Button variant="outline" size="sm" class="text-xs">
-                        상세보기 <ChevronRight class="w-3 h-3 ml-1" />
+                     <Button variant="outline" size="sm" class="u-text-xs">
+                        상세보기 <ChevronRight class="u-icon-xs u-ml-1" />
                      </Button>
                  </div>
             </div>
         </div>
 
-        <div class="flex justify-center mt-6 gap-2">
+        <div class="c-issue-pagination">
             <Button
                 variant="outline"
                 size="sm"
@@ -152,7 +152,7 @@
             >
                 이전
             </Button>
-            <span class="flex items-center px-4 text-sm text-slate-600">
+            <span class="u-flex-center u-px-4 u-text-sm u-text-slate-600">
                 {{ currentPage }} / {{ totalPages }}
             </span>
              <Button

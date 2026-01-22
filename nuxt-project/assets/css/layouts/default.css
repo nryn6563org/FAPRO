@@ -51,6 +51,10 @@
     @apply text-white;
 }
 
+.l-sidebar__icon--inactive {
+    @apply text-slate-400;
+}
+
 .l-sidebar__text {
     @apply flex-1 text-left font-semibold;
 }
@@ -70,6 +74,14 @@
 
 .l-sidebar__subitem--active {
     @apply bg-blue-50 text-blue-700 font-bold dark:bg-blue-900/40 dark:text-blue-200;
+}
+
+.l-sidebar__subicon--active {
+    @apply text-blue-600 dark:text-blue-300;
+}
+
+.l-sidebar__subicon--inactive {
+    @apply text-slate-400 dark:text-slate-500;
 }
 
 /* Main Content Area */
@@ -161,3 +173,13 @@
 .l-footer__link {
     @apply hover:text-blue-600 dark:hover:text-blue-400 transition-colors;
 }
+
+/* Utils for Layout */
+.u-icon-sm-shrink-0 { @apply w-4 h-4 flex-shrink-0; }
+.u-icon-xs-shrink-0 { @apply w-3.5 h-3.5 flex-shrink-0 transition-colors; }
+.u-flex-col-gap-3 { @apply flex flex-col gap-3; }
+.u-text-lg-bold { @apply text-lg font-bold; }
+.u-text-xs-slate { @apply text-xs text-slate-500 dark:text-slate-400 font-medium; }
+.u-shrink-0 { @apply flex-shrink-0; }
+.u-flex-center-gap-6 { @apply flex items-center gap-6; }
+.u-flex-center-gap-2 { @apply flex items-center gap-2; }

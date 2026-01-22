@@ -5,15 +5,15 @@
         <h2 class="p-clients__title">고객 관리</h2>
         <p class="p-clients__subtitle">총 {{ clients.length }}명의 고객을 관리하고 있습니다</p>
       </div>
-      <Button class="gap-2" @click="isAddDialogOpen = true">
-        <Plus class="w-4 h-4" />
+      <Button class="u-gap-2" @click="isAddDialogOpen = true">
+        <Plus class="u-icon-sm" />
         신규 고객 등록
       </Button>
     </div>
 
     <!-- Search and Filters -->
     <div class="p-clients__search-box">
-      <div class="mb-4">
+      <div class="u-mb-4">
         <h3 class="p-clients__search-title">AI고객검색</h3>
         <p class="p-clients__search-desc">(검색예시: 원전 관련 종목을 매도했고, 보유 현금이 5천만원 이상인 고객 찾아줘)</p>
       </div>
@@ -26,8 +26,8 @@
             class="p-clients__search-input"
           />
         </div>
-        <Button class="w-40">
-          <Search class="w-4 h-4 mr-2" />
+        <Button class="u-w-40 u-gap-2">
+          <Search class="u-icon-sm u-mr-2" />
           검색
         </Button>
       </div>
@@ -36,7 +36,7 @@
     <!-- Sort Buttons -->
     <div class="p-clients__sort-bar">
       <div class="p-clients__count">
-        <span class="font-medium">검색된 고객 {{ filteredClients.length }}명</span>
+        <span>검색된 고객 {{ filteredClients.length }}명</span>
       </div>
       <div class="p-clients__sort-actions">
         <div class="p-clients__sort-label">
@@ -47,7 +47,7 @@
            <Button v-for="option in sortOptions" :key="option.value" 
              :variant="sortBy === option.value ? 'default' : 'outline'"
              size="sm"
-             class="text-sm"
+             class="u-text-sm"
              @click="sortBy = option.value"
            >
              {{ option.label }}
@@ -82,13 +82,13 @@
           </div>
           <div class="c-client-card__body">
              <div class="c-client-card__stats">
-                <div class="space-y-1">
+                <div class="u-space-y-1">
                    <p class="c-client-card__stat-label">운용자산(AUM)</p>
                    <p class="c-client-card__stat-val">{{ (client.aum / 100000000).toFixed(0) }}억원</p>
                 </div>
-                <div class="space-y-1">
+                <div class="u-space-y-1">
                    <p class="c-client-card__stat-label">수익률</p>
-                   <p :class="['c-client-card__returns', client.returns >= 0 ? 'text-green-600' : 'text-red-600']">
+                   <p :class="['c-client-card__returns', client.returns >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
                       {{ client.returns >= 0 ? '+' : '' }}{{ client.returns }}%
                    </p>
                 </div>
@@ -96,18 +96,18 @@
              
              <div class="c-client-card__contact">
                 <div class="c-client-card__contact-row">
-                    <Phone class="w-3 h-3" />
-                    <span class="truncate">{{ client.phone }}</span>
+                    <Phone class="u-icon-xs" />
+                    <span class="u-truncate">{{ client.phone }}</span>
                 </div>
                 <div class="c-client-card__contact-row">
-                    <Calendar class="w-3 h-3" />
-                    <span class="truncate">상담: {{ client.lastContact }}</span>
+                    <Calendar class="u-icon-xs" />
+                    <span class="u-truncate">상담: {{ client.lastContact }}</span>
                 </div>
              </div>
 
              <div class="c-client-card__actions">
-                <Button variant="outline" size="sm" class="flex-1 text-xs" @click="selectedClient = client">
-                    <FileText class="w-3 h-3 mr-1" />
+                <Button variant="outline" size="sm" class="u-flex-1 u-text-xs" @click="selectedClient = client">
+                    <FileText class="u-icon-xs u-mr-1" />
                     상세보기
                 </Button>
              </div>
@@ -116,10 +116,10 @@
     </div>
 
     <!-- Add Client Dialog (Simplified) -->
-    <Dialog :open.sync="isAddDialogOpen" className="max-w-2xl">
+    <Dialog :open.sync="isAddDialogOpen" className="c-dialog-add">
        <div class="p-clients__add-dialog">
-          <div class="mb-4">
-             <h3 class="text-lg font-semibold">신규 고객 등록</h3>
+          <div class="u-mb-4">
+             <h3 class="u-text-lg-semibold">신규 고객 등록</h3>
           </div>
           <div class="p-clients__form-grid">
              <div class="p-clients__form-group">
@@ -130,7 +130,7 @@
                 <label class="p-clients__form-label">연락처</label>
                 <Input placeholder="010-0000-0000" />
              </div>
-             <div class="col-span-2 p-clients__form-group">
+             <div class="u-col-span-2 p-clients__form-group">
                 <label class="p-clients__form-label">메모</label>
                 <Input placeholder="특이사항을 입력하세요" />
              </div>
@@ -143,7 +143,7 @@
     </Dialog>
 
     <!-- Client Detail Dialog -->
-    <Dialog :open="selectedClient !== null" @update:open="(val) => !val && (selectedClient = null)" className="max-w-3xl max-h-[80vh] overflow-y-auto">
+    <Dialog :open="selectedClient !== null" @update:open="(val) => !val && (selectedClient = null)" className="c-dialog-detail">
        <div v-if="selectedClient" class="c-client-detail">
            <!-- Header -->
            <div class="c-client-detail__header">
@@ -164,15 +164,15 @@
                 <!-- Metrics -->
                 <div class="c-client-detail__metrics">
                     <div class="c-client-detail__metric-card">
-                         <div class="space-y-1">
+                         <div class="u-space-y-1">
                             <p class="c-client-detail__metric-label">운용자산(AUM)</p>
                             <p class="c-client-detail__metric-val">{{ (selectedClient.aum / 100000000).toFixed(0) }}억원</p>
                          </div>
                     </div>
                     <div class="c-client-detail__metric-card">
-                         <div class="space-y-1">
+                         <div class="u-space-y-1">
                             <p class="c-client-detail__metric-label">수익률</p>
-                            <p :class="['c-client-detail__metric-val', selectedClient.returns >= 0 ? 'text-green-600' : 'text-red-600']">
+                            <p :class="['c-client-detail__metric-val', selectedClient.returns >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
                               {{ selectedClient.returns >= 0 ? '+' : '' }}{{ selectedClient.returns }}%
                             </p>
                          </div>
@@ -315,9 +315,9 @@ export default {
     },
     getRiskBadgeColor(risk) {
       switch (risk) {
-        case 'conservative': return 'bg-green-100 text-green-700 border-green-200';
-        case 'moderate': return 'bg-yellow-100 text-yellow-700 border-yellow-200';
-        case 'aggressive': return 'bg-red-100 text-red-700 border-red-200';
+        case 'conservative': return 'u-badge-conservative';
+        case 'moderate': return 'u-badge-moderate';
+        case 'aggressive': return 'u-badge-aggressive';
         default: return 'bg-slate-100 text-slate-700 border-slate-200';
       }
     },

@@ -7,7 +7,7 @@
             <h3 class="c-widget__title">{{ title }}</h3>
         </div>
         <button v-if="isEditing" @click="$emit('remove')" class="c-widget__remove-btn">
-            <X class="w-4 h-4" />
+            <X class="u-icon-sm" />
         </button>
       </div>
     </div>
@@ -15,37 +15,37 @@
     <div class="c-widget__content">
         <!-- Market Widgets (Line Chart) -->
         <div v-if="isMarketWidget" class="c-widget__market-wrapper">
-           <div class="c-widget__value-area">
-              <p class="c-widget__value">{{ marketData.value.toLocaleString() }}</p>
-              <div class="c-widget__change" :class="isPositive ? 'c-widget__change--up' : 'c-widget__change--down'">
-                <component :is="isPositive ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
-                <span>{{ isPositive ? '+' : '' }}{{ marketData.change.toFixed(2) }}</span>
-                <span>({{ isPositive ? '+' : '' }}{{ marketData.changePercent.toFixed(2) }}%)</span>
-              </div>
-           </div>
-           <div class="flex-1 min-h-0 relative w-full">
-              <LineChart :chart-data="lineChartData" :options="lineChartOptions" class="h-full w-full" />
-           </div>
+            <div class="c-widget__value-area">
+                <p class="c-widget__value">{{ marketData.value.toLocaleString() }}</p>
+                <div class="c-widget__change" :class="isPositive ? 'c-widget__change--up' : 'c-widget__change--down'">
+                    <component :is="isPositive ? 'TrendingUp' : 'TrendingDown'" class="u-icon-sm" />
+                    <span>{{ isPositive ? '+' : '' }}{{ marketData.change.toFixed(2) }}</span>
+                    <span>({{ isPositive ? '+' : '' }}{{ marketData.changePercent.toFixed(2) }}%)</span>
+                </div>
+            </div>
+            <div class="u-flex-1-min-h-0-relative-w-full">
+                <LineChart :chart-data="lineChartData" :options="lineChartOptions" class="u-full" />
+            </div>
         </div>
 
         <!-- Revenue Widget (Bar Chart) -->
         <div v-else-if="widgetId === 'revenue'" class="c-widget__revenue-wrapper">
             <div class="c-widget__revenue-value">
-              <p class="text-2xl font-bold">52,400,000원</p>
-              <div class="c-widget__change c-widget__change--up">
-                <TrendingUp class="w-4 h-4" />
-                <span>+8.5% (전월 대비)</span>
-              </div>
+                <p class="c-widget__value">52,400,000원</p>
+                <div class="c-widget__change c-widget__change--up">
+                    <TrendingUp class="u-icon-sm" />
+                    <span>+8.5% (전월 대비)</span>
+                </div>
             </div>
             <div class="c-widget__chart-area">
-               <BarChart :chart-data="revenueChartData" :options="barChartOptions" class="h-full w-full" />
+                <BarChart :chart-data="revenueChartData" :options="barChartOptions" class="u-full" />
             </div>
         </div>
 
         <!-- AI Issue Bubble (Bubble Chart) -->
         <div v-else-if="widgetId === 'ai-issue-bubble'" class="c-widget__bubble-wrapper">
              <div class="c-widget__chart-area">
-                <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="h-full w-full" />
+                <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="u-full" />
              </div>
               <div class="c-widget__bubble-legend">
                 <div v-for="(color, category) in categoryColors" :key="category" class="c-widget__bubble-legend-item">
@@ -58,9 +58,9 @@
         <!-- Client Count & AUM (Simple Text) -->
         <div v-else-if="widgetId === 'client-count' || widgetId === 'aum'" class="c-widget__simple-wrapper">
              <div>
-                <p class="text-2xl font-bold">{{ widgetId === 'client-count' ? '247명' : '1,247억원' }}</p>
+                <p class="c-widget__value">{{ widgetId === 'client-count' ? '247명' : '1,247억원' }}</p>
                 <div class="c-widget__change c-widget__change--up">
-                  <TrendingUp class="w-4 h-4" />
+                  <TrendingUp class="u-icon-sm" />
                   <span>{{ widgetId === 'client-count' ? '+12명 (이번 달)' : '+3.2% (전월 대비)' }}</span>
                 </div>
             </div>

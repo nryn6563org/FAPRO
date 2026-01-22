@@ -1,12 +1,12 @@
 <template>
   <div class="p-ai">
-    <div class="flex items-center justify-between mb-6">
-      <div class="p-ai__header mb-0">
+    <div class="u-flex-between-mb-6">
+      <div class="p-ai__header u-flex-mb-0">
         <h2 class="p-ai__title">AI 매매 시그널</h2>
         <p class="p-ai__desc">실시간 AI 기반 매매 신호 및 투자 추천</p>
       </div>
-      <Button class="gap-2">
-        <Filter class="w-4 h-4" />
+      <Button class="u-gap-2">
+        <Filter class="u-icon-sm" />
         필터 설정
       </Button>
     </div>
@@ -18,38 +18,38 @@
           <p class="c-signal-summary__label">전체 시그널</p>
           <p class="c-signal-summary__value">{{ signals.length }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper bg-blue-50 border-blue-100">
-          <Zap class="c-signal-summary__icon text-blue-600" />
+        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--blue">
+          <Zap class="c-signal-summary__icon u-text-blue" />
         </div>
       </div>
 
       <div class="c-signal-summary">
         <div>
           <p class="c-signal-summary__label">매수 시그널</p>
-          <p class="c-signal-summary__value text-green-600">{{ counts.buy }}</p>
+          <p class="c-signal-summary__value u-text-up">{{ counts.buy }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper bg-green-50 border-green-100">
-          <TrendingUp class="c-signal-summary__icon text-green-600" />
+        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--green">
+          <TrendingUp class="c-signal-summary__icon u-text-up" />
         </div>
       </div>
 
       <div class="c-signal-summary">
         <div>
           <p class="c-signal-summary__label">매도 시그널</p>
-          <p class="c-signal-summary__value text-red-600">{{ counts.sell }}</p>
+          <p class="c-signal-summary__value u-text-down">{{ counts.sell }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper bg-red-50 border-red-100">
-          <TrendingDown class="c-signal-summary__icon text-red-600" />
+        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--red">
+          <TrendingDown class="c-signal-summary__icon u-text-down" />
         </div>
       </div>
 
       <div class="c-signal-summary">
         <div>
           <p class="c-signal-summary__label">보유 시그널</p>
-          <p class="c-signal-summary__value text-yellow-600">{{ counts.hold }}</p>
+          <p class="c-signal-summary__value u-text-yellow">{{ counts.hold }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper bg-yellow-50 border-yellow-100">
-          <Target class="c-signal-summary__icon text-yellow-600" />
+        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--yellow">
+          <Target class="c-signal-summary__icon u-text-yellow" />
         </div>
       </div>
     </div>
@@ -69,7 +69,7 @@
     </div>
 
     <!-- Signals List -->
-    <div class="space-y-4">
+    <div class="l-signals-list">
        <div v-for="signal in filteredSignals" :key="signal.id" class="c-signal-card">
           <div class="c-signal-card__header">
              <div class="c-signal-card__info-wrapper">
@@ -91,7 +91,7 @@
              </div>
              <div class="c-signal-card__meta">
                 <div class="c-signal-card__timestamp">
-                   <Clock class="w-4 h-4" />
+                   <Clock class="u-icon-sm" />
                    {{ signal.timestamp }}
                 </div>
                 <p class="c-signal-card__timeframe">{{ signal.timeframe }}</p>
@@ -107,26 +107,26 @@
                 </div>
                 <div>
                    <p class="c-signal-card__price-label">목표가</p>
-                   <p class="c-signal-card__price-val text-green-600">{{ formatPrice(signal.targetPrice) }}</p>
+                   <p class="c-signal-card__price-val u-text-up">{{ formatPrice(signal.targetPrice) }}</p>
                 </div>
                 <div>
                    <p class="c-signal-card__price-label">손절가</p>
-                   <p class="c-signal-card__price-val text-red-600">{{ formatPrice(signal.stopLoss) }}</p>
+                   <p class="c-signal-card__price-val u-text-down">{{ formatPrice(signal.stopLoss) }}</p>
                 </div>
              </div>
 
              <!-- Confidence -->
              <div class="c-signal-card__confidence-section">
                 <div class="c-signal-card__confidence-row">
-                   <span class="text-sm text-slate-600">신뢰도</span>
+                   <span class="u-text-sm-slate-600">신뢰도</span>
                    <div class="c-signal-card__progress-wrapper">
                       <div class="c-signal-card__progress-bar">
                          <div 
-                           :class="['c-signal-card__progress-fill', signal.confidence >= 80 ? 'bg-green-500' : signal.confidence >= 60 ? 'bg-yellow-500' : 'bg-red-500']"
+                           :class="['c-signal-card__progress-fill', signal.confidence >= 80 ? 'u-bg-up' : signal.confidence >= 60 ? 'u-bg-yellow' : 'u-bg-down']"
                            :style="{ width: signal.confidence + '%' }"
                          ></div>
                       </div>
-                      <span class="text-sm font-semibold">{{ signal.confidence }}%</span>
+                      <span class="u-text-sm-bold">{{ signal.confidence }}%</span>
                    </div>
                 </div>
 
@@ -136,7 +136,7 @@
                 </div>
 
                 <div class="c-signal-card__indicator-list">
-                   <span v-for="(indicator, idx) in signal.indicators" :key="idx" class="c-signal-card__badge border-transparent bg-slate-100 text-slate-900 hover:bg-slate-200/80">
+                   <span v-for="(indicator, idx) in signal.indicators" :key="idx" class="c-signal-card__indicator">
                       {{ indicator }}
                    </span>
                 </div>
@@ -145,12 +145,12 @@
             <!-- Actions -->
             <div class="c-signal-card__actions">
                <Button class="c-signal-card__btn">
-                  <CheckCircle2 class="w-4 h-4" />
+                  <CheckCircle2 class="u-icon-sm" />
                   시그널 적용
                </Button>
                <Button variant="outline" class="c-signal-card__btn">
                   상세 분석
-                  <ChevronRight class="w-4 h-4" />
+                  <ChevronRight class="u-icon-sm" />
                </Button>
             </div>
           </div>
@@ -284,10 +284,10 @@ export default {
       },
       getSignalColor(type) {
         switch (type) {
-            case 'buy': return 'bg-green-100 text-green-700 border-green-300';
-            case 'sell': return 'bg-red-100 text-red-700 border-red-300';
-            case 'hold': return 'bg-yellow-100 text-yellow-700 border-yellow-300';
-            default: return 'bg-gray-100 text-gray-700 border-gray-300';
+            case 'buy': return 'c-signal-card__badge--buy';
+            case 'sell': return 'c-signal-card__badge--sell';
+            case 'hold': return 'c-signal-card__badge--hold';
+            default: return 'c-signal-card__badge--default';
         }
       },
       getSignalIcon(type) {
@@ -307,9 +307,9 @@ export default {
       },
       getStrengthColor(strength) {
           switch (strength) {
-            case 'strong': return 'text-blue-600 border-blue-200 bg-blue-50';
-            case 'moderate': return 'text-purple-600 border-purple-200 bg-purple-50';
-            default: return 'text-gray-600 border-gray-200 bg-gray-50';
+            case 'strong': return 'c-signal-card__badge--strong';
+            case 'moderate': return 'c-signal-card__badge--moderate';
+            default: return 'c-signal-card__badge--weak';
           }
       },
       getStrengthLabel(strength) {
@@ -318,7 +318,7 @@ export default {
             case 'moderate': return '중';
             case 'weak': return '약';
             default: return '';
-        }
+          }
       }
   }
 };

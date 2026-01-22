@@ -21,7 +21,7 @@
         </div>
 
         <div class="c-index-card__chart">
-             <AreaChart :chart-data="chartDataConfig" :options="chartOptions" :gradient-color="isPositive ? '#10b981' : '#ef4444'" class="h-full w-full" />
+             <AreaChart :chart-data="chartDataConfig" :options="chartOptions" :gradient-color="isPositive ? '#10b981' : '#ef4444'" class="u-full" />
         </div>
     </div>
   </div>

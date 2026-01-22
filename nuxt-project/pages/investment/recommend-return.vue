@@ -6,16 +6,16 @@
     </div>
 
     <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+    <div class="l-summary-grid">
       <div v-for="(card, index) in summaryCards" :key="index" class="c-content-card">
-          <div class="c-content-card__body p-6">
-              <div class="flex items-center justify-between">
-                  <div>
-                      <p class="text-sm text-slate-600">{{ card.title }}</p>
-                      <p :class="['text-3xl font-bold mt-2', card.valueColor]">{{ card.value }}</p>
+          <div class="c-content-card__body">
+              <div class="c-summary-card__content">
+                  <div class="c-summary-card__info">
+                      <p class="c-summary-card__title">{{ card.title }}</p>
+                      <p :class="['c-summary-card__value', card.valueColor]">{{ card.value }}</p>
                   </div>
-                  <div :class="['w-12 h-12 rounded-full flex items-center justify-center', card.bgColor]">
-                      <component :is="card.icon" :class="['w-6 h-6', card.iconColor]" />
+                  <div :class="['c-summary-card__icon-wrapper', card.bgColor]">
+                      <component :is="card.icon" :class="['c-summary-card__icon', card.iconColor]" />
                   </div>
               </div>
           </div>
@@ -23,38 +23,38 @@
     </div>
 
     <!-- Charts -->
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <div class="bg-white rounded-lg border shadow-sm p-6">
-            <h3 class="text-lg font-semibold mb-4">월별 수익률</h3>
-            <div class="h-80">
+    <div class="l-charts-grid">
+        <div class="c-chart-card">
+            <h3 class="c-chart-card__title">월별 수익률</h3>
+            <div class="c-chart-card__chart-wrapper">
                 <BarChart :chart-data="monthlyChartData" :options="barOptions" class="h-full" />
             </div>
         </div>
-        <div class="bg-white rounded-lg border shadow-sm p-6">
-            <h3 class="text-lg font-semibold mb-4">업종별 수익률</h3>
-            <div class="h-80">
+        <div class="c-chart-card">
+            <h3 class="c-chart-card__title">업종별 수익률</h3>
+            <div class="c-chart-card__chart-wrapper">
                 <PieChart :chart-data="categoryChartData" :options="pieOptions" class="h-full" />
             </div>
         </div>
     </div>
 
     <!-- Top Performers -->
-    <div class="bg-white rounded-lg border shadow-sm p-6">
-        <h3 class="text-lg font-semibold mb-4">최고 수익 종목 TOP 5</h3>
-        <div class="space-y-3">
-            <div v-for="(stock, index) in topPerformers" :key="stock.ticker" class="flex items-center justify-between p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
-                <div class="flex items-center gap-4">
-                    <div :class="['w-10 h-10 rounded-full flex items-center justify-center font-bold text-white', getRankColor(index)]">
+    <div class="c-chart-card">
+        <h3 class="c-chart-card__title">최고 수익 종목 TOP 5</h3>
+        <div class="l-performers-list">
+            <div v-for="(stock, index) in topPerformers" :key="stock.ticker" class="c-performer-item">
+                <div class="c-performer-item__left">
+                    <div :class="['c-performer-item__rank', getRankColor(index)]">
                         {{ index + 1 }}
                     </div>
-                    <div>
-                        <p class="font-semibold">{{ stock.name }}</p>
-                        <p class="text-sm text-slate-500">{{ stock.ticker }}</p>
+                    <div class="c-performer-item__info">
+                        <p class="c-performer-item__name">{{ stock.name }}</p>
+                        <p class="c-performer-item__ticker">{{ stock.ticker }}</p>
                     </div>
                 </div>
-                <div class="text-right">
-                    <p class="text-2xl font-bold text-green-600">+{{ stock.return }}%</p>
-                    <span class="inline-block px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-200 text-slate-700">
+                <div class="c-performer-item__right">
+                    <p class="c-performer-item__return">+{{ stock.return }}%</p>
+                    <span class="c-performer-item__period">
                         {{ stock.period }}
                     </span>
                 </div>
@@ -63,24 +63,24 @@
     </div>
 
     <!-- Additional Stats -->
-    <div class="bg-white rounded-lg border shadow-sm p-6">
-        <h3 class="text-lg font-semibold mb-4">상세 통계</h3>
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
-            <div class="p-4 border-l-4 border-green-500 bg-green-50 rounded-r-lg">
-                <p class="text-xs text-green-700 mb-1">수익 거래</p>
-                <p class="text-2xl font-bold text-green-700">{{ performanceData.profitTrades }}건</p>
+    <div class="c-chart-card">
+        <h3 class="c-chart-card__title">상세 통계</h3>
+        <div class="l-stats-grid">
+            <div class="c-stat-box c-stat-box--profit">
+                <p class="c-stat-box__label">수익 거래</p>
+                <p class="c-stat-box__value">{{ performanceData.profitTrades }}건</p>
             </div>
-             <div class="p-4 border-l-4 border-red-500 bg-red-50 rounded-r-lg">
-                <p class="text-xs text-red-700 mb-1">손실 거래</p>
-                <p class="text-2xl font-bold text-red-700">{{ performanceData.totalTrades - performanceData.profitTrades }}건</p>
+             <div class="c-stat-box c-stat-box--loss">
+                <p class="c-stat-box__label">손실 거래</p>
+                <p class="c-stat-box__value">{{ performanceData.totalTrades - performanceData.profitTrades }}건</p>
             </div>
-             <div class="p-4 border-l-4 border-blue-500 bg-blue-50 rounded-r-lg">
-                <p class="text-xs text-blue-700 mb-1">최대 수익</p>
-                <p class="text-2xl font-bold text-blue-700">+{{ performanceData.maxReturn }}%</p>
+             <div class="c-stat-box c-stat-box--max">
+                <p class="c-stat-box__label">최대 수익</p>
+                <p class="c-stat-box__value">+{{ performanceData.maxReturn }}%</p>
             </div>
-             <div class="p-4 border-l-4 border-purple-500 bg-purple-50 rounded-r-lg">
-                <p class="text-xs text-purple-700 mb-1">최대 손실</p>
-                <p class="text-2xl font-bold text-purple-700">{{ performanceData.minReturn }}%</p>
+             <div class="c-stat-box c-stat-box--min">
+                <p class="c-stat-box__label">최대 손실</p>
+                <p class="c-stat-box__value">{{ performanceData.minReturn }}%</p>
             </div>
         </div>
     </div>
@@ -162,10 +162,10 @@ export default {
   computed: {
       summaryCards() {
           return [
-              { title: '누적 수익률', value: `+${this.performanceData.totalReturns}%`, valueColor: 'text-green-600', icon: 'TrendingUp', iconColor: 'text-green-600', bgColor: 'bg-green-100' },
-              { title: '승률', value: `${this.performanceData.winRate}%`, valueColor: 'text-blue-600', icon: 'Target', iconColor: 'text-blue-600', bgColor: 'bg-blue-100' },
-              { title: '총 거래', value: `${this.performanceData.totalTrades}건`, valueColor: 'text-purple-600', icon: 'Award', iconColor: 'text-purple-600', bgColor: 'bg-purple-100' },
-              { title: '평균 수익률', value: `+${this.performanceData.avgReturn}%`, valueColor: 'text-orange-600', icon: 'CheckCircle2', iconColor: 'text-orange-600', bgColor: 'bg-orange-100' }
+              { title: '누적 수익률', value: `+${this.performanceData.totalReturns}%`, valueColor: 'u-text-green-600', icon: 'TrendingUp', iconColor: 'u-text-green-600', bgColor: 'u-bg-green-100' },
+              { title: '승률', value: `${this.performanceData.winRate}%`, valueColor: 'u-text-blue-600', icon: 'Target', iconColor: 'u-text-blue-600', bgColor: 'u-bg-blue-100' },
+              { title: '총 거래', value: `${this.performanceData.totalTrades}건`, valueColor: 'u-text-purple-600', icon: 'Award', iconColor: 'u-text-purple-600', bgColor: 'u-bg-purple-100' },
+              { title: '평균 수익률', value: `+${this.performanceData.avgReturn}%`, valueColor: 'u-text-orange-600', icon: 'CheckCircle2', iconColor: 'u-text-orange-600', bgColor: 'u-bg-orange-100' }
           ];
       },
       monthlyChartData() {
@@ -194,6 +194,9 @@ export default {
           if (index === 0) return 'bg-gradient-to-r from-yellow-400 to-orange-500';
           if (index === 1) return 'bg-gradient-to-r from-gray-300 to-gray-400';
           if (index === 2) return 'bg-gradient-to-r from-amber-600 to-amber-700';
+          if (strength === 'strong') return 'u-bg-green-500'; // updated to u-bg if exists or leave as logic class
+          if (strength === 'neutral') return 'u-bg-blue-500';
+          if (strength === 'weak') return 'u-bg-red-500';
           return 'bg-slate-400';
       }
   }
