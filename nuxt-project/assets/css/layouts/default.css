@@ -40,7 +40,7 @@
 }
 
 .l-sidebar__item--active {
-    @apply bg-blue-600 text-white shadow-sm;
+    @apply bg-blue-600 text-white shadow-sm hover:bg-blue-600 hover:text-white;
 }
 
 .l-sidebar__icon {
@@ -73,7 +73,7 @@
 }
 
 .l-sidebar__subitem--active {
-    @apply bg-blue-50 text-blue-700 font-bold dark:bg-blue-900/40 dark:text-blue-200;
+    @apply bg-blue-50 text-blue-700 font-bold dark:bg-blue-900/40 dark:text-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/40 dark:hover:text-blue-200;
 }
 
 .l-sidebar__subicon--active {

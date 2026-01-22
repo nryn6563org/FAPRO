@@ -173,7 +173,11 @@
 }
 
 .c-widget-dialog__category-btn--active {
-    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-r-2 border-blue-600;
+    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-r-2 border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20;
+}
+
+.c-widget-card__size-btn--selected {
+    @apply bg-blue-600 text-white border-blue-600 font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600;
 }
 
 .c-widget-dialog__category-count {
