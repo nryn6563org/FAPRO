@@ -263,11 +263,7 @@
 }
 
 .c-widget-card:hover .c-widget-card__icon-wrapper {
-    @apply bg-blue-50;
-}
-
-.dark .c-widget-card:hover .c-widget-card__icon-wrapper {
-    @apply bg-blue-900/40;
+    @apply bg-blue-50 dark:bg-blue-900/40;
 }
 
 .c-widget-card__icon-wrapper--selected {
