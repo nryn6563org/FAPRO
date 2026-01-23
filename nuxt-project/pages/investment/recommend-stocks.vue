@@ -1,79 +1,76 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">추천 종목</h2>
-      <p class="p-investment__desc">투자 기간별 AI 추천 종목</p>
+  <div class="p-recommend-stocks">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">추천 종목</h2>
+      <p class="c-page-header__desc">투자 기간별 AI 추천 종목</p>
     </div>
 
-    <div class="c-content-card">
-      <div class="c-content-card__body p-6">
-         <!-- Tabs -->
-         <div class="c-recommend-tabs">
-           <button 
-             v-for="tab in tabOptions" 
-             :key="tab.value"
-             :class="['c-recommend-tab-btn', activeTab === tab.value ? 'c-recommend-tab-btn--active' : 'c-recommend-tab-btn--inactive']"
-             @click="activeTab = tab.value"
-           >
-             {{ tab.label }}
-           </button>
-         </div>
+    <div class="c-content-card p-recommend-stocks__content">
+      <!-- Tabs -->
+      <div class="p-recommend-stocks__tabs">
+        <button 
+          v-for="tab in tabOptions" 
+          :key="tab.value"
+          :class="['p-recommend-stocks__tab-button', activeTab === tab.value ? 'p-recommend-stocks__tab-button--active' : '']"
+          @click="activeTab = tab.value"
+        >
+          {{ tab.label }}
+        </button>
+      </div>
 
-         <div class="space-y-4">
-             <div v-for="stock in currentStocks" :key="stock.ticker" class="c-content-card c-content-card--hover">
-                <div class="c-recommend-card-header">
-                   <div class="u-flex-between-start">
-                      <div class="u-flex-center-gap-3">
-                         <div class="c-recommend-card__icon-box">
-                            <Lightbulb class="u-icon-lg-blue" />
-                         </div>
-                         <div>
-                            <h3 class="u-text-lg-bold">{{ stock.name }}</h3>
-                            <p class="u-text-sm-slate-500">{{ stock.ticker }}</p>
-                         </div>
-                      </div>
-                      <div class="text-right">
-                         <span class="c-recommend-card__score-badge">
-                            AI {{ stock.aiScore }}점
-                         </span>
-                         <p class="u-text-xs-slate-500">신뢰도 {{ stock.confidence }}%</p>
-                      </div>
-                   </div>
-                </div>
-                <div class="c-recommend-card__body">
-                   <div class="c-recommend-stats-grid">
-                      <div>
-                         <p class="u-text-xs-slate-500 mb-1">현재가</p>
-                         <p class="u-font-semibold">{{ stock.currentPrice.toLocaleString() }}원</p>
-                      </div>
-                      <div>
-                         <p class="u-text-xs-slate-500 mb-1">목표가</p>
-                         <p class="u-font-semibold u-text-blue-600">{{ stock.targetPrice.toLocaleString() }}원</p>
-                      </div>
-                      <div>
-                         <p class="u-text-xs-slate-500 mb-1">기대수익</p>
-                         <div class="u-flex-center-gap-1">
-                            <TrendingUp class="u-icon-sm u-text-green-600" />
-                            <p class="u-font-semibold u-text-green-600">+{{ stock.upside }}%</p>
-                         </div>
-                      </div>
-                   </div>
+      <div class="p-recommend-stocks__list">
+        <div v-for="stock in currentStocks" :key="stock.ticker" class="p-recommend-stocks__item">
+          <div class="p-recommend-stocks__item-header">
+            <div class="p-recommend-stocks__item-identity">
+              <div class="p-recommend-stocks__item-icon-box">
+                <Lightbulb class="p-recommend-stocks__item-icon" />
+              </div>
+              <div class="p-recommend-stocks__item-title-group">
+                <h3 class="p-recommend-stocks__item-name">{{ stock.name }}</h3>
+                <p class="p-recommend-stocks__item-ticker">{{ stock.ticker }}</p>
+              </div>
+            </div>
+            <div class="p-recommend-stocks__item-meta">
+              <span class="p-recommend-stocks__score-badge">
+                AI {{ stock.aiScore }}점
+              </span>
+              <p class="p-recommend-stocks__confidence">신뢰도 {{ stock.confidence }}%</p>
+            </div>
+          </div>
 
-                   <div class="c-recommend-reason-box">
-                      <Target class="u-icon-base u-text-blue-600 u-flex-shrink-0 u-mt-0_5" />
-                      <div>
-                         <p class="u-text-sm-bold-blue-900">{{ stock.reason }}</p>
-                         <div class="c-recommend-period-box">
-                            <Clock class="u-icon-sm" />
-                            <span>목표 기간: {{ stock.period }}</span>
-                         </div>
-                      </div>
-                   </div>
+          <div class="p-recommend-stocks__stats">
+            <div class="p-recommend-stocks__stat-item">
+              <p class="p-recommend-stocks__stat-label">현재가</p>
+              <p class="p-recommend-stocks__stat-value">{{ stock.currentPrice.toLocaleString() }}원</p>
+            </div>
+            <div class="p-recommend-stocks__stat-item">
+              <p class="p-recommend-stocks__stat-label">목표가</p>
+              <p class="p-recommend-stocks__stat-value p-recommend-stocks__stat-value--primary">{{ stock.targetPrice.toLocaleString() }}원</p>
+            </div>
+            <div class="p-recommend-stocks__stat-item">
+              <p class="p-recommend-stocks__stat-label">기대수익</p>
+              <div class="p-recommend-stocks__stat-upside">
+                <TrendingUp class="p-recommend-stocks__upside-icon indicator--positive" />
+                <p class="p-recommend-stocks__stat-value indicator--positive">+{{ stock.upside }}%</p>
+              </div>
+            </div>
+          </div>
 
-                   <Button class="u-w-full">상세 분석 보기</Button>
-                </div>
-             </div>
-         </div>
+          <div class="p-recommend-stocks__reason-box">
+            <Target class="p-recommend-stocks__reason-icon" />
+            <div class="p-recommend-stocks__reason-content">
+              <p class="p-recommend-stocks__reason-text">{{ stock.reason }}</p>
+              <div class="p-recommend-stocks__period-info">
+                <Clock class="p-recommend-stocks__clock-icon" />
+                <span>목표 기간: {{ stock.period }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-recommend-stocks__footer">
+            <Button class="p-recommend-stocks__details-button">상세 분석 보기</Button>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -181,5 +178,6 @@ export default {
   }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+
+<style src="@/assets/css/pages/recommend-stocks.css"></style>
 

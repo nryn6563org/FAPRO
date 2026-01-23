@@ -80,7 +80,7 @@
                                           @change="updateWidgetSize(widget.id, 'w', $event.target.value)"
                                           class="c-widget-card__size-select"
                                       >
-                                          <option v-for="n in 4" :key="n" :value="n">{{n}}</option>
+                                          <option v-for="n in 4" :key="n" :value="n">{{ n }}</option>
                                       </select>
                                   </div>
                                   <div class="c-widget-card__size-control">
@@ -90,7 +90,7 @@
                                           @change="updateWidgetSize(widget.id, 'h', $event.target.value)"
                                           class="c-widget-card__size-select"
                                       >
-                                          <option v-for="n in 4" :key="n" :value="n">{{n}}</option>
+                                          <option v-for="n in 4" :key="n" :value="n">{{ n }}</option>
                                       </select>
                                   </div>
                               </div>
@@ -101,7 +101,6 @@
           </div>
       </div>
   </Dialog>
-
 </template>
 
 <script>

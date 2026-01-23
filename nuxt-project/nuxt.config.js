@@ -28,8 +28,8 @@ export default {
     { path: "~/components/charts", pathPrefix: false }
   ],
 
-  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
-  buildModules: ["@nuxt/postcss8"],
+  // ✅ @nuxt/postcss8 모듈 제거 (Nuxt 내장 버전 사용)
+  buildModules: [],
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [],
@@ -37,10 +37,18 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     transpile: ["lucide-vue", "tailwind-merge", "clsx", "class-variance-authority"],
+    // ✅ PostCSS 구조 변경
     postcss: {
-      plugins: {
-        tailwindcss: {},
-        autoprefixer: {}
+      postcssOptions: {
+        preset: {
+          features: {
+            "is-pseudo-class": false
+          }
+        },
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {}
+        }
       }
     },
     extend(config) {

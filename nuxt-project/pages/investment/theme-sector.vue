@@ -1,83 +1,80 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">테마/업종</h2>
-      <p class="p-investment__desc">주요 테마 및 업종별 시황 분석</p>
+  <div class="p-theme-sector">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">테마/업종</h2>
+      <p class="c-page-header__desc">주요 테마 및 업종별 시황 분석</p>
     </div>
 
-    <div class="l-tab-actions">
+    <div class="p-theme-sector__tabs">
       <Button
-        :class="['c-tab-btn', activeTab === '테마' ? 'c-tab-btn--active' : '']"
+        :class="activeTab === '테마' ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
         @click="activeTab = '테마'"
       >
         테마
       </Button>
       <Button
-        :class="['c-tab-btn', activeTab === '업종' ? 'c-tab-btn--active' : '']"
+        :class="activeTab === '업종' ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
         @click="activeTab = '업종'"
       >
         업종
       </Button>
     </div>
 
-    <div class="l-theme-grid">
-      <div v-for="theme in currentData" :key="theme.id" class="c-content-card c-content-card--hover">
-        <div class="c-theme-card__header">
-          <div class="u-flex-between">
-            <div class="u-flex-center-gap-2">
-              <div :class="['c-theme-card__icon-box', theme.change >= 0 ? 'u-bg-up-light' : 'u-bg-down-light']">
-                 <Layers :class="['c-theme-card__icon', theme.change >= 0 ? 'u-text-up' : 'u-text-down']" />
-              </div>
-              <div>
-                <h3 class="c-theme-card__name">{{ theme.name }}</h3>
-                <p class="c-theme-card__count">{{ theme.stockCount }}개</p>
-              </div>
+    <div class="p-theme-sector__grid">
+      <div v-for="theme in currentData" :key="theme.id" class="p-theme-sector__card">
+        <div class="p-theme-sector__card-header">
+          <div class="p-theme-sector__theme-info">
+            <div class="p-theme-sector__icon-box">
+              <Layers class="p-theme-sector__icon" />
             </div>
-            <div :class="['c-theme-card__change-box', theme.change >= 0 ? 'u-text-up' : 'u-text-down']">
-              <div class="c-theme-card__change-content">
-                <TrendingUp v-if="theme.change >= 0" class="u-icon-sm" />
-                <TrendingDown v-else class="u-icon-sm" />
-                <span class="c-theme-card__change-value">{{ theme.change >= 0 ? '+' : '' }}{{ theme.change }}%</span>
+            <div class="p-theme-sector__theme-title-group">
+              <h3 class="p-theme-sector__theme-name">
+                {{ theme.name }}
+                <span class="p-theme-sector__stock-count">{{ theme.stockCount }}개</span>
+              </h3>
+              <div class="p-theme-sector__theme-change" :class="theme.change >= 0 ? 'indicator--positive' : 'indicator--negative'">
+                <component :is="theme.change >= 0 ? 'TrendingUp' : 'TrendingDown'" class="p-theme-sector__change-icon" />
+                {{ theme.change >= 0 ? '+' : '' }}{{ theme.change }}%
               </div>
             </div>
           </div>
         </div>
-        <div class="c-theme-card__body">
-          <div class="c-data-table-wrapper">
-            <table class="c-theme-table">
-              <thead>
-                <tr class="c-theme-table__row-head">
-                  <th class="c-theme-table__th">종목명</th>
-                  <th class="c-theme-table__th--right">현재가</th>
-                  <th class="c-theme-table__th--right">등락률</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr v-for="(stock, idx) in theme.topStocks" :key="idx" class="c-theme-table__row">
-                  <td class="c-theme-table__td">
-                    <div class="u-flex-center-gap-1">
-                      <div :class="['c-theme-table__stock-icon', getStockColor(stock.name)]">
-                        {{ stock.name.charAt(0) }}
-                      </div>
-                      <span class="u-truncate">{{ stock.name }}</span>
+        
+        <div class="p-theme-sector__table-container">
+          <table class="p-theme-sector__table">
+            <thead>
+              <tr>
+                <th class="p-theme-sector__table-th">종목명</th>
+                <th class="p-theme-sector__table-th p-theme-sector__table-th--right">현재가</th>
+                <th class="p-theme-sector__table-th p-theme-sector__table-th--right">등락률</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="(stock, idx) in theme.topStocks" :key="idx" class="p-theme-sector__table-tr">
+                <td class="p-theme-sector__table-td">
+                  <div class="p-theme-sector__stock-cell">
+                    <div class="p-theme-sector__stock-badge" :class="getStockColor(stock.name)">
+                      {{ stock.name.charAt(0) }}
                     </div>
-                  </td>
-                  <td class="c-theme-table__td--right">
-                    {{ stock.currentPrice.toLocaleString() }}
-                  </td>
-                  <td :class="['c-theme-table__td--status', stock.changeRate > 0 ? 'u-text-up' : stock.changeRate < 0 ? 'u-text-down' : 'u-text-slate-600']">
+                    <span class="p-theme-sector__stock-name">{{ stock.name }}</span>
+                  </div>
+                </td>
+                <td class="p-theme-sector__table-td p-theme-sector__table-td--right">
+                  <span class="p-theme-sector__stock-price">{{ stock.currentPrice.toLocaleString() }}</span>
+                </td>
+                <td class="p-theme-sector__table-td p-theme-sector__table-td--right">
+                  <span class="p-theme-sector__stock-change" :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'">
                     {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
-                  </td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
   </div>
 </template>
-
 
 <script>
 import Button from '@/components/common/Button.vue';
@@ -189,10 +186,10 @@ export default {
   methods: {
     getStockColor(stockName) {
       const colors = [
-        'u-stock-bg-blue', 'u-stock-bg-indigo', 'u-stock-bg-purple', 'u-stock-bg-pink',
-        'u-stock-bg-red', 'u-stock-bg-orange', 'u-stock-bg-amber', 'u-stock-bg-yellow',
-        'u-stock-bg-lime', 'u-stock-bg-green', 'u-stock-bg-emerald', 'u-stock-bg-teal',
-        'u-stock-bg-cyan', 'u-stock-bg-sky', 'u-stock-bg-violet', 'u-stock-bg-fuchsia'
+        'stock-badge--blue', 'stock-badge--indigo', 'stock-badge--purple', 'stock-badge--pink',
+        'stock-badge--red', 'stock-badge--orange', 'stock-badge--amber', 'stock-badge--yellow',
+        'stock-badge--lime', 'stock-badge--green', 'stock-badge--emerald', 'stock-badge--teal',
+        'stock-badge--cyan', 'stock-badge--sky', 'stock-badge--violet', 'stock-badge--fuchsia'
       ];
       const index = stockName.charCodeAt(0) % colors.length;
       return colors[index];
@@ -200,5 +197,6 @@ export default {
   }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+
+<style src="@/assets/css/pages/theme-sector.css"></style>
 

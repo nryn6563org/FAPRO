@@ -81,7 +81,8 @@
                     </div>
                     <div class="c-widget__list-right">
                         <p class="c-widget__client-name">{{ (client.revenue / 10000).toFixed(0) }}만원</p>
-                        <div :class="['c-widget__tag', 
+                        <div
+:class="['c-widget__tag', 
                             client.risk === 'high' ? 'c-widget__tag--high' :
                             client.risk === 'medium' ? 'c-widget__tag--medium' :
                             'c-widget__tag--low']">
@@ -189,7 +190,7 @@ export default {
                 {
                     label: 'Value',
                     borderColor: color,
-                    backgroundColor: (ctx) => {
+                    backgroundColor: () => {
                        // Gradient would need context, but simple string color opacity for now
                        // Or we leave it transparent for line only, 
                        // but Recharts Area had gradient. Vue-Chartjs v3 gradient is possible via canvas script but complex.

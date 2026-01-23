@@ -1,90 +1,90 @@
 <template>
   <div class="p-settings">
-    <div class="p-settings__header">
-      <h2 class="p-settings__title">설정</h2>
-      <p class="p-settings__desc">앱 설정을 관리하세요</p>
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">설정</h2>
+      <p class="c-page-header__desc">앱 환경 및 개인정보를 관리하세요</p>
     </div>
 
-    <div class="p-settings__grid">
+    <div class="p-settings__layout">
       <!-- Sidebar Navigation -->
       <div class="p-settings__sidebar">
-         <button 
-           v-for="tab in tabs" 
-           :key="tab.id"
-           @click="activeTab = tab.id"
-           :class="['p-settings__nav-btn', activeTab === tab.id ? 'p-settings__nav-btn--active' : '']"
-         >
-            <component :is="tab.icon" class="p-settings__nav-icon" />
-            {{ tab.label }}
-         </button>
+          <button 
+            v-for="tab in tabs" 
+            :key="tab.id"
+            @click="activeTab = tab.id"
+            class="p-settings__nav-item"
+            :class="activeTab === tab.id ? 'p-settings__nav-item--active' : 'p-settings__nav-item--inactive'"
+          >
+             <component :is="tab.icon" class="w-5 h-5" />
+             {{ tab.label }}
+          </button>
       </div>
 
       <!-- Content Area -->
       <div class="p-settings__content">
          <!-- Profile Section -->
-         <div v-if="activeTab === 'profile'" class="p-settings__card">
+         <div v-if="activeTab === 'profile'" class="p-settings__section-card">
              <div class="p-settings__profile-header">
-                 <div class="p-settings__profile-avatar">
-                     FA
+                 <div class="p-settings__avatar">FA</div>
+                 <div class="p-settings__profile-info">
+                     <h3>김승원 FA</h3>
+                     <p>프리미어 등급 브로커</p>
                  </div>
-                 <div>
-                     <h3 class="p-settings__profile-name">김승원 FA</h3>
-                     <p class="p-settings__profile-role">프리미어 등급</p>
-                     <Button variant="outline" size="sm" class="p-settings__profile-btn">프로필 사진 변경</Button>
-                 </div>
+                 <Button variant="outline" size="sm" style="margin-left: auto">프로필 사진 변경</Button>
              </div>
              
-             <div class="p-settings__card-body">
+             <div class="p-settings__form-body">
                  <div class="p-settings__form-grid">
-                     <div class="p-settings__form-group">
+                     <div class="p-settings__form-field">
                         <label class="p-settings__label">이름</label>
                         <Input value="김승원" />
                      </div>
-                     <div class="p-settings__form-group">
+                     <div class="p-settings__form-field">
                         <label class="p-settings__label">직책</label>
                         <Input value="Senior FA" />
                      </div>
                  </div>
-                 <div class="p-settings__form-group">
+                 <div class="p-settings__form-field">
                     <label class="p-settings__label">이메일</label>
                     <Input value="sw.kim@rassi.co.kr" />
                  </div>
-                 <div class="p-settings__form-group">
+                 <div class="p-settings__form-field">
                     <label class="p-settings__label">연락처</label>
                     <Input value="010-1234-5678" />
                  </div>
-             </div>
-             
-             <div class="p-settings__actions">
-                 <Button class="p-settings__save-btn">변경사항 저장</Button>
+                 
+                 <div class="p-settings__actions">
+                     <Button class="bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900">변경사항 저장</Button>
+                 </div>
              </div>
          </div>
 
          <!-- Notifications Section -->
-         <div v-if="activeTab === 'notifications'" class="p-settings__card">
-             <h3 class="p-settings__card-title">알림 설정</h3>
+         <div v-if="activeTab === 'notifications'" class="p-settings__section-card" style="padding: 1.5rem">
+             <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">알림 설정</h3>
              
-             <div class="p-settings__card-body">
+             <div class="p-settings__noti-list">
                  <div v-for="noti in notificationSettings" :key="noti.id" class="p-settings__noti-item">
                      <div>
-                         <p class="p-settings__noti-label">{{ noti.label }}</p>
+                         <p class="p-settings__noti-title">{{ noti.label }}</p>
                          <p class="p-settings__noti-desc">{{ noti.desc }}</p>
                      </div>
                      <div 
                         @click="noti.enabled = !noti.enabled"
-                        :class="['p-settings__toggle', noti.enabled ? 'p-settings__toggle--active' : '']"
+                        class="p-settings__switch"
+                        :class="noti.enabled ? 'p-settings__switch--on' : 'p-settings__switch--off'"
                      >
-                          <div :class="['p-settings__toggle-handle', noti.enabled ? 'p-settings__toggle-handle--active' : '']" />
+                          <div class="p-settings__switch-dot" />
                      </div>
                  </div>
              </div>
          </div>
 
          <!-- System Section -->
-         <div v-if="activeTab === 'system'" class="p-settings__card">
-             <h3 class="p-settings__card-title">시스템 정보</h3>
+         <div v-if="activeTab === 'system'" class="p-settings__section-card" style="padding: 1.5rem">
+             <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">시스템 정보</h3>
              
-             <div class="p-settings__card-body">
+             <div class="p-settings__info-list">
                  <div class="p-settings__info-row">
                      <span class="p-settings__info-label">앱 버전</span>
                      <span class="p-settings__info-value">v1.2.0</span>
@@ -95,12 +95,15 @@
                  </div>
                   <div class="p-settings__info-row">
                      <span class="p-settings__info-label">데이터 소스</span>
-                     <span class="p-settings__info-value p-settings__info-value--active">연결됨 (RASSI API)</span>
+                     <span class="p-settings__info-value--active">
+                        <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                        연결됨 (RASSI API)
+                     </span>
                  </div>
              </div>
              
-             <div class="p-settings__footer-actions">
-                 <Button variant="outline" class="p-settings__danger-btn">
+             <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+                 <Button variant="outline" class="text-red-500 hover:text-red-600 border-red-200 hover:border-red-300 hover:bg-red-50 dark:border-red-900/30 dark:hover:bg-red-900/10">
                      캐시 삭제 및 초기화
                  </Button>
              </div>

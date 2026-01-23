@@ -1,11 +1,11 @@
 /* Widget Component Styles */
 
 .c-widget {
-    @apply h-full bg-white dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm flex flex-col text-left items-start transition-all duration-200 hover:shadow-md;
+    @apply h-full bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col text-left items-start transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
 }
 
 .c-widget__header {
-    @apply p-4 pb-2 flex-none w-full;
+    @apply p-5 pb-2 flex-none w-full;
 }
 
 .c-widget__header-inner {
@@ -29,12 +29,12 @@
 }
 
 .c-widget__content {
-    @apply flex-1 p-4 pt-0 min-h-0 relative w-full;
+    @apply flex-1 p-5 pt-0 min-h-0 relative w-full;
 }
 
 /* Market Widget Content */
 .c-widget__market-wrapper {
-    @apply h-full flex flex-col relative w-full;
+    @apply h-full flex flex-col relative w-full bg-white dark:bg-slate-900;
 }
 
 .c-widget__value-area {

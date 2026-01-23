@@ -1,94 +1,98 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">시세분석</h2>
-      <p class="p-investment__desc">종목별 시세 및 이슈 현황</p>
+  <div class="p-price-analysis">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">시세분석</h2>
+      <p class="c-page-header__desc">종목별 시세 및 이슈 현황</p>
     </div>
 
     <!-- Index Charts Section -->
-    <div class="c-content-card">
-      <div class="c-content-card__header">
-         <div class="c-content-card__header-content">
-           <h3 class="c-content-card__title">주요 지수</h3>
-           <div class="c-content-card__actions">
-             <Button 
-               :variant="viewMode === '시간별' ? 'default' : 'outline'" 
-               size="sm"
-               :class="viewMode === '시간별' ? 'c-tab-btn--active' : ''"
-               @click="viewMode = '시간별'"
-             >
-               시간별 지수보기
-             </Button>
-             <Button 
-               :variant="viewMode === '날짜별' ? 'default' : 'outline'" 
-               size="sm"
-               :class="viewMode === '날짜별' ? 'c-tab-btn--active' : ''"
-               @click="viewMode = '날짜별'"
-             >
-               날짜별 지수보기
-             </Button>
-           </div>
+    <div class="c-content-card p-6">
+      <div class="p-price-analysis__header-row">
+         <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">주요 지수</h3>
+         <div class="flex gap-2">
+           <Button 
+             :variant="viewMode === '시간별' ? 'default' : 'outline'" 
+             size="sm"
+             :class="viewMode === '시간별' ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
+             @click="viewMode = '시간별'"
+           >
+             시간별 지수보기
+           </Button>
+           <Button 
+             :variant="viewMode === '날짜별' ? 'default' : 'outline'" 
+             size="sm"
+             :class="viewMode === '날짜별' ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
+             @click="viewMode = '날짜별'"
+           >
+             날짜별 지수보기
+           </Button>
          </div>
       </div>
-      <div class="c-content-card__body">
-         <div class="l-analysis-grid">
+      <div>
+         <div class="p-price-analysis__market-grid">
             <!-- KOSPI Chart -->
-            <div>
-               <div class="u-mb-4">
-                  <div class="c-price-market-header">
-                     <h3 class="u-text-lg-bold-slate-700">코스피</h3>
-                     <span class="u-text-2xl-bold-slate-900">4,897.17</span>
-                     <span class="c-price-change--up">
-                        <TrendingUp class="w-4 h-4 mr-1" />
+            <div class="p-price-analysis__market-card">
+               <div class="p-price-analysis__market-card-header">
+                  <div>
+                    <h3 class="p-price-analysis__market-name">코스피</h3>
+                    <span class="p-price-analysis__market-value">4,897.17</span>
+                  </div>
+                  <div class="p-price-analysis__market-change-info">
+                     <span class="p-price-analysis__market-change-val indicator--positive">
+                        <TrendingUp class="p-price-analysis__trend-icon" />
                         11.42
                      </span>
-                     <span class="c-price-pct--up">+0.23%</span>
-                  </div>
-                  <div class="u-flex-gap-2">
-                     <Button 
-                       v-for="period in ['1일', '3개월', '1년']" 
-                       :key="period"
-                       :variant="kospiPeriod === period ? 'default' : 'outline'"
-                       size="sm"
-                       :class="kospiPeriod === period ? 'c-tab-btn--active' : ''"
-                       @click="kospiPeriod = period"
-                     >
-                       {{ period }}
-                     </Button>
+                     <span class="p-price-analysis__market-change-pct indicator--positive">+0.23%</span>
                   </div>
                </div>
-               <div class="c-price-chart-container">
-                   <AreaChart :chart-data="getKospiChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="u-full" />
+               <div class="p-price-analysis__chart-container">
+                   <AreaChart :chart-data="getKospiChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="h-full" />
+               </div>
+               <div class="p-price-analysis__period-selector">
+                  <Button 
+                    v-for="period in ['1일', '3개월', '1년']" 
+                    :key="period"
+                    :variant="kospiPeriod === period ? 'default' : 'outline'"
+                    size="sm"
+                    class="h-7 text-xs px-3"
+                    :class="kospiPeriod === period ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-900 border-none'"
+                    @click="kospiPeriod = period"
+                  >
+                    {{ period }}
+                  </Button>
                </div>
             </div>
 
             <!-- KOSDAQ Chart -->
-            <div>
-               <div class="u-mb-4">
-                  <div class="c-price-market-header">
-                     <h3 class="u-text-lg-bold-slate-700">코스닥</h3>
-                     <span class="u-text-2xl-bold-slate-900">950.07</span>
-                     <span class="c-price-change--down">
-                        <TrendingDown class="w-4 h-4 mr-1" />
+            <div class="p-price-analysis__market-card">
+               <div class="p-price-analysis__market-card-header">
+                  <div>
+                    <h3 class="p-price-analysis__market-name">코스닥</h3>
+                    <span class="p-price-analysis__market-value">950.07</span>
+                  </div>
+                  <div class="p-price-analysis__market-change-info">
+                     <span class="p-price-analysis__market-change-val indicator--negative">
+                        <TrendingDown class="p-price-analysis__trend-icon" />
                         26.3
                      </span>
-                     <span class="c-price-pct--down">-2.69%</span>
-                  </div>
-                  <div class="u-flex-gap-2">
-                     <Button 
-                       v-for="period in ['1일', '3개월', '1년']" 
-                       :key="period"
-                       :variant="kosdaqPeriod === period ? 'default' : 'outline'"
-                       size="sm"
-                       :class="kosdaqPeriod === period ? 'c-tab-btn--active' : ''"
-                       @click="kosdaqPeriod = period"
-                     >
-                       {{ period }}
-                     </Button>
+                     <span class="p-price-analysis__market-change-pct indicator--negative">-2.69%</span>
                   </div>
                </div>
-               <div class="c-price-chart-container">
-                   <AreaChart :chart-data="getKosdaqChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="u-full" />
+               <div class="p-price-analysis__chart-container">
+                   <AreaChart :chart-data="getKosdaqChartData" :options="chartOptions" :gradient-color="'#3b82f6'" class="h-full" />
+               </div>
+               <div class="p-price-analysis__period-selector">
+                  <Button 
+                    v-for="period in ['1일', '3개월', '1년']" 
+                    :key="period"
+                    :variant="kosdaqPeriod === period ? 'default' : 'outline'"
+                    size="sm"
+                    class="h-7 text-xs px-3"
+                    :class="kosdaqPeriod === period ? 'bg-slate-900 text-white' : 'text-slate-500 hover:text-slate-900 border-none'"
+                    @click="kosdaqPeriod = period"
+                  >
+                    {{ period }}
+                  </Button>
                </div>
             </div>
          </div>
@@ -96,52 +100,52 @@
     </div>
 
     <!-- Stock Status Table -->
-    <div class="c-price-table-card">
-       <div class="c-price-table-header-box">
-          <h3 class="u-text-lg-bold mb-4">시세 현황</h3>
-          <div class="u-flex-gap-2 flex-wrap">
-             <Button 
-               v-for="tab in tabs" 
-               :key="tab"
-               :variant="selectedTab === tab ? 'default' : 'outline'"
-               size="sm"
-               :class="selectedTab === tab ? 'c-tab-btn--active' : ''"
-               @click="selectedTab = tab"
-             >
-               {{ tab }}
-             </Button>
-          </div>
-       </div>
-
-       <div class="p-6">
-          <div class="u-flex-end-mb-4">
-             <span class="u-text-sm-slate-600">
-               업데이트 {{ currentDate }} {{ currentTime }}
-             </span>
+    <div class="c-content-card p-6">
+       <div class="p-price-analysis__status-section">
+          <div class="p-price-analysis__status-tabs-row">
+             <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100">시세 현황</h3>
+             <div class="p-price-analysis__status-tabs">
+                <Button 
+                  v-for="tab in tabs" 
+                  :key="tab"
+                  :variant="selectedTab === tab ? 'default' : 'outline'"
+                  size="sm"
+                  :class="selectedTab === tab ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
+                  @click="selectedTab = tab"
+                >
+                  {{ tab }}
+                </Button>
+             </div>
           </div>
 
-          <div class="u-overflow-x-auto">
-             <table class="u-w-full">
+          <div class="p-price-analysis__update-info">
+             업데이트 {{ currentDate }} {{ currentTime }}
+          </div>
+
+          <div class="p-price-analysis__table-wrapper">
+             <table class="p-price-analysis__table">
                 <thead>
-                   <tr class="c-price-table-thead-tr">
-                      <th class="c-price-table-th">날짜</th>
-                      <th class="c-price-table-th">종목명</th>
-                      <th class="c-price-table-th--right">현재가</th>
-                      <th class="c-price-table-th--right">등락률</th>
-                      <th class="c-price-table-th">이슈내용</th>
+                   <tr>
+                      <th class="p-price-analysis__table-th">날짜</th>
+                      <th class="p-price-analysis__table-th">종목명</th>
+                      <th class="p-price-analysis__table-th p-price-analysis__table-th--right">현재가</th>
+                      <th class="p-price-analysis__table-th p-price-analysis__table-th--right">등락률</th>
+                      <th class="p-price-analysis__table-th">이슈내용</th>
                    </tr>
                 </thead>
                 <tbody>
-                   <tr v-for="(stock, index) in currentData" :key="index" class="c-price-table-tr">
-                      <td class="c-price-table-td">{{ stock.date }} {{ stock.time }}</td>
-                      <td class="c-price-table-td--name">{{ stock.stockName }}</td>
-                      <td class="c-price-table-td--right">
-                         {{ stock.currentPrice === 0 ? '-' : stock.currentPrice.toLocaleString() }}
+                   <tr v-for="(stock, index) in currentData" :key="index" class="p-price-analysis__table-tr">
+                      <td class="p-price-analysis__table-td p-price-analysis__date-cell">{{ stock.date }} {{ stock.time }}</td>
+                      <td class="p-price-analysis__table-td p-price-analysis__stock-name">{{ stock.stockName }}</td>
+                      <td class="p-price-analysis__table-td p-price-analysis__table-td--right">
+                         <span class="p-price-analysis__price-val">{{ stock.currentPrice === 0 ? '-' : stock.currentPrice.toLocaleString() }}</span>
                       </td>
-                      <td :class="['c-price-table-td--right font-semibold', stock.changeRate > 0 ? 'text-red-600' : stock.changeRate < 0 ? 'text-blue-600' : 'text-slate-600']">
-                         {{ stock.changeRate === 0 ? '-' : (stock.changeRate > 0 ? '+' : '') + stock.changeRate.toFixed(2) + '%' }}
+                      <td class="p-price-analysis__table-td p-price-analysis__table-td--right">
+                         <span class="p-price-analysis__change-val" :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'">
+                            {{ stock.changeRate === 0 ? '-' : (stock.changeRate > 0 ? '+' : '') + stock.changeRate.toFixed(2) + '%' }}
+                         </span>
                       </td>
-                      <td class="c-price-table-td">{{ stock.issueContent }}</td>
+                      <td class="p-price-analysis__table-td p-price-analysis__issue-content">{{ stock.issueContent }}</td>
                    </tr>
                 </tbody>
              </table>
@@ -245,5 +249,6 @@ export default {
   }
 };
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+
+<style src="@/assets/css/pages/price-analysis.css"></style>
 

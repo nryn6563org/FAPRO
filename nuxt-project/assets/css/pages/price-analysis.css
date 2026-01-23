@@ -1,0 +1,223 @@
+/* Price Analysis Page Styles */
+
+.p-price-analysis {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-price-analysis__header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+}
+
+.p-price-analysis__market-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .p-price-analysis__market-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.p-price-analysis__market-card {
+    padding: 1.5rem;
+    background-color: var(--slate-50);
+    border: 1px solid var(--slate-100);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+}
+
+.dark .p-price-analysis__market-card {
+    background-color: var(--slate-800);
+    border-color: var(--slate-700);
+}
+
+.p-price-analysis__market-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.p-price-analysis__market-name {
+    font-weight: 700;
+    color: var(--slate-700);
+}
+
+.dark .p-price-analysis__market-name {
+    color: var(--slate-200);
+}
+
+.p-price-analysis__market-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    margin-top: 0.25rem;
+    display: block;
+}
+
+.p-price-analysis__market-change-info {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+}
+
+.p-price-analysis__market-change-val {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 800;
+}
+
+.p-price-analysis__market-change-pct {
+    font-size: 0.875rem;
+    font-weight: 600;
+}
+
+.p-price-analysis__chart-container {
+    height: 12rem;
+    margin-bottom: 1.5rem;
+}
+
+.p-price-analysis__period-selector {
+    display: flex;
+    gap: 0.25rem;
+    padding: 0.25rem;
+    background-color: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 0.75rem;
+    width: max-content;
+    margin: 0 auto;
+}
+
+.dark .p-price-analysis__period-selector {
+    background-color: var(--slate-800);
+    border-color: var(--slate-700);
+}
+
+/* Status Section */
+.p-price-analysis__status-section {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-price-analysis__status-tabs-row {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .p-price-analysis__status-tabs-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+}
+
+.p-price-analysis__status-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.p-price-analysis__update-info {
+    font-size: 0.75rem;
+    color: var(--slate-400);
+    font-family: monospace;
+    text-align: right;
+}
+
+.p-price-analysis__table-wrapper {
+    overflow-x: auto;
+}
+
+.p-price-analysis__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.p-price-analysis__table-th {
+    padding: 0.75rem 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-500);
+    background-color: var(--slate-50);
+    border-bottom: 1px solid var(--slate-100);
+    text-transform: uppercase;
+}
+
+.dark .p-price-analysis__table-th {
+    background-color: var(--slate-800);
+    border-bottom-color: var(--slate-700);
+}
+
+.p-price-analysis__table-th--right {
+    text-align: right;
+}
+
+.p-price-analysis__table-tr {
+    border-bottom: 1px solid var(--slate-100);
+    transition: background-color 0.2s ease;
+}
+
+.dark .p-price-analysis__table-tr {
+    border-bottom-color: var(--slate-800);
+}
+
+.p-price-analysis__table-tr:hover {
+    background-color: var(--slate-50);
+}
+
+.dark .p-price-analysis__table-tr:hover {
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.p-price-analysis__table-td {
+    padding: 0.75rem 1rem;
+}
+
+.p-price-analysis__table-td--right {
+    text-align: right;
+}
+
+.p-price-analysis__date-cell {
+    color: var(--slate-500);
+    font-family: monospace;
+}
+
+.p-price-analysis__stock-name {
+    font-weight: 800;
+    color: var(--slate-900);
+}
+
+.dark .p-price-analysis__stock-name {
+    color: white;
+}
+
+.p-price-analysis__price-val {
+    font-weight: 600;
+}
+
+.p-price-analysis__change-val {
+    font-weight: 700;
+}
+
+.p-price-analysis__issue-content {
+    color: var(--slate-600);
+    max-width: 24rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.dark .p-price-analysis__issue-content {
+    color: var(--slate-400);
+}

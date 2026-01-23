@@ -1,33 +1,33 @@
 <template>
   <div class="p-clients">
     <div class="p-clients__header">
-      <div>
+      <div class="p-clients__header-info">
         <h2 class="p-clients__title">고객 관리</h2>
         <p class="p-clients__subtitle">총 {{ clients.length }}명의 고객을 관리하고 있습니다</p>
       </div>
-      <Button class="u-gap-2" @click="isAddDialogOpen = true">
-        <Plus class="u-icon-sm" />
+      <Button class="p-clients__add-btn" @click="isAddDialogOpen = true">
+        <Plus class="p-clients__add-icon" />
         신규 고객 등록
       </Button>
     </div>
 
     <!-- Search and Filters -->
     <div class="p-clients__search-box">
-      <div class="u-mb-4">
+      <div class="p-clients__search-header">
         <h3 class="p-clients__search-title">AI고객검색</h3>
         <p class="p-clients__search-desc">(검색예시: 원전 관련 종목을 매도했고, 보유 현금이 5천만원 이상인 고객 찾아줘)</p>
       </div>
       <div class="p-clients__search-form">
-        <div class="p-clients__search-input-wrapper">
-          <Search class="p-clients__search-icon" />
+        <div class="p-clients__search-field">
+          <Search class="p-clients__search-field-icon" />
           <Input
             placeholder="AI에게 원하는 고객군을 대화로 찾아보세요."
             v-model="searchTerm"
             class="p-clients__search-input"
           />
         </div>
-        <Button class="u-w-40 u-gap-2">
-          <Search class="u-icon-sm u-mr-2" />
+        <Button class="p-clients__search-btn">
+          <Search class="p-clients__search-btn-icon" />
           검색
         </Button>
       </div>
@@ -39,15 +39,16 @@
         <span>검색된 고객 {{ filteredClients.length }}명</span>
       </div>
       <div class="p-clients__sort-actions">
-        <div class="p-clients__sort-label">
+        <div class="p-clients__sort-description">
           <ArrowUpDown class="p-clients__sort-icon" />
-          <span class="font-medium">정렬:</span>
+          <span class="p-clients__sort-label">정렬:</span>
         </div>
         <div class="p-clients__sort-btn-group">
-           <Button v-for="option in sortOptions" :key="option.value" 
+           <Button
+             v-for="option in sortOptions" :key="option.value" 
              :variant="sortBy === option.value ? 'default' : 'outline'"
              size="sm"
-             class="u-text-sm"
+             class="p-clients__sort-btn"
              @click="sortBy = option.value"
            >
              {{ option.label }}
@@ -60,54 +61,54 @@
     <div class="p-clients__grid">
        <div v-for="client in filteredClients" :key="client.id" class="c-client-card" @click="selectedClient = client">
           <div class="c-client-card__header">
-             <div class="c-client-card__top">
-                <div class="c-client-card__info">
+             <div class="c-client-card__header-top">
+                <div class="c-client-card__profile">
                    <div class="c-client-card__avatar">
                       {{ client.name[0] }}
                    </div>
-                   <div>
+                   <div class="c-client-card__name-wrapper">
                       <h3 class="c-client-card__name">{{ client.name }}</h3>
-                      <span :class="['c-client-card__badge', getRiskBadgeColor(client.riskProfile)]">
+                      <span :class="['c-client-card__risk-badge', getRiskBadgeClass(client.riskProfile)]">
                         {{ getRiskLabel(client.riskProfile) }}
                       </span>
                    </div>
                 </div>
                 <button 
-                  class="c-client-card__fav-btn"
+                  class="c-client-card__favorite-btn"
                   @click.stop="toggleFavorite(client.id)"
                 >
-                   <Star :class="['c-client-card__fav-icon', client.isFavorite ? 'c-client-card__fav-icon--active' : '']" />
+                   <Star :class="['c-client-card__favorite-icon', client.isFavorite ? 'c-client-card__favorite-icon--active' : '']" />
                 </button>
              </div>
           </div>
           <div class="c-client-card__body">
-             <div class="c-client-card__stats">
-                <div class="u-space-y-1">
-                   <p class="c-client-card__stat-label">운용자산(AUM)</p>
-                   <p class="c-client-card__stat-val">{{ (client.aum / 100000000).toFixed(0) }}억원</p>
+             <div class="c-client-card__metrics">
+                <div class="c-client-card__metric-item">
+                   <p class="c-client-card__metric-label">운용자산(AUM)</p>
+                   <p class="c-client-card__metric-value">{{ (client.aum / 100000000).toFixed(0) }}억원</p>
                 </div>
-                <div class="u-space-y-1">
-                   <p class="c-client-card__stat-label">수익률</p>
-                   <p :class="['c-client-card__returns', client.returns >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
+                <div class="c-client-card__metric-item">
+                   <p class="c-client-card__metric-label">수익률</p>
+                   <p :class="['c-client-card__return-rate', client.returns >= 0 ? 'indicator--positive' : 'indicator--negative']">
                       {{ client.returns >= 0 ? '+' : '' }}{{ client.returns }}%
                    </p>
                 </div>
              </div>
              
-             <div class="c-client-card__contact">
-                <div class="c-client-card__contact-row">
-                    <Phone class="u-icon-xs" />
-                    <span class="u-truncate">{{ client.phone }}</span>
+             <div class="c-client-card__info-list">
+                <div class="c-client-card__info-item">
+                    <Phone class="c-client-card__info-icon" />
+                    <span class="c-client-card__info-text">{{ client.phone }}</span>
                 </div>
-                <div class="c-client-card__contact-row">
-                    <Calendar class="u-icon-xs" />
-                    <span class="u-truncate">상담: {{ client.lastContact }}</span>
+                <div class="c-client-card__info-item">
+                    <Calendar class="c-client-card__info-icon" />
+                    <span class="c-client-card__info-text">상담: {{ client.lastContact }}</span>
                 </div>
              </div>
 
-             <div class="c-client-card__actions">
-                <Button variant="outline" size="sm" class="u-flex-1 u-text-xs" @click.stop="selectedClient = client">
-                    <FileText class="u-icon-xs u-mr-1" />
+             <div class="c-client-card__footer">
+                <Button variant="outline" size="sm" class="c-client-card__details-btn" @click.stop="selectedClient = client">
+                    <FileText class="c-client-card__details-icon" />
                     상세보기
                 </Button>
              </div>
@@ -117,27 +118,27 @@
 
     <!-- Add Client Dialog (Simplified) -->
     <Dialog :open.sync="isAddDialogOpen" className="c-dialog-add">
-       <div class="p-clients__add-dialog">
-          <div class="u-mb-4">
-             <h3 class="u-text-lg-semibold">신규 고객 등록</h3>
+       <div class="c-add-client-form">
+          <div class="c-add-client-form__header">
+             <h3 class="c-add-client-form__title">신규 고객 등록</h3>
           </div>
-          <div class="p-clients__form-grid">
-             <div class="p-clients__form-group">
-                <label class="p-clients__form-label">고객명</label>
-                <Input placeholder="홍길동" />
+          <div class="c-add-client-form__grid">
+             <div class="c-add-client-form__field">
+                <label class="c-add-client-form__label">고객명</label>
+                <Input placeholder="홍길동" class="c-add-client-form__input" />
              </div>
-             <div class="p-clients__form-group">
-                <label class="p-clients__form-label">연락처</label>
-                <Input placeholder="010-0000-0000" />
+             <div class="c-add-client-form__field">
+                <label class="c-add-client-form__label">연락처</label>
+                <Input placeholder="010-0000-0000" class="c-add-client-form__input" />
              </div>
-             <div class="u-col-span-2 p-clients__form-group">
-                <label class="p-clients__form-label">메모</label>
-                <Input placeholder="특이사항을 입력하세요" />
+             <div class="c-add-client-form__field c-add-client-form__field--full">
+                <label class="c-add-client-form__label">메모</label>
+                <Input placeholder="특이사항을 입력하세요" class="c-add-client-form__input" />
              </div>
           </div>
-          <div class="p-clients__dialog-footer">
-             <Button variant="outline" @click="isAddDialogOpen = false">취소</Button>
-             <Button @click="isAddDialogOpen = false">등록</Button>
+          <div class="c-add-client-form__footer">
+             <Button variant="outline" @click="isAddDialogOpen = false" class="c-add-client-form__btn">취소</Button>
+             <Button @click="isAddDialogOpen = false" class="c-add-client-form__btn">등록</Button>
           </div>
        </div>
     </Dialog>
@@ -145,132 +146,159 @@
     <!-- Client Detail Dialog -->
     <Dialog :open="selectedClient !== null" @update:open="(val) => !val && (selectedClient = null)" className="c-dialog-detail">
        <div v-if="selectedClient" class="c-client-detail">
-           <!-- Header -->
-           <div class="c-client-detail__header">
-               <div class="c-client-detail__header-content">
-                   <div class="c-client-detail__avatar">
-                      {{ selectedClient.name[0] }}
-                   </div>
-                   <div class="c-client-detail__name-group">
-                      <h2 class="c-client-detail__name">{{ selectedClient.name }}</h2>
-                       <span :class="['c-client-detail__badge', getRiskBadgeColor(selectedClient.riskProfile)]">
-                        {{ getRiskLabel(selectedClient.riskProfile) }}
-                       </span>
-                   </div>
-               </div>
-           </div>
-           
+           <!-- Body (Grid Layout) -->
            <div class="c-client-detail__body">
-                <!-- Metrics -->
-                <div class="c-client-detail__metrics">
-                    <div class="c-client-detail__metric-card">
-                         <div class="u-space-y-1">
-                            <p class="c-client-detail__metric-label">운용자산(AUM)</p>
-                            <p class="c-client-detail__metric-val">{{ (selectedClient.aum / 100000000).toFixed(0) }}억원</p>
-                         </div>
+                <!-- Left Column: Profile, Stats, Contact -->
+                <div class="c-client-detail__sidebar">
+                    <!-- Profile Header (Card) -->
+                    <div class="c-client-detail__profile-card">
+                        <div class="c-client-detail__avatar">
+                           {{ selectedClient.name[0] }}
+                        </div>
+                        <div class="c-client-detail__profile-info">
+                           <!-- Badge First (Stacked) -->
+                           <span :class="['c-client-detail__risk-badge', getRiskBadgeClass(selectedClient.riskProfile)]">
+                            {{ getRiskLabel(selectedClient.riskProfile) }}
+                           </span>
+                           <h2 class="c-client-detail__name">{{ selectedClient.name }}</h2>
+                        </div>
                     </div>
-                    <div class="c-client-detail__metric-card">
-                         <div class="u-space-y-1">
-                            <p class="c-client-detail__metric-label">수익률</p>
-                            <p :class="['c-client-detail__metric-val', selectedClient.returns >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
-                              {{ selectedClient.returns >= 0 ? '+' : '' }}{{ selectedClient.returns }}%
-                            </p>
-                         </div>
+
+                    <!-- Metrics (Row of Cards) -->
+                    <div class="c-client-detail__metrics">
+                        <div class="c-client-detail__metric-card">
+                             <div class="c-client-detail__metric-group">
+                                <p class="c-client-detail__metric-label">운용자산(AUM)</p>
+                                <p class="c-client-detail__metric-value">{{ (selectedClient.aum / 100000000).toFixed(0) }}억원</p>
+                             </div>
+                        </div>
+                        <div class="c-client-detail__metric-card">
+                             <div class="c-client-detail__metric-group">
+                                <p class="c-client-detail__metric-label">수익률</p>
+                                <p :class="['c-client-detail__metric-value', selectedClient.returns >= 0 ? 'indicator--positive' : 'indicator--negative']">
+                                  {{ selectedClient.returns >= 0 ? '+' : '' }}{{ selectedClient.returns }}%
+                                </p>
+                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Info (Card) -->
+                    <div class="c-client-detail__contact-card">
+                        <h3 class="c-client-detail__section-title">연락처 정보</h3>
+                        <div class="c-client-detail__contact-list">
+                            <div class="c-client-detail__contact-item">
+                                <Mail class="c-client-detail__contact-icon" />
+                                <span class="c-client-detail__contact-text">{{ selectedClient.email }}</span>
+                            </div>
+                            <div class="c-client-detail__contact-item">
+                                <Phone class="c-client-detail__contact-icon" />
+                                <span class="c-client-detail__contact-text">{{ selectedClient.phone }}</span>
+                            </div>
+                            <div class="c-client-detail__contact-item">
+                                <Calendar class="c-client-detail__contact-icon" />
+                                <span class="c-client-detail__contact-text">가입일: {{ selectedClient.joinDate }}</span>
+                            </div>
+                            <div class="c-client-detail__contact-item">
+                                <Calendar class="c-client-detail__contact-icon" />
+                                <span class="c-client-detail__contact-text">최근 상담: {{ selectedClient.lastContact }}</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Contact Info -->
-                <div class="c-client-detail__section">
-                    <h3 class="c-client-detail__section-title">연락처 정보</h3>
-                    <div class="c-client-detail__contact-list">
-                        <div class="c-client-detail__contact-item">
-                            <Mail class="u-icon-sm u-text-slate-500" />
-                            <span>{{ selectedClient.email }}</span>
-                        </div>
-                        <div class="c-client-detail__contact-item">
-                            <Phone class="u-icon-sm u-text-slate-500" />
-                            <span>{{ selectedClient.phone }}</span>
-                        </div>
-                        <div class="c-client-detail__contact-item">
-                            <Calendar class="u-icon-sm u-text-slate-500" />
-                            <span>가입일: {{ selectedClient.joinDate }}</span>
-                        </div>
-                        <div class="c-client-detail__contact-item">
-                            <Calendar class="u-icon-sm u-text-slate-500" />
-                            <span>최근 상담: {{ selectedClient.lastContact }}</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Portfolio Configuration -->
-                <div class="c-client-detail__section">
-                    <h3 class="c-client-detail__section-title">포트폴리오 구성</h3>
-                    <div class="u-space-y-4">
-                        <!-- Horizontal Bar -->
-                        <div class="c-client-detail__portfolio-bar">
-                            <div class="u-bg-blue-500" :style="{ width: selectedClient.portfolio.stocks + '%' }" :title="'주식 ' + selectedClient.portfolio.stocks + '%'"></div>
-                            <div class="u-bg-green-500" :style="{ width: selectedClient.portfolio.bonds + '%' }" :title="'채권 ' + selectedClient.portfolio.bonds + '%'"></div>
-                            <div class="u-bg-yellow-500" :style="{ width: selectedClient.portfolio.cash + '%' }" :title="'현금 ' + selectedClient.portfolio.cash + '%'"></div>
-                            <div class="u-bg-purple-500" :style="{ width: selectedClient.portfolio.alternatives + '%' }" :title="'대체투자 ' + selectedClient.portfolio.alternatives + '%'"></div>
-                        </div>
-                        <!-- Legend -->
-                        <div class="c-client-detail__legend">
-                            <div class="c-client-detail__legend-item">
-                                <div class="c-client-detail__legend-dot u-bg-blue-500"></div>
-                                <span class="u-text-sm">주식 {{ selectedClient.portfolio.stocks }}%</span>
+                <!-- Right Column: Portfolio, Memo -->
+                <div class="c-client-detail__main">
+                    <!-- Portfolio Configuration (Card) -->
+                    <div class="c-client-detail__portfolio-section">
+                        <h3 class="c-client-detail__section-title">포트폴리오 구성</h3>
+                        <div class="c-client-detail__portfolio-content">
+                            <!-- Horizontal Bar -->
+                            <div class="c-portfolio-bar">
+                                <div class="c-portfolio-bar__segment c-portfolio-bar__segment--stocks" :style="{ width: selectedClient.portfolio.stocks + '%' }" :title="'주식 ' + selectedClient.portfolio.stocks + '%'"></div>
+                                <div class="c-portfolio-bar__segment c-portfolio-bar__segment--bonds" :style="{ width: selectedClient.portfolio.bonds + '%' }" :title="'채권 ' + selectedClient.portfolio.bonds + '%'"></div>
+                                <div class="c-portfolio-bar__segment c-portfolio-bar__segment--cash" :style="{ width: selectedClient.portfolio.cash + '%' }" :title="'현금 ' + selectedClient.portfolio.cash + '%'"></div>
+                                <div class="c-portfolio-bar__segment c-portfolio-bar__segment--alternatives" :style="{ width: selectedClient.portfolio.alternatives + '%' }" :title="'대체투자 ' + selectedClient.portfolio.alternatives + '%'"></div>
                             </div>
-                            <div class="c-client-detail__legend-item">
-                                <div class="c-client-detail__legend-dot u-bg-green-500"></div>
-                                <span class="u-text-sm">채권 {{ selectedClient.portfolio.bonds }}%</span>
-                            </div>
-                            <div class="c-client-detail__legend-item">
-                                <div class="c-client-detail__legend-dot u-bg-yellow-500"></div>
-                                <span class="u-text-sm">현금 {{ selectedClient.portfolio.cash }}%</span>
-                            </div>
-                            <div class="c-client-detail__legend-item">
-                                <div class="c-client-detail__legend-dot u-bg-purple-500"></div>
-                                <span class="u-text-sm">대체투자 {{ selectedClient.portfolio.alternatives }}%</span>
-                            </div>
-                        </div>
-
-                        <!-- Tabs -->
-                        <div class="c-client-detail__tabs">
-                            <div class="c-client-detail__tab-list">
-                                <button 
-                                    v-for="tab in ['stocks', 'bonds', 'cash', 'alternatives']" 
-                                    :key="tab"
-                                    :class="['c-client-detail__tab-btn', activeTab === tab ? 'c-client-detail__tab-btn--active' : '']"
-                                    @click="activeTab = tab"
-                                >
-                                    {{ getTabLabel(tab) }}
-                                </button>
-                            </div>
-
-                            <div class="u-mt-4">
-                                <div class="c-client-detail__table-header">
-                                    <div>{{ activeTab === 'bonds' ? '채권명' : '종목명' }}</div>
-                                    <div class="u-text-right">수익률</div>
-                                    <div class="u-text-right">비중</div>
-                                    <div class="u-text-right">편입일</div>
+                            <!-- Legend -->
+                            <div class="c-portfolio-legend">
+                                <div class="c-portfolio-legend__item">
+                                    <div class="c-portfolio-legend__dot c-portfolio-legend__dot--stocks"></div>
+                                    <span class="c-portfolio-legend__text">주식 {{ selectedClient.portfolio.stocks }}%</span>
                                 </div>
-                                <div class="c-client-detail__table-body">
-                                    <div v-for="(item, idx) in getPortfolioItems(activeTab)" :key="idx" class="c-client-detail__table-row">
-                                        <div class="u-font-medium">{{ item.name }}</div>
-                                        <div :class="['u-text-right u-font-medium', item.return.startsWith('+') ? 'u-text-green-600' : 'u-text-red-600']">{{ item.return }}</div>
-                                        <div :class="['u-text-right', activeTab === 'cash' ? 'u-text-yellow-600' : activeTab === 'alternatives' ? 'u-text-purple-600' : (activeTab === 'bonds' ? 'u-text-green-600' : 'u-text-blue-600')]">{{ item.weight }}</div>
-                                        <div class="u-text-right u-text-slate-500">{{ item.date }}</div>
-                                    </div>
+                                <div class="c-portfolio-legend__item">
+                                    <div class="c-portfolio-legend__dot c-portfolio-legend__dot--bonds"></div>
+                                    <span class="c-portfolio-legend__text">채권 {{ selectedClient.portfolio.bonds }}%</span>
+                                </div>
+                                <div class="c-portfolio-legend__item">
+                                    <div class="c-portfolio-legend__dot c-portfolio-legend__dot--cash"></div>
+                                    <span class="c-portfolio-legend__text">현금 {{ selectedClient.portfolio.cash }}%</span>
+                                </div>
+                                <div class="c-portfolio-legend__item">
+                                    <div class="c-portfolio-legend__dot c-portfolio-legend__dot--alternatives"></div>
+                                    <span class="c-portfolio-legend__text">대체투자 {{ selectedClient.portfolio.alternatives }}%</span>
                                 </div>
                             </div>
+
+                            <!-- Tabs -->
+                            <div class="c-client-detail__portfolio-tabs">
+                                <div class="c-client-detail__tab-list">
+                                    <button 
+                                        v-for="tab in ['stocks', 'bonds', 'cash', 'alternatives']" 
+                                        :key="tab"
+                                        :class="['c-client-detail__tab-button', activeTab === tab ? 'c-client-detail__tab-button--active' : '']"
+                                        @click="activeTab = tab"
+                                    >
+                                        {{ getTabLabel(tab) }}
+                                    </button>
+                                </div>
+
+                                <div class="c-client-detail__tab-content">
+                                    <!-- TABLE Refactor -->
+                                    <table class="c-portfolio-table">
+                                        <thead>
+                                            <tr class="c-portfolio-table__header">
+                                                <th class="c-portfolio-table__th c-portfolio-table__th--left">{{ activeTab === 'bonds' ? '채권명' : '종목명' }}</th>
+                                                <th class="c-portfolio-table__th c-portfolio-table__th--right">수익률</th>
+                                                <th class="c-portfolio-table__th c-portfolio-table__th--right">비중</th>
+                                                <th class="c-portfolio-table__th c-portfolio-table__th--right">편입일</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr v-for="(item, idx) in getPortfolioItems(activeTab)" :key="idx" class="c-portfolio-table__row">
+                                                <td class="c-portfolio-table__td c-portfolio-table__td--name">{{ item.name }}</td>
+                                                <td :class="['c-portfolio-table__td c-portfolio-table__td--right c-portfolio-table__td--return', item.return.startsWith('+') ? 'indicator--positive' : 'indicator--negative']">{{ item.return }}</td>
+                                                <td :class="['c-portfolio-table__td c-portfolio-table__td--right c-portfolio-table__td--weight', 'c-portfolio-table__td--weight-' + activeTab]">{{ item.weight }}</td>
+                                                <td class="c-portfolio-table__td c-portfolio-table__td--right c-portfolio-table__td--date">{{ item.date }}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <!-- Notes -->
-                 <div class="c-client-detail__section">
-                    <h3 class="c-client-detail__section-title">메모</h3>
-                    <p class="u-text-slate-700">{{ selectedClient.notes }}</p>
-                 </div>
+                    <!-- Notes (Card) -->
+                     <div class="c-client-detail__notes-section">
+                        <h3 class="c-client-detail__section-title">메모</h3>
+                        <p class="c-client-detail__notes-text">{{ selectedClient.notes }}</p>
+                     </div>
+                </div>
+           </div>
+
+           <!-- Footer (New) -->
+           <div class="c-client-detail__footer">
+                <Button variant="outline" class="c-client-detail__action-button">
+                    <MessageSquare class="c-client-detail__action-icon" />
+                    문자 보내기
+                </Button>
+                <Button variant="outline" class="c-client-detail__action-button">
+                    <Mail class="c-client-detail__action-icon" />
+                    이메일 보내기
+                </Button>
+                <Button class="c-client-detail__action-button c-client-detail__action-button--primary">
+                    <FileText class="c-client-detail__action-icon" />
+                    제안서 만들기
+                </Button>
            </div>
        </div>
     </Dialog>
@@ -281,7 +309,7 @@
 import Button from '@/components/common/Button.vue';
 import Input from '@/components/common/Input.vue';
 import Dialog from '@/components/common/Dialog.vue';
-import { Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText, Mail, X } from 'lucide-vue';
+import { Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText, Mail, X, MessageSquare } from 'lucide-vue';
 
 // Full Mock Data
 const mockClients = [
@@ -388,6 +416,7 @@ const mockClients = [
     name: '윤지혜',
     email: 'jihye.yoon@example.com',
     phone: '010-8901-2345',
+    aum: 26000000000,
     aum: 26000000000,
     riskProfile: 'conservative',
     joinDate: '2024-02-28',
@@ -543,7 +572,7 @@ export default {
   name: "ClientManagement",
   components: {
     Button, Input, Dialog,
-    Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText, Mail, X
+    Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText, Mail, X, MessageSquare
   },
   data() {
     return {
@@ -588,12 +617,12 @@ export default {
          c.id === clientId ? { ...c, isFavorite: !c.isFavorite } : c
       );
     },
-    getRiskBadgeColor(risk) {
+    getRiskBadgeClass(risk) {
       switch (risk) {
-        case 'conservative': return 'u-badge-conservative';
-        case 'moderate': return 'u-badge-moderate';
-        case 'aggressive': return 'u-badge-aggressive';
-        default: return 'bg-slate-100 text-slate-700 border-slate-200';
+        case 'conservative': return 'client-badge-risk--low';
+        case 'moderate': return 'client-badge-risk--mid';
+        case 'aggressive': return 'client-badge-risk--high';
+        default: return '';
       }
     },
     getRiskLabel(risk) {

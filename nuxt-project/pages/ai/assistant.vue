@@ -1,111 +1,113 @@
 <template>
-  <div class="p-ai">
-    <div class="p-ai__header">
-      <h2 class="p-ai__title">AI 투자 어시스턴트</h2>
-      <p class="p-ai__desc">투자 정보와 금융 지식을 대화로 편하게 물어보세요.</p>
+  <div class="p-assistant">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">AI 투자 어시스턴트</h2>
+      <p class="c-page-header__desc">투자 정보와 금융 지식을 대화로 편하게 물어보세요.</p>
     </div>
 
-     <div class="p-ai__grid">
+    <div class="p-assistant__layout">
       <!-- Chat Interface -->
-      <div class="p-ai__chat-area c-chat-interface">
-        <div class="c-chat-interface__header">
-            <div class="c-chat-interface__bot-icon-wrapper">
-              <Bot class="c-chat-interface__bot-icon" />
+      <div class="p-assistant__chat-card">
+        <div class="p-assistant__chat-header">
+            <div class="p-assistant__bot-avatar">
+              <Bot class="w-5 h-5" />
             </div>
-            <div>
-              <h3 class="c-chat-interface__title">AI 어시스턴트</h3>
-              <p class="c-chat-interface__subtitle">시장이슈와 종목의 다양한 정보를 쉽게 찾을 수 있습니다.</p>
+            <div class="p-assistant__chat-info">
+              <h3>AI 어시스턴트</h3>
+              <p>시장이슈와 종목 정보를 쉽게 찾아보세요.</p>
             </div>
-          </div>
+        </div>
 
-          <div class="c-chat-interface__messages-wrapper">
-            <div class="c-chat-interface__messages" ref="scrollArea">
+        <div class="p-assistant__message-area" ref="scrollArea">
+            <div
+              v-for="message in messages"
+              :key="message.id"
+              class="p-assistant__message-group"
+              :class="message.role === 'user' ? 'p-assistant__message-group--user' : 'p-assistant__message-group--bot'"
+            >
+              <div class="p-assistant__user-avatar" v-if="message.role === 'user'">
+                <User class="w-4 h-4" />
+              </div>
+              <div class="p-assistant__bot-avatar" style="width: 1.75rem; height: 1.75rem" v-else>
+                <Bot class="w-3.5 h-3.5" />
+              </div>
+              
+              <div class="p-assistant__message-content">
                 <div
-                  v-for="message in messages"
-                  :key="message.id"
-                  :class="['c-chat-message', message.role === 'user' ? 'c-chat-message--user' : '']"
+                  class="p-assistant__bubble"
+                  :class="message.role === 'user' ? 'p-assistant__bubble--user' : 'p-assistant__bubble--bot'"
                 >
-                  <div :class="['c-chat-message__avatar', 
-                    message.role === 'user' ? 'c-chat-message__avatar--user' : 'c-chat-message__avatar--bot'
-                  ]">
-                    <User v-if="message.role === 'user'" class="c-chat-message__icon" />
-                    <Bot v-else class="c-chat-message__icon" />
-                  </div>
-                  <div :class="['c-chat-message__body', message.role === 'user' ? 'c-chat-message__body--user' : '']">
-                    <div :class="['c-chat-message__content', 
-                      message.role === 'user' ? 'c-chat-message__content--user' : 'c-chat-message__content--bot'
-                    ]">
-                      <p class="c-chat-message__text">{{ message.content }}</p>
-                    </div>
-                    <p :class="['c-chat-message__time', message.role === 'user' ? 'u-text-right u-text-slate-400' : 'u-text-slate-400']">
-                        {{ new Date(message.timestamp).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) }}
-                    </p>
-                  </div>
+                  {{ message.content }}
                 </div>
-
-                <div v-if="isTyping" class="c-chat-message">
-                  <div class="c-chat-message__avatar c-chat-message__avatar--bot">
-                    <Bot class="c-chat-message__icon" />
-                  </div>
-                  <div class="c-chat-message__typing-dots">
-                      <div class="c-chat-message__dot" style="animation-delay: 0ms"></div>
-                      <div class="c-chat-message__dot" style="animation-delay: 150ms"></div>
-                      <div class="c-chat-message__dot" style="animation-delay: 300ms"></div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="c-chat-interface__input-area">
-              <div class="c-chat-interface__input-wrapper">
-                <Input
-                  v-model="input"
-                  @keypress.enter.native="handleSend"
-                  placeholder="투자 관련 질문을 입력하세요..."
-                  class="u-flex-1"
-                  :disabled="isTyping"
-                />
-                <Button 
-                  @click="handleSend" 
-                  :disabled="!input.trim() || isTyping"
-                  class="c-chat-interface__send-btn"
-                >
-                  <Send class="c-chat-interface__btn-icon" />
-                  전송
-                </Button>
+                <p class="p-assistant__timestamp">
+                    {{ new Date(message.timestamp).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) }}
+                </p>
               </div>
             </div>
+
+            <div v-if="isTyping" class="p-assistant__message-group p-assistant__message-group--bot">
+              <div class="p-assistant__bot-avatar" style="width: 1.75rem; height: 1.75rem">
+                <Bot class="w-3.5 h-3.5" />
+              </div>
+              <div class="p-assistant__bubble p-assistant__bubble--bot flex items-center gap-1.5 h-10">
+                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
+                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
+                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+              </div>
+            </div>
+        </div>
+
+        <div class="p-assistant__input-area">
+          <div class="p-assistant__input-group">
+            <Input
+              v-model="input"
+              @keypress.enter.native="handleSend"
+              placeholder="질문을 입력하세요..."
+              :disabled="isTyping"
+            />
+            <Button 
+              @click="handleSend" 
+              :disabled="!input.trim() || isTyping"
+            >
+              <Send class="w-4 h-4 mr-2" />
+              전송
+            </Button>
           </div>
+        </div>
       </div>
 
       <!-- Suggested Questions -->
-      <div class="p-ai__sidebar">
-        <div class="c-suggested-panel">
-          <div class="c-suggested-panel__header">
-            <h3 class="c-suggested-panel__title">질문 목록</h3>
-            <div class="c-suggested-panel__tabs">
-               <button v-for="tab in questionTabs" :key="tab.id"
-                  @click="activeTab = tab.id"
-                  :class="['c-suggested-panel__tab-btn', 
-                    activeTab === tab.id ? 'c-suggested-panel__tab-btn--active' : ''
-                  ]"
+      <div class="p-assistant__sidebar">
+        <div class="c-content-card p-assistant__sidebar-card">
+           <div class="p-assistant__sidebar-header">
+             <h3 class="p-assistant__sidebar-title">질문 목록</h3>
+             <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
+                <button
+                   v-for="tab in questionTabs" :key="tab.id"
+                   @click="activeTab = tab.id"
+                   class="flex-1 text-[10px] font-bold py-1.5 rounded-md transition-all text-center"
+                   :class="activeTab === tab.id 
+                     ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
+                     : 'text-slate-500 hover:text-slate-700'"
+                >
+                   {{ tab.label }}
+                </button>
+             </div>
+           </div>
+           
+           <div class="p-assistant__question-list">
+               <button
+                 v-for="(item, idx) in currentQuestions"
+                 :key="idx"
+                 @click="handleSuggestedQuestion(item.question)"
+                 class="p-assistant__question-btn group"
                >
-                  {{ tab.label }}
+                 <div class="p-assistant__question-icon-box">
+                    <component :is="item.icon" class="w-3.5 h-3.5" />
+                 </div>
+                 <span class="p-assistant__question-text">{{ item.question }}</span>
                </button>
-            </div>
-          </div>
-          <div class="c-suggested-panel__list">
-              <button
-                v-for="(item, idx) in currentQuestions"
-                :key="idx"
-                @click="handleSuggestedQuestion(item.question)"
-                class="c-question-item"
-              >
-                <div class="c-question-item__inner">
-                  <component :is="item.icon" class="c-question-item__icon" />
-                  <span class="c-question-item__text">{{ item.question }}</span>
-                </div>
-              </button>
-          </div>
+           </div>
         </div>
       </div>
     </div>
@@ -150,9 +152,6 @@ export default {
           { id: 'frequent', label: '자주 묻는 질문' },
           { id: 'all', label: '전체 질문' }
       ],
-      // Question Data loaded in data to avoid reactivity issues with icons if not careful, 
-      // but in Vue 2 we can just use strings for icon names or component references.
-      // Using component references here.
       questions: {
           suggested: [
             { icon: 'TrendingUp', question: 'KOSPI 지수가 최근 상승한 이유는?' },
@@ -242,5 +241,5 @@ export default {
   }
 };
 </script>
-<style src="@/assets/css/pages/ai.css"></style>
 
+<style src="@/assets/css/pages/assistant.css"></style>

@@ -1,0 +1,317 @@
+/* Today's Pick Page Styles */
+
+.p-today-pick {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-today-pick__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 2rem;
+}
+
+.p-today-pick__highlight-icon {
+    width: 2rem;
+    height: 2rem;
+    color: #f59e0b;
+    fill: currentColor;
+}
+
+.p-today-pick__title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pick List */
+.p-today-pick__grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-today-pick__card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    background-color: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 1.25rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.dark .p-today-pick__card {
+    background-color: var(--slate-900);
+    border-color: var(--slate-800);
+}
+
+.p-today-pick__card:hover {
+    border-color: var(--slate-300);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+.dark .p-today-pick__card:hover {
+    border-color: var(--slate-700);
+}
+
+/* Watchlist Toggle */
+.p-today-pick__favorite-btn {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--slate-50);
+    border: 1px solid var(--slate-100);
+    color: var(--slate-400);
+    transition: all 0.2s ease;
+}
+
+.dark .p-today-pick__favorite-btn {
+    background-color: var(--slate-800);
+    border-color: var(--slate-700);
+}
+
+.p-today-pick__favorite-btn--active {
+    color: #f59e0b;
+    background-color: #fffbeb;
+    border-color: #fef3c7;
+}
+
+.dark .p-today-pick__favorite-btn--active {
+    background-color: rgba(245, 158, 11, 0.1);
+    border-color: rgba(245, 158, 11, 0.2);
+}
+
+/* Rank & Badge */
+.p-today-pick__rank-box {
+    margin-bottom: 1rem;
+}
+
+.p-today-pick__rank-icon {
+    width: 3rem;
+    height: 3rem;
+}
+
+.rank-icon-gold { color: #f59e0b; filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.3)); }
+.rank-icon-silver { color: #94a3b8; filter: drop-shadow(0 0 8px rgba(148, 163, 184, 0.3)); }
+.rank-icon-bronze { color: #b45309; filter: drop-shadow(0 0 8px rgba(180, 83, 9, 0.3)); }
+
+/* Core Info */
+.p-today-pick__core-info {
+    display: flex;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.p-today-pick__icon-container {
+    width: 3.5rem;
+    height: 3.5rem;
+    border-radius: 1rem;
+    background-color: var(--slate-50);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--slate-900);
+    border: 1px solid var(--slate-100);
+}
+
+.dark .p-today-pick__icon-container {
+    background-color: var(--slate-800);
+    color: white;
+    border-color: var(--slate-700);
+}
+
+.p-today-pick__name-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-today-pick__name-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+}
+
+.p-today-pick__name {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--slate-900);
+}
+
+.dark .p-today-pick__name {
+    color: white;
+}
+
+.p-today-pick__tag {
+    font-size: 0.75rem;
+    font-weight: 700;
+    background-color: var(--slate-100);
+    color: var(--slate-600);
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.5rem;
+}
+
+.dark .p-today-pick__tag {
+    background-color: var(--slate-800);
+    color: var(--slate-400);
+}
+
+.p-today-pick__ticker {
+    font-size: 0.875rem;
+    color: var(--slate-500);
+    font-family: monospace;
+    margin-bottom: 0.75rem;
+}
+
+.p-today-pick__stats-badge-row {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.p-today-pick__ai-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    background-color: #eff6ff;
+    color: #3b82f6;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.dark .p-today-pick__ai-badge {
+    background-color: rgba(59, 130, 246, 0.1);
+}
+
+.p-today-pick__timing-badge {
+    font-size: 0.75rem;
+    font-weight: 800;
+    background-color: #fef2f2;
+    color: #ef4444;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.dark .p-today-pick__timing-badge {
+    background-color: rgba(239, 68, 68, 0.1);
+}
+
+/* Metrics Dashboard */
+.p-today-pick__metrics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--slate-50);
+    border: 1px solid var(--slate-100);
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+@media (min-width: 640px) {
+    .p-today-pick__metrics {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.dark .p-today-pick__metrics {
+    background-color: var(--slate-800);
+    border-color: var(--slate-700);
+}
+
+.p-today-pick__metric-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.p-today-pick__metric-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-400);
+    text-transform: uppercase;
+}
+
+.p-today-pick__metric-value {
+    font-size: 1.125rem;
+    font-weight: 800;
+    color: var(--slate-900);
+}
+
+.dark .p-today-pick__metric-value {
+    color: white;
+}
+
+.p-today-pick__upside-group {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.p-today-pick__upside-icon {
+    width: 1rem;
+    height: 1rem;
+}
+
+/* Reason Box */
+.p-today-pick__reason-box {
+    padding: 1.25rem;
+    background-color: #fffbeb;
+    border: 1px solid #fef3c7;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    gap: 1rem;
+}
+
+.dark .p-today-pick__reason-box {
+    background-color: rgba(245, 158, 11, 0.05);
+    border-color: rgba(245, 158, 11, 0.1);
+}
+
+.p-today-pick__reason-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+    color: #f59e0b;
+    flex-shrink: 0;
+}
+
+.p-today-pick__reason-title {
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: #92400e;
+    margin-bottom: 0.25rem;
+}
+
+.dark .p-today-pick__reason-title {
+    color: #fbbf24;
+}
+
+.p-today-pick__reason-text {
+    font-size: 0.9375rem;
+    color: #b45309;
+    line-height: 1.5;
+}
+
+.dark .p-today-pick__reason-text {
+    color: #d97706;
+}
+
+/* Actions */
+.p-today-pick__actions {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.p-today-pick__action-btn {
+    flex: 1;
+}

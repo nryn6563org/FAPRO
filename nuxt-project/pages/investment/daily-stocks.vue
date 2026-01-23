@@ -1,90 +1,89 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">오늘의 종목 일자별 보기</h2>
-      <p class="p-investment__desc">일자별 AI 추천 종목 및 성과</p>
+  <div class="p-daily-stocks">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">오늘의 종목 일자별 보기</h2>
+      <p class="c-page-header__desc">일자별 AI 추천 종목 및 성과</p>
     </div>
 
-    <div class="c-content-card">
-      <div class="c-content-card__header">
-         <div class="c-content-card__header-content">
-           <div class="u-flex-center-gap-3">
-             <CalendarDays class="u-icon-md-blue" />
-             <h3 class="u-text-xl-bold">{{ currentData.date }}</h3>
-             <span v-if="currentPage === 0" class="c-daily-today-badge">
-                오늘
-             </span>
-           </div>
-           <div class="c-content-card__actions">
-             <Button
-               variant="outline"
-               size="sm"
-               @click="currentPage++"
-               :disabled="!canGoPrev"
-             >
-               <ChevronLeft class="u-icon-sm" />
-             </Button>
-             <Button
-               variant="outline"
-               size="sm"
-               @click="currentPage--"
-               :disabled="!canGoNext"
-             >
-               <ChevronRight class="u-icon-sm" />
-             </Button>
-           </div>
-         </div>
+    <div class="c-content-card p-daily-stocks__card">
+      <div class="p-daily-stocks__header-row">
+        <div class="p-daily-stocks__date-info">
+          <div class="p-daily-stocks__calendar-icon-box">
+            <CalendarDays class="p-daily-stocks__calendar-icon" />
+          </div>
+          <div class="p-daily-stocks__date-wrapper">
+            <h3 class="p-daily-stocks__date-title">
+              {{ currentData.date }}
+              <span v-if="currentPage === 0" class="p-daily-stocks__today-badge">오늘</span>
+            </h3>
+          </div>
+        </div>
+        <div class="p-daily-stocks__nav-group">
+          <Button
+            variant="outline"
+            size="sm"
+            @click="currentPage++"
+            :disabled="!canGoPrev"
+          >
+            <ChevronLeft class="p-daily-stocks__nav-icon" />
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            @click="currentPage--"
+            :disabled="!canGoNext"
+          >
+            <ChevronRight class="p-daily-stocks__nav-icon" />
+          </Button>
+        </div>
       </div>
       
-      <div class="p-6">
-        <div class="c-daily-grid">
-           <div v-for="pick in currentData.picks" :key="pick.ticker" class="c-daily-card">
-              <div class="c-daily-card__score-pos">
-                 <span class="c-daily-card__score-badge">
-                    AI {{ pick.aiScore }}점
-                 </span>
+      <div class="p-daily-stocks__content-area">
+        <div class="p-daily-stocks__grid">
+          <div v-for="pick in currentData.picks" :key="pick.ticker" class="p-daily-stocks__pick-card">
+            <div class="p-daily-stocks__pick-header">
+              <div class="p-daily-stocks__pick-star-box">
+                <Star class="p-daily-stocks__pick-star-icon" />
               </div>
-              <div class="p-4 pb-3">
-                 <div class="u-flex-center-gap-2">
-                    <div class="c-daily-card__icon-box">
-                       <Star class="u-icon-md-blue" />
-                    </div>
-                    <div>
-                       <h3 class="u-text-lg-bold">{{ pick.name }}</h3>
-                       <p class="u-text-xs-slate-500">{{ pick.ticker }}</p>
-                    </div>
-                 </div>
+              <span class="p-daily-stocks__pick-ai-badge">
+                AI {{ pick.aiScore }}점
+              </span>
+            </div>
+            <div class="p-daily-stocks__pick-info">
+              <h3 class="p-daily-stocks__pick-name">{{ pick.name }}</h3>
+              <p class="p-daily-stocks__pick-ticker">{{ pick.ticker }}</p>
+            </div>
+            <div class="p-daily-stocks__pick-footer">
+              <div v-if="pick.result !== null" class="p-daily-stocks__pick-return-group">
+                <p class="p-daily-stocks__pick-return-label">수익률</p>
+                <p class="p-daily-stocks__pick-return-value" :class="pick.result >= 0 ? 'indicator--positive' : 'indicator--negative'">
+                  {{ pick.result >= 0 ? '+' : '' }}{{ pick.result }}%
+                </p>
               </div>
-              <div class="p-4 pt-0">
-                 <div v-if="pick.result !== null" :class="['c-daily-card__result-box', pick.result >= 0 ? 'c-daily-card__result-box--profit' : 'c-daily-card__result-box--loss']">
-                    <p class="u-text-xs-slate-600 mb-1">수익률</p>
-                    <p :class="['c-daily-card__result-val', pick.result >= 0 ? 'u-text-green-600' : 'u-text-red-600']">
-                       {{ pick.result >= 0 ? '+' : '' }}{{ pick.result }}%
-                    </p>
-                 </div>
-                 <div v-else class="c-daily-card__result-box c-daily-card__result-box--pending">
-                    <p class="u-text-sm u-text-slate-600 u-text-center">진행 중</p>
-                 </div>
-                 <Button variant="outline" class="u-w-full" size="sm">상세보기</Button>
+              <div v-else class="p-daily-stocks__pick-pending">
+                진행 중
               </div>
-           </div>
+              <Button variant="outline" size="sm" class="p-daily-stocks__pick-details-btn">상세보기</Button>
+            </div>
+          </div>
         </div>
 
-        <div v-if="hasResults" class="c-daily-stats-box">
-           <div class="u-flex-between">
-              <div>
-                 <p class="u-text-sm-slate-600 mb-1">일평균 수익률</p>
-                 <p class="u-text-2xl-bold u-text-green-600">
-                    +{{ averageReturn }}%
-                 </p>
-              </div>
-              <div class="u-text-right">
-                 <p class="u-text-sm-slate-600 mb-1">적중률</p>
-                 <p class="u-text-2xl-bold u-text-blue-600">
-                    {{ hitRate }}%
-                 </p>
-              </div>
-           </div>
+        <div v-if="hasResults" class="p-daily-stocks__stats-summary">
+          <div class="p-daily-stocks__stats-row">
+            <div class="p-daily-stocks__stat-item">
+              <p class="p-daily-stocks__stat-label">일평균 수익률</p>
+              <p class="p-daily-stocks__stat-value indicator--positive">
+                +{{ averageReturn }}%
+              </p>
+            </div>
+            <div class="p-daily-stocks__stat-divider"></div>
+            <div class="p-daily-stocks__stat-item">
+              <p class="p-daily-stocks__stat-label">적중률</p>
+              <p class="p-daily-stocks__stat-value" style="color: var(--blue-600)">
+                {{ hitRate }}%
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -175,5 +174,9 @@ export default {
   }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+
+<style src="@/assets/css/pages/daily-stocks.css"></style>
+</script>
+
+<style src="@/assets/css/pages/daily-stocks.css"></style>
 

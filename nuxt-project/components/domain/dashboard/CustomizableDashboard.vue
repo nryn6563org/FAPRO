@@ -38,7 +38,7 @@
         @end="drag=false"
     >
         <div 
-            v-for="(widgetId, index) in widgets" 
+            v-for="widgetId in widgets" 
             :key="widgetId"
             :class="['c-dashboard__grid-item', getWidgetGridClass(widgetId)]"
         >

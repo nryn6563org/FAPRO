@@ -1,63 +1,61 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">리포트 분석</h2>
-      <p class="p-investment__desc">증권사 애널리스트 리포트 및 목표가 분석</p>
+  <div class="p-report-analysis">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">리포트 분석</h2>
+      <p class="c-page-header__desc">증권사 애널리스트 리포트 및 목표가 분석</p>
     </div>
 
-    <div class="l-list-grid">
-      <div v-for="report in mockReports" :key="report.id" class="c-content-card c-content-card--hover">
-        <div class="c-report-card__header">
-           <div class="u-flex-between-start">
-              <div class="u-flex-center-gap-3-flex-1">
-                  <div class="c-report-card__icon-box">
-                     <FileBarChart class="c-report-card__icon" />
-                  </div>
-                  <div class="u-flex-1">
-                     <h3 class="c-report-card__title">{{ report.title }}</h3>
-                     <div class="c-report-card__meta">
-                        <Building2 class="u-icon-sm" />
-                        <span>{{ report.firm }}</span>
-                        <span>•</span>
-                        <span>{{ report.analyst }}</span>
-                        <span>•</span>
-                        <span>{{ report.date }}</span>
-                     </div>
-                  </div>
+    <div class="p-report-analysis__grid">
+      <div v-for="report in mockReports" :key="report.id" class="p-report-analysis__card">
+        <div class="p-report-analysis__card-header">
+          <div class="p-report-analysis__source-group">
+            <div class="p-report-analysis__icon-box">
+              <FileBarChart class="p-report-analysis__icon" />
+            </div>
+            <div class="p-report-analysis__title-group">
+              <h3 class="p-report-analysis__card-title">{{ report.title }}</h3>
+              <div class="p-report-analysis__metadata">
+                <Building2 class="p-report-analysis__meta-icon" />
+                <span>{{ report.firm }}</span>
+                <span>•</span>
+                <span>{{ report.analyst }}</span>
+                <span>•</span>
+                <span>{{ report.date }}</span>
               </div>
-              <span :class="['c-badge', getRatingColor(report.rating)]">
-                 {{ getRatingLabel(report.rating) }}
-              </span>
-           </div>
+            </div>
+          </div>
+          <span class="status-badge" :class="getRatingBadgeClass(report.rating)">
+            {{ getRatingLabel(report.rating) }}
+          </span>
         </div>
-        <div class="c-report-card__body">
-            <div class="c-report-card__data-grid">
-                <div>
-                   <p class="c-report-card__data-label">종목명</p>
-                   <p class="c-report-card__data-value">{{ report.stockName }}</p>
-                   <p class="c-report-card__data-subtext">{{ report.ticker }}</p>
-                </div>
-                <div>
-                   <p class="c-report-card__data-label">현재가</p>
-                   <p class="c-report-card__data-value">{{ report.currentPrice.toLocaleString() }}원</p>
-                </div>
-                <div>
-                   <p class="c-report-card__data-label">목표가</p>
-                   <p class="c-report-card__data-value u-text-primary">{{ report.targetPrice.toLocaleString() }}원</p>
-                </div>
-                <div>
-                   <p class="c-report-card__data-label">상승여력</p>
-                   <div class="u-flex-center-gap-1">
-                      <TrendingUp class="u-icon-sm u-text-up" />
-                      <p class="c-report-card__data-value u-text-up">+{{ report.upside }}%</p>
-                   </div>
-                </div>
+        <div class="p-report-analysis__card-body">
+          <div class="p-report-analysis__data-panel">
+            <div class="p-report-analysis__metric">
+              <p class="p-report-analysis__metric-label">종목명</p>
+              <p class="p-report-analysis__metric-value">{{ report.stockName }}</p>
+              <p class="p-report-analysis__metric-subtext">{{ report.ticker }}</p>
             </div>
+            <div class="p-report-analysis__metric">
+              <p class="p-report-analysis__metric-label">현재가</p>
+              <p class="p-report-analysis__metric-value">{{ report.currentPrice.toLocaleString() }}원</p>
+            </div>
+            <div class="p-report-analysis__metric">
+              <p class="p-report-analysis__metric-label">목표가</p>
+              <p class="p-report-analysis__metric-value" style="color: var(--blue-600)">{{ report.targetPrice.toLocaleString() }}원</p>
+            </div>
+            <div class="p-report-analysis__metric">
+              <p class="p-report-analysis__metric-label">상승여력</p>
+              <div class="p-report-analysis__upside-box">
+                <TrendingUp class="p-report-analysis__upside-icon indicator--positive" />
+                <span class="indicator--positive">+{{ report.upside }}%</span>
+              </div>
+            </div>
+          </div>
 
-            <div class="c-report-card__actions">
-               <Button variant="outline" class="u-flex-1">리포트 전문 보기</Button>
-               <Button class="u-flex-1">종목 상세보기</Button>
-            </div>
+          <div class="p-report-analysis__actions">
+            <Button variant="outline" class="p-report-analysis__action-btn">리포트 전문 보기</Button>
+            <Button class="p-report-analysis__action-btn">종목 상세보기</Button>
+          </div>
         </div>
       </div>
     </div>
@@ -134,16 +132,12 @@ export default {
     }
   },
   methods: {
-    getRatingColor(rating) {
+    getRatingBadgeClass(rating) {
       switch (rating) {
-        case 'Buy':
-          return 'c-badge--buy';
-        case 'Hold':
-          return 'c-badge--hold';
-        case 'Sell':
-          return 'c-badge--sell';
-        default:
-          return 'c-badge--default';
+        case 'Buy': return 'status-badge--positive';
+        case 'Hold': return 'status-badge--warning';
+        case 'Sell': return 'status-badge--danger';
+        default: return 'status-badge--info';
       }
     },
     getRatingLabel(rating) {
@@ -157,5 +151,6 @@ export default {
   }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+
+<style src="@/assets/css/pages/report-analysis.css"></style>
 

@@ -1,0 +1,264 @@
+/* Recommend Stocks Page Styles */
+
+.p-recommend-stocks {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-recommend-stocks__content {
+    padding: 1.5rem;
+}
+
+.p-recommend-stocks__tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    background-color: var(--slate-100);
+    padding: 0.375rem;
+    border-radius: 0.75rem;
+    align-self: flex-start;
+}
+
+.dark .p-recommend-stocks__tabs {
+    background-color: var(--slate-800);
+}
+
+.p-recommend-stocks__tab-button {
+    padding: 0.5rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    border-radius: 0.5rem;
+    transition: all 0.2s ease;
+    color: var(--slate-500);
+}
+
+.p-recommend-stocks__tab-button--active {
+    background-color: white;
+    color: var(--slate-900);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.dark .p-recommend-stocks__tab-button--active {
+    background-color: var(--slate-700);
+    color: white;
+}
+
+.p-recommend-stocks__list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 1024px) {
+    .p-recommend-stocks__list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.p-recommend-stocks__item {
+    background-color: white;
+    border: 1px solid var(--slate-200);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.dark .p-recommend-stocks__item {
+    background-color: var(--slate-900);
+    border-color: var(--slate-800);
+}
+
+.p-recommend-stocks__item:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-color: var(--blue-200);
+}
+
+.dark .p-recommend-stocks__item:hover {
+    border-color: var(--blue-900);
+}
+
+.p-recommend-stocks__item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.p-recommend-stocks__item-identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.p-recommend-stocks__item-icon-box {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.75rem;
+    background-color: #dbeafe;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #3b82f6;
+}
+
+.dark .p-recommend-stocks__item-icon-box {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.p-recommend-stocks__item-icon {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.p-recommend-stocks__item-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--slate-900);
+}
+
+.dark .p-recommend-stocks__item-name {
+    color: white;
+}
+
+.p-recommend-stocks__item-ticker {
+    font-size: 0.8125rem;
+    color: var(--slate-500);
+}
+
+.p-recommend-stocks__item-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    align-items: flex-end;
+}
+
+.p-recommend-stocks__score-badge {
+    background: linear-gradient(135deg, #8b5cf6 0%, #ec4899 100%);
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+}
+
+.p-recommend-stocks__confidence {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate-400);
+}
+
+.p-recommend-stocks__stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    padding: 1.25rem;
+    background-color: var(--slate-50);
+    border-radius: 1rem;
+}
+
+.dark .p-recommend-stocks__stats {
+    background-color: var(--slate-800);
+}
+
+.p-recommend-stocks__stat-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.p-recommend-stocks__stat-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-500);
+    text-transform: uppercase;
+}
+
+.p-recommend-stocks__stat-value {
+    font-size: 1rem;
+    font-weight: 800;
+    color: var(--slate-900);
+}
+
+.dark .p-recommend-stocks__stat-value {
+    color: white;
+}
+
+.p-recommend-stocks__stat-value--primary {
+    color: #3b82f6;
+}
+
+.p-recommend-stocks__stat-upside {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.p-recommend-stocks__upside-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.p-recommend-stocks__reason-box {
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+    background-color: #f0f9ff;
+    border: 1px solid #bae6fd;
+    border-radius: 0.75rem;
+}
+
+.dark .p-recommend-stocks__reason-box {
+    background-color: rgba(59, 130, 246, 0.1);
+    border-color: rgba(59, 130, 246, 0.2);
+}
+
+.p-recommend-stocks__reason-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    color: #3b82f6;
+    flex-shrink: 0;
+}
+
+.p-recommend-stocks__reason-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.p-recommend-stocks__reason-text {
+    font-size: 0.875rem;
+    color: var(--slate-700);
+    line-height: 1.5;
+}
+
+.dark .p-recommend-stocks__reason-text {
+    color: var(--slate-300);
+}
+
+.p-recommend-stocks__period-info {
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-500);
+}
+
+.p-recommend-stocks__clock-icon {
+    width: 0.875rem;
+    height: 0.875rem;
+}
+
+.p-recommend-stocks__footer {
+    display: flex;
+    margin-top: auto;
+}
+
+.p-recommend-stocks__details-button {
+    width: 100%;
+}

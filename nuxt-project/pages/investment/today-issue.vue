@@ -1,169 +1,148 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">오늘의 이슈</h2>
-      <p class="p-investment__desc">실시간으로 업데이트되는 주요 시장 이슈</p>
+  <div class="p-today-issue">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">오늘의 이슈</h2>
+      <p class="c-page-header__desc">실시간으로 업데이트되는 시장 주요 이슈</p>
     </div>
 
-    <!-- AI Issue Bubble Section -->
-    <div class="c-content-card">
-        <div class="c-content-card__header">
-             <div class="c-content-card__header-content">
-                <div class="u-flex-center-gap-2">
-                   <Sparkles class="u-icon-md-blue" />
-                   <h3 class="c-content-card__title">AI이슈포착</h3>
-                   <span v-if="selectedKeyword" class="c-issue-keyword-badge">{{ selectedKeyword }}</span>
-                </div>
-                <div class="c-content-card__subtitle">
-                   {{ currentDate }}
-                </div>
-             </div>
+    <!-- AI Issue Capture Section -->
+    <div class="p-today-issue__capture-card l-section-gap">
+      <div class="p-today-issue__capture-header">
+        <div class="p-today-issue__capture-title-group">
+          <Sparkles class="p-today-issue__capture-icon" />
+          <h3 class="p-today-issue__capture-title">AI 이슈 포착</h3>
+          <span v-if="selectedKeyword" class="p-today-issue__keyword-tag">{{ selectedKeyword }}</span>
         </div>
-        <div class="c-content-card__body">
-            <div class="l-analysis-grid l-analysis-grid--lg">
-                <!-- Left: Bubble Chart -->
-                <div class="c-issue-bubble-section">
-                    <div class="c-issue-bubble-tabs">
-                        <Button
-                           v-for="tab in [{id:'domestic', label:'국내이슈포착'}, {id:'us', label:'미국이슈포착'}]"
-                           :key="tab.id"
-                           :variant="selectedTab === tab.id ? 'default' : 'outline'"
-                           size="sm"
-                           @click="changeTab(tab.id)"
-                           :class="selectedTab === tab.id ? 'c-tab-btn--active' : ''"
-                        >
-                            {{ tab.label }}
-                        </Button>
-                    </div>
-
-                    <div class="c-issue-bubble-chart">
-                        <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                            <g v-for="(bubble, idx) in currentBubbles" 
-                               :key="idx" 
-                               @click="handleKeywordChange(bubble.keyword)"
-                               class="cursor-pointer hover:opacity-100 transition-opacity"
-                               :style="{ opacity: selectedKeyword === bubble.keyword ? 1 : 0.85 }"
-                            >
-                                <circle
-                                    :cx="bubble.x"
-                                    :cy="bubble.y"
-                                    :r="bubble.size / 14"
-                                    :fill="bubble.color"
-                                    :stroke="selectedKeyword === bubble.keyword ? '#1e40af' : 'none'"
-                                    :stroke-width="selectedKeyword === bubble.keyword ? 0.5 : 0"
-                                />
-                                <text
-                                    :x="bubble.x"
-                                    :y="bubble.y"
-                                    text-anchor="middle"
-                                    dominant-baseline="middle"
-                                    fill="white"
-                                    :font-size="bubble.size / 24"
-                                    font-weight="600"
-                                    class="pointer-events-none select-none"
-                                >
-                                    {{ bubble.keyword }}
-                                </text>
-                            </g>
-                        </svg>
-
-                        <!-- Time & Refresh -->
-                        <div class="c-issue-bubble-legend">
-                             <div class="u-text-xs u-text-slate-600">
-                                <div class="u-font-semibold">{{ currentDate }}</div>
-                                <div class="u-text-slate-500">{{ currentTime }}</div>
-                             </div>
-                             <div class="u-divider-vertical"></div>
-                             <button @click="handleRefresh" class="u-w-8 u-h-8 u-flex-center justify-center hover:bg-blue-50 rounded-full">
-                                <RefreshCw class="u-icon-sm u-text-blue-600" />
-                             </button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Right: Chart and Analysis -->
-                <div class="c-issue-right-panel">
-                    <div class="u-flex-1 flex flex-col">
-                         <div class="c-issue-chart-header">
-                             <h3 class="u-font-semibold u-text-blue-600">
-                                 {{ selectedKeyword }} 검색빈도 및 종목 누적 등락률
-                             </h3>
-                             <button class="u-text-xs-slate-500 u-hover-text-slate-800">더보기 →</button>
-                         </div>
-                         <div class="c-issue-chart-area">
-                             <LineChart v-if="chartDataConfig" :chart-data="chartDataConfig" :options="chartOptions" class="u-full" />
-                         </div>
-                    </div>
-
-                    <div class="c-issue-stock-section">
-                        <h4 class="font-semibold mb-2">오늘의 주요 종목</h4>
-                         <div class="c-issue-stock-list">
-                            <div v-for="(stock, idx) in currentData.stocks" :key="idx" class="c-issue-stock-item">
-                                 <span class="u-font-medium">{{ stock.name }}</span>
-                                 <span class="u-text-issue-up">{{ stock.rate }}</span>
-                            </div>
-                         </div>
-                    </div>
-
-                    <div class="c-issue-news-box">
-                        <h4 class="u-font-semibold u-text-blue-800 u-mb-1 u-flex-center-gap-2">
-                            <FileText class="u-icon-sm" />
-                            AI 뉴스 요약
-                        </h4>
-                        <h5 class="u-font-medium u-text-sm u-text-blue-900 u-mb-1">{{ currentData.news.title }}</h5>
-                         <p class="u-text-summary">{{ currentData.news.content }}</p>
-                    </div>
-                </div>
-            </div>
+        <div class="p-today-issue__metadata">
+          {{ currentDate }}
         </div>
-    </div>
+      </div>
 
-    <!-- Issue List -->
-    <div class="c-issue-list-card">
-        <h3 class="c-issue-list-title">{{ selectedKeyword }} 관련 이슈</h3>
-        <div class="space-y-4">
-            <div v-for="issue in currentIssues" :key="issue.id" class="c-issue-list-item">
-                 <div class="c-issue-list-item__header">
-                     <div class="u-flex-center-gap-2">
-                         <span class="c-issue-list-item__date">{{ issue.date }}</span>
-                         <h4 class="font-semibold text-lg">{{ issue.title }}</h4>
-                     </div>
-                     <span :class="['u-flex-center u-text-sm u-font-bold', issue.trend === 'up' ? 'u-text-red-500' : 'u-text-blue-500']">
-                        <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="u-icon-sm u-mr-1" />
-                        {{ issue.changeRate }}%
-                     </span>
-                 </div>
-                 <p class="u-text-sm u-text-slate-700 u-font-medium u-mb-2">{{ issue.summary }}</p>
-                 <p class="u-text-summary">{{ issue.newsContent }}</p>
-                 <div class="mt-3 flex justify-end">
-                     <Button variant="outline" size="sm" class="u-text-xs">
-                        상세보기 <ChevronRight class="u-icon-xs u-ml-1" />
-                     </Button>
-                 </div>
-            </div>
-        </div>
-
-        <div class="c-issue-pagination">
-            <Button
-                variant="outline"
-                size="sm"
-                :disabled="currentPage === 1"
-                @click="currentPage--"
-            >
-                이전
-            </Button>
-            <span class="u-flex-center u-px-4 u-text-sm u-text-slate-600">
-                {{ currentPage }} / {{ totalPages }}
-            </span>
+      <div class="p-today-issue__capture-layout">
+        <!-- Left: Bubble Chart Visual -->
+        <div class="p-today-issue__bubble-panel">
+          <div class="p-today-issue__bubble-nav l-tab-gap">
              <Button
-                variant="outline"
-                size="sm"
-                :disabled="currentPage === totalPages"
-                @click="currentPage++"
-            >
-                다음
-            </Button>
+                v-for="tab in [{id:'domestic', label:'국내'}, {id:'us', label:'미국'}]"
+                :key="tab.id"
+                @click="changeTab(tab.id)"
+                :class="selectedTab === tab.id ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
+             >
+                {{ tab.label }} 이슈
+             </Button>
+          </div>
+
+          <div class="p-today-issue__bubble-field">
+            <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+              <g
+                v-for="(bubble, idx) in currentBubbles" 
+                :key="idx" 
+                @click="handleKeywordChange(bubble.keyword)"
+                class="c-bubble-group"
+                :style="{ opacity: selectedKeyword === bubble.keyword ? 1 : 0.8 }"
+              >
+                <circle
+                  :cx="bubble.x"
+                  :cy="bubble.y"
+                  :r="bubble.size / 14"
+                  :fill="bubble.color"
+                  :stroke="selectedKeyword === bubble.keyword ? '#2563eb' : 'none'"
+                  stroke-width="0.5"
+                />
+                <text
+                  :x="bubble.x"
+                  :y="bubble.y"
+                  text-anchor="middle"
+                  dominant-baseline="middle"
+                  fill="white"
+                  :font-size="bubble.size / 24"
+                  font-weight="700"
+                  class="p-today-issue__bubble-text"
+                >
+                  {{ bubble.keyword }}
+                </text>
+              </g>
+            </svg>
+
+            <div class="p-today-issue__legend">
+              <div class="p-today-issue__timestamp">
+                <span class="p-today-issue__timestamp-date">{{ currentDate }}</span>
+                <span class="p-today-issue__timestamp-time">{{ currentTime }} 기준</span>
+              </div>
+              <button @click="handleRefresh" class="p-today-issue__refresh-btn" title="새로고침">
+                <RefreshCw class="p-today-issue__refresh-icon" />
+              </button>
+            </div>
+          </div>
         </div>
+
+        <!-- Right: Detail Panel -->
+        <div class="p-today-issue__detail-panel">
+          <div class="p-today-issue__chart-card">
+            <div class="p-today-issue__chart-header">
+              <span class="p-today-issue__chart-label">{{ selectedKeyword }} 트렌드 분석</span>
+              <button class="p-today-issue__chart-link">데이터 상세보기 →</button>
+            </div>
+            <div class="p-today-issue__chart-canvas">
+               <LineChart v-if="chartDataConfig" :chart-data="chartDataConfig" :options="chartOptions" />
+            </div>
+          </div>
+
+          <div class="p-today-issue__stock-section">
+            <h4 class="p-today-issue__section-title">실시간 연관 종목</h4>
+            <div class="p-today-issue__stock-grid">
+              <div v-for="(stock, idx) in currentData.stocks" :key="idx" class="p-today-issue__stock-item">
+                <span>{{ stock.name }}</span>
+                <span class="indicator--positive">{{ stock.rate }}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="p-today-issue__briefing-card">
+            <h4 class="p-today-issue__briefing-title">
+              <FileText class="p-today-issue__briefing-icon" />
+              AI 실시간 브리핑
+            </h4>
+            <div class="p-today-issue__briefing-headline">{{ currentData.news.title }}</div>
+            <p class="p-today-issue__briefing-content">{{ currentData.news.content }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom: Issue Feed Section -->
+    <div class="c-content-card p-today-issue__feed-card">
+      <h3 class="p-today-issue__feed-title l-tab-gap">
+        <span>{{ selectedKeyword }} 히스토리</span>
+      </h3>
+      <div class="p-today-issue__feed-list">
+        <div v-for="issue in currentIssues" :key="issue.id" class="p-today-issue__feed-item group">
+          <div class="p-today-issue__feed-item-header">
+            <div class="p-today-issue__feed-item-meta">
+              <span class="p-today-issue__feed-item-date">{{ issue.date }}</span>
+              <h4 class="p-today-issue__feed-item-title">{{ issue.title }}</h4>
+            </div>
+            <div class="p-today-issue__feed-item-trend" :class="issue.trend === 'up' ? 'indicator--positive' : 'indicator--negative'">
+              <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="p-today-issue__trend-icon" />
+              <span>{{ issue.changeRate }}%</span>
+            </div>
+          </div>
+          <div class="p-today-issue__feed-item-summary">{{ issue.summary }}</div>
+          <p class="p-today-issue__feed-item-desc">{{ issue.newsContent }}</p>
+          <div class="p-today-issue__feed-item-actions">
+            <Button variant="outline" size="sm" class="p-today-issue__feed-btn">
+              이슈 분석 리포트 <ChevronRight class="ml-1 h-4 w-4" />
+            </Button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="p-today-issue__pagination">
+        <Button variant="outline" size="sm" :disabled="currentPage === 1" @click="currentPage--" class="p-today-issue__page-btn">이전</Button>
+        <span class="p-today-issue__page-info">{{ currentPage }} / {{ totalPages }}</span>
+        <Button variant="outline" size="sm" :disabled="currentPage === totalPages" @click="currentPage++" class="p-today-issue__page-btn">다음</Button>
+      </div>
     </div>
   </div>
 </template>
@@ -360,5 +339,5 @@ export default {
   }
 };
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+<style src="@/assets/css/pages/today-issue.css"></style>
 

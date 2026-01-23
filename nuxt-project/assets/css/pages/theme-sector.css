@@ -1,0 +1,207 @@
+/* Theme & Sector Analysis Page Styles */
+
+.p-theme-sector {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.p-theme-sector__tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.p-theme-sector__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+    .p-theme-sector__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.p-theme-sector__card {
+    background-color: white;
+    padding: 1.5rem;
+    border: 1px solid var(--slate-200);
+    border-radius: 1rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.dark .p-theme-sector__card {
+    background-color: var(--slate-900);
+    border-color: var(--slate-800);
+}
+
+.p-theme-sector__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+.p-theme-sector__theme-info {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.p-theme-sector__icon-box {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: 0.75rem;
+    background-color: #f1f5f9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #64748b;
+}
+
+.dark .p-theme-sector__icon-box {
+    background-color: var(--slate-800);
+    color: var(--slate-400);
+}
+
+.p-theme-sector__theme-title-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.p-theme-sector__theme-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--slate-900);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dark .p-theme-sector__theme-name {
+    color: white;
+}
+
+.p-theme-sector__stock-count {
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--slate-400);
+}
+
+.p-theme-sector__theme-change {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    margin-top: 0.125rem;
+}
+
+.p-theme-sector__table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.p-theme-sector__table-th {
+    padding: 0.5rem 0;
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--slate-400);
+    text-transform: uppercase;
+    text-align: left;
+    border-bottom: 1px solid var(--slate-100);
+}
+
+.p-theme-sector__table-th--right {
+    text-align: right;
+}
+
+.dark .p-theme-sector__table-th {
+    border-bottom-color: var(--slate-800);
+}
+
+.p-theme-sector__table-tr {
+    border-bottom: 1px solid var(--slate-50);
+}
+
+.dark .p-theme-sector__table-tr {
+    border-bottom-color: var(--slate-800/50);
+}
+
+.p-theme-sector__table-tr:last-child {
+    border-bottom: none;
+}
+
+.p-theme-sector__table-td {
+    padding: 0.75rem 0;
+}
+
+.p-theme-sector__table-td--right {
+    text-align: right;
+}
+
+.p-theme-sector__stock-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.p-theme-sector__stock-badge {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 800;
+    flex-shrink: 0;
+}
+
+.p-theme-sector__stock-name {
+    font-weight: 600;
+    color: var(--slate-700);
+    transition: color 0.2s ease;
+}
+
+.dark .p-theme-sector__stock-name {
+    color: var(--slate-300);
+}
+
+.p-theme-sector__table-tr:hover .p-theme-sector__stock-name {
+    color: #3b82f6;
+}
+
+.p-theme-sector__stock-price {
+    font-weight: 700;
+    color: var(--slate-900);
+}
+
+.dark .p-theme-sector__stock-price {
+    color: white;
+}
+
+.p-theme-sector__stock-change {
+    font-weight: 700;
+}
+
+/* Stock Badge Colors */
+.stock-badge--blue { background-color: #3b82f6; }
+.stock-badge--indigo { background-color: #6366f1; }
+.stock-badge--purple { background-color: #8b5cf6; }
+.stock-badge--pink { background-color: #ec4899; }
+.stock-badge--red { background-color: #ef4444; }
+.stock-badge--orange { background-color: #f97316; }
+.stock-badge--amber { background-color: #f59e0b; }
+.stock-badge--yellow { background-color: #eab308; }
+.stock-badge--lime { background-color: #84cc16; }
+.stock-badge--green { background-color: #22c55e; }
+.stock-badge--emerald { background-color: #10b981; }
+.stock-badge--teal { background-color: #14b8a6; }
+.stock-badge--cyan { background-color: #06b6d4; }
+.stock-badge--sky { background-color: #0ea5e9; }
+.stock-badge--violet { background-color: #7c3aed; }
+.stock-badge--fuchsia { background-color: #d946ef; }

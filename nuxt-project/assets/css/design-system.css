@@ -1,0 +1,173 @@
+/* Pro Design System Tokens & Utilities */
+
+:root {
+  /* Slate Palette Refresh */
+  --slate-50: #f8fafc;
+  --slate-100: #f1f5f9;
+  --slate-200: #e2e8f0;
+  --slate-300: #cbd5e1;
+  --slate-400: #94a3b8;
+  --slate-500: #64748b;
+  --slate-600: #475569;
+  --slate-700: #334155;
+  --slate-800: #1e293b;
+  --slate-900: #0f172a;
+
+  /* Brand & Status */
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --red-500: #ef4444;
+  --red-600: #dc2626;
+
+  /* App Specific */
+  --card-bg: #ffffff;
+  --card-border: var(--slate-200);
+  --interactive-border: var(--slate-300);
+  --section-bg: var(--slate-50);
+
+  /* Spacing Standard (User Request) */
+  --gap-title-content: 1.25rem;   /* 20px */
+  --gap-group-group: 2.5rem;      /* 40px */
+  --gap-tab-content: 0.625rem;    /* 10px */
+  --padding-h-offset: 0.3125rem;  /* 5px - to align title with content box inner space */
+}
+
+.dark {
+  --card-bg: var(--slate-900);
+  --card-border: var(--slate-800);
+  --interactive-border: var(--slate-700);
+  --section-bg: rgba(30, 41, 59, 0.5);
+}
+
+@layer components {
+  /* 
+   * CONTENT CARDS
+   * Unified style for all content containers with stronger border and shadow
+   */
+  .c-content-card {
+    background-color: var(--card-bg);
+    border-radius: 0.75rem;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    overflow: hidden;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .c-content-card:hover {
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border-color: var(--interactive-border);
+  }
+
+  /*
+   * PAGE HEADER
+   * Added horizontal padding and specific gap
+   */
+  .c-page-header {
+    margin-bottom: var(--gap-title-content);
+    padding-left: var(--padding-h-offset);
+    padding-right: var(--padding-h-offset);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .c-page-header__title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    letter-spacing: -0.025em;
+    color: var(--slate-900);
+  }
+  
+  .dark .c-page-header__title {
+    color: white;
+  }
+
+  .c-page-header__desc {
+    font-size: 1rem;
+    color: var(--slate-500);
+    font-weight: 500;
+  }
+
+  /* 
+   * LAYOUT UTILITIES
+   */
+  .l-section-gap {
+    margin-bottom: var(--gap-group-group);
+  }
+
+  .l-tab-gap {
+    margin-bottom: var(--gap-tab-content);
+    padding-left: var(--padding-h-offset);
+    padding-right: var(--padding-h-offset);
+  }
+
+  /* 
+   * INTERACTIVE ELEMENTS (Tabs & Buttons)
+   */
+  .investment-tab-trigger--active {
+    background-color: var(--blue-600) !important;
+    color: white !important;
+    font-weight: 800 !important;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+    border: none !important;
+    transition: all 0.2s ease;
+  }
+
+  .investment-tab-trigger--inactive {
+    background-color: var(--slate-100) !important;
+    color: var(--slate-500) !important;
+    font-weight: 600 !important;
+    border: 1px solid var(--slate-200) !important;
+    transition: all 0.2s ease;
+  }
+
+  .dark .investment-tab-trigger--inactive {
+    background-color: var(--slate-800) !important;
+    color: var(--slate-400) !important;
+    border-color: var(--slate-700) !important;
+  }
+
+  .investment-tab-trigger--inactive:hover {
+    background-color: var(--slate-200) !important;
+    color: var(--slate-900) !important;
+  }
+
+  .dark .investment-tab-trigger--inactive:hover {
+    background-color: var(--slate-700) !important;
+    color: white !important;
+  }
+
+  /* Standard Button Active Distinction */
+  .c-button--active {
+    border: 2px solid var(--blue-600) !important;
+    background-color: var(--blue-50) !important;
+    color: var(--blue-600) !important;
+  }
+
+  .dark .c-button--active {
+    background-color: rgba(37, 99, 235, 0.1) !important;
+    border-color: var(--blue-500) !important;
+    color: var(--blue-400) !important;
+  }
+
+  /*
+   * GLOBAL INDICATORS - Korean Market (Red+, Blue-)
+   */
+  .indicator--positive {
+    color: var(--red-500) !important;
+    font-weight: 700;
+  }
+  
+  .indicator--negative {
+    color: var(--blue-500) !important;
+    font-weight: 700;
+  }
+
+  .indicator--neutral {
+    color: var(--slate-400);
+    font-weight: 500;
+  }
+}

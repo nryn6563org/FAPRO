@@ -1,84 +1,91 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">수급분석</h2>
-      <p class="p-investment__desc">기관 및 외국인 매수 동향 분석</p>
+  <div class="p-supply-analysis">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">수급분석</h2>
+      <p class="c-page-header__desc">기관 및 외국인 매수 동향 분석</p>
     </div>
 
-    <div class="c-content-card">
-      <div class="c-content-card__header">
-        <h3 class="c-content-card__title u-mb-4">수급 현황</h3>
-        <div class="c-content-card__actions flex-wrap">
-           <Button v-for="tab in tabs" :key="tab"
-             :variant="selectedTab === tab ? 'default' : 'outline'"
-             size="sm"
-             :class="selectedTab === tab ? 'c-tab-btn--active' : ''"
-             @click="selectedTab = tab"
-           >
-             {{ tab }}
-           </Button>
-        </div>
+    <div class="c-content-card p-supply-analysis__card l-section-gap" style="padding: 1.5rem">
+      <div class="p-supply-analysis__header">
+         <h3 class="p-supply-analysis__title">수급 현황</h3>
+         <div class="p-supply-analysis__tabs">
+            <Button
+              v-for="tab in tabs" :key="tab"
+              variant="outline"
+              size="sm"
+              :class="selectedTab === tab ? 'investment-tab-trigger--active' : 'investment-tab-trigger--inactive'"
+              @click="selectedTab = tab"
+            >
+              {{ tab }}
+            </Button>
+         </div>
       </div>
 
-      <div class="c-content-card__body">
-        <div class="u-flex-end-mb-4">
-           <span class="u-text-sm-slate-600">업데이트 {{ currentDate }} {{ currentTime }}</span>
+      <div>
+        <div class="p-supply-analysis__metadata">
+           업데이트 {{ currentDate }} {{ currentTime }}
         </div>
 
-        <div v-if="selectedTab === '순매수'" class="l-analysis-grid">
-             <!-- Pure Buy Logic (4 tables) -->
-             <div v-for="section in ['기관 코스피', '기관 코스닥', '외국인 코스피', '외국인 코스닥']" :key="section">
-                 <h3 class="u-text-sm-bold-slate-800 mb-2">{{ section }}</h3>
-                 <div class="u-overflow-x-auto">
-                    <table class="u-w-full">
-                        <thead>
-                            <tr class="c-price-table-thead-tr">
-                                <th class="c-supply-table-th">종목명</th>
-                                <th class="c-supply-table-th--right">순매수금액</th>
-                                <th class="c-supply-table-th--right">등락률</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr v-for="(stock, idx) in mockDataByTab['순매수'].slice(0, 5)" :key="idx" class="c-price-table-tr">
-                                <td class="c-supply-table-td--name">
-                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
-                                    <span class="truncate">{{ stock.stockName }}</span>
-                                </td>
-                                <td class="c-supply-table-td--amount">{{ stock.netBuyAmount }}억</td>
-                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
-                                    {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                 </div>
-             </div>
+        <div v-if="selectedTab === '순매수'" class="p-supply-analysis__grid-4">
+              <div v-for="section in ['기관 코스피', '기관 코스닥', '외국인 코스피', '외국인 코스닥']" :key="section" class="p-supply-analysis__section">
+                  <h3 class="p-supply-analysis__section-title">{{ section }}</h3>
+                  <div class="p-supply-analysis__table-wrapper">
+                     <table class="p-supply-analysis__table">
+                          <thead>
+                              <tr>
+                                  <th>종목명</th>
+                                  <th style="text-align: right">금액</th>
+                                  <th style="text-align: right">등락</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                              <tr v-for="(stock, idx) in mockDataByTab['순매수'].slice(0, 5)" :key="idx">
+                                  <td>
+                                      <div class="p-supply-analysis__stock-mini">
+                                        <div class="p-supply-analysis__stock-dot" :class="getStockColor(stock.stockName)">{{ stock.stockName[0] }}</div>
+                                        <span class="truncate" style="max-width: 60px">{{ stock.stockName }}</span>
+                                      </div>
+                                  </td>
+                                  <td style="text-align: right; font-weight: 700">{{ stock.netBuyAmount }}억</td>
+                                  <td style="text-align: right">
+                                      <span :class="stock.changeRate > 0 ? 'indicator--positive' : 'indicator--negative'">
+                                        {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
+                                      </span>
+                                  </td>
+                              </tr>
+                          </tbody>
+                     </table>
+                  </div>
+              </div>
         </div>
 
-        <div v-else class="c-supply-grid-split">
-            <!-- Normal Tab (2 tables: Inst vs Foreign) -->
-            <div>
-                 <h3 class="u-text-sm-bold-slate-800 mb-2">기관</h3>
-                 <div class="u-overflow-x-auto">
-                    <table class="u-w-full">
+        <div v-else class="p-supply-analysis__grid-2">
+            <div class="p-supply-analysis__section">
+                 <h3 class="p-supply-analysis__section-title">기관</h3>
+                 <div class="p-supply-analysis__table-wrapper">
+                    <table class="p-supply-analysis__table">
                        <thead>
-                           <tr class="c-price-table-thead-tr">
-                               <th class="c-supply-table-th">종목명</th>
-                               <th class="c-supply-table-th--right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
-                               <th class="c-supply-table-th--right">등락률</th>
+                           <tr>
+                               <th>종목명</th>
+                               <th style="text-align: right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
+                               <th style="text-align: right">등락률</th>
                            </tr>
                        </thead>
                        <tbody>
-                           <tr v-for="(stock, idx) in institutionData" :key="idx" class="c-price-table-tr">
-                                <td class="c-supply-table-td--name">
-                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
-                                    <span>{{ stock.stockName }}</span>
+                           <tr v-for="(stock, idx) in institutionData" :key="idx">
+                                <td>
+                                    <div class="p-supply-analysis__stock-mini">
+                                      <div class="p-supply-analysis__stock-dot" :class="getStockColor(stock.stockName)">{{ stock.stockName[0] }}</div>
+                                      <span class="truncate">{{ stock.stockName }}</span>
+                                    </div>
                                 </td>
-                                <td class="c-supply-table-td--amount">
+                                <td style="text-align: right; font-weight: 700">
                                     {{ selectedTab === '순매수 상위 신규진입' ? stock.netBuyAmount + '억' : stock.buyRatio + '%' }}
                                 </td>
-                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
-                                    {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
+                                <td style="text-align: right">
+                                    <span :class="stock.changeRate > 0 ? 'indicator--positive' : 'indicator--negative'">
+                                      {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
+                                    </span>
                                 </td>
                            </tr>
                        </tbody>
@@ -86,28 +93,32 @@
                  </div>
             </div>
 
-            <div>
-                 <h3 class="u-text-sm-bold-slate-800 mb-2">외국인</h3>
-                 <div class="u-overflow-x-auto">
-                    <table class="u-w-full">
+            <div class="p-supply-analysis__section">
+                 <h3 class="p-supply-analysis__section-title">외국인</h3>
+                 <div class="p-supply-analysis__table-wrapper">
+                    <table class="p-supply-analysis__table">
                        <thead>
-                           <tr class="c-price-table-thead-tr">
-                               <th class="c-supply-table-th">종목명</th>
-                               <th class="c-supply-table-th--right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
-                               <th class="c-supply-table-th--right">등락률</th>
+                           <tr>
+                               <th>종목명</th>
+                               <th style="text-align: right">{{ selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중' }}</th>
+                               <th style="text-align: right">등락률</th>
                            </tr>
                        </thead>
                        <tbody>
-                           <tr v-for="(stock, idx) in foreignData" :key="idx" class="c-price-table-tr">
-                                <td class="c-supply-table-td--name">
-                                    <div :class="['c-supply-stock-icon', getStockColor(stock.stockName)]">{{ stock.stockName[0] }}</div>
-                                    <span>{{ stock.stockName }}</span>
+                           <tr v-for="(stock, idx) in foreignData" :key="idx">
+                                <td>
+                                    <div class="p-supply-analysis__stock-mini">
+                                      <div class="p-supply-analysis__stock-dot" :class="getStockColor(stock.stockName)">{{ stock.stockName[0] }}</div>
+                                      <span class="truncate">{{ stock.stockName }}</span>
+                                    </div>
                                 </td>
-                                <td class="c-supply-table-td--amount">
+                                <td style="text-align: right; font-weight: 700">
                                     {{ selectedTab === '순매수 상위 신규진입' ? stock.netBuyAmount + '억' : stock.buyRatio + '%' }}
                                 </td>
-                                <td :class="['c-supply-table-td--change', stock.changeRate > 0 ? 'text-red-600' : 'text-blue-600']">
-                                    {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
+                                <td style="text-align: right">
+                                    <span :class="stock.changeRate > 0 ? 'indicator--positive' : 'indicator--negative'">
+                                      {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
+                                    </span>
                                 </td>
                            </tr>
                        </tbody>
@@ -115,7 +126,6 @@
                  </div>
             </div>
         </div>
-
       </div>
     </div>
   </div>
@@ -172,5 +182,5 @@ export default {
     }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
 
+<style src="@/assets/css/pages/supply-analysis.css"></style>

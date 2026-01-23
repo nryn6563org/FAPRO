@@ -1,165 +1,162 @@
 <template>
-  <div class="p-ai">
-    <div class="u-flex-between-mb-6">
-      <div class="p-ai__header u-flex-mb-0">
-        <h2 class="p-ai__title">AI 매매 시그널</h2>
-        <p class="p-ai__desc">실시간 AI 기반 매매 신호 및 투자 추천</p>
+  <div class="p-signals">
+    <div class="p-signals__header-group">
+      <div class="c-page-header">
+        <h2 class="c-page-header__title">AI 매매 시그널</h2>
+        <p class="c-page-header__desc">실시간 AI 기반 매매 신호 및 투자 추천</p>
       </div>
-      <Button class="u-gap-2">
-        <Filter class="u-icon-sm" />
+      <Button variant="outline" size="sm" class="gap-2">
+        <Filter class="w-4 h-4" />
         필터 설정
       </Button>
     </div>
 
     <!-- Summary Cards -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
-      <div class="c-signal-summary">
+    <div class="p-signals__summary-grid">
+      <div class="p-signals__summary-card p-signals__summary-card--total">
         <div>
-          <p class="c-signal-summary__label">전체 시그널</p>
-          <p class="c-signal-summary__value">{{ signals.length }}</p>
+          <p class="p-signals__summary-label">전체 시그널</p>
+          <p class="p-signals__summary-value">{{ signals.length }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--blue">
-          <Zap class="c-signal-summary__icon u-text-blue" />
+        <div class="p-signals__summary-icon-box bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300">
+          <Zap class="w-5 h-5" />
         </div>
       </div>
 
-      <div class="c-signal-summary">
+      <div class="p-signals__summary-card">
         <div>
-          <p class="c-signal-summary__label">매수 시그널</p>
-          <p class="c-signal-summary__value u-text-up">{{ counts.buy }}</p>
+          <p class="p-signals__summary-label">매수 시그널</p>
+          <p class="p-signals__summary-value" style="color: var(--red-500)">{{ counts.buy }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--green">
-          <TrendingUp class="c-signal-summary__icon u-text-up" />
+        <div class="p-signals__summary-icon-box bg-red-50 dark:bg-red-900/20 text-red-500">
+          <TrendingUp class="w-5 h-5" />
         </div>
       </div>
 
-      <div class="c-signal-summary">
+      <div class="p-signals__summary-card">
         <div>
-          <p class="c-signal-summary__label">매도 시그널</p>
-          <p class="c-signal-summary__value u-text-down">{{ counts.sell }}</p>
+          <p class="p-signals__summary-label">매도 시그널</p>
+          <p class="p-signals__summary-value" style="color: var(--blue-500)">{{ counts.sell }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--red">
-          <TrendingDown class="c-signal-summary__icon u-text-down" />
+        <div class="p-signals__summary-icon-box bg-blue-50 dark:bg-blue-900/20 text-blue-500">
+          <TrendingDown class="w-5 h-5" />
         </div>
       </div>
 
-      <div class="c-signal-summary">
+      <div class="p-signals__summary-card">
         <div>
-          <p class="c-signal-summary__label">보유 시그널</p>
-          <p class="c-signal-summary__value u-text-yellow">{{ counts.hold }}</p>
+          <p class="p-signals__summary-label">보유 시그널</p>
+          <p class="p-signals__summary-value" style="color: var(--slate-400)">{{ counts.hold }}</p>
         </div>
-        <div class="c-signal-summary__icon-wrapper c-signal-summary__icon-wrapper--yellow">
-          <Target class="c-signal-summary__icon u-text-yellow" />
+        <div class="p-signals__summary-icon-box bg-slate-50 dark:bg-slate-800/50 text-slate-400">
+          <Target class="w-5 h-5" />
         </div>
       </div>
     </div>
 
     <!-- Filter Tabs -->
-    <div class="c-signal-filter">
-      <div class="c-signal-filter__tabs">
-         <button v-for="tab in filters" :key="tab.value"
-            @click="filter = tab.value"
-            :class="['c-signal-filter__tab-btn', 
-              filter === tab.value ? 'c-signal-filter__tab-btn--active' : ''
-            ]"
-         >
-            {{ tab.label }}
-         </button>
-      </div>
+    <div class="p-signals__filter-nav">
+       <button
+          v-for="tab in filters" :key="tab.value"
+          @click="filter = tab.value"
+          class="p-signals__filter-btn"
+          :class="filter === tab.value ? 'p-signals__filter-btn--active' : ''"
+       >
+          {{ tab.label }}
+       </button>
     </div>
 
     <!-- Signals List -->
-    <div class="l-signals-list">
-       <div v-for="signal in filteredSignals" :key="signal.id" class="c-signal-card">
-          <div class="c-signal-card__header">
-             <div class="c-signal-card__info-wrapper">
-                <div :class="['c-signal-card__type-icon-wrapper', getSignalColor(signal.type)]">
-                   <component :is="getSignalIcon(signal.type)" class="c-signal-card__type-icon" />
+    <div class="p-signals__list">
+       <div
+         v-for="signal in filteredSignals" :key="signal.id" 
+         class="p-signals__item"
+       >
+          <!-- Left Panel -->
+          <div class="p-signals__info-panel">
+             <div class="p-signals__stock-header">
+                <div class="p-signals__stock-icon" :class="getSignalBadgeClass(signal.type)">
+                   <component :is="getSignalIcon(signal.type)" class="w-6 h-6" />
                 </div>
                 <div>
-                   <div class="c-signal-card__ticker-row">
-                      <h3 class="c-signal-card__ticker">{{ signal.ticker }}</h3>
-                      <span :class="['c-signal-card__badge', getSignalColor(signal.type)]">
+                   <h3 class="p-signals__ticker">{{ signal.ticker }}</h3>
+                   <div class="p-signals__badge-group">
+                      <span class="p-signals__badge" :class="getSignalTextClass(signal.type)">
                          {{ getSignalLabel(signal.type) }}
                       </span>
-                      <span :class="['c-signal-card__badge', getStrengthColor(signal.strength)]">
+                      <span class="p-signals__badge bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
                          {{ getStrengthLabel(signal.strength) }}
                       </span>
                    </div>
-                   <p class="c-signal-card__name">{{ signal.name }}</p>
+                   <p class="text-xs text-slate-500 mt-1">{{ signal.name }}</p>
                 </div>
              </div>
-             <div class="c-signal-card__meta">
-                <div class="c-signal-card__timestamp">
-                   <Clock class="u-icon-sm" />
+             <div class="p-signals__timestamp-row">
+                <div class="flex items-center gap-1">
+                   <Clock class="w-3.5 h-3.5" />
                    {{ signal.timestamp }}
                 </div>
-                <p class="c-signal-card__timeframe">{{ signal.timeframe }}</p>
+                <div class="px-2 py-0.5 rounded bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-bold">
+                   {{ signal.timeframe }}
+                </div>
              </div>
           </div>
 
-          <div class="c-signal-card__body">
-             <!-- Price Info -->
-             <div class="c-signal-card__price-grid">
-                <div>
-                   <p class="c-signal-card__price-label">현재가</p>
-                   <p class="c-signal-card__price-val">{{ formatPrice(signal.price) }}</p>
-                </div>
-                <div>
-                   <p class="c-signal-card__price-label">목표가</p>
-                   <p class="c-signal-card__price-val u-text-up">{{ formatPrice(signal.targetPrice) }}</p>
-                </div>
-                <div>
-                   <p class="c-signal-card__price-label">손절가</p>
-                   <p class="c-signal-card__price-val u-text-down">{{ formatPrice(signal.stopLoss) }}</p>
-                </div>
+          <!-- Right Panel -->
+          <div class="p-signals__data-panel">
+              <div class="p-signals__price-grid">
+                 <div>
+                    <p class="p-signals__price-label">현재가</p>
+                    <p class="p-signals__price-value">{{ formatPrice(signal.price) }}</p>
+                 </div>
+                 <div>
+                    <p class="p-signals__price-label">목표가</p>
+                    <p class="p-signals__price-value indicator--positive">{{ formatPrice(signal.targetPrice) }}</p>
+                 </div>
+                 <div>
+                    <p class="p-signals__price-label">손절가</p>
+                    <p class="p-signals__price-value indicator--negative">{{ formatPrice(signal.stopLoss) }}</p>
+                 </div>
+              </div>
+
+              <div class="p-signals__confidence-section">
+                  <div class="p-signals__confidence-header">
+                     <span class="p-signals__confidence-label">AI 신뢰도</span>
+                     <span class="p-signals__confidence-label" style="font-family: monospace">{{ signal.confidence }}%</span>
+                  </div>
+                  <div class="p-signals__confidence-bar-bg">
+                     <div 
+                        class="h-full rounded-full transition-all duration-500"
+                        :class="signal.confidence >= 80 ? 'bg-red-500' : signal.confidence >= 60 ? 'bg-orange-500' : 'bg-blue-500'"
+                        :style="{ width: signal.confidence + '%' }"
+                     ></div>
+                  </div>
+              </div>
+
+              <div class="p-signals__analysis-box">
+                 <p class="p-signals__reason">💡 {{ signal.reason }}</p>
+                 <div class="p-signals__tag-group">
+                    <span v-for="(indicator, idx) in signal.indicators" :key="idx" class="p-signals__tag">
+                       #{{ indicator }}
+                    </span>
+                 </div>
+              </div>
+
+             <div class="p-signals__actions">
+                <Button variant="outline" size="sm" class="gap-1">
+                   상세 분석 <ChevronRight class="w-3.5 h-3.5" />
+                </Button>
+                <Button size="sm" class="gap-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
+                   <CheckCircle2 class="w-3.5 h-3.5" /> 시그널 적용
+                </Button>
              </div>
-
-             <!-- Confidence -->
-             <div class="c-signal-card__confidence-section">
-                <div class="c-signal-card__confidence-row">
-                   <span class="u-text-sm-slate-600">신뢰도</span>
-                   <div class="c-signal-card__progress-wrapper">
-                      <div class="c-signal-card__progress-bar">
-                         <div 
-                           :class="['c-signal-card__progress-fill', signal.confidence >= 80 ? 'u-bg-up' : signal.confidence >= 60 ? 'u-bg-yellow' : 'u-bg-down']"
-                           :style="{ width: signal.confidence + '%' }"
-                         ></div>
-                      </div>
-                      <span class="u-text-sm-bold">{{ signal.confidence }}%</span>
-                   </div>
-                </div>
-
-                <div>
-                   <p class="c-signal-card__reason-label">분석 근거</p>
-                   <p class="c-signal-card__reason-text">{{ signal.reason }}</p>
-                </div>
-
-                <div class="c-signal-card__indicator-list">
-                   <span v-for="(indicator, idx) in signal.indicators" :key="idx" class="c-signal-card__indicator">
-                      {{ indicator }}
-                   </span>
-                </div>
-             </div>
-
-            <!-- Actions -->
-            <div class="c-signal-card__actions">
-               <Button class="c-signal-card__btn">
-                  <CheckCircle2 class="u-icon-sm" />
-                  시그널 적용
-               </Button>
-               <Button variant="outline" class="c-signal-card__btn">
-                  상세 분석
-                  <ChevronRight class="u-icon-sm" />
-               </Button>
-            </div>
           </div>
        </div>
 
-       <div v-if="filteredSignals.length === 0" class="c-signal-empty">
-           <AlertTriangle class="c-signal-empty__icon" />
-           <h3 class="c-signal-empty__title">시그널이 없습니다</h3>
-           <p class="c-signal-empty__desc">해당 필터에 맞는 매매 시그널이 없습니다</p>
+       <div v-if="filteredSignals.length === 0" class="c-content-card p-12 text-center text-slate-500">
+           <AlertTriangle class="w-12 h-12 mx-auto mb-4 text-slate-300" />
+           <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">시그널이 없습니다</h3>
+           <p>해당 필터에 맞는 매매 시그널이 없습니다</p>
        </div>
     </div>
   </div>
@@ -282,13 +279,21 @@ export default {
           if (typeof price === 'number' && price > 1000) return price.toLocaleString() + '원';
           return '$' + price.toFixed(2);
       },
-      getSignalColor(type) {
+      getSignalBadgeClass(type) {
         switch (type) {
-            case 'buy': return 'c-signal-card__badge--buy';
-            case 'sell': return 'c-signal-card__badge--sell';
-            case 'hold': return 'c-signal-card__badge--hold';
-            default: return 'c-signal-card__badge--default';
+            case 'buy': return 'bg-red-50 text-red-600 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800';
+            case 'sell': return 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800';
+            case 'hold': return 'bg-slate-50 text-slate-400 border-slate-200 dark:bg-slate-800/50 dark:text-slate-500 dark:border-slate-700';
+            default: return '';
         }
+      },
+      getSignalTextClass(type) {
+         switch (type) {
+            case 'buy': return 'text-red-500 bg-red-50 dark:bg-red-900/20';
+            case 'sell': return 'text-blue-500 bg-blue-50 dark:bg-blue-900/20';
+            case 'hold': return 'text-slate-500 bg-slate-50 dark:bg-slate-800/50';
+            default: return '';
+         }
       },
       getSignalIcon(type) {
           switch (type) {
@@ -305,13 +310,6 @@ export default {
             default: return '';
           }
       },
-      getStrengthColor(strength) {
-          switch (strength) {
-            case 'strong': return 'c-signal-card__badge--strong';
-            case 'moderate': return 'c-signal-card__badge--moderate';
-            default: return 'c-signal-card__badge--weak';
-          }
-      },
       getStrengthLabel(strength) {
         switch (strength) {
             case 'strong': return '강';
@@ -323,5 +321,5 @@ export default {
   }
 };
 </script>
-<style src="@/assets/css/pages/ai.css"></style>
 
+<style src="@/assets/css/pages/signals.css"></style>

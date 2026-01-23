@@ -1,54 +1,50 @@
 <template>
-  <div class="p-investment">
-    <div class="p-investment__header">
-      <h2 class="p-investment__title">공시 분석</h2>
-      <p class="p-investment__desc">실시간 공시 정보 및 영향 분석</p>
+  <div class="p-disclosure-analysis">
+    <div class="c-page-header">
+      <h2 class="c-page-header__title">공시 분석</h2>
+      <p class="c-page-header__desc">실시간 공시 정보 및 영향 분석</p>
     </div>
 
-    <div class="c-disclosure-grid">
-      <div v-for="disclosure in mockDisclosures" :key="disclosure.id" class="c-content-card c-content-card--hover">
-        <div class="c-content-card__body">
-          <div class="c-disclosure-card__header">
-             <div class="u-flex-center-gap-3 u-flex-1">
-                <div :class="['c-disclosure-card__icon-box', `c-disclosure-card__icon-box--${disclosure.importance}`]">
-                   <ClipboardList :class="['u-icon-lg', 
-                      disclosure.importance === 'high' ? 'u-text-red-600' :
-                      disclosure.importance === 'medium' ? 'u-text-yellow-600' : 'u-text-blue-600']" />
-                </div>
-                <div class="u-flex-1">
-                   <div class="u-flex-center-gap-2 mb-1">
-                      <h3 class="u-text-lg-bold">{{ disclosure.stockName }}</h3>
-                      <span :class="['c-disclosure-card__badge', getImportanceColor(disclosure.importance)]">
-                         {{ getImportanceLabel(disclosure.importance) }}
-                      </span>
-                      <span :class="['c-disclosure-card__type-badge', getTypeColor(disclosure.type)]">
-                         {{ disclosure.type }}
-                      </span>
-                   </div>
-                   <p class="c-disclosure-card__title">{{ disclosure.title }}</p>
-                   <div class="u-flex-center-gap-2 u-text-meta">
-                      <Clock class="u-icon-sm" />
-                      <span>{{ disclosure.time }}</span>
-                      <span>•</span>
-                      <span>{{ disclosure.ticker }}</span>
-                   </div>
-                </div>
-             </div>
-          </div>
-          
-          <div class="space-y-4">
-             <div class="c-disclosure-card__summary-box">
-                <p class="u-text-sm u-text-slate-700">{{ disclosure.summary }}</p>
-                <p v-if="disclosure.amount" class="c-disclosure-card__amount">
-                   계약금액: {{ (disclosure.amount / 100000000).toFixed(0) }}억원
-                </p>
-             </div>
+    <div class="p-disclosure-analysis__grid">
+      <div v-for="disclosure in mockDisclosures" :key="disclosure.id" class="p-disclosure-analysis__card">
+        <div class="p-disclosure-analysis__icon-group">
+           <div class="p-disclosure-analysis__icon-box" :class="getImportanceIconBg(disclosure.importance)">
+              <ClipboardList class="p-disclosure-analysis__icon" :class="getImportanceIconColor(disclosure.importance)" />
+           </div>
+        </div>
+        
+        <div class="p-disclosure-analysis__content">
+           <div class="p-disclosure-analysis__header-row">
+              <h3 class="p-disclosure-analysis__stock-name">{{ disclosure.stockName }}</h3>
+              <span class="status-badge" :class="getImportanceBadgeClass(disclosure.importance)">
+                 {{ getImportanceLabel(disclosure.importance) }}
+              </span>
+              <span class="p-disclosure-analysis__type-badge">
+                 {{ disclosure.type }}
+              </span>
+           </div>
+           
+           <h4 class="p-disclosure-analysis__title">{{ disclosure.title }}</h4>
+           
+           <div class="p-disclosure-analysis__meta">
+              <div class="p-disclosure-analysis__time-group">
+                <Clock class="p-disclosure-analysis__meta-icon" />
+                <span>{{ disclosure.time }}</span>
+              </div>
+              <span class="p-disclosure-analysis__ticker">{{ disclosure.ticker }}</span>
+           </div>
+           
+           <div class="p-disclosure-analysis__summary-card">
+              <p class="p-disclosure-analysis__summary-text">{{ disclosure.summary }}</p>
+              <p v-if="disclosure.amount" class="p-disclosure-analysis__amount">
+                 계약금액: {{ (disclosure.amount / 100000000).toFixed(0) }}억원
+              </p>
+           </div>
 
-             <div class="u-flex-gap-2">
-                <Button variant="outline" class="u-flex-1">공시 전문 보기</Button>
-                <Button class="u-flex-1">종목 분석</Button>
-             </div>
-          </div>
+           <div class="p-disclosure-analysis__actions">
+              <Button variant="outline" size="sm" class="p-disclosure-analysis__action-btn">공시 전문 보기</Button>
+              <Button size="sm" class="p-disclosure-analysis__action-btn">종목 상세보기</Button>
+           </div>
         </div>
       </div>
     </div>
@@ -133,12 +129,12 @@ export default {
     }
   },
   methods: {
-    getImportanceColor(importance) {
+    getImportanceBadgeClass(importance) {
       switch (importance) {
-        case 'high': return 'c-disclosure-card__badge--high';
-        case 'medium': return 'c-disclosure-card__badge--medium';
-        case 'low': return 'c-disclosure-card__badge--low';
-        default: return 'c-disclosure-card__badge--low';
+        case 'high': return 'status-badge--danger';
+        case 'medium': return 'status-badge--warning';
+        case 'low': return 'status-badge--info';
+        default: return 'status-badge--info';
       }
     },
     getImportanceLabel(importance) {
@@ -149,17 +145,28 @@ export default {
         default: return importance;
       }
     },
-    getTypeColor(type) {
-      const colors = {
-        '매출': 'c-disclosure-card__type-badge--sales',
-        'M&A': 'c-disclosure-card__type-badge--ma',
-        '자사주': 'c-disclosure-card__type-badge--stock',
-        '기타': 'c-disclosure-card__type-badge--etc'
-      };
-      return colors[type] || 'c-disclosure-card__type-badge--etc';
+    getImportanceIconColor(importance) {
+      switch (importance) {
+        case 'high': return 'disclosure-icon--red';
+        case 'medium': return 'disclosure-icon--orange';
+        case 'low': return 'disclosure-icon--blue';
+        default: return 'disclosure-icon--blue';
+      }
+    },
+    getTypeBadgeClass() {
+      // All use status-badge--info or similar, can differentiate if needed
+      return 'border-slate-200 bg-white text-slate-600 dark:border-slate-700 dark:bg-slate-800 dark:text-slate-400';
+    },
+    getImportanceIconBg(importance) {
+      switch (importance) {
+        case 'high': return 'disclosure-bg--red';
+        case 'medium': return 'disclosure-bg--orange';
+        case 'low': return 'disclosure-bg--blue';
+        default: return 'bg-slate-50 dark:bg-slate-800';
+      }
     }
   }
 }
 </script>
-<style src="@/assets/css/pages/investment.css"></style>
+<style src="@/assets/css/pages/disclosure-analysis.css"></style>
 
