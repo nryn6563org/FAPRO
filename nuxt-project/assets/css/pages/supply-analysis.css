@@ -1,176 +1,110 @@
-/* Supply Analysis Page Styles */
+/* Supply Analysis Page Styles - Tailwind @apply refactor */
 
 .p-supply-analysis {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-supply-analysis__card {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-supply-analysis__header {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
+    @apply flex flex-col gap-5 mb-8;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-supply-analysis__header {
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
+        @apply flex-row justify-between items-center;
     }
 }
 
 .p-supply-analysis__title {
-    font-size: 1.125rem;
-    font-weight: 800;
-    color: var(--slate-900);
-}
-
-.dark .p-supply-analysis__title {
-    color: white;
+    @apply text-lg font-black text-slate-900;
+    @apply dark:text-white;
 }
 
 .p-supply-analysis__tabs {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
+    @apply flex flex-wrap gap-2;
 }
 
 .p-supply-analysis__metadata {
-    text-align: right;
-    font-size: 0.75rem;
-    color: var(--slate-400);
-    font-family: monospace;
-    margin-bottom: 0.5rem;
+    @apply text-right text-xs text-slate-400 font-mono mb-2;
 }
 
 /* Grids */
 .p-supply-analysis__grid-4 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-supply-analysis__grid-4 {
-        grid-template-columns: repeat(2, 1fr);
+        @apply grid-cols-2;
     }
 }
 
-@media (min-width: 1024px) {
+@screen lg {
     .p-supply-analysis__grid-4 {
-        grid-template-columns: repeat(4, 1fr);
+        @apply grid-cols-4;
     }
 }
 
 .p-supply-analysis__grid-2 {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-supply-analysis__grid-2 {
-        grid-template-columns: repeat(2, 1fr);
+        @apply grid-cols-2;
     }
 }
 
 /* Table Sections */
 .p-supply-analysis__section {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-supply-analysis__section-title {
-    font-size: 0.9375rem;
-    font-weight: 800;
-    color: var(--slate-700);
-    padding-bottom: 0.5rem;
-    margin-bottom: 0.75rem;
-    border-bottom: 1px solid var(--slate-100);
-}
-
-.dark .p-supply-analysis__section-title {
-    color: var(--slate-200);
-    border-color: var(--slate-800);
+    @apply text-[15px] font-black text-slate-700 pb-2 mb-3 border-b border-slate-100;
+    @apply dark:text-slate-200 dark:border-slate-800;
 }
 
 .p-supply-analysis__table-wrapper {
-    background-color: var(--slate-50);
-    border: 1px solid var(--slate-100);
-    border-radius: 0.75rem;
-    overflow: hidden;
-}
-
-.dark .p-supply-analysis__table-wrapper {
-    background-color: rgba(30, 41, 59, 0.5);
-    border-color: var(--slate-800);
+    @apply bg-slate-50 border border-slate-100 rounded-xl overflow-hidden;
+    @apply dark:bg-slate-800/30 dark:border-slate-800;
 }
 
 .p-supply-analysis__table {
-    width: 100%;
-    font-size: 0.875rem;
+    @apply w-full text-sm;
 }
 
 .p-supply-analysis__table thead {
-    font-size: 0.75rem;
-    color: var(--slate-500);
-    background-color: var(--slate-100);
-    border-bottom: 1px solid var(--slate-200);
-}
-
-.dark .p-supply-analysis__table thead {
-    background-color: var(--slate-800);
-    border-color: var(--slate-700);
+    @apply text-[11px] text-slate-500 bg-slate-100 border-b border-slate-200;
+    @apply dark:bg-slate-800 dark:border-slate-700;
 }
 
 .p-supply-analysis__table th {
-    padding: 0.5rem 0.75rem;
-    font-weight: 600;
-    text-align: left;
+    @apply px-3 py-2 font-bold text-left;
 }
 
 .p-supply-analysis__table td {
-    padding: 0.625rem 0.75rem;
-    border-bottom: 1px solid var(--slate-100);
-}
-
-.dark .p-supply-analysis__table td {
-    border-color: var(--slate-800);
+    @apply px-3 py-2.5 border-b border-slate-100;
+    @apply dark:border-slate-800;
 }
 
 .p-supply-analysis__table tr:last-child td {
-    border-bottom: none;
+    @apply border-b-0;
 }
 
 .p-supply-analysis__table tr:hover {
-    background-color: rgba(241, 245, 249, 0.5);
-}
-
-.dark .p-supply-analysis__table tr:hover {
-    background-color: rgba(30, 41, 59, 0.5);
+    @apply bg-slate-200/20;
+    @apply dark:bg-black/20;
 }
 
 /* Stock Mini Indicator */
 .p-supply-analysis__stock-mini {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    @apply flex items-center gap-2;
 }
 
 .p-supply-analysis__stock-dot {
-    width: 1.25rem;
-    height: 1.25rem;
-    border-radius: 0.25rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.625rem;
-    font-weight: 800;
-    color: white;
+    @apply w-5 h-5 rounded flex items-center justify-center text-[10px] font-black text-white;
 }

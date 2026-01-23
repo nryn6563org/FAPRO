@@ -112,27 +112,37 @@
 
     <!-- Bottom: Issue Feed Section -->
     <div class="c-content-card p-today-issue__feed-card">
-      <h3 class="p-today-issue__feed-title l-tab-gap">
+      <h3 class="p-today-issue__feed-title">
         <span>{{ selectedKeyword }} 히스토리</span>
       </h3>
-      <div class="p-today-issue__feed-list">
-        <div v-for="issue in currentIssues" :key="issue.id" class="p-today-issue__feed-item group">
-          <div class="p-today-issue__feed-item-header">
-            <div class="p-today-issue__feed-item-meta">
-              <span class="p-today-issue__feed-item-date">{{ issue.date }}</span>
-              <h4 class="p-today-issue__feed-item-title">{{ issue.title }}</h4>
-            </div>
-            <div class="p-today-issue__feed-item-trend" :class="issue.trend === 'up' ? 'indicator--positive' : 'indicator--negative'">
-              <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="p-today-issue__trend-icon" />
-              <span>{{ issue.changeRate }}%</span>
-            </div>
+      <div class="p-today-issue__timeline">
+        <div v-for="issue in currentIssues" :key="issue.id" class="p-today-issue__feed-item">
+          <!-- Timeline Marker -->
+          <div class="p-today-issue__timeline-marker">
+             <div class="p-today-issue__timeline-dot"></div>
           </div>
-          <div class="p-today-issue__feed-item-summary">{{ issue.summary }}</div>
-          <p class="p-today-issue__feed-item-desc">{{ issue.newsContent }}</p>
-          <div class="p-today-issue__feed-item-actions">
-            <Button variant="outline" size="sm" class="p-today-issue__feed-btn">
-              이슈 분석 리포트 <ChevronRight class="ml-1 h-4 w-4" />
-            </Button>
+          
+          <div class="p-today-issue__feed-content">
+            <div class="p-today-issue__feed-item-header">
+              <span class="p-today-issue__feed-item-date">{{ issue.date }}</span>
+              <div class="p-today-issue__title-row">
+                <h4 class="p-today-issue__feed-item-title">{{ issue.title }}</h4>
+                <div class="p-today-issue__feed-item-trend" :class="issue.trend === 'up' ? 'indicator--positive' : 'indicator--negative'">
+                  <component :is="issue.trend === 'up' ? 'TrendingUp' : 'TrendingDown'" class="p-today-issue__trend-icon" />
+                  <span>{{ issue.changeRate }}%</span>
+                </div>
+              </div>
+            </div>
+            <div class="p-today-issue__feed-item-summary">
+              <span class="p-today-issue__ai-prefix">[AI 요약]</span> {{ issue.summary }}
+            </div>
+            <p class="p-today-issue__feed-item-desc">{{ issue.newsContent }}</p>
+            
+            <div class="p-today-issue__feed-item-actions">
+              <Button variant="outline" size="sm" class="p-today-issue__feed-btn">
+                이슈 분석 리포트 <ChevronRight class="ml-1 h-3.5 w-3.5" />
+              </Button>
+            </div>
           </div>
         </div>
       </div>

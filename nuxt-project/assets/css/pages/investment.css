@@ -1761,7 +1761,7 @@
 
 /* Today Pick Refactoring */
 .stock-pick-display-group {
-    @apply flex flex-wrap gap-6 !important; /* Override grid */
+    @apply flex flex-wrap gap-6 !important; /* Standard CSS !important is allowed outside @apply if needed, but let's see. */
 }
 
 .stock-pick-item-card {

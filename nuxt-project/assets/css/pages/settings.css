@@ -1,298 +1,171 @@
-/* Settings Page Styles - Optimized for 1920x1080 Density */
+/* Settings Page Styles - Tailwind @apply refactor */
 
 .p-settings {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-settings__layout {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-settings__layout {
-        grid-template-columns: repeat(4, 1fr);
+        @apply grid-cols-4;
     }
 }
 
 /* Sidebar Navigation */
 .p-settings__sidebar {
-    background-color: white;
-    border: 1px solid var(--slate-200);
-    border-radius: 1rem;
-    padding: 0.5rem;
-    height: fit-content;
-}
-
-.dark .p-settings__sidebar {
-    background-color: var(--slate-900);
-    border-color: var(--slate-800);
+    @apply bg-white border border-slate-200 rounded-2xl p-2 h-fit;
+    @apply dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-settings__nav-item {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    border-radius: 0.75rem;
-    font-size: 0.875rem;
-    font-weight: 700;
-    transition: all 0.2s ease;
-    margin-bottom: 0.25rem;
+    @apply w-full flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-bold transition-all duration-200 mb-1;
 }
 
 .p-settings__nav-item--active {
-    background-color: var(--blue-50);
-    color: var(--blue-600);
-}
-
-.dark .p-settings__nav-item--active {
-    background-color: rgba(37, 99, 235, 0.1);
-    color: var(--blue-400);
+    @apply bg-blue-50 text-blue-600;
+    @apply dark:bg-blue-600/10 dark:text-blue-400;
 }
 
 .p-settings__nav-item--inactive {
-    color: var(--slate-500);
+    @apply text-slate-500;
 }
 
 .p-settings__nav-item--inactive:hover {
-    background-color: var(--slate-50);
-    color: var(--slate-900);
-}
-
-.dark .p-settings__nav-item--inactive:hover {
-    background-color: var(--slate-800);
-    color: white;
+    @apply bg-slate-50 text-slate-900;
+    @apply dark:bg-slate-800 dark:text-white;
 }
 
 /* Content Area */
 .p-settings__content {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    @apply flex flex-col gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-settings__content {
-        grid-column: span 3;
+        @apply col-span-3;
     }
 }
 
 .p-settings__section-card {
-    background-color: white;
-    border: 1px solid var(--slate-200);
-    border-radius: 1.25rem;
-    overflow: hidden;
-}
-
-.dark .p-settings__section-card {
-    background-color: var(--slate-900);
-    border-color: var(--slate-800);
+    @apply bg-white border border-slate-200 rounded-3xl overflow-hidden;
+    @apply dark:bg-slate-900 dark:border-slate-800;
 }
 
 /* Profile Section Header */
 .p-settings__profile-header {
-    padding: 1.5rem;
-    background-color: var(--slate-50);
-    border-bottom: 1px solid var(--slate-100);
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-}
-
-.dark .p-settings__profile-header {
-    background-color: rgba(30, 41, 59, 0.5);
-    border-color: var(--slate-800);
+    @apply p-6 bg-slate-50 border-b border-slate-100 flex items-center gap-6;
+    @apply dark:bg-slate-800/50 dark:border-slate-800;
 }
 
 .p-settings__avatar {
-    width: 4rem;
-    height: 4rem;
-    background-color: var(--blue-600);
-    border-radius: 9999px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 1.25rem;
-    font-weight: 800;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.3);
+    @apply w-16 h-16 bg-blue-600 rounded-full flex items-center justify-center text-white text-xl font-extrabold shadow-lg shadow-blue-500/30;
 }
 
 .p-settings__profile-info h3 {
-    font-size: 1.25rem;
-    font-weight: 800;
-    color: var(--slate-900);
-}
-
-.dark .p-settings__profile-info h3 {
-    color: white;
+    @apply text-xl font-extrabold text-slate-900;
+    @apply dark:text-white;
 }
 
 .p-settings__profile-info p {
-    font-size: 0.8125rem;
-    color: var(--slate-500);
+    @apply text-[13px] text-slate-500;
 }
 
 /* Form Styles */
 .p-settings__form-body {
-    padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    @apply p-8 flex flex-col gap-6;
 }
 
 .p-settings__form-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-settings__form-grid {
-        grid-template-columns: repeat(2, 1fr);
+        @apply grid-cols-2;
     }
 }
 
 .p-settings__form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
+    @apply flex flex-col gap-2;
 }
 
 .p-settings__label {
-    font-size: 0.8125rem;
-    font-weight: 800;
-    color: var(--slate-700);
-}
-
-.dark .p-settings__label {
-    color: var(--slate-300);
+    @apply text-[13px] font-extrabold text-slate-700;
+    @apply dark:text-slate-300;
 }
 
 .p-settings__actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 1rem;
+    @apply flex justify-end mt-4;
 }
 
 /* Notification List */
 .p-settings__noti-list {
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
+    @apply flex flex-col gap-3;
 }
 
 .p-settings__noti-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem 1.25rem;
-    border-radius: 1rem;
-    border: 1px solid var(--slate-100);
-    background-color: var(--slate-50);
-    transition: all 0.2s ease;
-}
-
-.dark .p-settings__noti-item {
-    background-color: rgba(30, 41, 59, 0.5);
-    border-color: var(--slate-800);
+    @apply flex items-center justify-between px-5 py-4 rounded-2xl border border-slate-100 bg-slate-50 transition-all duration-200;
+    @apply dark:bg-slate-800/50 dark:border-slate-800;
 }
 
 .p-settings__noti-item:hover {
-    border-color: var(--blue-100);
+    @apply border-blue-100;
+    @apply dark:border-blue-900/30;
 }
 
 .p-settings__noti-title {
-    font-size: 0.875rem;
-    font-weight: 800;
-    color: var(--slate-800);
-}
-
-.dark .p-settings__noti-title {
-    color: var(--slate-200);
+    @apply text-sm font-extrabold text-slate-800;
+    @apply dark:text-slate-200;
 }
 
 .p-settings__noti-desc {
-    font-size: 0.75rem;
-    color: var(--slate-500);
+    @apply text-xs text-slate-500;
 }
 
 /* Switch Component Styles */
 .p-settings__switch {
-    width: 2.75rem;
-    height: 1.5rem;
-    border-radius: 9999px;
-    position: relative;
-    cursor: pointer;
-    transition: all 0.3s ease;
+    @apply w-11 h-6 rounded-full relative cursor-pointer transition-all duration-300;
 }
 
 .p-settings__switch--on {
-    background-color: var(--blue-600);
+    @apply bg-blue-600;
 }
 
 .p-settings__switch--off {
-    background-color: var(--slate-300);
-}
-
-.dark .p-settings__switch--off {
-    background-color: var(--slate-700);
+    @apply bg-slate-300;
+    @apply dark:bg-slate-700;
 }
 
 .p-settings__switch-dot {
-    position: absolute;
-    top: 0.25rem;
-    left: 0.25rem;
-    width: 1rem;
-    height: 1rem;
-    background-color: white;
-    border-radius: 9999px;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    @apply absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-all duration-300;
 }
 
 .p-settings__switch--on .p-settings__switch-dot {
-    transform: translateX(1.25rem);
+    @apply translate-x-5;
 }
 
 /* System Info List */
 .p-settings__info-list {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-settings__info-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 1rem 0;
-    border-bottom: 1px solid var(--slate-50);
-}
-
-.dark .p-settings__info-row {
-    border-bottom-color: var(--slate-800);
+    @apply flex justify-between py-4 border-b border-slate-50;
+    @apply dark:border-slate-800;
 }
 
 .p-settings__info-label {
-    font-size: 0.875rem;
-    color: var(--slate-500);
+    @apply text-sm text-slate-500;
 }
 
 .p-settings__info-value {
-    font-size: 0.875rem;
-    font-weight: 800;
-    color: var(--slate-800);
-}
-
-.dark .p-settings__info-value {
-    color: var(--slate-200);
+    @apply text-sm font-extrabold text-slate-800;
+    @apply dark:text-slate-200;
 }
 
 .p-settings__info-value--active {
-    color: #22c55e;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
+    @apply text-green-500 flex items-center gap-2;
 }

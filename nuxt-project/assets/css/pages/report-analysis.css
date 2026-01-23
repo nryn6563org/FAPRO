@@ -1,172 +1,100 @@
-/* Report Analysis Page Styles */
+/* Report Analysis Page Styles - Tailwind @apply refactor */
 
 .p-report-analysis {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    @apply flex flex-col gap-6;
 }
 
 .p-report-analysis__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 1024px) {
+@screen lg {
     .p-report-analysis__grid {
-        grid-template-columns: repeat(2, 1fr);
+        @apply grid-cols-2;
     }
 }
 
 .p-report-analysis__card {
-    background-color: white;
-    padding: 1.5rem;
-    border: 1px solid var(--slate-200);
-    border-radius: 1.25rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    transition: all 0.3s ease;
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.dark .p-report-analysis__card {
-    background-color: var(--slate-900);
-    border-color: var(--slate-800);
+    @apply bg-white p-6 border border-slate-200 rounded-3xl transition-all duration-300 flex flex-col gap-6;
+    @apply dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-report-analysis__card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    @apply -translate-y-1 shadow-xl border-blue-200;
 }
 
 .p-report-analysis__card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    @apply flex justify-between items-start;
 }
 
 .p-report-analysis__source-group {
-    display: flex;
-    gap: 1rem;
-    flex: 1;
+    @apply flex gap-4 flex-1;
 }
 
 .p-report-analysis__icon-box {
-    width: 3rem;
-    height: 3rem;
-    border-radius: 0.75rem;
-    background-color: #f8fafc;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #64748b;
-    flex-shrink: 0;
-}
-
-.dark .p-report-analysis__icon-box {
-    background-color: var(--slate-800);
+    @apply w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-500 shrink-0;
+    @apply dark:bg-slate-800 dark:text-slate-400;
 }
 
 .p-report-analysis__icon {
-    width: 1.5rem;
-    height: 1.5rem;
+    @apply w-6 h-6;
 }
 
 .p-report-analysis__card-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--slate-900);
-    line-height: 1.4;
-    margin-bottom: 0.5rem;
-}
-
-.dark .p-report-analysis__card-title {
-    color: white;
+    @apply text-lg font-black text-slate-900 leading-tight mb-2;
+    @apply dark:text-white;
 }
 
 .p-report-analysis__metadata {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.8125rem;
-    color: var(--slate-500);
-    font-weight: 500;
+    @apply flex items-center gap-2 text-xs font-bold text-slate-400;
 }
 
 .p-report-analysis__meta-icon {
-    width: 0.875rem;
-    height: 0.875rem;
+    @apply w-3.5 h-3.5;
 }
 
 /* Data Panel */
 .p-report-analysis__data-panel {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.25rem;
-    background-color: var(--slate-50);
-    padding: 1.25rem;
-    border-radius: 1rem;
+    @apply grid grid-cols-2 gap-5 bg-slate-50 p-5 rounded-2xl;
+    @apply dark:bg-slate-800/50;
 }
 
-@media (min-width: 640px) {
+@screen sm {
     .p-report-analysis__data-panel {
-        grid-template-columns: repeat(4, 1fr);
+        @apply grid-cols-4;
     }
 }
 
-.dark .p-report-analysis__data-panel {
-    background-color: var(--slate-800);
-}
-
 .p-report-analysis__metric {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    @apply flex flex-col gap-1;
 }
 
 .p-report-analysis__metric-label {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--slate-400);
-    text-transform: uppercase;
+    @apply text-[10px] font-black text-slate-400 uppercase tracking-widest;
 }
 
 .p-report-analysis__metric-value {
-    font-size: 1rem;
-    font-weight: 800;
-    color: var(--slate-900);
-}
-
-.dark .p-report-analysis__metric-value {
-    color: white;
+    @apply text-base font-black text-slate-900;
+    @apply dark:text-white;
 }
 
 .p-report-analysis__metric-subtext {
-    font-size: 0.75rem;
-    color: var(--slate-500);
-    font-family: monospace;
+    @apply text-[10px] text-slate-500 font-mono;
 }
 
 .p-report-analysis__upside-box {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-weight: 800;
+    @apply flex items-center gap-1 font-black;
 }
 
 .p-report-analysis__upside-icon {
-    width: 0.875rem;
-    height: 0.875rem;
+    @apply w-3.5 h-3.5;
 }
 
 /* Actions */
 .p-report-analysis__actions {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
+    @apply grid grid-cols-2 gap-3;
 }
 
 .p-report-analysis__action-btn {
-    width: 100%;
+    @apply w-full;
 }

@@ -1,207 +1,132 @@
-/* Theme & Sector Analysis Page Styles */
+/* Theme & Sector Analysis Page Styles - Tailwind @apply refactor */
 
 .p-theme-sector {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+    @apply flex flex-col gap-6;
 }
 
 .p-theme-sector__tabs {
-    display: flex;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
+    @apply flex gap-2 mb-6;
 }
 
 .p-theme-sector__grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+    @apply grid grid-cols-1 gap-6;
 }
 
-@media (min-width: 768px) {
+@screen md {
     .p-theme-sector__grid {
-        grid-template-columns: repeat(2, 1fr);
+        @apply grid-cols-2;
     }
 }
 
 .p-theme-sector__card {
-    background-color: white;
-    padding: 1.5rem;
-    border: 1px solid var(--slate-200);
-    border-radius: 1rem;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    @apply bg-white p-6 border border-slate-200 rounded-2xl shadow-sm transition-all duration-300;
+    @apply dark:bg-slate-900 dark:border-slate-800;
 }
 
-.dark .p-theme-sector__card {
-    background-color: var(--slate-900);
-    border-color: var(--slate-800);
+.p-theme-sector__card:hover {
+    @apply shadow-md border-blue-100;
 }
 
 .p-theme-sector__card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 1.5rem;
+    @apply flex justify-between items-start mb-6;
 }
 
 .p-theme-sector__theme-info {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
+    @apply flex items-center gap-4;
 }
 
 .p-theme-sector__icon-box {
-    width: 2.75rem;
-    height: 2.75rem;
-    border-radius: 0.75rem;
-    background-color: #f1f5f9;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #64748b;
-}
-
-.dark .p-theme-sector__icon-box {
-    background-color: var(--slate-800);
-    color: var(--slate-400);
+    @apply w-11 h-11 rounded-xl bg-slate-100 flex items-center justify-center text-slate-500;
+    @apply dark:bg-slate-800 dark:text-slate-400;
 }
 
 .p-theme-sector__theme-title-group {
-    display: flex;
-    flex-direction: column;
+    @apply flex flex-col;
 }
 
 .p-theme-sector__theme-name {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--slate-900);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.dark .p-theme-sector__theme-name {
-    color: white;
+    @apply text-lg font-black text-slate-900 flex items-center gap-2;
+    @apply dark:text-white;
 }
 
 .p-theme-sector__stock-count {
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--slate-400);
+    @apply text-xs font-bold text-slate-400;
 }
 
 .p-theme-sector__theme-change {
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-    font-size: 1rem;
-    font-weight: 700;
-    margin-top: 0.125rem;
+    @apply flex items-center gap-1 text-[15px] font-black mt-0.5;
 }
 
 .p-theme-sector__table {
-    width: 100%;
-    border-collapse: collapse;
+    @apply w-full border-collapse;
 }
 
 .p-theme-sector__table-th {
-    padding: 0.5rem 0;
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--slate-400);
-    text-transform: uppercase;
-    text-align: left;
-    border-bottom: 1px solid var(--slate-100);
+    @apply py-2 font-extrabold text-[10px] text-slate-400 uppercase tracking-widest text-left border-b border-slate-100;
+    @apply dark:border-slate-800;
 }
 
 .p-theme-sector__table-th--right {
-    text-align: right;
-}
-
-.dark .p-theme-sector__table-th {
-    border-bottom-color: var(--slate-800);
+    @apply text-right;
 }
 
 .p-theme-sector__table-tr {
-    border-bottom: 1px solid var(--slate-50);
-}
-
-.dark .p-theme-sector__table-tr {
-    border-bottom-color: var(--slate-800/50);
+    @apply border-b border-slate-50 transition-colors;
+    @apply dark:border-slate-800/50;
 }
 
 .p-theme-sector__table-tr:last-child {
-    border-bottom: none;
+    @apply border-b-0;
 }
 
 .p-theme-sector__table-td {
-    padding: 0.75rem 0;
+    @apply py-3;
 }
 
 .p-theme-sector__table-td--right {
-    text-align: right;
+    @apply text-right;
 }
 
 .p-theme-sector__stock-cell {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    @apply flex items-center gap-3;
 }
 
 .p-theme-sector__stock-badge {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 0.5rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 0.75rem;
-    font-weight: 800;
-    flex-shrink: 0;
+    @apply w-8 h-8 rounded-lg flex items-center justify-center text-white text-[10px] font-black shrink-0;
 }
 
 .p-theme-sector__stock-name {
-    font-weight: 600;
-    color: var(--slate-700);
-    transition: color 0.2s ease;
-}
-
-.dark .p-theme-sector__stock-name {
-    color: var(--slate-300);
+    @apply font-bold text-slate-700 transition-colors;
+    @apply dark:text-slate-300;
 }
 
 .p-theme-sector__table-tr:hover .p-theme-sector__stock-name {
-    color: #3b82f6;
+    @apply text-blue-600;
 }
 
 .p-theme-sector__stock-price {
-    font-weight: 700;
-    color: var(--slate-900);
-}
-
-.dark .p-theme-sector__stock-price {
-    color: white;
+    @apply font-black text-slate-900;
+    @apply dark:text-white;
 }
 
 .p-theme-sector__stock-change {
-    font-weight: 700;
+    @apply font-black;
 }
 
-/* Stock Badge Colors */
-.stock-badge--blue { background-color: #3b82f6; }
-.stock-badge--indigo { background-color: #6366f1; }
-.stock-badge--purple { background-color: #8b5cf6; }
-.stock-badge--pink { background-color: #ec4899; }
-.stock-badge--red { background-color: #ef4444; }
-.stock-badge--orange { background-color: #f97316; }
-.stock-badge--amber { background-color: #f59e0b; }
-.stock-badge--yellow { background-color: #eab308; }
-.stock-badge--lime { background-color: #84cc16; }
-.stock-badge--green { background-color: #22c55e; }
-.stock-badge--emerald { background-color: #10b981; }
-.stock-badge--teal { background-color: #14b8a6; }
-.stock-badge--cyan { background-color: #06b6d4; }
-.stock-badge--sky { background-color: #0ea5e9; }
-.stock-badge--violet { background-color: #7c3aed; }
-.stock-badge--fuchsia { background-color: #d946ef; }
+/* Stock Badge Colors - Handled in investment.css but kept for compatibility */
+.stock-badge--blue { @apply bg-blue-500; }
+.stock-badge--indigo { @apply bg-indigo-500; }
+.stock-badge--purple { @apply bg-purple-500; }
+.stock-badge--pink { @apply bg-pink-500; }
+.stock-badge--red { @apply bg-red-500; }
+.stock-badge--orange { @apply bg-orange-500; }
+.stock-badge--amber { @apply bg-amber-500; }
+.stock-badge--yellow { @apply bg-yellow-500; }
+.stock-badge--lime { @apply bg-lime-500; }
+.stock-badge--green { @apply bg-green-500; }
+.stock-badge--emerald { @apply bg-emerald-500; }
+.stock-badge--teal { @apply bg-teal-500; }
+.stock-badge--cyan { @apply bg-cyan-500; }
+.stock-badge--sky { @apply bg-sky-500; }
+.stock-badge--violet { @apply bg-violet-500; }
+.stock-badge--fuchsia { @apply bg-fuchsia-500; }
