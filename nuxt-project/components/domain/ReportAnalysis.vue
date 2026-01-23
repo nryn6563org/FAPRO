@@ -5,7 +5,7 @@
       <p class="text-slate-600 mt-1">증권사 애널리스트 리포트 및 목표가 분석</p>
     </div>
 
-    <!-- Tabs -->
+    <!-- 리포트 분류 탭 메뉴 -->
     <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
       <div class="grid grid-cols-4 lg:grid-cols-8 gap-2">
         <button
@@ -24,7 +24,7 @@
       </div>
     </div>
 
-    <!-- Table -->
+    <!-- 리포트 리스트 테이블 섹션 -->
     <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
       <div class="flex justify-end mb-4">
         <span class="text-sm text-slate-500">업데이트 01/22 09:25</span>
@@ -86,7 +86,7 @@
                  {{ report.changeRate > 0 ? '+' : '' }}{{ report.changeRate }}%
               </td>
 
-              <!-- Dynamic Columns -->
+              <!-- 선택된 탭에 따른 동적 컬럼 렌더링 -->
               <template v-if="activeTab === '기관관심리포트'">
                  <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ report.institutionalAmount }}</td>
               </template>
@@ -128,7 +128,7 @@
         </table>
       </div>
 
-       <!-- Pagination & Legend -->
+       <!-- 페이지네이션 및 하단 설명 문구 -->
       <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-200">
         <div class="text-sm text-slate-600">
             {{ getTabDescription(activeTab) }}
@@ -247,19 +247,23 @@ export default {
             if (r.includes('sell')) return 'bg-red-100 text-red-700 border-red-300';
             return 'bg-gray-100 text-gray-700 border-gray-300';
         },
-        getTabDescription(tab) {
-             const descriptions = {
-                '신규리포트': "신규리포트는 증권사에서 '신규매수'의견을 제시한 리포트 입니다.",
-                '목표가상향': "해당 증권사에서 최근 3개월이내에 발표한 리포트 중, 직전 목표가 대비 목표가가 상향된 종목입니다.",
-                '목표가하향': "해당 증권사에서 최근 3개월이내에 발표한 리포트 중, 직전 목표가 대비 목표가가 하향된 종목입니다.",
-                '기관관심리포트': "리포트 발표 당일 기관의 순매수량이 큰 종목입니다.",
-                '외국인관심리포트': "리포트 발표 당일 외국인의 순매수량이 큰 종목입니다.",
-                '연기금관심리포트': "리포트 발표 당일 연기금의 순매수량이 큰 종목입니다.",
-                '증권사관심종목': "오늘 증권사의 리포트가 많이 발생한 종목입니다.",
-                '목표가높음': "오늘 발표한 리포트 중, 목표가와 현재가의 괴리율이 큰 종목입니다."
-             };
-             return descriptions[tab] || "";
-        }
+    /**
+     * 탭별 설명 텍스트 반환
+     * @param {string} tab - 탭 이름
+     */
+    getTabDescription(tab) {
+         const descriptions = {
+            '신규리포트': "신규리포트는 증권사에서 '신규매수'의견을 제시한 리포트 입니다.",
+            '목표가상향': "해당 증권사에서 최근 3개월이내에 발표한 리포트 중, 직전 목표가 대비 목표가가 상향된 종목입니다.",
+            '목표가하향': "해당 증권사에서 최근 3개월이내에 발표한 리포트 중, 직전 목표가 대비 목표가가 하향된 종목입니다.",
+            '기관관심리포트': "리포트 발표 당일 기관의 순매수량이 큰 종목입니다.",
+            '외국인관심리포트': "리포트 발표 당일 외국인의 순매수량이 큰 종목입니다.",
+            '연기금관심리포트': "리포트 발표 당일 연기금의 순매수량이 큰 종목입니다.",
+            '증권사관심종목': "오늘 증권사의 리포트가 많이 발생한 종목입니다.",
+            '목표가높음': "오늘 발표한 리포트 중, 목표가와 현재가의 괴리율이 큰 종목입니다."
+         };
+         return descriptions[tab] || "";
+    }
     }
 }
 </script>

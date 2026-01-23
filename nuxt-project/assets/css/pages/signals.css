@@ -5,34 +5,20 @@
 }
 
 .p-signals__header-group {
-    @apply flex flex-col gap-4 mb-5;
-}
-
-@screen md {
-    .p-signals__header-group {
-        @apply flex-row justify-between items-center;
-    }
+    @apply flex flex-col gap-4 mb-5 md:flex-row md:justify-between md:items-center;
 }
 
 /* Summary Cards */
 .p-signals__summary-grid {
-    @apply grid grid-cols-1 gap-4 mb-10;
-}
-
-@screen md {
-    .p-signals__summary-grid {
-        @apply grid-cols-4;
-    }
+    @apply grid grid-cols-1 gap-4 mb-10 md:grid-cols-4;
 }
 
 .p-signals__summary-card {
-    @apply p-5 flex items-center justify-between bg-white rounded-2xl border border-slate-200;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply p-5 flex items-center justify-between bg-white rounded-2xl border border-slate-200 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-signals__summary-card--total {
-    @apply bg-blue-50 border-blue-100;
-    @apply dark:bg-blue-600/10 dark:border-blue-900;
+    @apply bg-blue-50 border-blue-100 dark:bg-blue-600/10 dark:border-blue-900;
 }
 
 .p-signals__summary-label {
@@ -44,8 +30,7 @@
 }
 
 .p-signals__summary-value {
-    @apply text-2xl font-extrabold text-slate-900;
-    @apply dark:text-white;
+    @apply text-2xl font-extrabold text-slate-900 dark:text-white;
 }
 
 .p-signals__summary-icon-box {
@@ -54,8 +39,7 @@
 
 /* Filters */
 .p-signals__filter-nav {
-    @apply flex gap-6 border-b border-slate-200 mb-5 pl-1.5;
-    @apply dark:border-slate-700;
+    @apply flex gap-6 border-b border-slate-200 mb-5 pl-1.5 dark:border-slate-700;
 }
 
 .p-signals__filter-btn {
@@ -63,8 +47,7 @@
 }
 
 .p-signals__filter-btn--active {
-    @apply text-slate-900 border-slate-900;
-    @apply dark:text-white dark:border-white;
+    @apply text-slate-900 border-slate-900 dark:text-white dark:border-white;
 }
 
 /* Signal Items */
@@ -73,27 +56,12 @@
 }
 
 .p-signals__item {
-    @apply bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col;
-    @apply dark:bg-slate-900 dark:border-slate-800;
-}
-
-@screen md {
-    .p-signals__item {
-        @apply flex-row;
-    }
+    @apply bg-white border border-slate-200 rounded-2xl overflow-hidden flex flex-col md:flex-row dark:bg-slate-900 dark:border-slate-800;
 }
 
 /* Left Panel */
 .p-signals__info-panel {
-    @apply p-6 bg-slate-50 border-b border-slate-100 flex flex-col justify-between;
-    @apply dark:bg-slate-800/50 dark:border-slate-800;
-}
-
-@screen md {
-    .p-signals__info-panel {
-        @apply w-1/3 border-b-0 border-r border-slate-100;
-        @apply dark:border-slate-800;
-    }
+    @apply p-6 bg-slate-50 border-b border-slate-100 flex flex-col justify-between md:w-1/3 md:border-b-0 md:border-r md:border-slate-100 dark:bg-slate-800/50 dark:border-slate-800;
 }
 
 .p-signals__stock-header {
@@ -105,8 +73,7 @@
 }
 
 .p-signals__ticker {
-    @apply text-lg font-extrabold text-slate-900;
-    @apply dark:text-white;
+    @apply text-lg font-extrabold text-slate-900 dark:text-white;
 }
 
 .p-signals__badge-group {
@@ -135,8 +102,7 @@
 }
 
 .p-signals__price-value {
-    @apply text-lg font-extrabold text-slate-800;
-    @apply dark:text-slate-100;
+    @apply text-lg font-extrabold text-slate-800 dark:text-slate-100;
 }
 
 /* Confidence Bar */
@@ -149,13 +115,11 @@
 }
 
 .p-signals__confidence-label {
-    @apply text-xs font-extrabold text-slate-700;
-    @apply dark:text-slate-300;
+    @apply text-xs font-extrabold text-slate-700 dark:text-slate-300;
 }
 
 .p-signals__confidence-bar-bg {
-    @apply h-2 bg-slate-100 rounded-full overflow-hidden;
-    @apply dark:bg-slate-800;
+    @apply h-2 bg-slate-100 rounded-full overflow-hidden dark:bg-slate-800;
 }
 
 /* Analysis */
@@ -164,8 +128,7 @@
 }
 
 .p-signals__reason {
-    @apply text-sm text-slate-600 font-semibold mb-3;
-    @apply dark:text-slate-400;
+    @apply text-sm text-slate-600 font-semibold mb-3 dark:text-slate-400;
 }
 
 .p-signals__tag-group {
@@ -173,8 +136,7 @@
 }
 
 .p-signals__tag {
-    @apply text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md;
-    @apply dark:bg-slate-800 dark:text-slate-400;
+    @apply text-xs bg-slate-100 text-slate-500 px-2 py-0.5 rounded-md dark:bg-slate-800 dark:text-slate-400;
 }
 
 /* Actions */

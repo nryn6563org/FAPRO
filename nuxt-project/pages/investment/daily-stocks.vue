@@ -1,90 +1,36 @@
+<!-- 일간 종목 페이지: 매일 선정되는 주요 종목 정보 및 성과 요약 제공 -->
 <template>
   <div class="p-daily-stocks">
     <div class="c-page-header">
-      <h2 class="c-page-header__title">오늘의 종목 일자별 보기</h2>
-      <p class="c-page-header__desc">일자별 AI 추천 종목 및 성과</p>
-    </div>
-
-    <div class="c-content-card p-daily-stocks__card">
-      <div class="p-daily-stocks__header-row">
-        <div class="p-daily-stocks__date-info">
-          <div class="p-daily-stocks__calendar-icon-box">
-            <CalendarDays class="p-daily-stocks__calendar-icon" />
-          </div>
-          <div class="p-daily-stocks__date-wrapper">
-            <h3 class="p-daily-stocks__date-title">
-              {{ currentData.date }}
-              <span v-if="currentPage === 0" class="p-daily-stocks__today-badge">오늘</span>
-            </h3>
-          </div>
-        </div>
-        <div class="p-daily-stocks__nav-group">
-          <Button
-            variant="outline"
-            size="sm"
-            @click="currentPage++"
-            :disabled="!canGoPrev"
-          >
-            <ChevronLeft class="p-daily-stocks__nav-icon" />
-          </Button>
-          <Button
-            variant="outline"
-            size="sm"
-            @click="currentPage--"
-            :disabled="!canGoNext"
-          >
-            <ChevronRight class="p-daily-stocks__nav-icon" />
-          </Button>
+      <div class="c-page-header__inner">
+        <div class="c-page-header__content">
+          <h2 class="c-page-header__title">일간 종목</h2>
+          <p class="c-page-header__desc">매일 아침 AI가 선정한 오늘의 주요 종목 리스트입니다.</p>
         </div>
       </div>
-      
-      <div class="p-daily-stocks__content-area">
-        <div class="p-daily-stocks__grid">
-          <div v-for="pick in currentData.picks" :key="pick.ticker" class="p-daily-stocks__pick-card">
-            <div class="p-daily-stocks__pick-header">
-              <div class="p-daily-stocks__pick-star-box">
-                <Star class="p-daily-stocks__pick-star-icon" />
-              </div>
-              <span class="p-daily-stocks__pick-ai-badge">
-                AI {{ pick.aiScore }}점
-              </span>
-            </div>
-            <div class="p-daily-stocks__pick-info">
-              <h3 class="p-daily-stocks__pick-name">{{ pick.name }}</h3>
-              <p class="p-daily-stocks__pick-ticker">{{ pick.ticker }}</p>
-            </div>
-            <div class="p-daily-stocks__pick-footer">
-              <div v-if="pick.result !== null" class="p-daily-stocks__pick-return-group">
-                <p class="p-daily-stocks__pick-return-label">수익률</p>
-                <p class="p-daily-stocks__pick-return-value" :class="pick.result >= 0 ? 'indicator--positive' : 'indicator--negative'">
-                  {{ pick.result >= 0 ? '+' : '' }}{{ pick.result }}%
-                </p>
-              </div>
-              <div v-else class="p-daily-stocks__pick-pending">
-                진행 중
-              </div>
-              <Button variant="outline" size="sm" class="p-daily-stocks__pick-details-btn">상세보기</Button>
-            </div>
-          </div>
-        </div>
+    </div>
 
-        <div v-if="hasResults" class="p-daily-stocks__stats-summary">
-          <div class="p-daily-stocks__stats-row">
-            <div class="p-daily-stocks__stat-item">
-              <p class="p-daily-stocks__stat-label">일평균 수익률</p>
-              <p class="p-daily-stocks__stat-value indicator--positive">
-                +{{ averageReturn }}%
-              </p>
+    <!-- Daily Stocks Grid -->
+    <div class="p-daily-stocks__grid">
+      <div v-for="stock in dailyStocks" :key="stock.ticker" class="c-daily-card">
+         <div class="c-daily-card__header">
+            <h3 class="c-daily-card__title">{{ stock.name }}</h3>
+            <span class="c-daily-card__date">{{ stock.date }}</span>
+         </div>
+         <div class="c-daily-card__body">
+            <p class="c-daily-card__desc">{{ stock.description }}</p>
+            <div class="c-daily-card__tags">
+               <span v-for="tag in stock.tags" :key="tag" class="c-daily-card__tag">#{{ tag }}</span>
             </div>
-            <div class="p-daily-stocks__stat-divider"></div>
-            <div class="p-daily-stocks__stat-item">
-              <p class="p-daily-stocks__stat-label">적중률</p>
-              <p class="p-daily-stocks__stat-value" style="color: var(--blue-600)">
-                {{ hitRate }}%
-              </p>
+         </div>
+         <div class="c-daily-card__footer">
+            <div class="c-daily-card__performance">
+               <span class="c-daily-card__yield" :class="stock.yield > 0 ? 'indicator--positive' : 'indicator--negative'">
+                  {{ stock.yield > 0 ? '+' : '' }}{{ stock.yield }}%
+               </span>
             </div>
-          </div>
-        </div>
+            <Button variant="outline" size="sm">상세보기</Button>
+         </div>
       </div>
     </div>
   </div>
@@ -92,91 +38,20 @@
 
 <script>
 import Button from '@/components/common/Button.vue';
-import { CalendarDays, ChevronLeft, ChevronRight, Star } from 'lucide-vue';
-
-const mockDailyData = [
-  {
-    date: '2026-01-20',
-    picks: [
-      { ticker: '005930', name: '삼성전자', aiScore: 95, result: null },
-      { ticker: '000660', name: 'SK하이닉스', aiScore: 92, result: null },
-      { ticker: '079550', name: 'LIG넥스원', aiScore: 90, result: null }
-    ]
-  },
-  {
-    date: '2026-01-17',
-    picks: [
-      { ticker: '373220', name: 'LG에너지솔루션', aiScore: 88, result: 5.3 },
-      { ticker: '005380', name: '현대차', aiScore: 85, result: 2.1 },
-      { ticker: '051910', name: 'LG화학', aiScore: 83, result: -1.2 }
-    ]
-  },
-  {
-    date: '2026-01-16',
-    picks: [
-      { ticker: '035720', name: '카카오', aiScore: 87, result: 8.5 },
-      { ticker: '035420', name: 'NAVER', aiScore: 84, result: 4.2 },
-      { ticker: '096770', name: 'SK이노베이션', aiScore: 82, result: 1.8 }
-    ]
-  },
-  {
-    date: '2026-01-15',
-    picks: [
-      { ticker: '207940', name: '삼성바이오로직스', aiScore: 91, result: 6.7 },
-      { ticker: '068270', name: '셀트리온', aiScore: 89, result: 3.4 },
-      { ticker: '000270', name: '기아', aiScore: 86, result: -0.5 }
-    ]
-  },
-  {
-    date: '2026-01-14',
-    picks: [
-      { ticker: '105560', name: 'KB금융', aiScore: 84, result: 4.1 },
-      { ticker: '055550', name: '신한지주', aiScore: 82, result: 3.2 },
-      { ticker: '086790', name: '하나금융지주', aiScore: 80, result: 2.8 }
-    ]
-  }
-];
 
 export default {
   name: "DailyStocks",
-  components: {
-    Button, CalendarDays, ChevronLeft, ChevronRight, Star
-  },
+  components: { Button },
   data() {
     return {
-      currentPage: 0,
-      mockDailyData
-    }
-  },
-  computed: {
-    currentData() {
-      return this.mockDailyData[this.currentPage];
-    },
-    canGoPrev() {
-      return this.currentPage < this.mockDailyData.length - 1;
-    },
-    canGoNext() {
-      return this.currentPage > 0;
-    },
-    hasResults() {
-      return this.currentData.picks.some(p => p.result !== null);
-    },
-    averageReturn() {
-      if (!this.hasResults) return 0;
-      const sum = this.currentData.picks.reduce((sum, p) => sum + (p.result || 0), 0);
-      return (sum / this.currentData.picks.length).toFixed(2);
-    },
-    hitRate() {
-      if (!this.hasResults) return 0;
-      const hits = this.currentData.picks.filter(p => (p.result || 0) > 0).length;
-      return ((hits / this.currentData.picks.length) * 100).toFixed(0);
+      dailyStocks: [
+        { name: '삼성전자', ticker: '005930', date: '2024.01.22', description: 'AI 반도체 수요 급증에 따른 HBM3E 공급 본격화 기대감', tags: ['반도체', 'HBM', 'AI'], yield: 2.5 },
+        { name: '현대차', ticker: '005380', date: '2024.01.22', description: '하이브리드 카 판매 비중 확대로 인한 수익성 개선 전망', tags: ['자동차', '친환경', '실적'], yield: -0.8 },
+        { name: '카카오', ticker: '035720', date: '2024.01.21', description: '광고 업황 회복 및 AI 서비스 고도화에 따른 성장 모멘텀', tags: ['IT', 'AI', '플랫폼'], yield: 4.2 }
+      ]
     }
   }
 }
 </script>
 
 <style src="@/assets/css/pages/daily-stocks.css"></style>
-</script>
-
-<style src="@/assets/css/pages/daily-stocks.css"></style>
-

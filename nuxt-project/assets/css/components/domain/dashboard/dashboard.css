@@ -159,85 +159,78 @@
     @apply w-4 h-4;
 }
 
-/* Widget Dialog Styles */
+/* Widget Dialog Styles - Premium Refinement */
 .c-widget-dialog {
-    @apply flex h-full;
+    @apply flex h-full overflow-hidden;
 }
 
 .c-widget-dialog__sidebar {
-    @apply w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col;
+    @apply w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)];
+    z-index: 10;
 }
 
 .c-widget-dialog__sidebar-header {
-    @apply p-6 border-b border-slate-100 dark:border-slate-700;
+    @apply p-8 border-b border-slate-100 dark:border-slate-700;
 }
 
 .c-widget-dialog__sidebar-title {
-    @apply text-lg font-bold text-slate-900 dark:text-white;
+    @apply text-xl font-black text-slate-900 dark:text-white tracking-tight;
 }
 
 .c-widget-dialog__sidebar-desc {
-    @apply text-xs text-slate-500 dark:text-slate-400 mt-1;
+    @apply text-[11px] font-bold text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-wider;
 }
 
 .c-widget-dialog__category-list {
-    @apply flex-1 overflow-y-auto py-4;
+    @apply flex-1 overflow-y-auto py-6 px-3 space-y-1;
 }
 
 .c-widget-dialog__category-btn {
-    @apply w-full text-left px-6 py-3 text-sm font-medium transition-colors flex items-center justify-between text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-700;
+    @apply w-full text-left px-5 py-3.5 text-[13px] font-bold transition-all flex items-center justify-between text-slate-500 dark:text-slate-400 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50;
 }
 
 .c-widget-dialog__category-btn--active {
-    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 border-r-2 border-blue-600 hover:bg-blue-50 dark:hover:bg-blue-900/20;
-}
-
-.c-widget-card__size-btn--selected {
-    @apply bg-blue-600 text-white border-blue-600 font-semibold hover:bg-blue-600 hover:text-white hover:border-blue-600;
+    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 shadow-sm ring-1 ring-blue-100 dark:ring-blue-900/30;
 }
 
 .c-widget-dialog__category-count {
-    @apply text-xs bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400 px-2 py-0.5 rounded-full;
+    @apply text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-2 py-0.5 rounded-md font-black;
 }
 
 .c-widget-dialog__footer {
-    @apply p-4 border-t border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50;
+    @apply p-6 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800;
 }
 
 .c-widget-dialog__footer-actions {
-    @apply flex items-center justify-between mb-3 px-1;
+    @apply flex items-center gap-3;
 }
 
 .c-widget-dialog__btn-cancel {
-    @apply flex-1 mr-2 border-slate-200 dark:border-slate-600 hover:bg-slate-100 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300;
+    @apply flex-1 h-11 border-slate-200 dark:border-slate-700 text-slate-500 font-bold hover:bg-slate-50 dark:hover:bg-slate-700 rounded-xl;
 }
 
 .c-widget-dialog__btn-apply {
-    @apply flex-1 bg-blue-600 hover:bg-blue-700 shadow-md;
+    @apply flex-1 h-11 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500 text-white font-bold shadow-lg shadow-slate-900/10 dark:shadow-blue-900/20 rounded-xl;
 }
 
 .c-widget-dialog__content {
-    @apply flex-1 flex flex-col bg-slate-50/50 dark:bg-slate-900/50 min-h-0;
+    @apply flex-1 flex flex-col bg-slate-50 dark:bg-slate-950 min-h-0;
 }
 
 .c-widget-dialog__content-header {
-    @apply p-6 border-b border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 flex items-center justify-between;
+    @apply px-10 py-8 border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-10;
 }
 
 .c-widget-dialog__content-title {
-    @apply font-bold text-lg text-slate-800 dark:text-slate-100 flex items-center;
+    @apply font-black text-xl text-slate-900 dark:text-white flex items-center gap-2;
 }
 
 .c-widget-dialog__content-subtitle {
-    @apply text-slate-400 font-normal text-sm ml-2;
-}
-
-.c-widget-dialog__actions {
-    @apply flex gap-2;
+    @apply text-slate-400 font-bold text-xs uppercase tracking-widest;
 }
 
 .c-widget-dialog__dialog-content {
-    @apply max-w-[70rem] h-[80vh] overflow-hidden flex flex-col p-0 bg-slate-50 dark:bg-slate-900;
+    @apply max-w-[85rem] h-[85vh] overflow-hidden flex flex-col p-0 border-none shadow-2xl rounded-[2rem];
 }
 
 .c-widget-dialog__search-wrapper {
@@ -245,100 +238,67 @@
 }
 
 .c-widget-dialog__search-icon {
-    @apply absolute left-2.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400;
+    @apply absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400;
 }
 
 .c-widget-dialog__search-input {
-    @apply pl-9 pr-4 py-1.5 text-sm border border-slate-200 dark:border-slate-600 bg-white dark:bg-slate-700 text-slate-900 dark:text-white rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 w-64;
+    @apply pl-11 pr-6 py-2.5 text-sm border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded-2xl focus:ring-2 focus:ring-blue-500/20 w-80 transition-all font-bold;
 }
 
 .c-widget-dialog__grid-wrapper {
-    @apply flex-1 overflow-y-auto p-6 min-h-0;
+    @apply flex-1 overflow-y-auto p-10 min-h-0;
 }
 
 .c-widget-dialog__grid {
-    @apply grid grid-cols-2 lg:grid-cols-3 gap-4;
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6;
 }
 
-/* Widget Card in Dialog */
+/* Enhanced Widget Card */
 .c-widget-card {
-    @apply relative flex flex-col items-start p-5 rounded-xl border-2 transition-all duration-200 text-left bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-500 hover:shadow-sm;
+    @apply relative flex flex-col items-start p-8 rounded-3xl border-2 transition-all duration-300 text-left bg-white dark:bg-slate-900 border-white dark:border-slate-800 shadow-sm hover:translate-y-[-4px] hover:shadow-xl;
 }
 
 .c-widget-card--selected {
-    @apply border-blue-500 shadow-md ring-1 ring-blue-500;
+    @apply border-blue-500 ring-4 ring-blue-500/10 bg-blue-50/10 dark:bg-blue-900/5;
 }
 
 .c-widget-card__checkbox {
-    @apply absolute top-4 right-4 w-5 h-5 rounded border flex items-center justify-center transition-colors border-slate-300 dark:border-slate-600 bg-white dark:bg-slate-700;
-}
-
-.c-widget-card:hover .c-widget-card__checkbox {
-    @apply border-blue-400;
+    @apply absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800;
 }
 
 .c-widget-card__checkbox--checked {
-    @apply bg-blue-500 border-blue-500;
+    @apply bg-blue-600 border-blue-600 scale-110 shadow-lg shadow-blue-500/20;
 }
 
 .c-widget-card__icon-wrapper {
-    @apply w-10 h-10 rounded-lg flex items-center justify-center mb-4 transition-colors bg-slate-100 dark:bg-slate-700 text-slate-500 dark:text-slate-400;
+    @apply w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shadow-sm;
 }
 
-.c-widget-card:hover .c-widget-card__icon-wrapper {
-    @apply bg-blue-50;
-}
-
-.dark .c-widget-card:hover .c-widget-card__icon-wrapper {
-    @apply bg-blue-900/40;
-}
-
-.c-widget-card__icon-wrapper--selected {
-    @apply bg-blue-100 dark:bg-blue-900/40 text-blue-600 dark:text-blue-400;
-}
-
-.c-widget-card__check-icon {
-    @apply w-3.5 h-3.5 text-white;
-}
-
-.c-widget-card__icon {
-    @apply w-5 h-5;
-}
-
-.c-widget-card__content {
-    @apply flex-1 w-full relative z-10;
+.c-widget-card--selected .c-widget-card__icon-wrapper {
+    @apply bg-blue-600 text-white shadow-lg shadow-blue-500/20 scale-105;
 }
 
 .c-widget-card__title {
-    @apply font-bold text-sm mb-2 text-slate-900 dark:text-slate-100;
-}
-
-.c-widget-card__title--selected {
-    @apply text-blue-900 dark:text-blue-300;
+    @apply font-black text-base mb-3 text-slate-800 dark:text-slate-100 leading-tight;
 }
 
 .c-widget-card__size-options {
-    @apply flex flex-wrap gap-1;
+    @apply flex items-center gap-3 mt-auto pt-4 w-full border-t border-slate-50 dark:border-slate-800;
 }
 
 .c-widget-card__size-control {
-    @apply flex items-center gap-1;
+    @apply flex items-center gap-2;
 }
 
 .c-widget-card__size-label {
-    @apply text-[10px] font-bold text-slate-500;
+    @apply text-[10px] font-black text-slate-400 uppercase tracking-tighter;
 }
 
 .c-widget-card__size-select {
-    @apply text-[10px] py-1 pl-1 pr-4 border border-slate-200 rounded bg-slate-50 text-slate-700 hover:border-blue-400 focus:ring-1 focus:ring-blue-500 focus:outline-none appearance-none;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
-    background-position: right 0.1rem center;
+    @apply text-xs font-bold py-1.5 pl-3 pr-8 border-none bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg focus:ring-2 focus:ring-blue-500/20 appearance-none transition-colors;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-position: right 0.5rem center;
     background-repeat: no-repeat;
-    background-size: 1.25em 1.25em;
-    width: 3rem;
-}
-
-.dark .c-widget-card__size-select {
-    @apply bg-slate-700 border-slate-600 text-slate-300;
-    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+    background-size: 1rem;
+    min-width: 4rem;
 }

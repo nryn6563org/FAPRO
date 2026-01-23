@@ -10,8 +10,9 @@
       @theme-change="handleThemeChange"
     />
 
+    <!-- 레이아웃 전체 컨테이너 -->
     <div class="l-default__container">
-    <!-- Sidebar -->
+    <!-- 사이드바: 내비게이션 메뉴 영역 -->
     <aside
       :class="[
         'l-sidebar',
@@ -41,6 +42,7 @@
             </template>
           </button>
           
+          <!-- 서브메뉴 (계층형 내비게이션) -->
           <div v-if="item.children && sidebarOpen" :class="['l-sidebar__submenu', expandedMenus.includes(item.id) ? '' : 'l-sidebar__submenu--hidden']">
             <div v-for="subItem in item.children" :key="subItem.id">
               <button
@@ -86,12 +88,12 @@
       </nav>
     </aside>
 
-    <!-- Main Content -->
+    <!-- 메인 콘텐츠 영역 -->
     <div class="l-main">
-      <!-- Header -->
+      <!-- 메인 섹션 상단 헤더 (검색 및 지수 정보) -->
       <header class="l-main__header">
         <div class="u-flex-col-gap-3">
-          <!-- Welcome Message -->
+          <!-- 사용자 환영 메시지 -->
           <div class="l-main__welcome">
             <div>
               <p class="u-text-lg-bold">안녕하세요! 김승원FA님, 오늘도 좋은 하루 보내세요!</p>
@@ -101,7 +103,7 @@
             </div>
           </div>
           
-          <!-- Search and Indices -->
+          <!-- 종목 검색 및 지수 요약 카드 -->
           <div class="u-flex-col-gap-3">
             <div class="l-main__search-wrapper">
               <Search class="l-main__search-icon" />
@@ -111,7 +113,7 @@
               />
             </div>
             
-             <!-- IndexCards Mini -->
+             <!-- 지수 정보 미니 카드 목록 -->
              <div class="l-main__indices">
                 <div v-for="index in headerIndices" :key="index.name" class="c-mini-card">
                     <div class="c-mini-card__content">
@@ -124,7 +126,7 @@
                         <p class="c-mini-card__value">{{ index.value.toLocaleString() }}</p>
                     </div>
                     
-                    <!-- Decorative Chart Line -->
+                    <!-- 지수 장식용 SVG 라인 (상승 시 적색, 하락 시 청색) -->
                     <div class="c-mini-card__chart">
                         <svg viewBox="0 0 100 40" class="u-full" preserveAspectRatio="none">
                             <path d="M0 30 Q 25 35, 50 20 T 100 10 V 40 H 0 Z" :fill="index.change >= 0 ? '#ef4444' : '#3b82f6'" />
@@ -136,12 +138,12 @@
         </div>
       </header>
 
-      <!-- Content -->
+      <!-- 실제 페이지 내용이 렌더링되는 곳 -->
       <main class="l-main__content">
         <nuxt />
       </main>
 
-       <!-- Footer -->
+       <!-- 페이지 하단 푸터 영역 -->
        <footer class="l-footer">
           <div class="l-footer__inner">
             <div class="u-flex-center-gap-6">
@@ -205,6 +207,7 @@ export default {
   },
   data() {
     return {
+      // 상단 헤더 지수 정보
       headerIndices: [
         { name: 'KOSPI', value: 2567.89, change: 1.2 },
         { name: 'KOSDAQ', value: 756.32, change: -0.8 },
@@ -212,10 +215,12 @@ export default {
         { name: 'NASDAQ', value: 15310.97, change: 0.9 },
         { name: 'USD/KRW', value: 1342.50, change: 0.3 },
       ],
-      sidebarOpen: true,
+      sidebarOpen: true,      // 사이드바 펼침/접힘 상태
+      // 초기 확장 메뉴 (투자정보, 마켓정보, AI추천종목)
       expandedMenus: ['investment-info', 'market-info', 'ai-recommend'],
-      isLoggedIn: true,
-      currentTheme: 'system',
+      isLoggedIn: true,       // 로그인 여부 (데모용)
+      currentTheme: 'system', // 현재 테마 설정
+      // 사이드바 내비게이션 아이템 정의 (계층 구조)
       navItems: [
         { id: 'dashboard', label: '대시보드', icon: 'LayoutDashboard', route: '/', color: 'text-blue-600' },
         { id: 'clients', label: '고객 관리', icon: 'Users', route: '/clients', color: 'text-indigo-600' },
@@ -264,6 +269,7 @@ export default {
     this.initTheme();
   },
   methods: {
+    // 초기 테마 설정 (로컬 스토리지 확인)
     initTheme() {
         const savedTheme = localStorage.getItem('theme');
         if (savedTheme) {
@@ -272,6 +278,7 @@ export default {
             this.handleThemeChange('system');
         }
     },
+    // 다크 모드/라이트 모드 테마 변경 처리
     handleThemeChange(mode) {
         this.currentTheme = mode;
         localStorage.setItem('theme', mode);
@@ -282,8 +289,8 @@ export default {
         } else if (mode === 'light') {
             html.classList.remove('dark');
         } else {
-            // System
-            localStorage.removeItem('theme'); // Clean up preference if system
+            // 시스템 설정에 따름
+            localStorage.removeItem('theme'); 
             if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
                 html.classList.add('dark');
             } else {
@@ -291,8 +298,9 @@ export default {
             }
         }
     },
+    // 현재 경로가 내비게이션 아이템과 일치하는지 확인 (Active 상태 결정)
     isActive(itemId) {
-      // Find item recursively to get route
+      // 메뉴 트리에서 특정 ID 아이템 찾기 (재귀)
       const findItem = (items) => {
           for (const item of items) {
               if (item.id === itemId) return item;
@@ -309,6 +317,7 @@ export default {
       if (item.route === '/') return this.$route.path === '/';
       return this.$route.path.startsWith(item.route);
     },
+    // 내비게이션 아이템 클릭 시 라우팅 또는 메뉴 토글
     handleNavClick(item) {
       if (item.children) {
         this.toggleMenu(item.id);
@@ -316,6 +325,7 @@ export default {
         this.$router.push(item.route);
       }
     },
+    // 서브메뉴 펼침/접힘 토글
     toggleMenu(menuId) {
       if (this.expandedMenus.includes(menuId)) {
         this.expandedMenus = this.expandedMenus.filter(id => id !== menuId);

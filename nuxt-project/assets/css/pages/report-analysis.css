@@ -5,18 +5,11 @@
 }
 
 .p-report-analysis__grid {
-    @apply grid grid-cols-1 gap-6;
-}
-
-@screen lg {
-    .p-report-analysis__grid {
-        @apply grid-cols-2;
-    }
+    @apply grid grid-cols-1 gap-6 lg:grid-cols-2;
 }
 
 .p-report-analysis__card {
-    @apply bg-white p-6 border border-slate-200 rounded-3xl transition-all duration-300 flex flex-col gap-6;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white p-6 border border-slate-200 rounded-3xl transition-all duration-300 flex flex-col gap-6 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-report-analysis__card:hover {
@@ -32,8 +25,7 @@
 }
 
 .p-report-analysis__icon-box {
-    @apply w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-500 shrink-0;
-    @apply dark:bg-slate-800 dark:text-slate-400;
+    @apply w-12 h-12 rounded-xl bg-slate-50 flex items-center justify-center text-slate-500 shrink-0 dark:bg-slate-800 dark:text-slate-400;
 }
 
 .p-report-analysis__icon {
@@ -41,8 +33,7 @@
 }
 
 .p-report-analysis__card-title {
-    @apply text-lg font-black text-slate-900 leading-tight mb-2;
-    @apply dark:text-white;
+    @apply text-lg font-black text-slate-900 leading-tight mb-2 dark:text-white;
 }
 
 .p-report-analysis__metadata {
@@ -55,14 +46,7 @@
 
 /* Data Panel */
 .p-report-analysis__data-panel {
-    @apply grid grid-cols-2 gap-5 bg-slate-50 p-5 rounded-2xl;
-    @apply dark:bg-slate-800/50;
-}
-
-@screen sm {
-    .p-report-analysis__data-panel {
-        @apply grid-cols-4;
-    }
+    @apply grid grid-cols-2 gap-5 bg-slate-50 p-5 rounded-2xl sm:grid-cols-4 dark:bg-slate-800/50;
 }
 
 .p-report-analysis__metric {
@@ -74,8 +58,7 @@
 }
 
 .p-report-analysis__metric-value {
-    @apply text-base font-black text-slate-900;
-    @apply dark:text-white;
+    @apply text-base font-black text-slate-900 dark:text-white;
 }
 
 .p-report-analysis__metric-subtext {

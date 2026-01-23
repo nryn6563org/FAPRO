@@ -5,7 +5,7 @@
       <p class="c-page-header__desc">실시간 국내외 주요 지수와 환율 정보</p>
     </div>
 
-    <!-- Tabs -->
+    <!-- 시장 분류 탭 (국내, 해외, 환율, 원자재) -->
     <div class="space-y-6">
       <div class="flex space-x-1 rounded-lg bg-slate-100 p-1 w-full lg:w-auto lg:inline-flex">
         <button
@@ -251,7 +251,7 @@ import { TrendingUp, TrendingDown } from 'lucide-vue';
 import AreaChart from '@/components/charts/AreaChart';
 import LineChart from '@/components/charts/LineChart';
 
-// Generate mock data helper
+// 차트용 더미 데이터 생성 헬퍼 함수
 const generateChartData = (baseValue, volatility = 50) => {
   return Array.from({ length: 30 }, (_, i) => ({
     date: `${i + 1}일`,
@@ -278,6 +278,7 @@ export default {
         { value: 'forex', label: '환율' },
         { value: 'commodities', label: '원자재' }
       ],
+      // 스파크라인(미니 차트) 옵션 설정
       sparklineOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -297,6 +298,7 @@ export default {
             padding: { left: 0, right: 0, top: 0, bottom: 0 }
         }
       },
+      // 상세 차트 전용 옵션 설정
       detailChartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -348,9 +350,11 @@ export default {
     };
   },
   methods: {
+    // 숫자를 한국어 통화 형식(소수점 2자리)으로 포맷팅
     formatNumber(val) {
       return val.toLocaleString('ko-KR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
     },
+    // 각 지수별 요약 차트(스파크라인)용 데이터 가공
     getSparklineData(item) {
         if (!item || !item.chartData) return {};
         const labels = item.chartData.map(d => d.date);
@@ -364,13 +368,14 @@ export default {
                     data,
                     borderColor: color,
                     borderWidth: 2,
-                    backgroundColor: null, // Initial background, AreaChart mixin handles gradient
+                    backgroundColor: null, // AreaChart 컴포넌트 내부에서 그라데이션 주입
                     fill: true,
                     pointRadius: 0
                 }
             ]
         };
     },
+    // 상세 분석 차트용 데이터 가공
     getDetailChartData(item) {
         if (!item || !item.chartData) return {};
         const labels = item.chartData.map(d => d.date);

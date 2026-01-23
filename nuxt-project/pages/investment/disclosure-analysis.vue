@@ -1,50 +1,69 @@
 <template>
-  <div class="p-disclosure-analysis">
+  <div class="p-disclosure">
     <div class="c-page-header">
-      <h2 class="c-page-header__title">공시 분석</h2>
-      <p class="c-page-header__desc">실시간 공시 정보 및 영향 분석</p>
+      <div class="c-page-header__inner">
+        <div class="c-page-header__content">
+          <h2 class="c-page-header__title">공시 분석</h2>
+          <p class="c-page-header__desc">실시간 공시 정보 및 영향 분석을 제공합니다.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="p-disclosure-analysis__grid">
-      <div v-for="disclosure in mockDisclosures" :key="disclosure.id" class="p-disclosure-analysis__card">
-        <div class="p-disclosure-analysis__icon-group">
-           <div class="p-disclosure-analysis__icon-box" :class="getImportanceIconBg(disclosure.importance)">
-              <ClipboardList class="p-disclosure-analysis__icon" :class="getImportanceIconColor(disclosure.importance)" />
-           </div>
+    <!-- Summary Metrics -->
+    <div class="p-disclosure__metrics">
+        <div v-for="(metric, idx) in summaryMetrics" :key="idx" class="p-disclosure__metric-card">
+            <div class="p-disclosure__metric-icon-box" :class="metric.bgClass">
+                <component :is="metric.icon" class="p-disclosure__metric-icon" :class="metric.iconClass" />
+            </div>
+            <div class="p-disclosure__metric-content">
+                <p class="p-disclosure__metric-label">{{ metric.label }}</p>
+                <p class="p-disclosure__metric-value">{{ metric.value }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Disclosure Feed (2-column on 1920x1080) -->
+    <div class="p-disclosure__list">
+      <div v-for="disclosure in mockDisclosures" :key="disclosure.id" class="c-disclosure-item">
+        <div class="c-disclosure-item__header">
+            <div class="c-disclosure-item__stock-group">
+                <div class="c-disclosure-item__avatar">
+                    {{ disclosure.stockName[0] }}
+                </div>
+                <div class="c-disclosure-item__meta">
+                    <h3 class="c-disclosure-item__name">{{ disclosure.stockName }}</h3>
+                    <span class="c-disclosure-item__time">{{ disclosure.time }} • {{ disclosure.ticker }}</span>
+                </div>
+            </div>
+            <span class="c-disclosure-item__title-tag">
+                {{ disclosure.title }}
+            </span>
         </div>
         
-        <div class="p-disclosure-analysis__content">
-           <div class="p-disclosure-analysis__header-row">
-              <h3 class="p-disclosure-analysis__stock-name">{{ disclosure.stockName }}</h3>
-              <span class="status-badge" :class="getImportanceBadgeClass(disclosure.importance)">
-                 {{ getImportanceLabel(disclosure.importance) }}
-              </span>
-              <span class="p-disclosure-analysis__type-badge">
-                 {{ disclosure.type }}
-              </span>
-           </div>
+        <div class="c-disclosure-item__body">
+           <h4 class="c-disclosure-item__news-title">{{ disclosure.summary }}</h4>
            
-           <h4 class="p-disclosure-analysis__title">{{ disclosure.title }}</h4>
-           
-           <div class="p-disclosure-analysis__meta">
-              <div class="p-disclosure-analysis__time-group">
-                <Clock class="p-disclosure-analysis__meta-icon" />
-                <span>{{ disclosure.time }}</span>
+           <div class="c-disclosure-item__analysis">
+              <Sparkles class="c-disclosure-item__analysis-icon" />
+              <div class="c-disclosure-item__analysis-text">
+                  <strong>AI 분석 의견:</strong>
+                  본 공시는 {{ disclosure.stockName }}의 매출 증대에 긍정적인 영향을 줄것으로 분석됩니다. 
+                  계약 규모는 약 {{ (disclosure.amount / 100000000).toFixed(0) }}억원 수준입니다.
               </div>
-              <span class="p-disclosure-analysis__ticker">{{ disclosure.ticker }}</span>
            </div>
-           
-           <div class="p-disclosure-analysis__summary-card">
-              <p class="p-disclosure-analysis__summary-text">{{ disclosure.summary }}</p>
-              <p v-if="disclosure.amount" class="p-disclosure-analysis__amount">
-                 계약금액: {{ (disclosure.amount / 100000000).toFixed(0) }}억원
-              </p>
-           </div>
+        </div>
 
-           <div class="p-disclosure-analysis__actions">
-              <Button variant="outline" size="sm" class="p-disclosure-analysis__action-btn">공시 전문 보기</Button>
-              <Button size="sm" class="p-disclosure-analysis__action-btn">종목 상세보기</Button>
-           </div>
+        <div class="c-disclosure-item__footer">
+            <div class="c-disclosure-item__tags">
+                <span class="c-disclosure-item__sector-tag">IT/반도체</span>
+                <span class="c-disclosure-item__sector-tag" :class="getImportanceBadgeClass(disclosure.importance)">
+                    {{ getImportanceLabel(disclosure.importance) }}
+                </span>
+            </div>
+            <div class="c-disclosure-item__actions">
+                <Button variant="outline" size="sm" class="c-disclosure-item__action-btn">공시원문</Button>
+                <Button size="sm" class="c-disclosure-item__action-btn">상세분석</Button>
+            </div>
         </div>
       </div>
     </div>
@@ -53,7 +72,7 @@
 
 <script>
 import Button from '@/components/common/Button.vue';
-import { ClipboardList, Clock } from 'lucide-vue';
+import { ClipboardList, Clock, Sparkles, AlertCircle, CheckCircle2 } from 'lucide-vue';
 
 const mockDisclosures = [
   {
@@ -121,11 +140,17 @@ const mockDisclosures = [
 export default {
   name: "DisclosureAnalysis",
   components: {
-    Button, ClipboardList, Clock
+    Button, ClipboardList, Clock, Sparkles, AlertCircle, CheckCircle2
   },
   data() {
     return {
-      mockDisclosures
+      mockDisclosures,
+      summaryMetrics: [
+          { label: '금일 공시', value: '124건', icon: 'ClipboardList', bgClass: 'bg-blue-50 dark:bg-blue-900/20', iconClass: 'text-blue-600 dark:text-blue-400' },
+          { label: '중요 공시', value: '12건', icon: 'AlertCircle', bgClass: 'bg-rose-50 dark:bg-rose-900/20', iconClass: 'text-rose-600 dark:text-rose-400' },
+          { label: '분석 완료', value: '98건', icon: 'CheckCircle2', bgClass: 'bg-emerald-50 dark:bg-emerald-900/20', iconClass: 'text-emerald-600 dark:text-emerald-400' },
+          { label: '영향 증가', value: '45개', icon: 'Sparkles', bgClass: 'bg-amber-50 dark:bg-amber-900/20', iconClass: 'text-amber-600 dark:text-amber-400' },
+      ]
     }
   },
   methods: {

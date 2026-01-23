@@ -100,14 +100,16 @@ export default {
   },
   data() {
     return {
+      // 초기 위젯 목록
       widgets: [
         'kospi', 'kosdaq', 'sp500', 'nasdaq', 'usd-krw',
         'client-count', 'aum', 'revenue', 'top-clients', 'market-news',
       ],
-      isDialogOpen: false,
-      isEditing: false,
-      originalWidgets: [],
-      drag: false,
+      isDialogOpen: false,  // 위젯 추가 다이얼로그 노출 여부
+      isEditing: false,    // 편집 모드 활성화 여부
+      originalWidgets: [], // 편집 취소 시 복구를 위한 백업 데이터
+      drag: false,         // 드래그 상태 플래그
+      // 위젯별 크기 설정 (w: 가로 칸 수, h: 세로 칸 수)
       widgetSizes: {
         'kospi': { w: 2, h: 1 },
         'kosdaq': { w: 2, h: 1 },
@@ -125,32 +127,46 @@ export default {
     };
   },
   methods: {
+    /**
+     * 위젯 ID에 따른 그리드 클래스 반환 (가로/세로 크기 결정)
+     */
     getWidgetGridClass(widgetId) {
        const size = this.widgetSizes[widgetId] || { w: 1, h: 1 };
        return `c-dashboard__grid-item--w-${size.w} c-dashboard__grid-item--h-${size.h}`;
     },
+    // 편집 모드 진입 (현재 상태 백업)
     handleEditMode() {
         this.originalWidgets = [...this.widgets];
         this.isEditing = true;
     },
+    // 편집 사항 저장
     handleSaveEdit() {
         this.isEditing = false;
     },
+    // 편집 모드 취소 (이전 상태로 복구)
     handleCancelEdit() {
         this.widgets = [...this.originalWidgets];
         this.isEditing = false;
     },
+    // 위젯 추가 다이얼로그 열기
     handleOpenDialog() {
        this.isDialogOpen = true;
     },
+    // 다이얼로그 닫기
     handleCancelDialog() {
        this.isDialogOpen = false;
     },
+    /**
+     * 다이얼로그에서 선택된 위젯 목록 저장
+     */
     handleSaveWidgets({ widgets, sizes }) {
        this.widgets = [...widgets];
        this.widgetSizes = { ...this.widgetSizes, ...sizes };
        this.isDialogOpen = false;
     },
+    /**
+     * 특정 위젯 삭제
+     */
     removeWidget(widgetId) {
        this.widgets = this.widgets.filter(w => w !== widgetId);
     }

@@ -1,9 +1,10 @@
-/* Clients Page Styles - Tailwind @apply refactor */
+/* 고객 관리 페이지 스타일 - Tailwind @apply 및 BEM 구조 활용 */
 
 .p-clients {
     @apply flex flex-col gap-6;
 }
 
+/* 페이지 헤더 영역 (제목 및 신규 등록 버튼) */
 .p-clients__header {
     @apply flex items-center justify-between;
 }
@@ -13,23 +14,20 @@
 }
 
 .p-clients__title {
-    @apply text-2xl font-bold text-slate-900;
-    @apply dark:text-slate-100;
+    @apply text-2xl font-bold text-slate-900 dark:text-slate-100;
 }
 
 .p-clients__subtitle {
-    @apply text-sm text-slate-600 mt-1;
-    @apply dark:text-slate-400;
+    @apply text-sm text-slate-600 mt-1 dark:text-slate-400;
 }
 
 .p-clients__add-btn {
     @apply flex items-center gap-2;
 }
 
-/* Search Box */
+/* AI 고객 검색 박스 영역 */
 .p-clients__search-box {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 transition-shadow duration-300;
-    @apply dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl;
 }
 
 .p-clients__search-header {
@@ -37,23 +35,15 @@
 }
 
 .p-clients__search-title {
-    @apply text-lg font-bold text-slate-900 mb-1;
-    @apply dark:text-slate-100;
+    @apply text-lg font-bold text-slate-900 mb-1 dark:text-slate-100;
 }
 
 .p-clients__search-desc {
-    @apply text-sm text-slate-500;
-    @apply dark:text-slate-400;
+    @apply text-sm text-slate-500 dark:text-slate-400;
 }
 
 .p-clients__search-form {
-    @apply flex flex-col gap-4;
-}
-
-@screen md {
-    .p-clients__search-form {
-        @apply flex-row;
-    }
+    @apply flex flex-col gap-4 md:flex-row;
 }
 
 .p-clients__search-field {
@@ -72,20 +62,13 @@
     @apply flex items-center gap-2;
 }
 
-/* Sort Bar */
+/* 정렬 및 필터 바 */
 .p-clients__sort-bar {
-    @apply flex flex-col gap-4 items-start justify-between;
-}
-
-@screen sm {
-    .p-clients__sort-bar {
-        @apply flex-row items-center;
-    }
+    @apply flex flex-col gap-4 items-start justify-between sm:flex-row sm:items-center;
 }
 
 .p-clients__count {
-    @apply text-sm font-semibold text-slate-600;
-    @apply dark:text-slate-400;
+    @apply text-sm font-semibold text-slate-600 dark:text-slate-400;
 }
 
 .p-clients__sort-actions {
@@ -101,28 +84,26 @@
 }
 
 .p-clients__sort-label {
-    @apply text-sm font-semibold text-slate-600;
-    @apply dark:text-slate-400;
+    @apply text-sm font-semibold text-slate-600 dark:text-slate-400;
 }
 
 .p-clients__sort-btn-group {
     @apply flex flex-wrap gap-2;
 }
 
-/* Grid */
+/* 고객 카드 그리드 레이아웃 */
 .p-clients__grid {
     @apply flex flex-wrap gap-4 justify-start;
 }
 
-/* Client Card */
+/* 개별 고객 카드 컴포넌트 */
 .c-client-card {
-    @apply w-[280px] bg-white rounded-2xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden cursor-pointer flex flex-col;
-    @apply dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
+    @apply w-[280px] bg-white rounded-2xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden cursor-pointer flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
 }
 
+/* 카드 호버 효과 */
 .c-client-card:hover {
-    @apply -translate-y-1.5 shadow-xl border-rose-400;
-    @apply dark:shadow-slate-900/60 dark:border-rose-900;
+    @apply -translate-y-1.5 shadow-xl border-rose-400 dark:shadow-slate-900/60 dark:border-rose-900;
 }
 
 .c-client-card__header {
@@ -137,6 +118,7 @@
     @apply flex items-center gap-4;
 }
 
+/* 프로필 아바타 (그라데이션 적용) */
 .c-client-card__avatar {
     @apply w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/30;
 }
@@ -146,28 +128,28 @@
 }
 
 .c-client-card__name {
-    @apply text-base font-bold text-slate-900;
-    @apply dark:text-slate-100;
+    @apply text-base font-bold text-slate-900 dark:text-slate-100;
 }
 
+/* 투자 성향 뱃지 공통 스타일 */
 .c-client-card__risk-badge {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-[10px] font-bold;
 }
 
+/* 즐겨찾기 버튼 */
 .c-client-card__favorite-btn {
     @apply flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-200 bg-transparent;
 }
 
 .c-client-card__favorite-btn:hover {
-    @apply bg-slate-100;
-    @apply dark:bg-slate-800;
+    @apply bg-slate-100 dark:bg-slate-800;
 }
 
 .c-client-card__favorite-icon {
-    @apply w-[1.125rem] h-[1.125rem] text-slate-300 transition-all duration-200;
-    @apply dark:text-slate-600;
+    @apply w-[1.125rem] h-[1.125rem] text-slate-300 transition-all duration-200 dark:text-slate-600;
 }
 
+/* 활성화된 즐겨찾기 아이콘 색상 */
 .c-client-card__favorite-icon--active {
     @apply fill-amber-500 text-amber-500;
 }
@@ -176,6 +158,7 @@
     @apply p-6 pt-0 flex flex-col gap-5;
 }
 
+/* 자산 및 수익률 지표 영역 */
 .c-client-card__metrics {
     @apply grid grid-cols-2 gap-4;
 }
@@ -189,17 +172,16 @@
 }
 
 .c-client-card__metric-value {
-    @apply text-base font-bold text-slate-900;
-    @apply dark:text-slate-100;
+    @apply text-base font-bold text-slate-900 dark:text-slate-100;
 }
 
 .c-client-card__return-rate {
     @apply text-base font-bold;
 }
 
+/* 연락처 및 상담 정보 목록 */
 .c-client-card__info-list {
-    @apply flex flex-col gap-2 pt-4 border-t border-slate-100;
-    @apply dark:border-slate-800;
+    @apply flex flex-col gap-2 pt-4 border-t border-slate-100 dark:border-slate-800;
 }
 
 .c-client-card__info-item {
@@ -211,14 +193,14 @@
 }
 
 .c-client-card__info-text {
-    @apply text-[13px] text-slate-600 whitespace-nowrap overflow-hidden text-ellipsis;
-    @apply dark:text-slate-400;
+    @apply text-[13px] text-slate-600 whitespace-nowrap overflow-hidden text-ellipsis dark:text-slate-400;
 }
 
 .c-client-card__footer {
     @apply flex gap-2 pt-1;
 }
 
+/* 상세 보기 버튼 */
 .c-client-card__details-btn {
     @apply w-full flex items-center justify-center gap-2 font-semibold;
 }
@@ -227,19 +209,17 @@
     @apply w-3.5 h-3.5;
 }
 
-/* Add Client Form (Dialog) */
+/* 신규 고객 등록 폼 (다이얼로그) */
 .c-add-client-form {
     @apply p-6 flex flex-col gap-8;
 }
 
 .c-add-client-form__header {
-    @apply border-b border-slate-200 pb-4;
-    @apply dark:border-slate-800;
+    @apply border-b border-slate-200 pb-4 dark:border-slate-800;
 }
 
 .c-add-client-form__title {
-    @apply text-xl font-bold text-slate-900;
-    @apply dark:text-slate-100;
+    @apply text-xl font-bold text-slate-900 dark:text-slate-100;
 }
 
 .c-add-client-form__grid {
@@ -255,28 +235,20 @@
 }
 
 .c-add-client-form__label {
-    @apply text-sm font-semibold text-slate-700;
-    @apply dark:text-slate-300;
+    @apply text-sm font-semibold text-slate-700 dark:text-slate-300;
 }
 
 .c-add-client-form__footer {
     @apply flex justify-end gap-4 pt-4;
 }
 
-/* Client Detail View (Dialog) */
+/* 고객 상세 보기 모달 레이아웃 */
 .c-client-detail {
-    @apply bg-slate-50 h-full flex flex-col overflow-hidden;
-    @apply dark:bg-slate-950;
+    @apply bg-slate-50 h-full flex flex-col overflow-hidden dark:bg-slate-950;
 }
 
 .c-client-detail__body {
-    @apply p-8 grid grid-cols-1 gap-6 flex-1 overflow-y-auto;
-}
-
-@screen lg {
-    .c-client-detail__body {
-        @apply grid-cols-[350px_1fr];
-    }
+    @apply p-8 grid grid-cols-1 gap-6 flex-1 overflow-y-auto lg:grid-cols-[350px_1fr];
 }
 
 .c-client-detail__sidebar {
@@ -287,15 +259,13 @@
     @apply flex flex-col gap-6;
 }
 
-/* Profile Card */
+/* 상세 보기용 프로필 카드 */
 .c-client-detail__profile-card {
-    @apply bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col items-center text-center gap-4;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-3xl p-8 border border-slate-200 shadow-sm flex flex-col items-center text-center gap-4 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .c-client-detail__avatar {
-    @apply w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-3xl shadow-2xl shadow-blue-500/40 border-4 border-white;
-    @apply dark:border-slate-800;
+    @apply w-20 h-20 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-extrabold text-3xl shadow-2xl shadow-blue-500/40 border-4 border-white dark:border-slate-800;
 }
 
 .c-client-detail__profile-info {
@@ -303,27 +273,25 @@
 }
 
 .c-client-detail__name {
-    @apply text-2xl font-extrabold text-slate-900;
-    @apply dark:text-white;
+    @apply text-2xl font-extrabold text-slate-900 dark:text-white;
 }
 
 .c-client-detail__risk-badge {
     @apply inline-flex items-center rounded-lg px-3 py-1 text-xs font-extrabold uppercase tracking-wider;
 }
 
-/* Risk Badge Colors */
-.client-badge-risk--low { @apply bg-green-100 text-green-800; @apply dark:bg-green-800/20 dark:text-green-400; }
-.client-badge-risk--mid { @apply bg-yellow-100 text-yellow-800; @apply dark:bg-yellow-800/20 dark:text-yellow-400; }
-.client-badge-risk--high { @apply bg-red-100 text-red-800; @apply dark:bg-red-800/20 dark:text-red-400; }
+/* 투자 위험 성향별 색상 설정 */
+.client-badge-risk--low { @apply bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400; }
+.client-badge-risk--mid { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-800/20 dark:text-yellow-400; }
+.client-badge-risk--high { @apply bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400; }
 
-/* Metrics */
+/* 자산 상세 지표 카드 */
 .c-client-detail__metrics {
     @apply grid grid-cols-1 gap-4;
 }
 
 .c-client-detail__metric-card {
-    @apply bg-white rounded-2xl p-6 border border-slate-200 flex flex-col justify-center transition-transform duration-200;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-2xl p-6 border border-slate-200 flex flex-col justify-center transition-transform duration-200 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .c-client-detail__metric-group {
@@ -335,19 +303,16 @@
 }
 
 .c-client-detail__metric-value {
-    @apply text-3xl font-extrabold text-slate-900;
-    @apply dark:text-white;
+    @apply text-3xl font-extrabold text-slate-900 dark:text-white;
 }
 
-/* Contact Info */
+/* 상세 보기 연락처 카드 */
 .c-client-detail__contact-card {
-    @apply bg-white rounded-2xl p-6 border border-slate-200;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-2xl p-6 border border-slate-200 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .c-client-detail__section-title {
-    @apply text-lg font-bold text-slate-900 mb-6;
-    @apply dark:text-white;
+    @apply text-lg font-bold text-slate-900 mb-6 dark:text-white;
 }
 
 .c-client-detail__contact-list {
@@ -363,23 +328,21 @@
 }
 
 .c-client-detail__contact-text {
-    @apply text-sm font-semibold text-slate-700;
-    @apply dark:text-slate-300;
+    @apply text-sm font-semibold text-slate-700 dark:text-slate-300;
 }
 
-/* Portfolio Section */
+/* 포트폴리오 분석 섹션 */
 .c-client-detail__portfolio-section {
-    @apply bg-white rounded-3xl p-8 border border-slate-200 shadow-sm;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-3xl p-8 border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
 }
 
 .c-client-detail__portfolio-content {
     @apply flex flex-col gap-6;
 }
 
+/* 자산 비중 표시 막대 (Horizontal Bar Chart) */
 .c-portfolio-bar {
-    @apply flex h-6 w-full rounded-full overflow-hidden bg-slate-100;
-    @apply dark:bg-slate-800;
+    @apply flex h-6 w-full rounded-full overflow-hidden bg-slate-100 dark:bg-slate-800;
 }
 
 .c-portfolio-bar__segment {
@@ -391,14 +354,9 @@
 .c-portfolio-bar__segment--cash { @apply bg-amber-400; }
 .c-portfolio-bar__segment--alternatives { @apply bg-purple-500; }
 
+/* 포트폴리오 범례 */
 .c-portfolio-legend {
-    @apply grid grid-cols-2 gap-4;
-}
-
-@screen sm {
-    .c-portfolio-legend {
-        @apply grid-cols-4;
-    }
+    @apply grid grid-cols-2 gap-4 sm:grid-cols-4;
 }
 
 .c-portfolio-legend__item {
@@ -415,18 +373,16 @@
 .c-portfolio-legend__dot--alternatives { @apply bg-purple-500; }
 
 .c-portfolio-legend__text {
-    @apply text-[13px] font-bold text-slate-700;
-    @apply dark:text-slate-300;
+    @apply text-[13px] font-bold text-slate-700 dark:text-slate-300;
 }
 
-/* Tabs */
+/* 자산 탭 상세 스타일 */
 .c-client-detail__portfolio-tabs {
     @apply flex flex-col gap-6 mt-4;
 }
 
 .c-client-detail__tab-list {
-    @apply flex bg-slate-100 p-1.5 rounded-xl self-start;
-    @apply dark:bg-slate-800;
+    @apply flex bg-slate-100 p-1.5 rounded-xl self-start dark:bg-slate-800;
 }
 
 .c-client-detail__tab-button {

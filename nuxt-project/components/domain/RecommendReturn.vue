@@ -5,7 +5,7 @@
       <p class="text-slate-600 mt-1">AI 추천 종목의 실적 및 성과 분석</p>
     </div>
 
-    <!-- Summary Cards -->
+    <!-- 성과 요약 카드 섹션 (수익률, 승률, 거래건수 등) -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
       <div v-for="(card, index) in summaryCards" :key="index" class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
         <div class="flex items-center justify-between">
@@ -20,9 +20,9 @@
       </div>
     </div>
 
-    <!-- Charts -->
+    <!-- 수익률 분석 차트 섹션 -->
     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <!-- Monthly Returns Bar Chart -->
+      <!-- 월별 수익률 막대 차트 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
         <div class="p-6 border-b border-slate-100">
           <h3 class="text-lg font-semibold">월별 수익률</h3>
@@ -34,7 +34,7 @@
         </div>
       </div>
 
-      <!-- Category Returns Pie Chart -->
+      <!-- 업종별 수익률 파이 차트 -->
       <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
         <div class="p-6 border-b border-slate-100">
           <h3 class="text-lg font-semibold">업종별 수익률</h3>
@@ -47,7 +47,7 @@
       </div>
     </div>
 
-    <!-- Top Performers -->
+    <!-- 수익률 상위 종목 리스트 -->
     <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
        <div class="p-6 border-b border-slate-100">
         <h3 class="text-lg font-semibold">최고 수익 종목 TOP 5</h3>
@@ -61,7 +61,7 @@
           >
              <div class="flex items-center gap-4">
                <div
-:class="[
+ :class="[
                  'w-10 h-10 rounded-full flex items-center justify-center font-bold text-white',
                  getRankColor(index)
                ]">
@@ -129,6 +129,7 @@ export default {
   },
   data() {
     return {
+      // 핵심 성과 데이터
       performanceData: {
         totalReturns: 15.8,
         winRate: 72.5,
@@ -138,6 +139,7 @@ export default {
         maxReturn: 35.6,
         minReturn: -8.3
       },
+      // 월별 수익률 데이터 (차트용)
       monthlyReturns: [
         { month: '7월', return: 8.5 },
         { month: '8월', return: 12.3 },
@@ -154,6 +156,7 @@ export default {
         { ticker: '373220', name: 'LG에너지솔루션', return: 18.7, period: '1개월' },
         { ticker: '005930', name: '삼성전자', return: 15.3, period: '1주' }
       ],
+      // 업종별 수익률 분포 (파이 차트용)
       categoryReturns: [
         { name: '반도체', value: 18.5, color: '#3b82f6' },
         { name: '바이오', value: 22.3, color: '#ec4899' },
@@ -161,6 +164,7 @@ export default {
         { name: '2차전지', value: 12.4, color: '#10b981' },
         { name: '기타', value: 8.7, color: '#6b7280' }
       ],
+      // 막대 차트 옵션 설정
       barChartOptions: {
         responsive: true,
         maintainAspectRatio: false,

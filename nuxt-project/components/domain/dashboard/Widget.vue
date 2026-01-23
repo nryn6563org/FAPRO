@@ -13,7 +13,7 @@
     </div>
     
     <div class="c-widget__content">
-        <!-- Market Widgets (Line Chart) -->
+        <!-- 시장 지수 위젯 (라인 차트 포함) -->
         <div v-if="isMarketWidget" class="c-widget__market-wrapper">
             <div class="c-widget__value-area">
                 <p class="c-widget__value">{{ marketData.value.toLocaleString() }}</p>
@@ -28,7 +28,7 @@
             </div>
         </div>
 
-        <!-- Revenue Widget (Bar Chart) -->
+        <!-- 매출 위젯 (막대 차트) -->
         <div v-else-if="widgetId === 'revenue'" class="c-widget__revenue-wrapper">
             <div class="c-widget__revenue-value">
                 <p class="c-widget__value">52,400,000원</p>
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <!-- AI Issue Bubble (Bubble Chart) -->
+        <!-- AI 이슈 버블 (버블 차트) -->
         <div v-else-if="widgetId === 'ai-issue-bubble'" class="c-widget__bubble-wrapper">
              <div class="c-widget__chart-area">
                 <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="u-full" />
@@ -55,7 +55,7 @@
              </div>
         </div>
 
-        <!-- Client Count & AUM (Simple Text) -->
+        <!-- 고객 수 및 운용자산(AUM) (텍스트로만 표시) -->
         <div v-else-if="widgetId === 'client-count' || widgetId === 'aum'" class="c-widget__simple-wrapper">
              <div>
                 <p class="c-widget__value">{{ widgetId === 'client-count' ? '247명' : '1,247억원' }}</p>
@@ -66,7 +66,7 @@
             </div>
         </div>
 
-        <!-- Top Clients (List) -->
+        <!-- 주요 고객 목록 (리스트) -->
         <div v-else-if="widgetId === 'top-clients'" class="c-widget__list-wrapper">
              <div class="c-widget__list">
                 <div v-for="(client, idx) in mockClientData" :key="idx" class="c-widget__list-item">
@@ -82,7 +82,7 @@
                     <div class="c-widget__list-right">
                         <p class="c-widget__client-name">{{ (client.revenue / 10000).toFixed(0) }}만원</p>
                         <div
-:class="['c-widget__tag', 
+ :class="['c-widget__tag', 
                             client.risk === 'high' ? 'c-widget__tag--high' :
                             client.risk === 'medium' ? 'c-widget__tag--medium' :
                             'c-widget__tag--low']">
@@ -93,7 +93,7 @@
              </div>
         </div>
         
-         <!-- News Widgets (List) -->
+         <!-- 뉴스 위젯 (목록형) -->
         <div v-else-if="widgetId === 'market-news' || widgetId === 'economy-news'" class="c-widget__news-wrapper">
             <div class="c-widget__news-list">
                <div v-for="(news, idx) in mockNews" :key="idx" class="c-widget__news-item">
@@ -107,7 +107,7 @@
             </div>
         </div>
 
-        <!-- Fallback -->
+        <!-- 데이터 없는 예외 케이스 처리 -->
         <div v-else class="c-widget__fallback">
              <span class="c-widget__fallback-text">데이터 준비중: {{ widgetId }}</span>
         </div>
@@ -146,6 +146,7 @@ export default {
     return {
        mockClientData,
        mockNews,
+       // 카테고리별 색상 매핑 (AI 이슈 버블용)
        categoryColors: {
             tech: '#3b82f6',
             auto: '#8b5cf6',
@@ -158,29 +159,36 @@ export default {
     };
   },
   computed: {
+    // 위젯 설정 정보 가져오기
     config() {
        return AVAILABLE_WIDGETS.find(w => w.id === this.widgetId);
     },
+    // 위젯 제목
     title() {
        return this.config ? this.config.title : 'Unknown Widget';
     },
+    // 위젯 아이콘
     icon() {
        return this.config ? this.config.icon : null;
     },
+    // 시장 지수 위젯 여부 확인
     isMarketWidget() {
         return this.widgetId in mockMarketData;
     },
+    // 시장 지수 데이터 연결
     marketData() {
         return mockMarketData[this.widgetId] || { value: 0, change: 0, changePercent: 0 };
     },
+    // 상승/하락 여부 확인
     isPositive() {
         return this.marketData.change >= 0;
     },
+    // 라인 차트 데이터 가공 (지수용)
     lineChartData() {
         if (!this.isMarketWidget) return null;
-        // Generate random specific data for the chart to look realistic
+        // 실제 데이터 대신 시각화를 위한 무작위 데이터 생성
         const labels = Array.from({ length: 30 }, (_, i) => `${i + 1}일`);
-        const data = Array.from({ length: 30 }, () => Math.random() * 1000 + 2000); // Simple random
+        const data = Array.from({ length: 30 }, () => Math.random() * 1000 + 2000); 
         
         const color = this.isPositive ? '#10b981' : '#ef4444';
         
@@ -191,10 +199,7 @@ export default {
                     label: 'Value',
                     borderColor: color,
                     backgroundColor: () => {
-                       // Gradient would need context, but simple string color opacity for now
-                       // Or we leave it transparent for line only, 
-                       // but Recharts Area had gradient. Vue-Chartjs v3 gradient is possible via canvas script but complex.
-                       // Let's use simple semi-transparent fill for now.
+                       // 상승 시 녹색, 하락 시 적색 반투명 채우기
                        return this.isPositive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)';
                     },
                     borderWidth: 2,
@@ -206,6 +211,7 @@ export default {
             ]
         };
     },
+    // 라인 차트 옵션 설정
     lineChartOptions() {
         return {
             maintainAspectRatio: false,
@@ -227,6 +233,7 @@ export default {
             }
         };
     },
+    // 매출 막대 차트 데이터 가공
     revenueChartData() {
         return {
             labels: Array.from({length: 12}, (_, i) => `${i+1}월`),
@@ -255,15 +262,15 @@ export default {
             }
         };
     },
+    // AI 이슈 버블 차트 데이터 가공
     scatterChartData() {
-        // Transform mockAIIssueData for Chart.js v2 Scatter
         return {
             datasets: mockAIIssueData.map(item => ({
                 label: item.keyword,
                 data: [{
                     x: item.x,
                     y: item.y,
-                    r: Math.sqrt(item.size) // Radius logic roughly equivalent
+                    r: Math.sqrt(item.size) // 버블 크기 결정
                 }],
                 backgroundColor: this.categoryColors[item.category] || '#6b7280',
                 borderColor: this.categoryColors[item.category] || '#6b7280',

@@ -1,8 +1,13 @@
+/**
+ * 대시보드 데이터 유틸리티
+ * 위젯 정보, 시장 데이터, 고객 데이터 등의 모의 데이터를 정의합니다.
+ */
 import { TrendingUp, TrendingDown, DollarSign, Users, Activity, Newspaper, Globe, Building2, PieChart, Wallet, Target, Award, Calculator, Briefcase, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays } from "lucide-vue";
 
 // Widget Types
 // 'kospi' | 'kosdaq' | ...
 
+// 사용 가능한 위젯 목록
 export const AVAILABLE_WIDGETS = [
   // Market Indices
   { id: "kospi", title: "KOSPI", category: "국내 지수", icon: TrendingUp, defaultSize: "small" },
@@ -50,6 +55,7 @@ export const AVAILABLE_WIDGETS = [
   { id: "recommend-return-widget", title: "추천종목수익률", category: "AI추천", icon: PieChart, defaultSize: "large" }
 ];
 
+// 시장 지수 및 환율 모의 데이터
 export const mockMarketData = {
   kospi: { value: 2547.82, change: 15.34, changePercent: 0.61 },
   kosdaq: { value: 742.15, change: -3.21, changePercent: -0.43 },
@@ -67,6 +73,7 @@ export const mockMarketData = {
   ethereum: { value: 2234.45, change: -45.23, changePercent: -1.98 }
 };
 
+// 고객 정보 모의 데이터 (AUM 단위: 원, 수익 단위: 원)
 export const mockClientData = [
   { name: "김영희", aum: 35000000000, revenue: 12500000, risk: "medium" },
   { name: "이철수", aum: 28000000000, revenue: 9800000, risk: "low" },

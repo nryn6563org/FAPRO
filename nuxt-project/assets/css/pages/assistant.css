@@ -5,24 +5,16 @@
 }
 
 .p-assistant__layout {
-    @apply grid grid-cols-1 gap-6;
-}
-
-@screen lg {
-    .p-assistant__layout {
-        @apply grid-cols-[1fr_350px];
-    }
+    @apply grid grid-cols-1 gap-6 lg:grid-cols-[1fr_350px];
 }
 
 /* Chat Area */
 .p-assistant__chat-panel {
-    @apply flex flex-col h-[700px] bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply flex flex-col h-[700px] bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-assistant__chat-header {
-    @apply p-6 border-b border-slate-100 flex items-center justify-between;
-    @apply dark:border-slate-800;
+    @apply p-6 border-b border-slate-100 flex items-center justify-between dark:border-slate-800;
 }
 
 .p-assistant__bot-info {
@@ -34,8 +26,7 @@
 }
 
 .p-assistant__bot-name {
-    @apply text-lg font-extrabold text-slate-900;
-    @apply dark:text-white;
+    @apply text-lg font-extrabold text-slate-900 dark:text-white;
 }
 
 .p-assistant__bot-status {
@@ -48,8 +39,7 @@
 
 /* Messages */
 .p-assistant__messages {
-    @apply flex-1 p-6 overflow-y-auto flex flex-col gap-6 bg-slate-50;
-    @apply dark:bg-slate-950;
+    @apply flex-1 p-6 overflow-y-auto flex flex-col gap-6 bg-slate-50 dark:bg-slate-950;
 }
 
 .p-assistant__message {
@@ -81,8 +71,7 @@
 }
 
 .p-assistant__msg-bubble--bot {
-    @apply bg-white border border-slate-200 text-slate-800 rounded-tl-none;
-    @apply dark:bg-slate-900 dark:border-slate-800 dark:text-slate-200;
+    @apply bg-white border border-slate-200 text-slate-800 rounded-tl-none dark:bg-slate-900 dark:border-slate-800 dark:text-slate-200;
 }
 
 .p-assistant__msg-bubble--user {
@@ -95,8 +84,7 @@
 
 /* Input Area */
 .p-assistant__input-panel {
-    @apply p-6 bg-white border-t border-slate-100;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply p-6 bg-white border-t border-slate-100 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-assistant__input-container {
@@ -113,13 +101,11 @@
 }
 
 .p-assistant__suggest-card {
-    @apply p-6 bg-white rounded-2xl border border-slate-200 shadow-sm;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+    @apply p-6 bg-white rounded-2xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-assistant__suggest-title {
-    @apply text-base font-extrabold text-slate-800 mb-6;
-    @apply dark:text-white;
+    @apply text-base font-extrabold text-slate-800 mb-6 dark:text-white;
 }
 
 .p-assistant__suggest-list {
@@ -127,11 +113,9 @@
 }
 
 .p-assistant__suggest-item {
-    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200;
-    @apply dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-400;
+    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-400;
 }
 
 .p-assistant__suggest-item:hover {
-    @apply translate-x-1 bg-white border-blue-200 text-blue-600 shadow-sm;
-    @apply dark:bg-slate-800 dark:border-blue-900/30 dark:text-blue-400;
+    @apply translate-x-1 bg-white border-blue-200 text-blue-600 shadow-sm dark:bg-slate-800 dark:border-blue-900/30 dark:text-blue-400;
 }

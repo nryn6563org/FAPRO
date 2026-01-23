@@ -1,6 +1,6 @@
-/* AI Page Styles */
+/* AI 관련 페이지 스타일 (AI 비서 및 AI 매매신호) */
 
-/* Page Container */
+/* 페이지 전체 컨테이너 */
 .p-ai {
     @apply p-6 min-h-screen bg-slate-50 dark:bg-slate-950;
 }
@@ -17,7 +17,7 @@
     @apply flex flex-col gap-4;
 }
 
-/* Header */
+/* 페이지 헤더 영역 */
 .p-ai__header {
     @apply mb-6;
 }
@@ -30,7 +30,7 @@
     @apply text-slate-600 dark:text-slate-400 mt-1;
 }
 
-/* Chat Interface */
+/* AI 채팅 인터페이스 컴포넌트 */
 .c-chat-interface {
     @apply flex flex-col h-[700px] bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden;
 }
@@ -39,6 +39,7 @@
     @apply p-6 border-b border-slate-100 dark:border-slate-800 flex items-center gap-3 bg-white dark:bg-slate-900;
 }
 
+/* AI 봇 아이콘 래퍼 (그라데이션 배경) */
 .c-chat-interface__bot-icon-wrapper {
     @apply w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shadow-md;
 }
@@ -55,6 +56,7 @@
     @apply text-sm text-slate-500 dark:text-slate-400;
 }
 
+/* 메시지 목록 스크롤 영역 */
 .c-chat-interface__messages-wrapper {
     @apply bg-white dark:bg-slate-900 flex-1 flex flex-col p-0 overflow-hidden relative rounded-b-lg;
 }
@@ -63,6 +65,7 @@
     @apply flex-1 p-6 overflow-y-auto flex flex-col gap-4 bg-slate-50 dark:bg-slate-950;
 }
 
+/* 하단 입력창 영역 */
 .c-chat-interface__input-area {
     @apply border-t border-slate-200 dark:border-slate-800 p-4 bg-white dark:bg-slate-900;
 }
@@ -79,11 +82,12 @@
     @apply gap-2 bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-600 dark:hover:bg-blue-500;
 }
 
-/* Chat Message */
+/* 개별 채팅 메시지 말풍선 스타일 */
 .c-chat-message {
     @apply flex gap-3;
 }
 
+/* 사용자 메시지 (오른쪽 정렬) */
 .c-chat-message--user {
     @apply flex-row-reverse;
 }
@@ -104,10 +108,12 @@
     @apply max-w-[80%] rounded-2xl p-4 shadow-sm text-sm leading-relaxed;
 }
 
+/* AI 응답 말풍선 (왼쪽) */
 .c-chat-message__content--bot {
     @apply bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 border border-slate-100 dark:border-slate-700;
 }
 
+/* 사용자 질문 말풍선 (오른쪽) */
 .c-chat-message__content--user {
     @apply bg-blue-600 text-white;
 }
@@ -132,6 +138,7 @@
     @apply w-5 h-5 text-white;
 }
 
+/* AI 타이핑 애니메이션 (말줄임표 효과) */
 .c-chat-message__typing-dots {
     @apply bg-white dark:bg-slate-800 rounded-2xl p-4 border border-slate-100 dark:border-slate-700 shadow-sm flex gap-1;
 }
@@ -140,7 +147,7 @@
     @apply w-2 h-2 rounded-full bg-slate-400 dark:bg-slate-500 animate-bounce;
 }
 
-/* Suggested Questions Side Panel */
+/* 우측 추천 질문 패널 */
 .c-suggested-panel {
     @apply h-[700px] flex flex-col bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden;
 }
@@ -169,6 +176,7 @@
     @apply flex-1 p-4 overflow-y-auto flex flex-col gap-2;
 }
 
+/* 개별 추천 질문 항목 */
 .c-question-item {
     @apply w-full p-4 rounded-xl border border-slate-200 dark:border-slate-800 hover:border-blue-500 dark:hover:border-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-all text-left bg-white dark:bg-slate-900;
 }
@@ -197,7 +205,7 @@
     @apply scale-110;
 }
 
-/* Signal Card */
+/* AI 매매신호 카드 컴포넌트 */
 .c-signal-card {
     @apply bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm overflow-hidden hover:shadow-lg dark:hover:shadow-blue-900/10 transition-all duration-200;
 }
@@ -210,11 +218,12 @@
     @apply p-6 flex flex-col gap-4;
 }
 
+/* 신구 요약 지표 그리드 */
 .c-signal-card__stats {
     @apply grid grid-cols-3 gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-xl border border-slate-100 dark:border-slate-800;
 }
 
-/* Signal Summary Stats */
+/* 매매신호 통계 요약 카드 */
 .c-signal-summary {
     @apply bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm p-6 flex justify-between items-center;
 }
@@ -235,12 +244,13 @@
     @apply w-6 h-6;
 }
 
+/* 상태별 아이콘 배경색 설정 */
 .c-signal-summary__icon-wrapper--blue { @apply bg-blue-50 dark:bg-blue-900/20 border-blue-100 dark:border-blue-800; }
 .c-signal-summary__icon-wrapper--green { @apply bg-green-50 dark:bg-emerald-900/20 border-green-100 dark:border-emerald-800; }
 .c-signal-summary__icon-wrapper--red { @apply bg-red-50 dark:bg-rose-900/20 border-red-100 dark:border-rose-800; }
 .c-signal-summary__icon-wrapper--yellow { @apply bg-yellow-50 dark:bg-amber-900/20 border-yellow-100 dark:border-amber-800; }
 
-/* Signal Filter Bar */
+/* 매매신호 필터 바 영역 */
 .c-signal-filter {
     @apply bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm p-6;
 }
@@ -257,11 +267,12 @@
     @apply bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm;
 }
 
-/* Signal List Item Detail */
+/* 신호 카드 내부 상세 정보 */
 .c-signal-card__info-wrapper {
     @apply flex items-center gap-3;
 }
 
+/* 신호 유형별 아이콘 래퍼 */
 .c-signal-card__type-icon-wrapper {
     @apply w-12 h-12 rounded-lg border-2 flex items-center justify-center transition-colors;
 }
@@ -274,14 +285,17 @@
     @apply flex items-center gap-2;
 }
 
+/* 종목 코드(티커) 스타일 */
 .c-signal-card__ticker {
     @apply text-lg font-semibold text-slate-900 dark:text-slate-100;
 }
 
+/* 매매 신호 뱃지 (매수, 매도, 관망 등) */
 .c-signal-card__badge {
     @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
 }
 
+/* 신호 강도 및 유형별 색상 */
 .c-signal-card__badge--buy { @apply bg-emerald-50 dark:bg-emerald-900/20 text-emerald-700 dark:text-emerald-400 border-emerald-100 dark:border-emerald-800; }
 .c-signal-card__badge--sell { @apply bg-rose-50 dark:bg-rose-900/20 text-rose-700 dark:text-rose-400 border-rose-100 dark:border-rose-800; }
 .c-signal-card__badge--hold { @apply bg-amber-50 dark:bg-amber-900/20 text-amber-700 dark:text-amber-400 border-amber-100 dark:border-amber-800; }
@@ -297,6 +311,7 @@
     @apply text-right;
 }
 
+/* 신호 발생 시각 표시 */
 .c-signal-card__timestamp {
     @apply flex items-center gap-1 text-sm text-slate-500 dark:text-slate-400 justify-end;
 }
@@ -305,6 +320,7 @@
     @apply text-xs text-slate-500 dark:text-slate-500 mt-1;
 }
 
+/* 가격 정보 그리드 */
 .c-signal-card__price-grid {
     @apply grid grid-cols-3 gap-4 p-4 bg-slate-50 dark:bg-slate-800/50 rounded-lg;
 }
@@ -317,6 +333,7 @@
     @apply font-semibold text-slate-900 dark:text-slate-100;
 }
 
+/* 신뢰도 점수 및 차트 섹션 */
 .c-signal-card__confidence-section {
     @apply flex flex-col gap-3;
 }
@@ -329,6 +346,7 @@
     @apply flex items-center gap-2;
 }
 
+/* 신뢰도 표시용 프로그레스 바 */
 .c-signal-card__progress-bar {
     @apply w-32 h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden;
 }
@@ -345,6 +363,7 @@
     @apply text-sm text-slate-700 dark:text-slate-300;
 }
 
+/* 주요 기술적 지표 목록 */
 .c-signal-card__indicator-list {
     @apply flex flex-wrap gap-2;
 }
@@ -361,7 +380,7 @@
     @apply flex-1 gap-2 flex items-center justify-center;
 }
 
-/* Empty State */
+/* 신호 없음 상태 (Empty State) */
 .c-signal-empty {
     @apply bg-white dark:bg-slate-900 rounded-lg border border-slate-200 dark:border-slate-800 shadow-sm py-16 text-center;
 }
@@ -378,7 +397,7 @@
     @apply text-slate-600 dark:text-slate-400;
 }
 
-/* Helper Classes for AI Pages (Internal Use) */
+/* AI 페이지 내부용 유틸리티 클래스 */
 .c-signal-card--buy { @apply border-emerald-500 dark:border-emerald-500/50 bg-emerald-500/5; }
 .c-signal-card--sell { @apply border-rose-500 dark:border-rose-500/50 bg-rose-500/5; }
 .c-signal-card--hold { @apply border-amber-500 dark:border-amber-500/50 bg-amber-500/5; }

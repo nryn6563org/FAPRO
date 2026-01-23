@@ -1,6 +1,6 @@
 <template>
   <header class="l-header">
-    <!-- Left: Branding & Toggle -->
+    <!-- 좌측: 로고 및 사이드바 토글 버튼 -->
     <div class="l-header__left">
       <button 
         @click="$emit('toggle-sidebar')"
@@ -19,9 +19,9 @@
       </div>
     </div>
 
-    <!-- Right: User Info & Actions -->
+    <!-- 우측: 테마 설정, 사용자 정보 및 로그아웃/로그인 버튼 -->
     <div class="l-header__right">
-       <!-- Theme Toggle -->
+       <!-- 테마 전환 버튼 (Light/Dark/System) -->
        <div class="l-header__theme-wrapper">
           <button 
              @click="toggleThemeMenu"
@@ -32,7 +32,7 @@
              <Monitor v-else class="l-header__icon" />
           </button>
           
-          <!-- Theme Dropdown -->
+          <!-- 테마 선택 드롭다운 메뉴 -->
           <div v-if="isThemeMenuOpen" class="l-header__theme-menu">
              <button @click="setTheme('light')" class="l-header__theme-item">
                 <Sun class="l-header__icon--sm" /> Light
@@ -66,7 +66,7 @@
           </button>
        </div>
 
-       <!-- Logged Out State -->
+       <!-- 비로그인 상태 (로그인 유도 버튼) -->
        <div v-else class="l-header__login-wrapper">
           <button 
              @click="$emit('login')"

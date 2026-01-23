@@ -5,11 +5,12 @@
         <Star class="p-today-pick__highlight-icon" />
         <div class="p-today-pick__title-group">
           <h2 class="c-page-header__title">오늘의 종목 Pick</h2>
-          <p class="c-page-header__desc">AI가 선정한 오늘의 추천 종목</p>
+          <p class="c-page-header__desc">AI가 선정한 오늘의 추천 종목입니다.</p>
         </div>
       </div>
     </div>
 
+    <!-- 1920x1080 Optimized Grid Layout -->
     <div class="p-today-pick__grid">
       <div v-for="pick in todayPicks" :key="pick.rank" class="p-today-pick__card">
          <button 
@@ -17,17 +18,13 @@
            :class="{ 'p-today-pick__favorite-btn--active': pick.isFavorite }"
            @click="toggleWatchlist(pick)"
          >
-            <Star class="p-today-pick__favorite-icon" :class="{ 'fill-current': pick.isFavorite }" />
+            <Star class="p-today-pick__favorite-icon" :class="{ 'p-today-pick__favorite-icon--filled': pick.isFavorite }" />
          </button>
 
          <div class="p-today-pick__rank-box">
             <Medal 
                class="p-today-pick__rank-icon" 
-               :class="{
-                  'rank-icon-gold': pick.rank === 1,
-                  'rank-icon-silver': pick.rank === 2,
-                  'rank-icon-bronze': pick.rank === 3
-               }" 
+               :class="getRankIconClass(pick.rank)" 
             />
          </div>
 
@@ -55,7 +52,7 @@
             </div>
             <div class="p-today-pick__metric-item">
                <p class="p-today-pick__metric-label">목표가</p>
-               <p class="p-today-pick__metric-value" style="color: var(--blue-600)">{{ pick.targetPrice.toLocaleString() }}원</p>
+               <p class="p-today-pick__metric-value p-today-pick__metric-value--target">{{ pick.targetPrice.toLocaleString() }}원</p>
             </div>
             <div class="p-today-pick__metric-item">
                <p class="p-today-pick__metric-label">기대수익률</p>
@@ -66,7 +63,7 @@
             </div>
             <div class="p-today-pick__metric-item">
                <p class="p-today-pick__metric-label">손절가</p>
-               <p class="p-today-pick__metric-value" style="color: var(--slate-400)">{{ pick.stopLoss.toLocaleString() }}원</p>
+               <p class="p-today-pick__metric-value p-today-pick__metric-value--stoploss">{{ pick.stopLoss.toLocaleString() }}원</p>
             </div>
          </div>
 
@@ -80,7 +77,10 @@
 
          <div class="p-today-pick__actions">
             <Button class="p-today-pick__action-btn" @click="toggleWatchlist(pick)">
-               <Star class="mr-2 h-4 w-4" :class="{ 'fill-current': pick.isFavorite }" />
+               <Star 
+                  class="p-today-pick__btn-star-icon" 
+                  :class="{ 'p-today-pick__btn-star-icon--filled': pick.isFavorite }" 
+               />
                {{ pick.isFavorite ? '관심종목 해제' : '관심종목 추가' }}
             </Button>
             <Button variant="outline" class="p-today-pick__action-btn">상세 분석 보기</Button>
@@ -152,6 +152,13 @@ export default {
   methods: {
     toggleWatchlist(pick) {
        pick.isFavorite = !pick.isFavorite;
+    },
+    getRankIconClass(rank) {
+      return {
+        'rank-icon-gold': rank === 1,
+        'rank-icon-silver': rank === 2,
+        'rank-icon-bronze': rank === 3
+      };
     }
   }
 }

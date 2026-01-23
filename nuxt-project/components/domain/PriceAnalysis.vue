@@ -5,7 +5,7 @@
       <p class="text-slate-600 mt-1">종목별 시세 및 이슈 현황</p>
     </div>
 
-    <!-- Index Charts Section -->
+    <!-- 지수 차트 섹션 (코스피, 코스닥) -->
     <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
       <div class="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100 flex justify-between items-center rounded-t-xl">
         <h3 class="text-lg font-semibold">주요 지수</h3>
@@ -97,7 +97,7 @@
       </div>
     </div>
 
-    <!-- Market Status Table -->
+    <!-- 시세 현황 및 이슈 데이터 테이블 -->
     <div class="bg-white rounded-xl border border-slate-200 shadow-sm">
       <div class="p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100 rounded-t-xl">
         <h3 class="text-lg font-semibold mb-4">시세 현황</h3>
@@ -195,6 +195,7 @@ export default {
       ],
       currentDate: `${String(now.getMonth() + 1).padStart(2, '0')}/${String(now.getDate()).padStart(2, '0')}`,
       currentTime: `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`,
+      // 차트 라이브러리(Chart.js) 전용 옵션 설정
       chartOptions: {
         responsive: true,
         maintainAspectRatio: false,
@@ -218,6 +219,7 @@ export default {
           intersect: false,
         }
       },
+      // 탭별 시계 데이터 (이슈종목, 신고가 등)
       mockDataByTab: {
           '이슈종목': [
             { date: '01/20', time: '09:08', stockName: '유비쿼스', currentPrice: 0, changeRate: 0, issueContent: '피지컬SI 수혜 전망…PBR 역사적 저점 분석에 상승세' },
@@ -250,14 +252,14 @@ export default {
     };
   },
   computed: {
+    // 선택된 탭에 해당하는 시세 데이터 반환
     currentData() {
         return this.mockDataByTab[this.selectedTab] || [];
     },
+    // 코스피 차트 데이터 가공 (선택된 기간에 대응)
     getKospiChartData() {
-        // ... (Logic to return chart js data structure based on this.kospiPeriod) ...
-        // Simplification for brevity, assume similar logic to MarketIndices
          const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
-         const data = [4820, 4830, 4850, 4860, 4880, 4890, 4897]; // Mock data
+         const data = [4820, 4830, 4850, 4860, 4880, 4890, 4897]; // 더미 데이터
          
          return {
              labels,
@@ -271,9 +273,10 @@ export default {
              }]
          };
     },
+    // 코스닥 차트 데이터 가공 (선택된 기간에 대응)
     getKosdaqChartData() {
          const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
-         const data = [920, 930, 925, 935, 940, 945, 950]; // Mock data
+         const data = [920, 930, 925, 935, 940, 945, 950]; // 더미 데이터
          return {
              labels,
              datasets: [{

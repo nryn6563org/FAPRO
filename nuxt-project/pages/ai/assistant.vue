@@ -6,106 +6,86 @@
     </div>
 
     <div class="p-assistant__layout">
-      <!-- Chat Interface -->
-      <div class="p-assistant__chat-card">
+      <!-- Chat Interface Area -->
+      <div class="p-assistant__chat-panel">
         <div class="p-assistant__chat-header">
-            <div class="p-assistant__bot-avatar">
-              <Bot class="w-5 h-5" />
+            <div class="p-assistant__bot-info">
+                <div class="p-assistant__bot-avatar">
+                   <Bot class="w-6 h-6" />
+                </div>
+                <div>
+                   <h3 class="p-assistant__bot-name">라스(RASSI)</h3>
+                   <div class="p-assistant__bot-status">
+                       <div class="p-assistant__status-dot"></div>
+                       <span>AI 분석 중...</span>
+                   </div>
+                </div>
             </div>
-            <div class="p-assistant__chat-info">
-              <h3>AI 어시스턴트</h3>
-              <p>시장이슈와 종목 정보를 쉽게 찾아보세요.</p>
-            </div>
+            <Button variant="outline" size="sm" class="h-8">대화 초기화</Button>
         </div>
 
-        <div class="p-assistant__message-area" ref="scrollArea">
+        <div class="p-assistant__messages" ref="scrollArea">
             <div
               v-for="message in messages"
               :key="message.id"
-              class="p-assistant__message-group"
-              :class="message.role === 'user' ? 'p-assistant__message-group--user' : 'p-assistant__message-group--bot'"
+              :class="['p-assistant__message', message.role === 'user' ? 'p-assistant__message--user' : 'p-assistant__message--bot']"
             >
-              <div class="p-assistant__user-avatar" v-if="message.role === 'user'">
-                <User class="w-4 h-4" />
-              </div>
-              <div class="p-assistant__bot-avatar" style="width: 1.75rem; height: 1.75rem" v-else>
-                <Bot class="w-3.5 h-3.5" />
+              <div :class="['p-assistant__msg-avatar', message.role === 'user' ? 'p-assistant__msg-avatar--user' : 'p-assistant__msg-avatar--bot']">
+                <component :is="message.role === 'user' ? 'User' : 'Bot'" class="w-4 h-4" />
               </div>
               
-              <div class="p-assistant__message-content">
-                <div
-                  class="p-assistant__bubble"
-                  :class="message.role === 'user' ? 'p-assistant__bubble--user' : 'p-assistant__bubble--bot'"
-                >
+              <div class="flex flex-col">
+                <div :class="['p-assistant__msg-bubble', message.role === 'user' ? 'p-assistant__msg-bubble--user' : 'p-assistant__msg-bubble--bot']">
                   {{ message.content }}
                 </div>
-                <p class="p-assistant__timestamp">
+                <p class="p-assistant__msg-time">
                     {{ new Date(message.timestamp).toLocaleTimeString('ko-KR', { hour: '2-digit', minute: '2-digit' }) }}
                 </p>
               </div>
             </div>
 
-            <div v-if="isTyping" class="p-assistant__message-group p-assistant__message-group--bot">
-              <div class="p-assistant__bot-avatar" style="width: 1.75rem; height: 1.75rem">
-                <Bot class="w-3.5 h-3.5" />
+            <div v-if="isTyping" class="p-assistant__message p-assistant__message--bot">
+              <div class="p-assistant__msg-avatar p-assistant__msg-avatar--bot">
+                <Bot class="w-4 h-4" />
               </div>
-              <div class="p-assistant__bubble p-assistant__bubble--bot flex items-center gap-1.5 h-10">
-                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0ms"></div>
-                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 150ms"></div>
-                  <div class="w-1.5 h-1.5 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 300ms"></div>
+              <div class="p-assistant__msg-bubble p-assistant__msg-bubble--bot flex items-center gap-1 h-8">
+                  <div class="w-1 h-1 bg-slate-400 rounded-full animate-bounce"></div>
+                  <div class="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.2s"></div>
+                  <div class="w-1 h-1 bg-slate-400 rounded-full animate-bounce" style="animation-delay: 0.4s"></div>
               </div>
             </div>
         </div>
 
-        <div class="p-assistant__input-area">
-          <div class="p-assistant__input-group">
+        <div class="p-assistant__input-panel">
+          <div class="p-assistant__input-container">
             <Input
               v-model="input"
               @keypress.enter.native="handleSend"
-              placeholder="질문을 입력하세요..."
-              :disabled="isTyping"
+              placeholder="궁금하신 투자 정보를 물어보세요..."
+              class="p-assistant__chat-input"
             />
             <Button 
               @click="handleSend" 
-              :disabled="!input.trim() || isTyping"
+              class="bg-blue-600 hover:bg-blue-700 h-10 px-6 rounded-xl"
             >
-              <Send class="w-4 h-4 mr-2" />
-              전송
+              <Send class="w-4 h-4" />
             </Button>
           </div>
         </div>
       </div>
 
-      <!-- Suggested Questions -->
+      <!-- Suggested Questions Sidebar -->
       <div class="p-assistant__sidebar">
-        <div class="c-content-card p-assistant__sidebar-card">
-           <div class="p-assistant__sidebar-header">
-             <h3 class="p-assistant__sidebar-title">질문 목록</h3>
-             <div class="flex p-1 bg-slate-100 dark:bg-slate-800 rounded-lg">
-                <button
-                   v-for="tab in questionTabs" :key="tab.id"
-                   @click="activeTab = tab.id"
-                   class="flex-1 text-[10px] font-bold py-1.5 rounded-md transition-all text-center"
-                   :class="activeTab === tab.id 
-                     ? 'bg-white dark:bg-slate-700 text-slate-900 dark:text-slate-100 shadow-sm' 
-                     : 'text-slate-500 hover:text-slate-700'"
-                >
-                   {{ tab.label }}
-                </button>
-             </div>
-           </div>
-           
-           <div class="p-assistant__question-list">
+        <div class="p-assistant__suggest-card">
+           <h3 class="p-assistant__suggest-title">추천 질문</h3>
+           <div class="p-assistant__suggest-list">
                <button
                  v-for="(item, idx) in currentQuestions"
                  :key="idx"
                  @click="handleSuggestedQuestion(item.question)"
-                 class="p-assistant__question-btn group"
+                 class="p-assistant__suggest-item"
                >
-                 <div class="p-assistant__question-icon-box">
-                    <component :is="item.icon" class="w-3.5 h-3.5" />
-                 </div>
-                 <span class="p-assistant__question-text">{{ item.question }}</span>
+                 {{ item.question }}
                </button>
            </div>
         </div>

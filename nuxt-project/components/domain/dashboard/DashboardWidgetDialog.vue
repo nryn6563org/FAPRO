@@ -134,12 +134,15 @@ export default {
     },
     data() {
         return {
-            activeCategory: '국내 지수',
-            tempSelectedWidgets: [],
-            tempWidgetSizes: {}
+            activeCategory: '국내 지수', // 현재 선택된 카테고리
+            tempSelectedWidgets: [],  // 다이얼로그에서 일시적으로 선택된 위젯 목록
+            tempWidgetSizes: {}       // 다이얼로그에서 일시적으로 변경된 위젯 크기 정보
         };
     },
     computed: {
+        /**
+         * AVAILABLE_WIDGETS 상수를 카테고리별로 그룹화
+         */
         categorizedWidgets() {
             const acc = {};
             AVAILABLE_WIDGETS.forEach(widget => {
@@ -152,6 +155,9 @@ export default {
         }
     },
     watch: {
+        /**
+         * 다이얼로그가 열릴 때 현재 대시보드 상태를 임시 변수에 복사
+         */
         isOpen(val) {
             if (val) {
                 this.tempSelectedWidgets = [...this.currentWidgets];
@@ -166,26 +172,33 @@ export default {
         closeDialog() {
             this.$emit('close');
         },
+        // 설정한 위젯 및 크기 정보를 부모 컴포넌트로 전달
         saveWidgets() {
             this.$emit('save', {
                 widgets: this.tempSelectedWidgets,
                 sizes: this.tempWidgetSizes
             });
         },
+        // 임시 저장된 위젯 크기 반환 (기본값 2x1)
         getTempWidgetSize(widgetId) {
             return this.tempWidgetSizes[widgetId] || { w: 2, h: 1 };
         },
+        // 위젯이 선택되었고 특정 크기인지 확인
         isWidgetSelectedAndSize(widgetId, layout) {
             if (!this.tempSelectedWidgets.includes(widgetId)) return false;
             const size = this.getTempWidgetSize(widgetId);
             return size.w === layout.w && size.h === layout.h;
         },
+        // 위젯 크기 선택 처리
         selectWidgetSize(widgetId, layout) {
             if (!this.tempSelectedWidgets.includes(widgetId)) {
                 this.tempSelectedWidgets.push(widgetId);
             }
             this.$set(this.tempWidgetSizes, widgetId, { w: layout.w, h: layout.h });
         },
+        /**
+         * 위젯의 가로(w) 또는 세로(h) 크기 업데이트
+         */
         updateWidgetSize(widgetId, dimension, value) {
             const currentSize = this.getTempWidgetSize(widgetId);
             const newSize = { ...currentSize, [dimension]: parseInt(value) };
@@ -196,6 +209,9 @@ export default {
                 this.tempSelectedWidgets.push(widgetId);
             }
         },
+        /**
+         * 위젯 선택 상태 토글
+         */
         toggleTempWidget(widgetId) {
             if (this.tempSelectedWidgets.includes(widgetId)) {
                 this.tempSelectedWidgets = this.tempSelectedWidgets.filter(w => w !== widgetId);

@@ -1,147 +1,100 @@
-/* Recommend Stocks Page Styles - Tailwind @apply refactor */
-
+/* Recommended Stocks Page - Premium 1920x1080 Optimized */
 .p-recommend-stocks {
-    @apply flex flex-col gap-6;
+    @apply flex flex-col gap-10;
 }
 
-.p-recommend-stocks__content {
-    @apply p-6;
+/* Page Header Stats */
+.p-recommend-stocks__summary {
+    @apply grid grid-cols-1 gap-6 md:grid-cols-3 mb-4;
 }
 
-.p-recommend-stocks__tabs {
-    @apply flex gap-2 mb-8 bg-slate-100 p-1.5 rounded-xl self-start;
-    @apply dark:bg-slate-800;
+.p-recommend-stocks__summary-card {
+    @apply bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm flex items-center gap-6 dark:bg-slate-900 dark:border-slate-800;
 }
 
-.p-recommend-stocks__tab-button {
-    @apply px-5 py-2 text-sm font-extrabold rounded-lg transition-all duration-200 text-slate-500;
+.p-recommend-stocks__summary-icon {
+    @apply w-12 h-12 rounded-2xl flex items-center justify-center bg-slate-50 dark:bg-slate-800 text-slate-600;
 }
 
-.p-recommend-stocks__tab-button--active {
-    @apply bg-white text-slate-900 shadow-sm;
-    @apply dark:bg-slate-700 dark:text-white;
+.p-recommend-stocks__summary-label {
+    @apply text-xs font-black text-slate-400 uppercase tracking-widest;
 }
 
-.p-recommend-stocks__list {
-    @apply grid grid-cols-1 gap-6;
+.p-recommend-stocks__summary-value {
+    @apply text-2xl font-black text-slate-900 dark:text-white;
 }
 
-@screen lg {
-    .p-recommend-stocks__list {
-        @apply grid-cols-2;
-    }
+/* Stocks Grid - 3 cols on 1920x1080 */
+.p-recommend-stocks__grid {
+    @apply grid grid-cols-1 gap-8 xl:grid-cols-3;
 }
 
-.p-recommend-stocks__item {
-    @apply bg-white border border-slate-200 rounded-3xl p-6 transition-all duration-300 flex flex-col gap-6;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+.c-recommend-card {
+    @apply bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm transition-all duration-300 flex flex-col gap-8 dark:bg-slate-900 dark:border-slate-800;
 }
 
-.p-recommend-stocks__item:hover {
-    @apply -translate-y-1 shadow-xl border-blue-200;
-    @apply dark:border-blue-900;
+.c-recommend-card:hover {
+    @apply border-blue-200 shadow-xl transform -translate-y-2;
 }
 
-.p-recommend-stocks__item-header {
+.c-recommend-card__header {
     @apply flex justify-between items-start;
 }
 
-.p-recommend-stocks__item-identity {
+.c-recommend-card__stock-info {
     @apply flex items-center gap-4;
 }
 
-.p-recommend-stocks__item-icon-box {
-    @apply w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600;
-    @apply dark:bg-blue-900/20 dark:text-blue-400;
+.c-recommend-card__avatar {
+    @apply w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center font-black text-blue-600 border border-blue-100 dark:bg-blue-900/20 dark:border-blue-900/30;
 }
 
-.p-recommend-stocks__item-icon {
-    @apply w-6 h-6;
+.c-recommend-card__name {
+    @apply text-2xl font-black text-slate-900 dark:text-white;
 }
 
-.p-recommend-stocks__item-name {
-    @apply text-lg font-black text-slate-900;
-    @apply dark:text-white;
+.c-recommend-card__ticker {
+    @apply text-sm text-slate-400 font-mono mb-1;
 }
 
-.p-recommend-stocks__item-ticker {
-    @apply text-sm text-slate-500 font-bold;
+.c-recommend-card__body {
+    @apply flex flex-col gap-6;
 }
 
-.p-recommend-stocks__item-meta {
-    @apply text-right flex flex-col gap-1 items-end;
+.c-recommend-card__metrics {
+    @apply grid grid-cols-2 gap-4 bg-slate-50/50 p-6 rounded-3xl dark:bg-slate-800/50;
 }
 
-.p-recommend-stocks__score-badge {
-    @apply bg-gradient-to-br from-violet-600 to-pink-600 text-white text-[11px] font-black px-3 py-1 rounded-full shadow-md shadow-pink-500/20;
-}
-
-.p-recommend-stocks__confidence {
-    @apply text-[11px] font-extrabold text-slate-400;
-}
-
-.p-recommend-stocks__stats {
-    @apply grid grid-cols-3 gap-4 p-5 bg-slate-50 rounded-2xl;
-    @apply dark:bg-slate-800/50;
-}
-
-.p-recommend-stocks__stat-item {
+.c-recommend-card__metric-item {
     @apply flex flex-col gap-1;
 }
 
-.p-recommend-stocks__stat-label {
-    @apply text-[10px] font-black text-slate-500 uppercase tracking-widest;
+.c-recommend-card__metric-label {
+    @apply text-[10px] font-black text-slate-400 uppercase tracking-widest;
 }
 
-.p-recommend-stocks__stat-value {
-    @apply text-base font-black text-slate-900;
-    @apply dark:text-white;
+.c-recommend-card__metric-value {
+    @apply text-xl font-black text-slate-900 dark:text-white;
 }
 
-.p-recommend-stocks__stat-value--primary {
-    @apply text-blue-600;
-    @apply dark:text-blue-400;
+.c-recommend-card__metric-value--target { @apply text-blue-600; }
+
+.c-recommend-card__reason {
+    @apply p-6 bg-slate-50 rounded-2xl border border-slate-100 dark:bg-slate-800 dark:border-slate-700;
 }
 
-.p-recommend-stocks__stat-upside {
-    @apply flex items-center gap-1;
+.c-recommend-card__reason-title {
+    @apply text-xs font-black text-slate-400 mb-2 uppercase;
 }
 
-.p-recommend-stocks__upside-icon {
-    @apply w-3.5 h-3.5;
+.c-recommend-card__reason-text {
+    @apply text-[14px] text-slate-700 leading-relaxed font-bold line-clamp-2 dark:text-slate-300;
 }
 
-.p-recommend-stocks__reason-box {
-    @apply flex gap-4 p-4 bg-blue-50/50 border border-blue-100 rounded-2xl;
-    @apply dark:bg-blue-900/10 dark:border-blue-900/20;
+.c-recommend-card__actions {
+    @apply mt-2;
 }
 
-.p-recommend-stocks__reason-icon {
-    @apply w-5 h-5 text-blue-600 flex-shrink-0;
-    @apply dark:text-blue-400;
-}
-
-.p-recommend-stocks__reason-content {
-    @apply flex flex-col gap-2;
-}
-
-.p-recommend-stocks__reason-text {
-    @apply text-[13px] font-bold text-slate-700 leading-relaxed;
-    @apply dark:text-slate-300;
-}
-
-.p-recommend-stocks__period-info {
-    @apply flex items-center gap-1.5 text-[11px] font-extrabold text-slate-500;
-}
-
-.p-recommend-stocks__clock-icon {
-    @apply w-3.5 h-3.5;
-}
-
-.p-recommend-stocks__footer {
-    @apply flex mt-auto pt-2;
-}
-
-.p-recommend-stocks__details-button {
-    @apply w-full !font-black;
+.c-recommend-card__action-btn {
+    @apply w-full h-14 rounded-2xl font-black;
 }

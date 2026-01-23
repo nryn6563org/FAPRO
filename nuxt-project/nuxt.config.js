@@ -1,3 +1,7 @@
+/**
+ * Nuxt.js 설정 파일
+ * 앱의 전역 설정, 헤더, CSS, 빌드 옵션 등을 정의합니다.
+ */
 export default {
   target: "static",
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -29,12 +33,13 @@ export default {
   ],
 
   // ✅ @nuxt/postcss8 모듈 제거 (Nuxt 내장 버전 사용)
+  // 빌드 모듈 설정: 개발 및 빌드 단계에서 사용되는 모듈
   buildModules: [],
 
-  // Modules: https://go.nuxtjs.dev/config-modules
+  // 모듈 설정: 앱의 기능을 확장하는 외부 모듈
   modules: [],
 
-  // Build Configuration: https://go.nuxtjs.dev/config-build
+  // 빌드 설정: Webpack 및 PostCSS 관련 최적화 옵션
   build: {
     transpile: ["lucide-vue", "tailwind-merge", "clsx", "class-variance-authority"],
     // ✅ PostCSS 구조 변경

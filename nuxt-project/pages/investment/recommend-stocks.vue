@@ -1,75 +1,76 @@
+<!-- 추천 종목 페이지: AI 분석 기반 선별된 추천 종목 목록 제공 -->
 <template>
   <div class="p-recommend-stocks">
     <div class="c-page-header">
-      <h2 class="c-page-header__title">추천 종목</h2>
-      <p class="c-page-header__desc">투자 기간별 AI 추천 종목</p>
+      <div class="c-page-header__inner">
+        <div class="c-page-header__content">
+          <h2 class="c-page-header__title">추천 종목</h2>
+          <p class="c-page-header__desc">AI 분석을 통해 엄선된 추천 종목입니다.</p>
+        </div>
+      </div>
     </div>
 
-    <div class="c-content-card p-recommend-stocks__content">
-      <!-- Tabs -->
-      <div class="p-recommend-stocks__tabs">
-        <button 
-          v-for="tab in tabOptions" 
-          :key="tab.value"
-          :class="['p-recommend-stocks__tab-button', activeTab === tab.value ? 'p-recommend-stocks__tab-button--active' : '']"
-          @click="activeTab = tab.value"
-        >
-          {{ tab.label }}
-        </button>
-      </div>
-
-      <div class="p-recommend-stocks__list">
-        <div v-for="stock in currentStocks" :key="stock.ticker" class="p-recommend-stocks__item">
-          <div class="p-recommend-stocks__item-header">
-            <div class="p-recommend-stocks__item-identity">
-              <div class="p-recommend-stocks__item-icon-box">
-                <Lightbulb class="p-recommend-stocks__item-icon" />
-              </div>
-              <div class="p-recommend-stocks__item-title-group">
-                <h3 class="p-recommend-stocks__item-name">{{ stock.name }}</h3>
-                <p class="p-recommend-stocks__item-ticker">{{ stock.ticker }}</p>
-              </div>
-            </div>
-            <div class="p-recommend-stocks__item-meta">
-              <span class="p-recommend-stocks__score-badge">
-                AI {{ stock.aiScore }}점
-              </span>
-              <p class="p-recommend-stocks__confidence">신뢰도 {{ stock.confidence }}%</p>
-            </div>
+    <!-- Page Header Summary -->
+    <div class="p-recommend-stocks__summary">
+       <div v-for="(stat, idx) in summaryStats" :key="idx" class="p-recommend-stocks__summary-card">
+          <div class="p-recommend-stocks__summary-icon">
+             <component :is="stat.icon" class="u-icon-sm" />
           </div>
+          <div class="p-recommend-stocks__summary-content">
+             <p class="p-recommend-stocks__summary-label">{{ stat.label }}</p>
+             <p class="p-recommend-stocks__summary-value">{{ stat.value }}</p>
+          </div>
+       </div>
+    </div>
 
-          <div class="p-recommend-stocks__stats">
-            <div class="p-recommend-stocks__stat-item">
-              <p class="p-recommend-stocks__stat-label">현재가</p>
-              <p class="p-recommend-stocks__stat-value">{{ stock.currentPrice.toLocaleString() }}원</p>
-            </div>
-            <div class="p-recommend-stocks__stat-item">
-              <p class="p-recommend-stocks__stat-label">목표가</p>
-              <p class="p-recommend-stocks__stat-value p-recommend-stocks__stat-value--primary">{{ stock.targetPrice.toLocaleString() }}원</p>
-            </div>
-            <div class="p-recommend-stocks__stat-item">
-              <p class="p-recommend-stocks__stat-label">기대수익</p>
-              <div class="p-recommend-stocks__stat-upside">
-                <TrendingUp class="p-recommend-stocks__upside-icon indicator--positive" />
-                <p class="p-recommend-stocks__stat-value indicator--positive">+{{ stock.upside }}%</p>
+    <!-- Recommended Stocks Grid (3 columns on 1920x1080) -->
+    <div class="p-recommend-stocks__grid">
+      <div v-for="stock in recommendedStocks" :key="stock.ticker" class="c-recommend-card">
+        <div class="c-recommend-card__header">
+           <div class="c-recommend-card__stock-info">
+              <div class="c-recommend-card__avatar">
+                 {{ stock.name[0] }}
               </div>
-            </div>
-          </div>
-
-          <div class="p-recommend-stocks__reason-box">
-            <Target class="p-recommend-stocks__reason-icon" />
-            <div class="p-recommend-stocks__reason-content">
-              <p class="p-recommend-stocks__reason-text">{{ stock.reason }}</p>
-              <div class="p-recommend-stocks__period-info">
-                <Clock class="p-recommend-stocks__clock-icon" />
-                <span>목표 기간: {{ stock.period }}</span>
+              <div class="c-recommend-card__meta">
+                 <h3 class="c-recommend-card__name">{{ stock.name }}</h3>
+                 <p class="c-recommend-card__ticker">{{ stock.ticker }}</p>
               </div>
-            </div>
-          </div>
+           </div>
+           <div class="c-recommend-card__badges">
+              <span class="status-badge status-badge--positive">{{ stock.category }}</span>
+           </div>
+        </div>
 
-          <div class="p-recommend-stocks__footer">
-            <Button class="p-recommend-stocks__details-button">상세 분석 보기</Button>
-          </div>
+        <div class="c-recommend-card__body">
+           <div class="c-recommend-card__metrics">
+              <div class="c-recommend-card__metric-item">
+                 <p class="c-recommend-card__metric-label">현재가</p>
+                 <p class="c-recommend-card__metric-value">{{ stock.price.toLocaleString() }}</p>
+              </div>
+              <div class="c-recommend-card__metric-item">
+                 <p class="c-recommend-card__metric-label">등락률</p>
+                 <p class="c-recommend-card__metric-value" :class="stock.change > 0 ? 'indicator--positive' : 'indicator--negative'">
+                    {{ stock.change > 0 ? '+' : '' }}{{ stock.change }}%
+                 </p>
+              </div>
+              <div class="c-recommend-card__metric-item">
+                 <p class="c-recommend-card__metric-label">목표가</p>
+                 <p class="c-recommend-card__metric-value c-recommend-card__metric-value--target">{{ stock.target.toLocaleString() }}</p>
+              </div>
+              <div class="c-recommend-card__metric-item">
+                 <p class="c-recommend-card__metric-label">기대수익</p>
+                 <p class="c-recommend-card__metric-value indicator--positive">+{{ stock.upside }}%</p>
+              </div>
+           </div>
+
+           <div class="c-recommend-card__reason">
+              <p class="c-recommend-card__reason-title">추천 사유</p>
+              <p class="c-recommend-card__reason-text">{{ stock.reason }}</p>
+           </div>
+        </div>
+
+        <div class="c-recommend-card__actions">
+           <Button class="c-recommend-card__action-btn">종목 상세보기</Button>
         </div>
       </div>
     </div>
@@ -78,106 +79,30 @@
 
 <script>
 import Button from '@/components/common/Button.vue';
-import { Lightbulb, TrendingUp, Target, Clock } from 'lucide-vue';
-
-const recommendStocks = {
-  short: [
-    {
-      ticker: '005930',
-      name: '삼성전자',
-      currentPrice: 72500,
-      targetPrice: 78000,
-      upside: 7.6,
-      aiScore: 92,
-      period: '1주',
-      reason: '단기 급등 모멘텀 포착',
-      confidence: 88
-    },
-    {
-      ticker: '035720',
-      name: '카카오',
-      currentPrice: 52000,
-      targetPrice: 56000,
-      upside: 7.7,
-      aiScore: 89,
-      period: '1주',
-      reason: 'AI 서비스 출시 임박',
-      confidence: 85
-    }
-  ],
-  medium: [
-    {
-      ticker: '000660',
-      name: 'SK하이닉스',
-      currentPrice: 145000,
-      targetPrice: 165000,
-      upside: 13.8,
-      aiScore: 94,
-      period: '1개월',
-      reason: 'HBM 시장 점유율 확대',
-      confidence: 92
-    },
-    {
-      ticker: '373220',
-      name: 'LG에너지솔루션',
-      currentPrice: 485000,
-      targetPrice: 550000,
-      upside: 13.4,
-      aiScore: 91,
-      period: '1개월',
-      reason: '북미 수주 확대 전망',
-      confidence: 90
-    }
-  ],
-  long: [
-    {
-      ticker: '207940',
-      name: '삼성바이오로직스',
-      currentPrice: 875000,
-      targetPrice: 1050000,
-      upside: 20.0,
-      aiScore: 96,
-      period: '3개월',
-      reason: '바이오 CDMO 시장 성장',
-      confidence: 94
-    },
-    {
-      ticker: '079550',
-      name: 'LIG넥스원',
-      currentPrice: 125000,
-      targetPrice: 160000,
-      upside: 28.0,
-      aiScore: 95,
-      period: '3개월',
-      reason: 'K-방산 중장기 성장',
-      confidence: 93
-    }
-  ]
-};
+import { LayoutDashboard, TrendingUp, AlertCircle } from 'lucide-vue';
 
 export default {
   name: "RecommendStocks",
   components: {
-    Button, Lightbulb, TrendingUp, Target, Clock
+    Button, LayoutDashboard, TrendingUp, AlertCircle
   },
   data() {
     return {
-      activeTab: 'medium',
-      recommendStocks,
-      tabOptions: [
-        { value: 'short', label: '단기 (1주)' },
-        { value: 'medium', label: '중기 (1개월)' },
-        { value: 'long', label: '장기 (3개월)' }
+      summaryStats: [
+          { label: '전체 추천', value: '12개', icon: 'LayoutDashboard' },
+          { label: '평균 기대수익', value: '24.5%', icon: 'TrendingUp' },
+          { label: '주의 종목', value: '0개', icon: 'AlertCircle' }
+      ],
+      recommendedStocks: [
+        { name: '삼성전자', ticker: '005930', price: 72500, change: 1.25, target: 85000, upside: 17.2, reason: 'AI 반도체 호재 지속 및 HBM 시장 점유율 확대 기대', category: '반도체' },
+        { name: 'SK하이닉스', ticker: '000660', price: 145000, change: 2.18, target: 168000, upside: 15.9, reason: 'NVIDIA향 HBM 공급물량 증가 및 메모리 업황 개선', category: '반도체' },
+        { name: '현대차', ticker: '005380', price: 240000, change: -0.84, target: 280000, upside: 16.7, reason: '전기차 및 하이브리드 판매 호조, 주주가치 제고 기대', category: '자동차' },
+        { name: 'LIG넥스원', ticker: '079550', price: 125000, change: 5.42, target: 150000, upside: 20.0, reason: '글로벌 방산 수주 모멘텀 지속 및 중동 지역 수출 확대', category: '방산' },
+        { name: '기아', ticker: '000270', price: 110000, change: 0.92, target: 135000, upside: 22.7, reason: '역대급 실적 지속 및 배당 성향 강화에 따른 저평가 해소', category: '자동차' }
       ]
-    }
-  },
-  computed: {
-    currentStocks() {
-      return this.recommendStocks[this.activeTab];
     }
   }
 }
 </script>
 
 <style src="@/assets/css/pages/recommend-stocks.css"></style>
-

@@ -1,105 +1,56 @@
-/* Daily Stocks Page Styles - Tailwind @apply refactor */
-
+/* Daily Stocks Page - Premium 1920x1080 Optimized */
 .p-daily-stocks {
-    @apply flex flex-col gap-6;
+    @apply flex flex-col gap-10;
 }
 
-/* Stats Cards */
-.p-daily-stocks__stats {
-    @apply grid grid-cols-1 gap-6;
+.p-daily-stocks__grid {
+    @apply grid grid-cols-1 gap-8 lg:grid-cols-2 xl:grid-cols-3;
 }
 
-@screen md {
-    .p-daily-stocks__stats {
-        @apply grid-cols-3;
-    }
+.c-daily-card {
+    @apply bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm transition-all duration-300 flex flex-col gap-6 dark:bg-slate-900 dark:border-slate-800;
 }
 
-.p-daily-stocks__stat-card {
-    @apply bg-white p-6 rounded-2xl border border-slate-200 shadow-sm flex items-center justify-between;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+.c-daily-card:hover {
+    @apply border-blue-200 shadow-xl transform -translate-y-2;
 }
 
-.p-daily-stocks__stat-info {
-    @apply flex flex-col;
+.c-daily-card__header {
+    @apply flex justify-between items-center;
 }
 
-.p-daily-stocks__stat-label {
-    @apply text-sm font-semibold text-slate-500 mb-1;
+.c-daily-card__title {
+    @apply text-xl font-black text-slate-900 dark:text-white;
 }
 
-.p-daily-stocks__stat-value {
-    @apply text-2xl font-extrabold text-slate-900;
-    @apply dark:text-white;
+.c-daily-card__date {
+    @apply text-xs font-bold text-slate-400;
 }
 
-.p-daily-stocks__stat-icon-box {
-    @apply w-12 h-12 rounded-full flex items-center justify-center;
+.c-daily-card__body {
+    @apply flex flex-col gap-4;
 }
 
-.p-daily-stocks__stat-icon-box--blue { @apply bg-blue-100 text-blue-600; @apply dark:bg-blue-900/20 dark:text-blue-400; }
-.p-daily-stocks__stat-icon-box--rose { @apply bg-rose-100 text-rose-600; @apply dark:bg-rose-900/20 dark:text-rose-400; }
-.p-daily-stocks__stat-icon-box--emerald { @apply bg-emerald-100 text-emerald-600; @apply dark:bg-emerald-900/20 dark:text-emerald-400; }
-
-/* Table Section */
-.p-daily-stocks__table-card {
-    @apply bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden;
-    @apply dark:bg-slate-900 dark:border-slate-800;
+.c-daily-card__desc {
+    @apply text-base text-slate-600 leading-relaxed font-medium dark:text-slate-400;
 }
 
-.p-daily-stocks__table-header {
-    @apply p-6 border-b border-slate-100 flex items-center justify-between;
-    @apply dark:border-slate-800;
+.c-daily-card__tags {
+    @apply flex flex-wrap gap-2;
 }
 
-.p-daily-stocks__table-title {
-    @apply text-lg font-extrabold text-slate-900;
-    @apply dark:text-white;
+.c-daily-card__tag {
+    @apply px-3 py-1 bg-slate-50 border border-slate-100 rounded-lg text-xs font-bold text-slate-500 dark:bg-slate-800 dark:border-slate-700;
 }
 
-.c-daily-table {
-    @apply w-full border-collapse;
+.c-daily-card__footer {
+    @apply mt-auto flex justify-between items-center pt-4 border-t border-slate-50 dark:border-slate-800;
 }
 
-.c-daily-table th {
-    @apply bg-slate-50 px-6 py-4 text-left text-xs font-bold text-slate-400 uppercase tracking-widest border-b border-slate-100;
-    @apply dark:bg-slate-800/50 dark:border-slate-800;
+.c-daily-card__performance {
+    @apply flex items-center gap-2;
 }
 
-.c-daily-table td {
-    @apply px-6 py-4 text-sm font-bold border-b border-slate-50;
-    @apply dark:border-slate-800;
-}
-
-.c-daily-table tr:last-child td {
-    @apply border-b-0;
-}
-
-.c-daily-table tr:hover td {
-    @apply bg-slate-50/50;
-    @apply dark:bg-slate-800/30;
-}
-
-.c-daily-table__stock-name {
-    @apply font-black text-slate-900;
-    @apply dark:text-white;
-}
-
-.c-daily-table__stock-ticker {
-    @apply text-xs text-slate-400 font-bold ml-2;
-}
-
-.c-daily-table__price {
-    @apply font-black text-slate-800;
-    @apply dark:text-slate-100;
-}
-
-/* Pagination */
-.p-daily-stocks__pagination {
-    @apply flex items-center justify-center gap-8 p-6 border-t border-slate-100;
-    @apply dark:border-slate-800;
-}
-
-.p-daily-stocks__page-info {
-    @apply text-sm font-bold text-slate-600;
+.c-daily-card__yield {
+    @apply text-lg font-black;
 }

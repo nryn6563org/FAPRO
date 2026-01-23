@@ -1,21 +1,39 @@
-/* Dialog Component Styles */
-
+/* Dialog Component Styles - Premium Polish */
 .c-dialog {
-    @apply fixed inset-0 z-50 flex items-center justify-center;
+    @apply fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6;
 }
 
 .c-dialog__backdrop {
-    @apply fixed inset-0 bg-black/50 transition-opacity;
+    @apply absolute inset-0 bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300;
 }
 
 .c-dialog__content {
-    @apply z-50 bg-background rounded-lg shadow-lg border w-full relative sm:rounded-lg;
+    @apply relative bg-white dark:bg-slate-900 w-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] dark:shadow-[0_32px_64px_-12px_rgba(0,0,0,0.6)] flex flex-col z-10 overflow-hidden;
+    animation: dialog-appear 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .c-dialog__close {
-    @apply absolute right-4 top-4 rounded-sm opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground;
+    @apply absolute top-6 right-8 p-2 rounded-full text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-all z-20;
 }
 
-.u-icon-sm {
-    @apply w-4 h-4;
+@keyframes dialog-appear {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
 }
+
+.c-dialog__close-icon {
+    @apply w-5 h-5;
+}
+
+/* Base sizes for common dialogs */
+.c-dialog__content--sm { @apply max-w-sm rounded-2xl; }
+.c-dialog__content--md { @apply max-w-md rounded-2xl; }
+.c-dialog__content--lg { @apply max-w-lg rounded-2xl; }
+.c-dialog__content--xl { @apply max-w-xl rounded-2xl; }
+.c-dialog__content--full { @apply max-w-[95vw] h-[90vh] rounded-[2.5rem]; }

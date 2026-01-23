@@ -1,3 +1,4 @@
+<!-- 설정 페이지: 프로필, 알림, 시스템 정보 등 앱 환경설정 관리 -->
 <template>
   <div class="p-settings">
     <div class="c-page-header">
@@ -126,13 +127,16 @@ export default {
     },
     data() {
         return {
+            // 현재 활성화된 탭 ID
             activeTab: 'profile',
+            // 설정 네비게이션 탭 구성
             tabs: [
                 { id: 'profile', label: '프로필 설정', icon: 'User' },
                 { id: 'notifications', label: '알림 설정', icon: 'Bell' },
                 { id: 'security', label: '보안 및 로그인', icon: 'Shield' },
                 { id: 'system', label: '시스템 정보', icon: 'Info' },
             ],
+            // 알림 항목별 설정 상태
             notificationSettings: [
                 { id: 'push', label: '푸시 알림', desc: '주요 시장 이슈 및 AI 매매신호 알림', enabled: true },
                 { id: 'email', label: '이메일 리포트', desc: '일일/주간 시장 분석 리포트 수신', enabled: true },
