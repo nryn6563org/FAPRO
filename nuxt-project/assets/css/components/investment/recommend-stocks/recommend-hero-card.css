@@ -1,6 +1,6 @@
 /* RecommendHeroCard Component Styles */
 .c-recommend-hero {
-  @apply relative mb-8 rounded-[2.5rem] p-10 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8;
+  @apply relative mb-8 rounded-xl p-10 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8;
   background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
 }
 
@@ -13,7 +13,7 @@
 }
 
 .c-recommend-hero__badge {
-  @apply self-start px-4 py-1.5 rounded-full bg-amber-400 text-amber-950 text-xs font-black uppercase tracking-widest shadow-lg;
+  @apply self-start px-4 py-1.5 rounded-full bg-amber-400 text-amber-950 text-xs font-bold uppercase tracking-widest shadow-lg;
 }
 
 .c-recommend-hero__name-row {
@@ -21,7 +21,7 @@
 }
 
 .c-recommend-hero__avatar {
-  @apply w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl font-black border border-white/30;
+  @apply w-16 h-16 rounded bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl font-bold border border-white/30;
 }
 
 .c-recommend-hero__stock-info {
@@ -29,7 +29,7 @@
 }
 
 .c-recommend-hero__name {
-  @apply text-[2.5rem] font-black leading-tight;
+  @apply text-[2.5rem] font-bold leading-tight;
 }
 
 .c-recommend-hero__ticker {
@@ -45,7 +45,7 @@
 }
 
 .c-recommend-hero__tag {
-  @apply px-3 py-1 bg-white/10 rounded-lg text-sm font-bold border border-white/10;
+  @apply px-3 py-1 bg-white/10 rounded text-sm font-bold border border-white/10;
 }
 
 .c-recommend-hero__yield-section {
@@ -57,15 +57,15 @@
 }
 
 .c-recommend-hero__yield-value {
-  @apply text-[5rem] font-black leading-none tabular-nums flex items-baseline gap-2;
+  @apply text-[5rem] font-bold leading-none tabular-nums flex items-baseline gap-2;
 }
 
 .c-recommend-hero__yield-unit {
-  @apply text-4xl font-black;
+  @apply text-4xl font-bold;
 }
 
 .c-recommend-hero__history {
-  @apply mt-6 flex items-center gap-6 text-sm font-bold bg-black/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10;
+  @apply mt-6 flex items-center gap-6 text-sm font-bold bg-black/10 backdrop-blur-md px-6 py-3 rounded border border-white/10;
 }
 
 .c-recommend-hero__history-item {

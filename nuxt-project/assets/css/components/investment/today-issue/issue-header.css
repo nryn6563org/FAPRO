@@ -1,6 +1,6 @@
 /* IssueHeader Component Styles */
 .c-issue-header {
-  @apply flex flex-col gap-6 mb-8;
+  @apply flex flex-col gap-6;
 }
 
 .c-issue-header__top {
@@ -12,7 +12,7 @@
 }
 
 .c-issue-header__user {
-  @apply text-2xl font-black text-slate-900 dark:text-white;
+  @apply text-2xl font-bold text-slate-900 dark:text-white;
 }
 
 .c-issue-header__date {
@@ -24,7 +24,7 @@
 }
 
 .c-issue-header__search-input {
-  @apply w-full h-12 pl-12 pr-4 bg-slate-100 border-none rounded-2xl text-sm font-bold text-slate-900 focus:ring-2 focus:ring-blue-500 transition-all dark:bg-slate-800 dark:text-white;
+  @apply w-full h-12 pl-12 pr-4 bg-slate-100 border-none rounded text-sm font-bold text-slate-900 focus:ring-2 focus:ring-blue-500 transition-all dark:bg-slate-800 dark:text-white;
 }
 
 .c-issue-header__search-icon {
@@ -32,7 +32,12 @@
 }
 
 .c-issue-header__market {
-  @apply flex items-center gap-4 py-4 px-6 bg-white border border-slate-200 rounded-[2rem] overflow-hidden shadow-sm dark:bg-slate-900 dark:border-slate-800;
+  @apply py-4 bg-white border border-slate-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-issue-header__market-container {
+  @apply overflow-hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 
 .c-issue-header__market-list {
@@ -44,11 +49,11 @@
 }
 
 .c-issue-header__market-name {
-  @apply text-sm font-black text-slate-600 dark:text-slate-400;
+  @apply text-sm font-bold text-slate-600 dark:text-slate-400;
 }
 
 .c-issue-header__market-value {
-  @apply text-sm font-black text-slate-900 dark:text-white;
+  @apply text-sm font-bold text-slate-900 dark:text-white;
 }
 
 .c-issue-header__market-change {

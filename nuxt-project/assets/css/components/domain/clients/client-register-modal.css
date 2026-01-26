@@ -8,11 +8,7 @@
 }
 
 .c-client-register__title {
-  @apply text-[1.5rem] font-black text-slate-900 dark:text-white;
-}
-
-.c-client-register__close {
-  @apply p-2 rounded-xl hover:bg-slate-100 transition-colors dark:hover:bg-slate-800;
+  @apply text-[1.5rem] font-bold text-slate-900 dark:text-white;
 }
 
 .c-client-register__form {
@@ -28,11 +24,11 @@
 }
 
 .c-client-register__label {
-  @apply text-[13px] font-black text-slate-900 dark:text-slate-400 ml-1;
+  @apply text-[13px] font-bold text-slate-900 dark:text-slate-400 ml-1;
 }
 
 .c-client-register__input {
-  @apply h-14 bg-slate-50 border-transparent rounded-2xl px-5 text-sm font-bold focus:bg-white focus:border-blue-500 transition-all dark:bg-slate-900 dark:text-white;
+  @apply h-14 bg-slate-50 border-transparent rounded px-5 text-sm font-bold focus:bg-white focus:border-blue-500 transition-all dark:bg-slate-900 dark:text-white;
 }
 
 .c-client-register__textarea {
@@ -48,7 +44,7 @@
 }
 
 .c-client-register__btn {
-  @apply h-14 px-8 rounded-2xl text-sm font-black transition-all min-w-[120px];
+  @apply h-14 px-8 rounded text-sm font-bold transition-all min-w-[120px];
 }
 
 .c-client-register__btn--submit {

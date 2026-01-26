@@ -5,9 +5,9 @@
         <p class="p-market__desc">실시간 국내외 주요 지수와 환율 정보</p>
     </div>
 
-    <!-- Tabs Container -->
+    <!-- 탭 컨테이너 -->
     <div class="l-p-market__stack">
-        <!-- Tabs Header -->
+        <!-- 탭 헤더 -->
         <div class="p-market__tabs">
             <button
                 v-for="tab in tabs"
@@ -19,13 +19,13 @@
             </button>
         </div>
 
-        <!-- Domestic Content -->
+        <!-- 국내 지수 콘텐츠 -->
         <div v-if="activeTab === 'domestic'" class="l-p-market__stack">
              <div class="p-market__indices-grid">
                 <IndexCard v-for="index in domesticIndices" :key="index.name" v-bind="index" />
              </div>
 
-             <!-- Detailed Chart -->
+             <!-- 상세 차트 영역 -->
              <div class="c-market-chart">
                  <div class="c-market-chart__header">
                      <h3 class="c-market-chart__title">상세 차트</h3>
@@ -46,13 +46,13 @@
              </div>
         </div>
 
-        <!-- International Content -->
+        <!-- 해외 지수 콘텐츠 -->
         <div v-if="activeTab === 'international'" class="l-p-market__stack">
              <div class="p-market__indices-grid--international">
                 <IndexCard v-for="index in internationalIndices" :key="index.name" v-bind="index" />
              </div>
 
-             <!-- Detailed Chart -->
+             <!-- 상세 차트 영역 -->
              <div class="c-market-chart">
                  <div class="c-market-chart__header">
                      <h3 class="c-market-chart__title">상세 차트</h3>
@@ -73,14 +73,14 @@
              </div>
         </div>
 
-        <!-- Forex Content -->
+        <!-- 환율 콘텐츠 -->
         <div v-if="activeTab === 'forex'" class="l-p-market__stack">
              <div class="p-market__indices-grid--forex">
                 <IndexCard v-for="rate in exchangeRates" :key="rate.name" v-bind="rate" />
              </div>
         </div>
 
-        <!-- Commodities Content -->
+        <!-- 원자재 콘텐츠 -->
         <div v-if="activeTab === 'commodities'" class="l-p-market__stack">
              <div class="p-market__indices-grid--commodities">
                 <IndexCard v-for="commodity in commodities" :key="commodity.name" v-bind="commodity" />

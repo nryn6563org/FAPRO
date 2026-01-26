@@ -1,11 +1,11 @@
 /* Recommended Stocks Page Styles - Premium Layout */
 .p-recommend-stocks {
-  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
+  @apply flex flex-col min-h-screen bg-[#f8fafc] dark:bg-[#020617];
 }
 
 /* Page Layout Container */
 .p-recommend-stocks > * {
-  @apply w-full max-w-[1720px] mx-auto;
+  @apply w-full;
 }
 
 .p-recommend-stocks__grid {

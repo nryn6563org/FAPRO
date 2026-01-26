@@ -132,14 +132,11 @@ export function TodayPick() {
       <div className="grid grid-cols-3 gap-4">
         {todayPicks.map((pick) => (
           <Card key={pick.rank} className="hover:shadow-lg transition-shadow border-2 border-yellow-200">
-            
             <CardHeader className="pb-4">
               <div className="flex items-start gap-3">
                 {/* 좌측 로고 */}
-                <div className={`w-12 h-12 rounded-full ${getStockColor(pick.name)} flex items-center justify-center text-white font-bold text-xl flex-shrink-0`}>
-                  {pick.name.charAt(0)}
-                </div>
-                
+                <div className={`w-12 h-12 rounded-full ${getStockColor(pick.name)} flex items-center justify-center text-white font-bold text-xl flex-shrink-0`}>{pick.name.charAt(0)}</div>
+
                 {/* 우측 정보 영역 */}
                 <div className="flex-1 min-w-0">
                   {/* 종목명 & 티커 */}
@@ -147,10 +144,10 @@ export function TodayPick() {
                     <CardTitle className="text-xl">{pick.name}</CardTitle>
                     <span className="text-xs text-slate-500">{pick.ticker}</span>
                   </div>
-                  
+
                   {/* 회사 설명 */}
                   <p className="text-xs text-slate-600 mb-2 leading-relaxed">{pick.description}</p>
-                  
+
                   {/* 이슈 태그 */}
                   <div className="flex items-center gap-1.5 flex-wrap">
                     {pick.issues.map((issue, idx) => (
@@ -169,39 +166,26 @@ export function TodayPick() {
                 <div className="flex items-center justify-between gap-3">
                   {/* 좌측 가격 정보 */}
                   <div className="flex flex-col gap-1">
-                    <div className="text-slate-900 font-bold text-2xl">
-                      {pick.price.toLocaleString()}
-                    </div>
-                    <div className={`flex items-center gap-1 ${
-                      pick.changeRate > 0 ? 'text-red-500' : 'text-blue-500'
-                    }`}>
-                      {pick.changeRate > 0 ? (
-                        <TrendingUp className="w-3.5 h-3.5" />
-                      ) : (
-                        <TrendingDown className="w-3.5 h-3.5" />
-                      )}
+                    <div className="text-slate-900 font-bold text-2xl">{pick.price.toLocaleString()}</div>
+                    <div className={`flex items-center gap-1 ${pick.changeRate > 0 ? "text-red-500" : "text-blue-500"}`}>
+                      {pick.changeRate > 0 ? <TrendingUp className="w-3.5 h-3.5" /> : <TrendingDown className="w-3.5 h-3.5" />}
                       <span className="text-sm font-semibold">
-                        {pick.changeAmount > 0 ? '+' : ''}{pick.changeAmount.toLocaleString()}
+                        {pick.changeAmount > 0 ? "+" : ""}
+                        {pick.changeAmount.toLocaleString()}
                       </span>
                       <span className="text-sm font-semibold">
-                        ({pick.changeRate > 0 ? '+' : ''}{pick.changeRate}%)
+                        ({pick.changeRate > 0 ? "+" : ""}
+                        {pick.changeRate}%)
                       </span>
                     </div>
                   </div>
-                  
+
                   {/* 우측 차트 */}
                   <div className="w-32 h-16">
                     <ResponsiveContainer width="100%" height="100%">
                       <LineChart data={pick.chartData} margin={{ top: 2, right: 2, bottom: 2, left: 2 }}>
-                        <YAxis hide domain={['dataMin - 1000', 'dataMax + 1000']} />
-                        <Line 
-                          type="monotone" 
-                          dataKey="value" 
-                          stroke={pick.changeRate > 0 ? '#ef4444' : '#3b82f6'} 
-                          strokeWidth={2}
-                          dot={false}
-                          isAnimationActive={false}
-                        />
+                        <YAxis hide domain={["dataMin - 1000", "dataMax + 1000"]} />
+                        <Line type="monotone" dataKey="value" stroke={pick.changeRate > 0 ? "#ef4444" : "#3b82f6"} strokeWidth={2} dot={false} isAnimationActive={false} />
                       </LineChart>
                     </ResponsiveContainer>
                   </div>

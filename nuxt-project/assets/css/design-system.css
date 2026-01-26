@@ -35,12 +35,11 @@
   --padding-h-offset: 0.3125rem;  /* 수평 오프셋 패딩 (5px) - 타이틀과 콘텐츠 박스 정렬용 */
 }
 
-/* 다크 모드 색상 재정의 */
 .dark {
-  --card-bg: var(--slate-900);
+  --card-bg: #1e293b;           /* slate-800 for depth */
   --card-border: var(--slate-800);
   --interactive-border: var(--slate-700);
-  --section-bg: rgba(30, 41, 59, 0.5);
+  --section-bg: #020617;        /* slate-950 */
 }
 
 @layer components {
@@ -175,5 +174,27 @@
   .indicator--neutral {
     color: var(--slate-400);
     font-weight: 500;
+  }
+
+  /*
+   * 투자 도메인 공통 박스 컨테이너 (테이블 등 수록용)
+   */
+  .c-investment-container {
+    @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800 flex flex-col gap-8;
+  }
+
+  /* 
+   * 투자 도메인 페이지 헤더 (타이틀 + 부설명)
+   */
+  .c-investment-header {
+    @apply flex flex-col gap-2 mb-8;
+  }
+
+  .c-investment-header__title {
+    @apply text-[1.75rem] font-bold text-slate-900 dark:text-white leading-tight;
+  }
+
+  .c-investment-header__desc {
+    @apply text-[15px] font-bold text-slate-400 leading-relaxed;
   }
 }

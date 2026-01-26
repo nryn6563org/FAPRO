@@ -11,7 +11,7 @@
       </Button>
     </div>
 
-    <!-- Search and Filters -->
+    <!-- 검색 및 필터 영역 -->
     <div class="p-clients__search-box">
       <div class="p-clients__search-header">
         <h3 class="p-clients__search-title">AI고객검색</h3>
@@ -33,7 +33,7 @@
       </div>
     </div>
 
-    <!-- Sort Buttons -->
+    <!-- 정렬 옵션 바 -->
     <div class="p-clients__sort-bar">
       <div class="p-clients__count">
         <span>검색된 고객 {{ filteredClients.length }}명</span>
@@ -57,9 +57,9 @@
       </div>
     </div>
 
-    <!-- Client List Grid -->
+    <!-- 고객 리스트 그리드 -->
     <div class="p-clients__grid">
-       <div v-for="client in filteredClients" :key="client.id" class="c-client-card" @click="selectedClient = client">
+       <div v-for="client in filteredClients" :key="client.id" class="c-client-card">
           <div class="c-client-card__header">
              <div class="c-client-card__header-top">
                 <div class="c-client-card__profile">
@@ -107,7 +107,7 @@
              </div>
 
              <div class="c-client-card__footer">
-                <Button variant="outline" size="sm" class="c-client-card__details-btn" @click.stop="selectedClient = client">
+                <Button variant="outline" size="sm" class="c-client-card__details-btn" @click="selectedClient = client">
                     <FileText class="c-client-card__details-icon" />
                     상세보기
                 </Button>

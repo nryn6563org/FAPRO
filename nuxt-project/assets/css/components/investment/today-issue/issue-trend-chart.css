@@ -1,6 +1,6 @@
 /* IssueTrendChart Component Styles */
 .c-issue-trend {
-  @apply flex flex-col h-full bg-slate-50 rounded-3xl p-6 dark:bg-slate-900/50;
+  @apply flex flex-col h-full bg-slate-50 rounded p-6 dark:bg-slate-900/50;
 }
 
 .c-issue-trend__header {
@@ -8,7 +8,7 @@
 }
 
 .c-issue-trend__title {
-  @apply text-sm font-black text-blue-600 dark:text-blue-400;
+  @apply text-sm font-bold text-blue-600 dark:text-blue-400;
 }
 
 .c-issue-trend__more {

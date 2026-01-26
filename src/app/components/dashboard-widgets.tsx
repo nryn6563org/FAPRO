@@ -362,9 +362,7 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
             {mockClientData.map((client, idx) => (
               <div key={idx} className="flex items-center justify-between p-2 rounded-lg hover:bg-slate-50">
                 <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold">
-                    {client.name[0]}
-                  </div>
+                  <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold">{client.name[0]}</div>
                   <div>
                     <p className="text-sm font-medium">{client.name}</p>
                     <p className="text-xs text-slate-500">{(client.aum / 100000000).toFixed(0)}억원</p>
@@ -372,13 +370,7 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
                 </div>
                 <div className="text-right">
                   <p className="text-sm font-medium">{(client.revenue / 10000).toFixed(0)}만원</p>
-                  <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs ${
-                    client.risk === 'high' ? 'bg-red-100 text-red-700' :
-                    client.risk === 'medium' ? 'bg-yellow-100 text-yellow-700' :
-                    'bg-green-100 text-green-700'
-                  }`}>
-                    {client.risk === 'high' ? '고위험' : client.risk === 'medium' ? '중위험' : '저위험'}
-                  </div>
+                  <div className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs ${client.risk === "high" ? "bg-red-100 text-red-700" : client.risk === "medium" ? "bg-yellow-100 text-yellow-700" : "bg-green-100 text-green-700"}`}>{client.risk === "high" ? "고위험" : client.risk === "medium" ? "중위험" : "저위험"}</div>
                 </div>
               </div>
             ))}
@@ -446,9 +438,12 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
             <p className="font-semibold text-sm mb-2">{data.keyword}</p>
             <div className="space-y-1 text-xs">
               <p className="text-slate-600">언급량: {data.mentions.toLocaleString()}회</p>
-              <p className={`flex items-center gap-1 ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+              <p className={`flex items-center gap-1 ${isPositive ? "text-green-600" : "text-red-600"}`}>
                 {isPositive ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
-                <span>{isPositive ? '+' : ''}{data.change}%</span>
+                <span>
+                  {isPositive ? "+" : ""}
+                  {data.change}%
+                </span>
               </p>
             </div>
           </div>
@@ -478,22 +473,8 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
             <ResponsiveContainer width="100%" height="100%">
               <ScatterChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }}>
                 <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                <XAxis 
-                  type="number" 
-                  dataKey="x" 
-                  name="시간" 
-                  domain={[0, 100]}
-                  tick={{ fontSize: 11 }}
-                  label={{ value: '시간 흐름 →', position: 'insideBottom', offset: -10, fontSize: 11 }}
-                />
-                <YAxis 
-                  type="number" 
-                  dataKey="y" 
-                  name="관심도" 
-                  domain={[0, 100]}
-                  tick={{ fontSize: 11 }}
-                  label={{ value: '관심도 ↑', angle: -90, position: 'insideLeft', fontSize: 11 }}
-                />
+                <XAxis type="number" dataKey="x" name="시간" domain={[0, 100]} tick={{ fontSize: 11 }} label={{ value: "시간 흐름 →", position: "insideBottom", offset: -10, fontSize: 11 }} />
+                <YAxis type="number" dataKey="y" name="관심도" domain={[0, 100]} tick={{ fontSize: 11 }} label={{ value: "관심도 ↑", angle: -90, position: "insideLeft", fontSize: 11 }} />
                 <ZAxis type="number" dataKey="size" range={[200, 2000]} />
                 <Tooltip content={<CustomTooltip />} />
                 {mockAIIssueData.map((entry, index) => (
@@ -507,26 +488,8 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
                       const radius = Math.sqrt(payload.size) / 4;
                       return (
                         <g>
-                          <circle 
-                            cx={cx} 
-                            cy={cy} 
-                            r={radius} 
-                            fill={getCategoryColor(payload.category)}
-                            fillOpacity={0.7}
-                            stroke={getCategoryColor(payload.category)}
-                            strokeWidth={2}
-                            className="cursor-pointer transition-all hover:fillOpacity-1"
-                          />
-                          <text
-                            x={cx}
-                            y={cy}
-                            textAnchor="middle"
-                            dominantBaseline="middle"
-                            fontSize={radius > 25 ? 11 : radius > 18 ? 9 : 0}
-                            fill="white"
-                            fontWeight="600"
-                            pointerEvents="none"
-                          >
+                          <circle cx={cx} cy={cy} r={radius} fill={getCategoryColor(payload.category)} fillOpacity={0.7} stroke={getCategoryColor(payload.category)} strokeWidth={2} className="cursor-pointer transition-all hover:fillOpacity-1" />
+                          <text x={cx} y={cy} textAnchor="middle" dominantBaseline="middle" fontSize={radius > 25 ? 11 : radius > 18 ? 9 : 0} fill="white" fontWeight="600" pointerEvents="none">
                             {payload.keyword}
                           </text>
                         </g>
@@ -541,15 +504,7 @@ export function Widget({ widgetId, onRemove }: WidgetProps) {
             {Object.entries(categoryColors).map(([category, color]) => (
               <div key={category} className="flex items-center gap-1">
                 <div className="w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
-                <span className="text-xs text-slate-600">
-                  {category === 'tech' ? '기술' :
-                   category === 'auto' ? '자동차' :
-                   category === 'energy' ? '에너지' :
-                   category === 'finance' ? '금융' :
-                   category === 'realestate' ? '부동산' :
-                   category === 'defense' ? '방산' :
-                   category === 'bio' ? '바이오' : category}
-                </span>
+                <span className="text-xs text-slate-600">{category === "tech" ? "기술" : category === "auto" ? "자동차" : category === "energy" ? "에너지" : category === "finance" ? "금융" : category === "realestate" ? "부동산" : category === "defense" ? "방산" : category === "bio" ? "바이오" : category}</span>
               </div>
             ))}
           </div>

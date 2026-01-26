@@ -16,9 +16,6 @@
             <p class="text-sm font-bold text-slate-400">가입일: {{ client.joinDate }}</p>
           </div>
         </div>
-        <button class="c-client-register__close" @click="$emit('update:open', false)">
-          <XIcon class="w-6 h-6 text-slate-400" />
-        </button>
       </div>
 
       <!-- 상세 컨텐츠 영역 -->

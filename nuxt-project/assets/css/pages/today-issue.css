@@ -1,14 +1,14 @@
 /* Today's Issue Page Styles - Premium 1920x1080 Optimized */
 .p-today-issue {
-  @apply flex flex-col gap-8 min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
+  @apply flex flex-col gap-8 min-h-screen bg-[#f8fafc] dark:bg-[#020617];
 }
 
 .p-today-issue__main-section {
-  @apply bg-white border border-slate-200 rounded-md p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800;
+  @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800;
 }
 
 .p-today-issue__section-header {
-  @apply flex items-center gap-2 mb-8;
+  @apply flex items-center gap-2 mb-6;
 }
 
 .p-today-issue__section-icon {
@@ -20,7 +20,7 @@
 }
 
 .p-today-issue__keyword-badge {
-  @apply px-4 py-1.5 bg-blue-600 text-white rounded text-sm font-bold shadow-md;
+  @apply px-4 py-1.5 bg-blue-600 text-white rounded-xl text-sm font-bold shadow-md;
 }
 
 .p-today-issue__analysis-grid {

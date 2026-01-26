@@ -127,7 +127,7 @@ import MarketSummarySection from '@/components/investment/supply-analysis/Market
 import SupplyTabNavigation from '@/components/investment/supply-analysis/SupplyTabNavigation.vue'
 import SupplyDataTable from '@/components/investment/supply-analysis/SupplyDataTable.vue'
 
-// 데이터 유틸리티 임포트
+// 데이터 유틸리티 임포트 (Mock Data)
 import {
   buyRatioData,
   netBuyData,
@@ -138,6 +138,7 @@ import {
 } from '@/utils/supply-analysis-data'
 
 export default {
+  // 컴포넌트 이름: 수급 분석 페이지
   name: 'SupplyAnalysis',
   components: {
     SupplyAnalysisHeader,
@@ -147,31 +148,36 @@ export default {
   },
   data() {
     return {
-      selectedTab: '매수비중',
+      selectedTab: '매수비중', // 현재 선택된 분석 탭
       tabs: ['매수비중', '순매수', '순매수 상위 신규진입', '주요기관 순매수 상위', '연속순매수'],
+      // 탭별 데이터 소스 매핑
       buyRatioData,
       netBuyData,
       newEntryData,
       majorInstitutionData,
       continuousBuyData,
-      marketSummaryMetrics,
-      now: new Date()
+      marketSummaryMetrics, // 상단 마켓 요약 지표
+      now: new Date() // 실시간 업데이트 시간용
     }
   },
   computed: {
+    // 현재 날짜 포맷 (MM/DD)
     currentDate() {
       return `${String(this.now.getMonth() + 1).padStart(2, '0')}/${String(this.now.getDate()).padStart(2, '0')}`
     },
+    // 현재 시간 포맷 (HH:MM)
     currentTime() {
       return `${String(this.now.getHours()).padStart(2, '0')}:${String(this.now.getMinutes()).padStart(2, '0')}`
     }
   },
   mounted() {
+    // 1분마다 시간 업데이트
     this.timer = setInterval(() => {
       this.now = new Date()
     }, 60000)
   },
   beforeDestroy() {
+    // 메모리 누수 방지를 위한 타이머 해제
     clearInterval(this.timer)
   }
 }

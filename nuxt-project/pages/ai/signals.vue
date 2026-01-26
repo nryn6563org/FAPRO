@@ -11,7 +11,7 @@
       </Button>
     </div>
 
-    <!-- Summary Cards -->
+    <!-- 요약 카드 영역 (전체, 매수, 매도, 보유) -->
     <div class="p-signals__summary-grid">
       <div class="p-signals__summary-card p-signals__summary-card--total">
         <div>
@@ -54,7 +54,7 @@
       </div>
     </div>
 
-    <!-- Filter Tabs -->
+    <!-- 필터 탭 (전체/매수/매도/보유) -->
     <div class="p-signals__filter-nav">
        <button
           v-for="tab in filters" :key="tab.value"
@@ -66,13 +66,13 @@
        </button>
     </div>
 
-    <!-- Signals List -->
+    <!-- 시그널 리스트 영역 -->
     <div class="p-signals__list">
        <div
          v-for="signal in filteredSignals" :key="signal.id"
          class="p-signals__item"
        >
-          <!-- Left Panel -->
+          <!-- 왼쪽 패널: 종목 정보 및 시그널 뱃지 -->
           <div class="p-signals__info-panel">
              <div class="p-signals__stock-header">
                 <div class="p-signals__stock-icon" :class="getSignalBadgeClass(signal.type)">
@@ -96,13 +96,13 @@
                    <Clock class="w-3.5 h-3.5" />
                    {{ signal.timestamp }}
                 </div>
-                <div class="px-2 py-0.5 rounded bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-bold">
+                <div class="px-2 py-0.5 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-bold">
                    {{ signal.timeframe }}
                 </div>
              </div>
           </div>
 
-          <!-- Right Panel -->
+          <!-- 오른쪽 패널: 가격 정보 및 상세 분석 -->
           <div class="p-signals__data-panel">
               <div class="p-signals__price-grid">
                  <div>

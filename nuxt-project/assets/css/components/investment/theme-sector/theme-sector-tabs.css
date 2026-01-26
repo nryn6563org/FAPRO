@@ -4,7 +4,7 @@
 }
 
 .c-theme-sector-tabs__btn {
-  @apply px-8 py-3 rounded-2xl text-[15px] font-black transition-all border border-slate-200 outline-none;
+  @apply px-8 py-3 rounded text-[15px] font-bold transition-all border border-slate-200 outline-none;
 }
 
 .c-theme-sector-tabs__btn--active {

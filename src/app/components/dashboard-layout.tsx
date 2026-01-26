@@ -119,20 +119,12 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
   return (
     <div className="flex h-screen bg-slate-50">
       {/* Sidebar */}
-      <aside
-        className={`${
-          sidebarOpen ? 'w-64' : 'w-20'
-        } bg-[#0f172a] text-slate-100 transition-all duration-300 flex flex-col`}
-      >
+      <aside className={`${sidebarOpen ? "w-64" : "w-20"} bg-[#0f172a] text-slate-100 transition-all duration-300 flex flex-col`}>
         <div className="p-6 flex items-center justify-between">
           {sidebarOpen && (
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1665656653092-684fdd316aca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMGNoYXJ0JTIwZmluYW5jZXxlbnwxfHx8fDE3Njg4ODE3MjF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="RASSI Logo"
-                  className="w-full h-full object-cover"
-                />
+                <img src="https://images.unsplash.com/photo-1665656653092-684fdd316aca?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzdG9jayUyMG1hcmtldCUyMGNoYXJ0JTIwZmluYW5jZXxlbnwxfHx8fDE3Njg4ODE3MjF8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral" alt="RASSI Logo" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h1 className="text-xl font-bold text-white">RASSI FApro</h1>
@@ -140,12 +132,7 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
               </div>
             </div>
           )}
-          <Button
-            variant="ghost"
-            size="icon"
-            onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="text-slate-400 hover:text-white hover:bg-slate-700"
-          >
+          <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)} className="text-slate-400 hover:text-white hover:bg-slate-700">
             {sidebarOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </Button>
         </div>
@@ -164,53 +151,30 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
                       onTabChange(item.id);
                     }
                   }}
-                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-colors text-sm ${
-                    isActive
-                      ? 'bg-[#1e40af] text-white'
-                      : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                  }`}
+                  className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg mb-1 transition-colors text-sm ${isActive ? "bg-[#1e40af] text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"}`}
                 >
                   <Icon className="w-5 h-5 flex-shrink-0" />
                   {sidebarOpen && <span className="flex-1 text-left">{item.label}</span>}
-                  {sidebarOpen && item.children && (
-                    expandedMenus.includes(item.id) ? 
-                      <ChevronDown className="w-4 h-4 flex-shrink-0" /> : 
-                      <ChevronRight className="w-4 h-4 flex-shrink-0" />
-                  )}
+                  {sidebarOpen && item.children && (expandedMenus.includes(item.id) ? <ChevronDown className="w-4 h-4 flex-shrink-0" /> : <ChevronRight className="w-4 h-4 flex-shrink-0" />)}
                 </button>
                 {item.children && sidebarOpen && (
-                  <div className={`ml-4 ${expandedMenus.includes(item.id) ? 'block' : 'hidden'}`}>
+                  <div className={`ml-4 ${expandedMenus.includes(item.id) ? "block" : "hidden"}`}>
                     {item.children.map((subItem) => {
                       const SubIcon = subItem.icon;
                       const isSubActive = activeTab === subItem.id;
                       return (
                         <div key={subItem.id}>
-                          <button
-                            onClick={() => onTabChange(subItem.id)}
-                            className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg mb-1 transition-colors text-sm ${
-                              isSubActive
-                                ? 'bg-[#1e40af] text-white'
-                                : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                            }`}
-                          >
+                          <button onClick={() => onTabChange(subItem.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg mb-1 transition-colors text-sm ${isSubActive ? "bg-[#1e40af] text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"}`}>
                             <SubIcon className="w-4 h-4 flex-shrink-0" />
                             {sidebarOpen && <span className="text-xs">{subItem.label}</span>}
                           </button>
                           {subItem.children && (
-                            <div className={`ml-4 ${expandedMenus.includes(subItem.id) ? 'block' : 'hidden'}`}>
+                            <div className={`ml-4 ${expandedMenus.includes(subItem.id) ? "block" : "hidden"}`}>
                               {subItem.children.map((subSubItem) => {
                                 const SubSubIcon = subSubItem.icon;
                                 const isSubSubActive = activeTab === subSubItem.id;
                                 return (
-                                  <button
-                                    key={subSubItem.id}
-                                    onClick={() => onTabChange(subSubItem.id)}
-                                    className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg mb-1 transition-colors text-xs ${
-                                      isSubSubActive
-                                        ? 'bg-[#1e40af] text-white'
-                                        : 'text-slate-300 hover:bg-slate-800 hover:text-white'
-                                    }`}
-                                  >
+                                  <button key={subSubItem.id} onClick={() => onTabChange(subSubItem.id)} className={`w-full flex items-center gap-2 px-3 py-2 rounded-lg mb-1 transition-colors text-xs ${isSubSubActive ? "bg-[#1e40af] text-white" : "text-slate-300 hover:bg-slate-800 hover:text-white"}`}>
                                     <SubSubIcon className="w-3.5 h-3.5 flex-shrink-0" />
                                     {sidebarOpen && <span>{subSubItem.label}</span>}
                                   </button>
@@ -243,10 +207,7 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
                 )}
               </div>
               {sidebarOpen && (
-                <Button
-                  onClick={handleLogout}
-                  className="w-full bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center gap-2"
-                >
+                <Button onClick={handleLogout} className="w-full bg-slate-700 hover:bg-slate-600 text-white flex items-center justify-center gap-2">
                   <LogOut className="w-4 h-4" />
                   <span>로그아웃</span>
                 </Button>
@@ -255,20 +216,12 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
           ) : (
             <div className="flex flex-col gap-2">
               {sidebarOpen ? (
-                <Button
-                  onClick={handleLogin}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2"
-                >
+                <Button onClick={handleLogin} className="w-full bg-blue-600 hover:bg-blue-700 text-white flex items-center justify-center gap-2">
                   <LogIn className="w-4 h-4" />
                   <span>로그인</span>
                 </Button>
               ) : (
-                <Button
-                  onClick={handleLogin}
-                  variant="ghost"
-                  size="icon"
-                  className="w-full text-slate-400 hover:text-white hover:bg-slate-700"
-                >
+                <Button onClick={handleLogin} variant="ghost" size="icon" className="w-full text-slate-400 hover:text-white hover:bg-slate-700">
                   <LogIn className="w-5 h-5" />
                 </Button>
               )}
@@ -291,17 +244,14 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
                 <p className="text-xs text-slate-500">2026년 1월 20일 화요일</p>
               </div>
             </div>
-            
+
             {/* Search and Indices */}
             <div className="flex flex-col gap-3">
               <div className="relative w-96">
                 <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-                <Input
-                  placeholder="종목명 또는 종목코드를 입력하세요."
-                  className="pl-10 bg-slate-50 border-slate-200"
-                />
+                <Input placeholder="종목명 또는 종목코드를 입력하세요." className="pl-10 bg-slate-50 border-slate-200" />
               </div>
-              
+
               <div className="flex items-center gap-3">
                 <IndexCard name="코스피" value="2,567.89" change={1.2} data={[2520, 2535, 2545, 2530, 2550, 2560, 2567]} size="small" />
                 <IndexCard name="코스닥" value="756.32" change={-0.8} data={[765, 760, 758, 762, 755, 754, 756]} size="small" />
@@ -315,9 +265,7 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
         </header>
 
         {/* Content */}
-        <main className="flex-1 overflow-auto p-8 bg-slate-50">
-          {children}
-        </main>
+        <main className="flex-1 overflow-auto p-8 bg-slate-50">{children}</main>
 
         {/* Footer */}
         <footer className="bg-white border-t border-slate-200 px-8 py-4">
@@ -325,9 +273,15 @@ export function DashboardLayout({ children, activeTab, onTabChange }: DashboardL
             <div className="flex items-center gap-6">
               <p>© 2026 RASSI FApro. All rights reserved.</p>
               <div className="flex items-center gap-4">
-                <a href="#" className="hover:text-blue-600 transition-colors">이용약관</a>
-                <a href="#" className="hover:text-blue-600 transition-colors">개인정보처리방침</a>
-                <a href="#" className="hover:text-blue-600 transition-colors">고객센터</a>
+                <a href="#" className="hover:text-blue-600 transition-colors">
+                  이용약관
+                </a>
+                <a href="#" className="hover:text-blue-600 transition-colors">
+                  개인정보처리방침
+                </a>
+                <a href="#" className="hover:text-blue-600 transition-colors">
+                  고객센터
+                </a>
               </div>
             </div>
             <div className="flex items-center gap-2 text-slate-500">

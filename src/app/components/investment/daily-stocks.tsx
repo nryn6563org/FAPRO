@@ -67,25 +67,13 @@ export function DailyStocks() {
             <div className="flex items-center gap-3">
               <CalendarDays className="w-6 h-6 text-blue-600" />
               <CardTitle className="text-xl">{currentData.date}</CardTitle>
-              {currentPage === 0 && (
-                <Badge className="bg-green-500">오늘</Badge>
-              )}
+              {currentPage === 0 && <Badge className="bg-green-500">오늘</Badge>}
             </div>
             <div className="flex gap-2">
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage(prev => prev + 1)}
-                disabled={!canGoPrev}
-              >
+              <Button variant="outline" size="sm" onClick={() => setCurrentPage((prev) => prev + 1)} disabled={!canGoPrev}>
                 <ChevronLeft className="w-4 h-4" />
               </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                onClick={() => setCurrentPage(prev => prev - 1)}
-                disabled={!canGoNext}
-              >
+              <Button variant="outline" size="sm" onClick={() => setCurrentPage((prev) => prev - 1)} disabled={!canGoNext}>
                 <ChevronRight className="w-4 h-4" />
               </Button>
             </div>
@@ -113,21 +101,16 @@ export function DailyStocks() {
                 </CardHeader>
                 <CardContent>
                   {pick.result !== null ? (
-                    <div className={`p-4 rounded-lg ${
-                      pick.result >= 0 ? 'bg-green-50' : 'bg-red-50'
-                    }`}>
+                    <div className={`p-4 rounded-lg ${pick.result >= 0 ? "bg-green-50" : "bg-red-50"}`}>
                       <p className="text-xs text-slate-600 mb-1">수익률</p>
-                      <p className={`text-2xl font-bold ${
-                        pick.result >= 0 ? 'text-green-600' : 'text-red-600'
-                      }`}>
-                        {pick.result >= 0 ? '+' : ''}{pick.result}%
+                      <p className={`text-2xl font-bold ${pick.result >= 0 ? "text-green-600" : "text-red-600"}`}>
+                        {pick.result >= 0 ? "+" : ""}
+                        {pick.result}%
                       </p>
                     </div>
                   ) : (
                     <div className="p-4 rounded-lg bg-slate-50">
-                      <p className="text-sm text-slate-600 text-center">
-                        진행 중
-                      </p>
+                      <p className="text-sm text-slate-600 text-center">진행 중</p>
                     </div>
                   )}
                   <Button variant="outline" className="w-full mt-3" size="sm">
@@ -138,20 +121,16 @@ export function DailyStocks() {
             ))}
           </div>
 
-          {currentData.picks.some(p => p.result !== null) && (
+          {currentData.picks.some((p) => p.result !== null) && (
             <div className="mt-6 p-4 bg-slate-50 rounded-lg">
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-sm text-slate-600 mb-1">일평균 수익률</p>
-                  <p className="text-2xl font-bold text-green-600">
-                    +{(currentData.picks.reduce((sum, p) => sum + (p.result || 0), 0) / currentData.picks.length).toFixed(2)}%
-                  </p>
+                  <p className="text-2xl font-bold text-green-600">+{(currentData.picks.reduce((sum, p) => sum + (p.result || 0), 0) / currentData.picks.length).toFixed(2)}%</p>
                 </div>
                 <div className="text-right">
                   <p className="text-sm text-slate-600 mb-1">적중률</p>
-                  <p className="text-2xl font-bold text-blue-600">
-                    {((currentData.picks.filter(p => (p.result || 0) > 0).length / currentData.picks.length) * 100).toFixed(0)}%
-                  </p>
+                  <p className="text-2xl font-bold text-blue-600">{((currentData.picks.filter((p) => (p.result || 0) > 0).length / currentData.picks.length) * 100).toFixed(0)}%</p>
                 </div>
               </div>
             </div>

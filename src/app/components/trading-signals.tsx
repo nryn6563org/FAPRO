@@ -260,9 +260,7 @@ export function TradingSignals() {
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-3">
-                  <div className={`w-12 h-12 rounded-lg border-2 ${getSignalColor(signal.type)} flex items-center justify-center`}>
-                    {getSignalIcon(signal.type)}
-                  </div>
+                  <div className={`w-12 h-12 rounded-lg border-2 ${getSignalColor(signal.type)} flex items-center justify-center`}>{getSignalIcon(signal.type)}</div>
                   <div>
                     <div className="flex items-center gap-2">
                       <CardTitle className="text-lg">{signal.ticker}</CardTitle>
@@ -291,27 +289,15 @@ export function TradingSignals() {
               <div className="grid grid-cols-3 gap-4 p-4 bg-slate-50 rounded-lg">
                 <div>
                   <p className="text-xs text-slate-500 mb-1">현재가</p>
-                  <p className="font-semibold">
-                    {typeof signal.price === 'number' && signal.price > 1000 
-                      ? signal.price.toLocaleString() + '원'
-                      : '$' + signal.price.toFixed(2)}
-                  </p>
+                  <p className="font-semibold">{typeof signal.price === "number" && signal.price > 1000 ? signal.price.toLocaleString() + "원" : "$" + signal.price.toFixed(2)}</p>
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 mb-1">목표가</p>
-                  <p className="font-semibold text-green-600">
-                    {typeof signal.targetPrice === 'number' && signal.targetPrice > 1000 
-                      ? signal.targetPrice.toLocaleString() + '원'
-                      : '$' + signal.targetPrice.toFixed(2)}
-                  </p>
+                  <p className="font-semibold text-green-600">{typeof signal.targetPrice === "number" && signal.targetPrice > 1000 ? signal.targetPrice.toLocaleString() + "원" : "$" + signal.targetPrice.toFixed(2)}</p>
                 </div>
                 <div>
                   <p className="text-xs text-slate-500 mb-1">손절가</p>
-                  <p className="font-semibold text-red-600">
-                    {typeof signal.stopLoss === 'number' && signal.stopLoss > 1000 
-                      ? signal.stopLoss.toLocaleString() + '원'
-                      : '$' + signal.stopLoss.toFixed(2)}
-                  </p>
+                  <p className="font-semibold text-red-600">{typeof signal.stopLoss === "number" && signal.stopLoss > 1000 ? signal.stopLoss.toLocaleString() + "원" : "$" + signal.stopLoss.toFixed(2)}</p>
                 </div>
               </div>
 
@@ -321,14 +307,7 @@ export function TradingSignals() {
                   <span className="text-sm text-slate-600">신뢰도</span>
                   <div className="flex items-center gap-2">
                     <div className="w-32 h-2 bg-slate-200 rounded-full overflow-hidden">
-                      <div 
-                        className={`h-full ${
-                          signal.confidence >= 80 ? 'bg-green-500' : 
-                          signal.confidence >= 60 ? 'bg-yellow-500' : 
-                          'bg-red-500'
-                        }`}
-                        style={{ width: `${signal.confidence}%` }}
-                      />
+                      <div className={`h-full ${signal.confidence >= 80 ? "bg-green-500" : signal.confidence >= 60 ? "bg-yellow-500" : "bg-red-500"}`} style={{ width: `${signal.confidence}%` }} />
                     </div>
                     <span className="text-sm font-semibold">{signal.confidence}%</span>
                   </div>

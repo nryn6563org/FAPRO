@@ -12,7 +12,7 @@
 }
 
 .m-report-detail__badge {
-    @apply bg-blue-600 text-white px-3 py-1 rounded-md text-xs font-bold;
+    @apply bg-blue-600 text-white px-3 py-1 rounded-xl text-xs font-bold;
 }
 
 .m-report-detail__source {
@@ -32,7 +32,7 @@
 }
 
 .m-report-detail__summary-item {
-    @apply bg-slate-50 p-5 rounded-2xl border border-slate-100;
+    @apply bg-slate-50 p-5 rounded-xl border border-slate-100;
 }
 
 .m-report-detail__summary-label {
@@ -40,7 +40,7 @@
 }
 
 .m-report-detail__summary-value {
-    @apply text-2xl font-black text-slate-900;
+    @apply text-2xl font-bold text-slate-900;
 }
 
 .m-report-detail__summary-value--rating {

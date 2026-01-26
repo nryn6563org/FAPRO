@@ -1,6 +1,5 @@
-/* IndexChartCard Component Styles */
 .c-index-chart-card {
-  @apply bg-white border border-slate-200 rounded-[2.5rem] p-8 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
+  @apply bg-white border border-slate-200 rounded p-6 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
 }
 
 .c-index-chart-card:hover {
@@ -16,11 +15,15 @@
 }
 
 .c-index-chart-card__name {
-  @apply text-sm font-black text-slate-400 uppercase tracking-wider;
+  @apply text-sm font-bold text-slate-400 uppercase tracking-wider;
+}
+
+.c-index-chart-card__price-row {
+  @apply flex items-baseline gap-3;
 }
 
 .c-index-chart-card__value {
-  @apply text-3xl font-black text-slate-900 dark:text-white tabular-nums;
+  @apply text-3xl font-bold text-slate-900 dark:text-white tabular-nums;
 }
 
 .c-index-chart-card__change {
@@ -28,32 +31,26 @@
 }
 
 .c-index-chart-card__change-val {
-  @apply flex items-center gap-0.5 text-sm font-black;
+  @apply flex items-center gap-0.5 text-sm font-bold;
 }
 
 .c-index-chart-card__change-pct {
-  @apply text-sm font-black;
+  @apply text-sm font-bold;
 }
 
-/* Indicators */
-.indicator--positive {
-  @apply text-red-500;
-}
+/* Indicators handled by design-system.css */
 
-.indicator--negative {
-  @apply text-blue-500;
-}
 
 .c-index-chart-card__chart-wrapper {
-  @apply h-40 w-full;
+  @apply h-64 w-full relative overflow-hidden;
 }
 
 .c-index-chart-card__period-selector {
-  @apply flex items-center gap-1 bg-slate-100 p-1 rounded-2xl w-fit dark:bg-slate-800;
+  @apply flex items-center gap-1 bg-slate-100 p-1 rounded w-fit dark:bg-slate-800;
 }
 
 .c-index-chart-card__period-btn {
-  @apply px-4 py-1.5 rounded-xl text-xs font-black transition-all;
+  @apply px-4 py-1.5 rounded text-xs font-bold transition-all;
 }
 
 .c-index-chart-card__period-btn--active {

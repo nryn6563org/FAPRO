@@ -42,16 +42,9 @@ function DraggableWidget({ widgetId, index, moveWidget, onRemove }: DraggableWid
     : '';
 
   return (
-    <div 
-      ref={(node) => dragPreview(drop(node))}
-      className={`${gridClass} ${isDragging ? 'opacity-50' : ''}`}
-    >
+    <div ref={(node) => dragPreview(drop(node))} className={`${gridClass} ${isDragging ? "opacity-50" : ""}`}>
       <div className="relative group">
-        <div
-          ref={drag}
-          className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 cursor-move opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-300 rounded p-1 shadow-lg"
-          title="드래그하여 이동"
-        >
+        <div ref={drag} className="absolute -left-2 top-1/2 -translate-y-1/2 z-10 cursor-move opacity-0 group-hover:opacity-100 transition-opacity bg-white border border-slate-300 rounded p-1 shadow-lg" title="드래그하여 이동">
           <GripVertical className="w-5 h-5 text-slate-600" />
         </div>
         <Widget widgetId={widgetId} onRemove={onRemove} />

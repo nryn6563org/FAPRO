@@ -22,8 +22,9 @@ export default {
   },
   mounted() {
     const ctx = this.$refs.canvas.getContext('2d')
+    const chartHeight = this.$refs.canvas.height;
     // 세로 방향 그라데이션 생성 (상단 -> 하단)
-    const gradient = ctx.createLinearGradient(0, 0, 0, 100)
+    const gradient = ctx.createLinearGradient(0, 0, 0, chartHeight);
     gradient.addColorStop(0, this.hexToRgba(this.gradientColor, 0.4))
     gradient.addColorStop(1, this.hexToRgba(this.gradientColor, 0))
 

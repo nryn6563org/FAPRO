@@ -369,22 +369,21 @@ export function ThemeSector() {
               <CardHeader className="pb-3">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                      isPositive ? 'bg-green-100' : 'bg-red-100'
-                    }`}>
-                      <Layers className={`w-5 h-5 ${
-                        isPositive ? 'text-green-600' : 'text-red-600'
-                      }`} />
+                    <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${isPositive ? "bg-green-100" : "bg-red-100"}`}>
+                      <Layers className={`w-5 h-5 ${isPositive ? "text-green-600" : "text-red-600"}`} />
                     </div>
                     <div>
                       <CardTitle className="text-sm">{theme.name}</CardTitle>
                       <p className="text-[10px] text-slate-500">{theme.stockCount}개</p>
                     </div>
                   </div>
-                  <div className={`text-right ${isPositive ? 'text-green-600' : 'text-red-600'}`}>
+                  <div className={`text-right ${isPositive ? "text-green-600" : "text-red-600"}`}>
                     <div className="flex items-center gap-1 justify-end">
                       {isPositive ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
-                      <span className="text-sm font-bold">{isPositive ? '+' : ''}{theme.change}%</span>
+                      <span className="text-sm font-bold">
+                        {isPositive ? "+" : ""}
+                        {theme.change}%
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -401,29 +400,17 @@ export function ThemeSector() {
                     </thead>
                     <tbody>
                       {theme.topStocks.map((stock, idx) => (
-                        <tr 
-                          key={idx} 
-                          className="border-b border-slate-100 hover:bg-slate-50 transition-colors"
-                        >
+                        <tr key={idx} className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
                           <td className="py-1.5 px-1 font-medium text-slate-900 text-[10px]">
                             <div className="flex items-center gap-1">
-                              <div className={`w-4 h-4 rounded-full ${getStockColor(stock.name)} flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0`}>
-                                {stock.name.charAt(0)}
-                              </div>
+                              <div className={`w-4 h-4 rounded-full ${getStockColor(stock.name)} flex items-center justify-center text-white font-bold text-[8px] flex-shrink-0`}>{stock.name.charAt(0)}</div>
                               <span className="truncate">{stock.name}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1 text-right font-semibold text-slate-900 text-[10px]">
-                            {stock.currentPrice.toLocaleString()}
-                          </td>
-                          <td className={`py-1.5 px-1 text-right font-semibold text-[10px] ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1 text-right font-semibold text-slate-900 text-[10px]">{stock.currentPrice.toLocaleString()}</td>
+                          <td className={`py-1.5 px-1 text-right font-semibold text-[10px] ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}

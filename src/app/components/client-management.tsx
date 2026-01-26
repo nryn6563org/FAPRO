@@ -420,7 +420,9 @@ export function ClientManagement() {
               </div>
             </div>
             <div className="flex justify-end gap-2 mt-4">
-              <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>취소</Button>
+              <Button variant="outline" onClick={() => setIsAddDialogOpen(false)}>
+                취소
+              </Button>
               <Button onClick={() => setIsAddDialogOpen(false)}>등록</Button>
             </div>
           </DialogContent>
@@ -437,12 +439,7 @@ export function ClientManagement() {
           <div className="flex gap-4">
             <div className="flex-1 relative">
               <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5" />
-              <Input
-                placeholder="AI에게 원하는 고객군을 대화로 찾아보세요."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="pl-10"
-              />
+              <Input placeholder="AI에게 원하는 고객군을 대화로 찾아보세요." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)} className="pl-10" />
             </div>
             <Button className="w-40">
               <Search className="w-4 h-4 mr-2" />
@@ -463,36 +460,16 @@ export function ClientManagement() {
             <span className="font-medium">정렬:</span>
           </div>
           <div className="flex gap-2">
-            <Button
-              variant={sortBy === 'aum' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSortBy('aum')}
-              className="text-sm"
-            >
+            <Button variant={sortBy === "aum" ? "default" : "outline"} size="sm" onClick={() => setSortBy("aum")} className="text-sm">
               자산순
             </Button>
-            <Button
-              variant={sortBy === 'name' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSortBy('name')}
-              className="text-sm"
-            >
+            <Button variant={sortBy === "name" ? "default" : "outline"} size="sm" onClick={() => setSortBy("name")} className="text-sm">
               이름순
             </Button>
-            <Button
-              variant={sortBy === 'lastContact' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSortBy('lastContact')}
-              className="text-sm"
-            >
+            <Button variant={sortBy === "lastContact" ? "default" : "outline"} size="sm" onClick={() => setSortBy("lastContact")} className="text-sm">
               최근상담순
             </Button>
-            <Button
-              variant={sortBy === 'returns' ? 'default' : 'outline'}
-              size="sm"
-              onClick={() => setSortBy('returns')}
-              className="text-sm"
-            >
+            <Button variant={sortBy === "returns" ? "default" : "outline"} size="sm" onClick={() => setSortBy("returns")} className="text-sm">
               수익률순
             </Button>
           </div>
@@ -506,14 +483,10 @@ export function ClientManagement() {
             <CardHeader className="pb-3">
               <div className="flex items-start justify-between">
                 <div className="flex items-center gap-2">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
-                    {client.name[0]}
-                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">{client.name[0]}</div>
                   <div>
                     <CardTitle className="text-base">{client.name}</CardTitle>
-                    <Badge className={`mt-1 text-xs ${getRiskBadgeColor(client.riskProfile)}`}>
-                      {getRiskLabel(client.riskProfile)}
-                    </Badge>
+                    <Badge className={`mt-1 text-xs ${getRiskBadgeColor(client.riskProfile)}`}>{getRiskLabel(client.riskProfile)}</Badge>
                   </div>
                 </div>
                 <Button
@@ -525,13 +498,7 @@ export function ClientManagement() {
                     toggleFavorite(client.id);
                   }}
                 >
-                  <Star
-                    className={`w-4 h-4 ${
-                      client.isFavorite
-                        ? 'fill-yellow-500 text-yellow-500'
-                        : 'text-slate-400 hover:text-yellow-500'
-                    }`}
-                  />
+                  <Star className={`w-4 h-4 ${client.isFavorite ? "fill-yellow-500 text-yellow-500" : "text-slate-400 hover:text-yellow-500"}`} />
                 </Button>
               </div>
             </CardHeader>
@@ -543,8 +510,9 @@ export function ClientManagement() {
                 </div>
                 <div className="space-y-1">
                   <p className="text-xs text-slate-500">수익률</p>
-                  <p className={`text-sm font-semibold ${client.returns >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                    {client.returns >= 0 ? '+' : ''}{client.returns}%
+                  <p className={`text-sm font-semibold ${client.returns >= 0 ? "text-green-600" : "text-red-600"}`}>
+                    {client.returns >= 0 ? "+" : ""}
+                    {client.returns}%
                   </p>
                 </div>
               </div>
@@ -561,12 +529,7 @@ export function ClientManagement() {
               </div>
 
               <div className="flex gap-2 pt-2">
-                <Button 
-                  variant="outline" 
-                  size="sm" 
-                  className="flex-1 text-xs"
-                  onClick={() => setSelectedClient(client)}
-                >
+                <Button variant="outline" size="sm" className="flex-1 text-xs" onClick={() => setSelectedClient(client)}>
                   <FileText className="w-3 h-3 mr-1" />
                   상세보기
                 </Button>
@@ -583,14 +546,10 @@ export function ClientManagement() {
             <>
               <DialogHeader>
                 <div className="flex items-center gap-3">
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-xl">
-                    {selectedClient.name[0]}
-                  </div>
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold text-xl">{selectedClient.name[0]}</div>
                   <div>
                     <DialogTitle className="text-2xl">{selectedClient.name}</DialogTitle>
-                    <Badge className={`mt-1 ${getRiskBadgeColor(selectedClient.riskProfile)}`}>
-                      {getRiskLabel(selectedClient.riskProfile)}
-                    </Badge>
+                    <Badge className={`mt-1 ${getRiskBadgeColor(selectedClient.riskProfile)}`}>{getRiskLabel(selectedClient.riskProfile)}</Badge>
                   </div>
                 </div>
               </DialogHeader>
@@ -610,8 +569,9 @@ export function ClientManagement() {
                     <CardContent className="pt-6">
                       <div className="space-y-1">
                         <p className="text-sm text-slate-500">수익률</p>
-                        <p className={`text-2xl font-bold ${selectedClient.returns >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                          {selectedClient.returns >= 0 ? '+' : ''}{selectedClient.returns}%
+                        <p className={`text-2xl font-bold ${selectedClient.returns >= 0 ? "text-green-600" : "text-red-600"}`}>
+                          {selectedClient.returns >= 0 ? "+" : ""}
+                          {selectedClient.returns}%
                         </p>
                       </div>
                     </CardContent>
@@ -650,26 +610,10 @@ export function ClientManagement() {
                   </CardHeader>
                   <CardContent className="space-y-4">
                     <div className="flex h-4 rounded-full overflow-hidden">
-                      <div 
-                        className="bg-blue-500" 
-                        style={{ width: `${selectedClient.portfolio.stocks}%` }} 
-                        title={`주식 ${selectedClient.portfolio.stocks}%`} 
-                      />
-                      <div 
-                        className="bg-green-500" 
-                        style={{ width: `${selectedClient.portfolio.bonds}%` }} 
-                        title={`채권 ${selectedClient.portfolio.bonds}%`} 
-                      />
-                      <div 
-                        className="bg-yellow-500" 
-                        style={{ width: `${selectedClient.portfolio.cash}%` }} 
-                        title={`현금 ${selectedClient.portfolio.cash}%`} 
-                      />
-                      <div 
-                        className="bg-purple-500" 
-                        style={{ width: `${selectedClient.portfolio.alternatives}%` }} 
-                        title={`대체투자 ${selectedClient.portfolio.alternatives}%`} 
-                      />
+                      <div className="bg-blue-500" style={{ width: `${selectedClient.portfolio.stocks}%` }} title={`주식 ${selectedClient.portfolio.stocks}%`} />
+                      <div className="bg-green-500" style={{ width: `${selectedClient.portfolio.bonds}%` }} title={`채권 ${selectedClient.portfolio.bonds}%`} />
+                      <div className="bg-yellow-500" style={{ width: `${selectedClient.portfolio.cash}%` }} title={`현금 ${selectedClient.portfolio.cash}%`} />
+                      <div className="bg-purple-500" style={{ width: `${selectedClient.portfolio.alternatives}%` }} title={`대체투자 ${selectedClient.portfolio.alternatives}%`} />
                     </div>
                     <div className="grid grid-cols-2 gap-4">
                       <div className="flex items-center gap-2">
@@ -699,7 +643,7 @@ export function ClientManagement() {
                           <TabsTrigger value="cash">현금</TabsTrigger>
                           <TabsTrigger value="alternatives">대체투자</TabsTrigger>
                         </TabsList>
-                        
+
                         <TabsContent value="stocks" className="mt-4">
                           <div className="space-y-3">
                             <div className="text-xs font-semibold text-slate-500 grid grid-cols-4 gap-2 pb-2 border-b">
@@ -742,7 +686,7 @@ export function ClientManagement() {
                             </div>
                           </div>
                         </TabsContent>
-                        
+
                         <TabsContent value="bonds" className="mt-4">
                           <div className="space-y-3">
                             <div className="text-xs font-semibold text-slate-500 grid grid-cols-4 gap-2 pb-2 border-b">
@@ -779,7 +723,7 @@ export function ClientManagement() {
                             </div>
                           </div>
                         </TabsContent>
-                        
+
                         <TabsContent value="cash" className="mt-4">
                           <div className="space-y-3">
                             <div className="text-xs font-semibold text-slate-500 grid grid-cols-4 gap-2 pb-2 border-b">
@@ -804,7 +748,7 @@ export function ClientManagement() {
                             </div>
                           </div>
                         </TabsContent>
-                        
+
                         <TabsContent value="alternatives" className="mt-4">
                           <div className="space-y-3">
                             <div className="text-xs font-semibold text-slate-500 grid grid-cols-4 gap-2 pb-2 border-b">
@@ -852,26 +796,15 @@ export function ClientManagement() {
 
                 {/* Actions */}
                 <div className="flex gap-3 pt-4">
-                  <Button 
-                    variant="outline" 
-                    className="flex-1"
-                    onClick={() => setIsSmsDialogOpen(true)}
-                  >
+                  <Button variant="outline" className="flex-1" onClick={() => setIsSmsDialogOpen(true)}>
                     <MessageSquare className="w-4 h-4 mr-2" />
                     문자 보내기
                   </Button>
-                  <Button 
-                    variant="outline" 
-                    className="flex-1"
-                    onClick={() => setIsEmailDialogOpen(true)}
-                  >
+                  <Button variant="outline" className="flex-1" onClick={() => setIsEmailDialogOpen(true)}>
                     <Mail className="w-4 h-4 mr-2" />
                     이메일 보내기
                   </Button>
-                  <Button 
-                    className="flex-1"
-                    onClick={() => setIsProposalDialogOpen(true)}
-                  >
+                  <Button className="flex-1" onClick={() => setIsProposalDialogOpen(true)}>
                     <Sparkles className="w-4 h-4 mr-2" />
                     제안서 만들기
                   </Button>
@@ -892,9 +825,7 @@ export function ClientManagement() {
             <div className="space-y-4 mt-4">
               <div className="bg-slate-50 p-4 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
-                    {selectedClient.name[0]}
-                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">{selectedClient.name[0]}</div>
                   <div>
                     <p className="font-medium">{selectedClient.name}</p>
                     <p className="text-sm text-slate-600">{selectedClient.phone}</p>
@@ -904,11 +835,7 @@ export function ClientManagement() {
 
               <div className="space-y-2">
                 <Label>메시지 내용</Label>
-                <textarea
-                  className="w-full min-h-[200px] p-3 border border-slate-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  placeholder="고객님께 보낼 메시지를 입력하세요..."
-                  defaultValue={`안녕하세요 ${selectedClient.name} 고객님,\n\n항상 저희 서비스를 이용해 주셔서 감사합니다.\n\n문의사항이 있으시면 언제든지 연락 주시기 바랍니다.\n\n감사합니다.`}
-                />
+                <textarea className="w-full min-h-[200px] p-3 border border-slate-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="고객님께 보낼 메시지를 입력하세요..." defaultValue={`안녕하세요 ${selectedClient.name} 고객님,\n\n항상 저희 서비스를 이용해 주셔서 감사합니다.\n\n문의사항이 있으시면 언제든지 연락 주시기 바랍니다.\n\n감사합니다.`} />
                 <div className="flex justify-between text-xs text-slate-500">
                   <span>한글 45자 / 영문 90자</span>
                   <span>표준 문자 (90byte)</span>
@@ -919,10 +846,12 @@ export function ClientManagement() {
                 <Button variant="outline" onClick={() => setIsSmsDialogOpen(false)}>
                   취소
                 </Button>
-                <Button onClick={() => {
-                  setIsSmsDialogOpen(false);
-                  alert('문자가 전송되었습니다.');
-                }}>
+                <Button
+                  onClick={() => {
+                    setIsSmsDialogOpen(false);
+                    alert("문자가 전송되었습니다.");
+                  }}
+                >
                   <Send className="w-4 h-4 mr-2" />
                   전송하기
                 </Button>
@@ -942,9 +871,7 @@ export function ClientManagement() {
             <div className="space-y-4 mt-4">
               <div className="bg-slate-50 p-4 rounded-lg">
                 <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
-                    {selectedClient.name[0]}
-                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">{selectedClient.name[0]}</div>
                   <div>
                     <p className="font-medium">{selectedClient.name}</p>
                     <p className="text-sm text-slate-600">{selectedClient.email}</p>
@@ -954,10 +881,7 @@ export function ClientManagement() {
 
               <div className="space-y-2">
                 <Label>제목</Label>
-                <Input 
-                  placeholder="이메일 제목을 입력하세요" 
-                  defaultValue="[RASSI FApro] 포트폴리오 현황 안내"
-                />
+                <Input placeholder="이메일 제목을 입력하세요" defaultValue="[RASSI FApro] 포트폴리오 현황 안내" />
               </div>
 
               <div className="space-y-2">
@@ -965,7 +889,7 @@ export function ClientManagement() {
                 <textarea
                   className="w-full min-h-[300px] p-3 border border-slate-200 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500"
                   placeholder="이메일 내용을 입력하세요..."
-                  defaultValue={`안녕하세요 ${selectedClient.name} 고객님,\n\n항상 저희 RASSI FApro를 이용해 주셔서 진심으로 감사드립니다.\n\n고객님의 현재 포트폴리오 수익률은 ${selectedClient.returns >= 0 ? '+' : ''}${selectedClient.returns}%입니다.\n\n지속적인 자산 관리를 통해 더 나은 수익을 달성할 수 있도록 최선을 다하겠습니다.\n\n문의사항이 있으시면 언제든지 연락 주시기 바랍니다.\n\n감사합니다.\n\nRAS SI FApro 팀 드림`}
+                  defaultValue={`안녕하세요 ${selectedClient.name} 고객님,\n\n항상 저희 RASSI FApro를 이용해 주셔서 진심으로 감사드립니다.\n\n고객님의 현재 포트폴리오 수익률은 ${selectedClient.returns >= 0 ? "+" : ""}${selectedClient.returns}%입니다.\n\n지속적인 자산 관리를 통해 더 나은 수익을 달성할 수 있도록 최선을 다하겠습니다.\n\n문의사항이 있으시면 언제든지 연락 주시기 바랍니다.\n\n감사합니다.\n\nRAS SI FApro 팀 드림`}
                 />
               </div>
 
@@ -978,10 +902,12 @@ export function ClientManagement() {
                 <Button variant="outline" onClick={() => setIsEmailDialogOpen(false)}>
                   취소
                 </Button>
-                <Button onClick={() => {
-                  setIsEmailDialogOpen(false);
-                  alert('이메일이 전송되었습니다.');
-                }}>
+                <Button
+                  onClick={() => {
+                    setIsEmailDialogOpen(false);
+                    alert("이메일이 전송되었습니다.");
+                  }}
+                >
                   <Send className="w-4 h-4 mr-2" />
                   전송하기
                 </Button>
@@ -1004,13 +930,12 @@ export function ClientManagement() {
             <div className="space-y-6 mt-4">
               <div className="bg-gradient-to-br from-blue-50 to-purple-50 p-4 rounded-lg">
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">
-                    {selectedClient.name[0]}
-                  </div>
+                  <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-semibold">{selectedClient.name[0]}</div>
                   <div>
                     <p className="font-medium">{selectedClient.name} 고객님</p>
                     <p className="text-sm text-slate-600">
-                      {getRiskLabel(selectedClient.riskProfile)} · AUM {(selectedClient.aum / 100000000).toFixed(0)}억원 · 수익률 {selectedClient.returns >= 0 ? '+' : ''}{selectedClient.returns}%
+                      {getRiskLabel(selectedClient.riskProfile)} · AUM {(selectedClient.aum / 100000000).toFixed(0)}억원 · 수익률 {selectedClient.returns >= 0 ? "+" : ""}
+                      {selectedClient.returns}%
                     </p>
                   </div>
                 </div>
@@ -1048,7 +973,7 @@ export function ClientManagement() {
                 <CardContent className="space-y-4">
                   <div className="prose max-w-none">
                     <h3 className="text-lg font-semibold mb-3">포트폴리오 리밸런싱 제안서</h3>
-                    
+
                     <div className="bg-slate-50 p-4 rounded-lg mb-4">
                       <h4 className="font-semibold text-sm mb-2">현재 포트폴리오 분석</h4>
                       <ul className="text-sm space-y-1 text-slate-700">
@@ -1080,7 +1005,9 @@ export function ClientManagement() {
                     <div className="bg-green-50 p-4 rounded-lg">
                       <h4 className="font-semibold text-sm mb-2 text-green-900">기대 효과</h4>
                       <ul className="text-sm space-y-1 text-slate-700">
-                        <li>• 예상 수익률: 현재 {selectedClient.returns}% → 목표 {(selectedClient.returns + 3).toFixed(1)}%</li>
+                        <li>
+                          • 예상 수익률: 현재 {selectedClient.returns}% → 목표 {(selectedClient.returns + 3).toFixed(1)}%
+                        </li>
                         <li>• 리스크 감소: 포트폴리오 변동성 15% 감소 예상</li>
                         <li>• 세금 효율: 연간 약 200만원 절감 가능</li>
                       </ul>
@@ -1097,10 +1024,12 @@ export function ClientManagement() {
                   <FileText className="w-4 h-4 mr-2" />
                   PDF 다운로드
                 </Button>
-                <Button onClick={() => {
-                  setIsProposalDialogOpen(false);
-                  setIsEmailDialogOpen(true);
-                }}>
+                <Button
+                  onClick={() => {
+                    setIsProposalDialogOpen(false);
+                    setIsEmailDialogOpen(true);
+                  }}
+                >
                   <Mail className="w-4 h-4 mr-2" />
                   이메일로 전송
                 </Button>

@@ -214,17 +214,11 @@ export function SupplyAnalysis() {
       <Card>
         <CardHeader className="bg-gradient-to-r from-blue-50 to-purple-50 border-b">
           <CardTitle className="text-lg mb-4">수급 현황</CardTitle>
-          
+
           {/* 탭 메뉴 */}
           <div className="flex gap-2 flex-wrap">
             {tabs.map((tab) => (
-              <Button
-                key={tab}
-                variant={selectedTab === tab ? 'default' : 'outline'}
-                size="sm"
-                className={selectedTab === tab ? 'bg-blue-600' : ''}
-                onClick={() => setSelectedTab(tab)}
-              >
+              <Button key={tab} variant={selectedTab === tab ? "default" : "outline"} size="sm" className={selectedTab === tab ? "bg-blue-600" : ""} onClick={() => setSelectedTab(tab)}>
                 {tab}
               </Button>
             ))}
@@ -240,7 +234,7 @@ export function SupplyAnalysis() {
           </div>
 
           {/* 기관 및 외국인 테이블 좌우 배치 */}
-          {selectedTab === '순매수' ? (
+          {selectedTab === "순매수" ? (
             // 순매수 탭: 4개 테이블 (2x2 그리드)
             <div className="grid grid-cols-2 gap-6">
               {/* 기관 코스피 */}
@@ -258,32 +252,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {institutionKospiData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span>{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -307,32 +287,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {institutionKosdaqData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span>{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -356,32 +322,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {foreignKospiData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span>{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -405,32 +357,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {foreignKosdaqData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span>{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -439,7 +377,7 @@ export function SupplyAnalysis() {
                 </div>
               </div>
             </div>
-          ) : selectedTab === '주요기관 순매수 상위' ? (
+          ) : selectedTab === "주요기관 순매수 상위" ? (
             // 주요기관 순매수 상위 탭: 3개 테이블 (연기금, 투신, 사모펀드)
             <div className="grid grid-cols-3 gap-4">
               {/* 연기금 */}
@@ -457,32 +395,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {pensionData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span className="truncate">{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -506,32 +430,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {investmentTrustData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span className="truncate">{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -555,32 +465,18 @@ export function SupplyAnalysis() {
                     </thead>
                     <tbody>
                       {privateFundData.map((stock, index) => (
-                        <tr 
-                          key={index} 
-                          className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                        >
-                          <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                            {stock.date}
-                          </td>
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
                           <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
                             <div className="flex items-center gap-1.5">
-                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                                {stock.stockName.charAt(0)}
-                              </div>
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
                               <span className="truncate">{stock.stockName}</span>
                             </div>
                           </td>
-                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                            {stock.netBuyAmount}억
-                          </td>
-                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                            stock.changeRate > 0 
-                              ? 'text-red-600' 
-                              : stock.changeRate < 0 
-                              ? 'text-blue-600' 
-                              : 'text-slate-600'
-                          }`}>
-                            {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{stock.netBuyAmount}억</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
                           </td>
                         </tr>
                       ))}
@@ -591,119 +487,77 @@ export function SupplyAnalysis() {
             </div>
           ) : (
             // 다른 탭들: 기존 2개 테이블
-          <div className="grid grid-cols-2 gap-6">
-            {/* 기관 테이블 */}
-            <div>
-              <h3 className="text-sm font-semibold mb-2 text-slate-800">기관</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-slate-300">
-                      <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">날짜</th>
-                      <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
-                      <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">
-                        {selectedTab === '순매수 상위 신규진입' ? '순매수' : '매수비중'}
-                      </th>
-                      <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {institutionData.map((stock, index) => (
-                      <tr 
-                        key={index} 
-                        className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                      >
-                        <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                          {stock.date}
-                        </td>
-                        <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
-                          <div className="flex items-center gap-1.5">
-                            <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                              {stock.stockName.charAt(0)}
-                            </div>
-                            <span>{stock.stockName}</span>
-                          </div>
-                        </td>
-                        <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                          {selectedTab === '순매수 상위 신규진입' 
-                            ? `${stock.netBuyAmount}억`
-                            : selectedTab === '연속순매수'
-                            ? `${stock.consecutiveDays}일`
-                            : `${stock.buyRatio.toFixed(1)}%`
-                          }
-                        </td>
-                        <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                          stock.changeRate > 0 
-                            ? 'text-red-600' 
-                            : stock.changeRate < 0 
-                            ? 'text-blue-600' 
-                            : 'text-slate-600'
-                        }`}>
-                          {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
-                        </td>
+            <div className="grid grid-cols-2 gap-6">
+              {/* 기관 테이블 */}
+              <div>
+                <h3 className="text-sm font-semibold mb-2 text-slate-800">기관</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b-2 border-slate-300">
+                        <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">날짜</th>
+                        <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
+                        <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">{selectedTab === "순매수 상위 신규진입" ? "순매수" : "매수비중"}</th>
+                        <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {institutionData.map((stock, index) => (
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
+                          <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
+                            <div className="flex items-center gap-1.5">
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
+                              <span>{stock.stockName}</span>
+                            </div>
+                          </td>
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{selectedTab === "순매수 상위 신규진입" ? `${stock.netBuyAmount}억` : selectedTab === "연속순매수" ? `${stock.consecutiveDays}일` : `${stock.buyRatio.toFixed(1)}%`}</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
-            </div>
 
-            {/* 외국인 테이블 */}
-            <div>
-              <h3 className="text-sm font-semibold mb-2 text-slate-800">외국인</h3>
-              <div className="overflow-x-auto">
-                <table className="w-full">
-                  <thead>
-                    <tr className="border-b-2 border-slate-300">
-                      <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">날짜</th>
-                      <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
-                      <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">
-                        {selectedTab === '순매수 상위 신규진입' ? '순매수' : selectedTab === '연속순매수' ? '연속매수' : '매수비중'}
-                      </th>
-                      <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {foreignData.map((stock, index) => (
-                      <tr 
-                        key={index} 
-                        className="border-b border-slate-200 hover:bg-slate-50 transition-colors"
-                      >
-                        <td className="py-1.5 px-1.5 text-xs text-slate-600">
-                          {stock.date}
-                        </td>
-                        <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
-                          <div className="flex items-center gap-1.5">
-                            <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>
-                              {stock.stockName.charAt(0)}
-                            </div>
-                            <span>{stock.stockName}</span>
-                          </div>
-                        </td>
-                        <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">
-                          {selectedTab === '순매수 상위 신규진입' 
-                            ? `${stock.netBuyAmount}억`
-                            : selectedTab === '연속순매수'
-                            ? `${stock.consecutiveDays}일`
-                            : `${stock.buyRatio.toFixed(1)}%`
-                          }
-                        </td>
-                        <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${
-                          stock.changeRate > 0 
-                            ? 'text-red-600' 
-                            : stock.changeRate < 0 
-                            ? 'text-blue-600' 
-                            : 'text-slate-600'
-                        }`}>
-                          {stock.changeRate > 0 ? '+' : ''}{stock.changeRate.toFixed(2)}%
-                        </td>
+              {/* 외국인 테이블 */}
+              <div>
+                <h3 className="text-sm font-semibold mb-2 text-slate-800">외국인</h3>
+                <div className="overflow-x-auto">
+                  <table className="w-full">
+                    <thead>
+                      <tr className="border-b-2 border-slate-300">
+                        <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">날짜</th>
+                        <th className="text-left py-1.5 px-1.5 font-semibold text-slate-700 text-xs">종목명</th>
+                        <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">{selectedTab === "순매수 상위 신규진입" ? "순매수" : selectedTab === "연속순매수" ? "연속매수" : "매수비중"}</th>
+                        <th className="text-right py-1.5 px-1.5 font-semibold text-slate-700 text-xs">등락률</th>
                       </tr>
-                    ))}
-                  </tbody>
-                </table>
+                    </thead>
+                    <tbody>
+                      {foreignData.map((stock, index) => (
+                        <tr key={index} className="border-b border-slate-200 hover:bg-slate-50 transition-colors">
+                          <td className="py-1.5 px-1.5 text-xs text-slate-600">{stock.date}</td>
+                          <td className="py-1.5 px-1.5 font-medium text-slate-900 text-xs">
+                            <div className="flex items-center gap-1.5">
+                              <div className={`w-5 h-5 rounded-full ${getStockColor(stock.stockName)} flex items-center justify-center text-white font-bold text-[10px] flex-shrink-0`}>{stock.stockName.charAt(0)}</div>
+                              <span>{stock.stockName}</span>
+                            </div>
+                          </td>
+                          <td className="py-1.5 px-1.5 text-right font-semibold text-blue-600 text-xs">{selectedTab === "순매수 상위 신규진입" ? `${stock.netBuyAmount}억` : selectedTab === "연속순매수" ? `${stock.consecutiveDays}일` : `${stock.buyRatio.toFixed(1)}%`}</td>
+                          <td className={`py-1.5 px-1.5 text-right font-semibold text-xs ${stock.changeRate > 0 ? "text-red-600" : stock.changeRate < 0 ? "text-blue-600" : "text-slate-600"}`}>
+                            {stock.changeRate > 0 ? "+" : ""}
+                            {stock.changeRate.toFixed(2)}%
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
           )}
         </CardContent>
       </Card>

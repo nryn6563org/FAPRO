@@ -7,13 +7,13 @@
 
     <!-- 시장 분류 탭 (국내, 해외, 환율, 원자재) -->
     <div class="space-y-6">
-      <div class="flex space-x-1 rounded-lg bg-slate-100 p-1 w-full lg:w-auto lg:inline-flex">
+      <div class="flex space-x-1 rounded-xl bg-slate-100 p-1 w-full lg:w-auto lg:inline-flex">
         <button
           v-for="tab in tabs"
           :key="tab.value"
           @click="activeTab = tab.value"
           :class="[
-            'flex-1 lg:flex-none px-3 py-1.5 text-sm font-medium rounded-md transition-all',
+            'flex-1 lg:flex-none px-3 py-1.5 text-sm font-medium rounded-xl transition-all',
             activeTab === tab.value
               ? 'bg-white text-slate-900 shadow'
               : 'text-slate-500 hover:text-slate-900'
@@ -23,7 +23,7 @@
         </button>
       </div>
 
-      <!-- Domestic Indices -->
+      <!-- 국내 지수 목록 -->
       <div v-if="activeTab === 'domestic'" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div
@@ -63,7 +63,7 @@
           </div>
         </div>
 
-        <!-- Detailed Chart -->
+        <!-- 상세 차트 영역 -->
         <div class="c-content-card p-6">
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-lg font-semibold">상세 차트</h3>
@@ -73,7 +73,7 @@
                 :key="idx.name"
                 @click="selectedDomestic = idx.name"
                 :class="[
-                  'px-3 py-1 rounded-lg text-sm transition-colors',
+                  'px-3 py-1 rounded-xl text-sm transition-colors',
                   selectedDomestic === idx.name
                     ? 'bg-blue-600 text-white'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -93,7 +93,7 @@
         </div>
       </div>
 
-       <!-- International Indices -->
+       <!-- 해외 지수 목록 -->
       <div v-if="activeTab === 'international'" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           <div
@@ -132,7 +132,7 @@
           </div>
         </div>
 
-        <!-- Detailed Chart -->
+        <!-- 상세 차트 영역 -->
         <div class="c-content-card p-6">
           <div class="flex items-center justify-between mb-6">
             <h3 class="text-lg font-semibold">상세 차트</h3>
@@ -142,7 +142,7 @@
                 :key="idx.name"
                 @click="selectedInternational = idx.name"
                 :class="[
-                  'px-3 py-1 rounded-lg text-sm transition-colors',
+                  'px-3 py-1 rounded-xl text-sm transition-colors',
                   selectedInternational === idx.name
                     ? 'bg-blue-600 text-white'
                     : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
@@ -162,7 +162,7 @@
         </div>
       </div>
 
-       <!-- Exchange Rates -->
+       <!-- 환율 목록 -->
       <div v-if="activeTab === 'forex'" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
@@ -202,7 +202,7 @@
         </div>
       </div>
 
-      <!-- Commodities -->
+      <!-- 원자재 목록 -->
       <div v-if="activeTab === 'commodities'" class="space-y-6">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <div
@@ -260,6 +260,7 @@ const generateChartData = (baseValue, volatility = 50) => {
 }
 
 export default {
+  // 컴포넌트 이름: 시장 지수 (도메인 컴포넌트)
   name: 'MarketIndices',
   components: {
     TrendingUp,
@@ -269,9 +270,9 @@ export default {
   },
   data() {
     return {
-      activeTab: 'domestic',
-      selectedDomestic: 'KOSPI',
-      selectedInternational: 'S&P 500',
+      activeTab: 'domestic', // 현재 활성화된 탭
+      selectedDomestic: 'KOSPI', // 선택된 국내 지수 (상세 차트용)
+      selectedInternational: 'S&P 500', // 선택된 해외 지수 (상세 차트용)
       tabs: [
         { value: 'domestic', label: '국내 지수' },
         { value: 'international', label: '해외 지수' },

@@ -5,9 +5,6 @@
       <!-- 팝업 헤더 -->
       <div class="c-client-register__header">
         <h3 class="c-client-register__title">신규 고객 등록</h3>
-        <button class="c-client-register__close" @click="$emit('update:open', false)">
-          <XIcon class="w-6 h-6 text-slate-400" />
-        </button>
       </div>
 
       <!-- 입력 그리드 -->

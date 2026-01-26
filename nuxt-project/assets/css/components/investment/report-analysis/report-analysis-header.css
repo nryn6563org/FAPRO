@@ -8,7 +8,7 @@
 }
 
 .c-report-analysis-header__title {
-  @apply text-[1.75rem] font-black text-slate-900 dark:text-white leading-tight;
+  @apply text-[1.75rem] font-bold text-slate-900 dark:text-white leading-tight;
 }
 
 .c-report-analysis-header__desc {
@@ -16,7 +16,7 @@
 }
 
 .c-report-analysis-header__meta {
-  @apply flex items-center gap-2 text-xs font-black text-slate-400 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-xl;
+  @apply flex items-center gap-2 text-xs font-bold text-slate-400 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded;
 }
 
 .c-report-analysis-header__icon {

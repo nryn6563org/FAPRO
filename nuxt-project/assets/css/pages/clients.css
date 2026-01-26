@@ -98,7 +98,7 @@
 
 /* 개별 고객 카드 컴포넌트 */
 .c-client-card {
-    @apply w-[280px] bg-white rounded-2xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden cursor-pointer flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
+    @apply w-[280px] bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
 }
 
 /* 카드 호버 효과 */
@@ -138,7 +138,7 @@
 
 /* 즐겨찾기 버튼 */
 .c-client-card__favorite-btn {
-    @apply flex items-center justify-center w-8 h-8 rounded-lg transition-all duration-200 bg-transparent;
+    @apply flex items-center justify-center w-8 h-8 rounded-xl transition-all duration-200 bg-transparent;
 }
 
 .c-client-card__favorite-btn:hover {

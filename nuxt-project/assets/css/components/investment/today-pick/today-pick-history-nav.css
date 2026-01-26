@@ -16,7 +16,7 @@
 }
 
 .c-today-pick-nav__date {
-  @apply text-[1.25rem] font-black text-slate-900 dark:text-white min-w-[220px] text-center select-none;
+  @apply text-[1.25rem] font-bold text-slate-900 dark:text-white min-w-[220px] text-center select-none;
 }
 
 .c-today-pick-nav__indicators {

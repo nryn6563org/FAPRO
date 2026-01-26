@@ -13,7 +13,7 @@
           :key="tab"
           @click="activeTab = tab"
           :class="[
-            'text-xs py-2 rounded-md transition-colors',
+            'text-xs py-2 rounded-xl transition-colors',
             activeTab === tab
               ? 'bg-blue-600 text-white shadow-sm'
               : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
@@ -134,19 +134,19 @@
             {{ getTabDescription(activeTab) }}
         </div>
         <div class="flex items-center gap-2">
-            <button class="px-3 py-1 border border-slate-300 rounded hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed">‹</button>
-            <button class="px-3 py-1 bg-blue-600 text-white rounded">1</button>
-            <button class="px-3 py-1 border border-slate-300 rounded hover:bg-slate-100">2</button>
-            <button class="px-3 py-1 border border-slate-300 rounded hover:bg-slate-100">›</button>
+            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed">‹</button>
+            <button class="px-3 py-1 bg-blue-600 text-white rounded-xl">1</button>
+            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100">2</button>
+            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100">›</button>
         </div>
       </div>
     </div>
 
-    <!-- Modal -->
+    <!-- 리포트 상세 모달 -->
     <div v-if="selectedReport" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
         <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="selectedReport = null"></div>
 
-        <div class="bg-white rounded-lg shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200">
+        <div class="bg-white rounded-xl shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200">
             <div class="p-6 overflow-y-auto">
                 <div class="flex justify-between items-start mb-4">
                      <h3 class="text-lg font-bold pr-8">
@@ -185,6 +185,7 @@
 <script>
 import { X } from 'lucide-vue'
 
+// Mock Data: 리포트 탭별 예시 데이터
 const mockReports = {
   신규리포트: [
     {
@@ -199,9 +200,8 @@ const mockReports = {
       upside: 31.5,
       content: '국내 대표 시스템반도체 디자인하우스. DSP 전환의 성과가 보여줄 원년...'
     }
-    // ... Add more mock data as needed
   ],
-  // ... Add structure for other tabs to avoid errors, empty initially
+  // 실제 사용 시 각 키에 맞는 데이터 배열이 필요함
   목표가상향: [],
   목표가하향: [],
   기관관심리포트: [],
@@ -212,30 +212,35 @@ const mockReports = {
 }
 
 export default {
+  // 컴포넌트 이름: 리포트 분석 (도메인 컴포넌트)
   name: 'ReportAnalysis',
   components: {
     X
   },
   data() {
     return {
-      activeTab: '신규리포트',
-      selectedReport: null,
+      activeTab: '신규리포트', // 현재 활성화된 탭
+      selectedReport: null, // 상세 보기 선택된 리포트
+      // 분석 탭 목록
       tabs: [
         '신규리포트', '목표가상향', '목표가하향', '기관관심리포트',
         '외국인관심리포트', '연기금관심리포트', '증권사관심종목', '목표가높음'
       ],
-      reportsData: mockReports
+      reportsData: mockReports // 리포트 데이터 소스
     }
   },
   computed: {
+    // 현재 선택된 탭의 리포트 목록 반환
     currentData() {
       return this.reportsData[this.activeTab] || []
     }
   },
   methods: {
+    // 금액/수치 3자리 콤마 포맷팅
     formatPrice(price) {
       return price ? price.toLocaleString() : '-'
     },
+    // 종목명 첫 글자에 따라 아바타 배경색 결정 (시각적 구분)
     getStockColor(stockName) {
       const colors = [
         'bg-blue-500', 'bg-indigo-500', 'bg-purple-500', 'bg-pink-500',
@@ -246,6 +251,7 @@ export default {
       const index = stockName.charCodeAt(0) % colors.length
       return colors[index]
     },
+    // 투자의견(Buy, Hold, Sell)에 따른 배지 스타일 반환
     getRatingColor(rating) {
       if (!rating) { return 'bg-gray-100 text-gray-700 border-gray-300' }
       const r = rating.toLowerCase()

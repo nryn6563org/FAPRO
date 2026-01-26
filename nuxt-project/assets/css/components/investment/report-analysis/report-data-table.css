@@ -1,8 +1,4 @@
 /* ReportDataTable Component Styles */
-.c-report-table-container {
-  @apply bg-white border border-slate-200 rounded-[2.5rem] p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800 flex flex-col gap-8;
-}
-
 .c-report-table {
   @apply w-full border-collapse;
 }
@@ -12,7 +8,7 @@
 }
 
 .c-report-table__th {
-  @apply py-4 px-4 text-left text-xs font-black text-slate-400 uppercase tracking-widest;
+  @apply py-4 px-4 text-left text-xs font-bold text-slate-400 uppercase tracking-widest;
 }
 
 .c-report-table__th--right { @apply text-right; }
@@ -35,16 +31,16 @@
 }
 
 .c-report-table__stock-initial {
-  @apply w-8 h-8 rounded-full flex items-center justify-center text-white text-[12px] font-black flex-shrink-0 shadow-sm border border-white/20;
+  @apply w-8 h-8 rounded-full flex items-center justify-center text-white text-[12px] font-bold flex-shrink-0 shadow-sm border border-white/20;
 }
 
 .c-report-table__stock-name {
-  @apply font-black text-slate-900 dark:text-white;
+  @apply font-bold text-slate-900 dark:text-white;
 }
 
 /* Status Badges */
 .c-report-table__badge {
-  @apply inline-flex items-center justify-center px-3 py-1 rounded-full text-[11px] font-black min-w-[70px];
+  @apply inline-flex items-center justify-center px-3 py-1 rounded-full text-[11px] font-bold min-w-[70px];
 }
 
 .c-report-table__badge--buy { @apply bg-red-50 text-red-500 border border-red-100 dark:bg-red-500/10 dark:border-red-500/20; }
@@ -53,11 +49,11 @@
 
 /* Report Title Link */
 .c-report-table__title {
-  @apply text-slate-900 font-extrabold cursor-pointer hover:text-blue-500 hover:underline transition-all dark:text-slate-200;
+  @apply text-slate-900 font-bold cursor-pointer hover:text-blue-500 hover:underline transition-all dark:text-slate-200;
 }
 
 .c-report-table__firm {
-  @apply text-slate-400 font-black;
+  @apply text-slate-400 font-bold;
 }
 
 /* Footer Section */
@@ -75,7 +71,7 @@
 }
 
 .c-report-pager__btn {
-  @apply w-10 h-10 flex items-center justify-center rounded-xl text-[13px] font-black transition-all border border-slate-200;
+  @apply w-10 h-10 flex items-center justify-center rounded text-[13px] font-bold transition-all border border-slate-200;
 }
 
 .c-report-pager__btn--active {

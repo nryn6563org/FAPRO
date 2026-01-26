@@ -5,7 +5,7 @@
     className="c-dialog__content--xl"
   >
     <div v-if="report" class="m-report-detail">
-      <!-- Header Area -->
+      <!-- 헤더 영역 -->
       <header class="m-report-detail__header">
         <div class="m-report-detail__meta">
           <span class="m-report-detail__badge">{{ report.stockName }}</span>
@@ -14,7 +14,7 @@
         <h2 class="m-report-detail__title">{{ report.title }}</h2>
       </header>
 
-      <!-- Body Content -->
+      <!-- 메인 콘텐츠 영역 -->
       <div class="m-report-detail__body">
         <div class="m-report-detail__summary-grid">
           <div class="m-report-detail__summary-item">
@@ -40,7 +40,7 @@
         </div>
       </div>
 
-      <!-- Footer Actions -->
+      <!-- 하단 액션 버튼 -->
       <footer class="m-report-detail__footer">
         <Button
           variant="outline"

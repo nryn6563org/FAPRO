@@ -1,6 +1,6 @@
 /* Disclosure Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-disclosure-analysis {
-  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
+  @apply flex flex-col min-h-screen bg-[#f8fafc] dark:bg-[#020617];
 }
 
 .p-disclosure-analysis__content {
@@ -14,5 +14,5 @@
 
 /* Page Layout Container */
 .p-disclosure-analysis > * {
-  @apply w-full max-w-[1720px] mx-auto;
+  @apply w-full 
 }

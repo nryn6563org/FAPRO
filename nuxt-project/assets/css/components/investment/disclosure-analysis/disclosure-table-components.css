@@ -1,29 +1,38 @@
-/* DisclosureFilterTabs & DisclosureDataTable Component Styles */
+/*
+  공시 분석 공통 테이블 및 탭 스타일
+  (DisclosureFilterTabs, DisclosureSubFilterTabs, DisclosureDataTable)
+*/
 
-/* DisclosureFilterTabs */
+/* -------------------------------------------------------------
+   1. DisclosureFilterTabs (메인 탭)
+------------------------------------------------------------- */
 .c-disclosure-tabs {
   @apply flex items-center gap-2 mb-8 overflow-x-auto pb-2;
 }
 
 .c-disclosure-tabs__btn {
-  @apply flex-shrink-0 px-6 py-2.5 rounded-2xl text-[13px] font-black transition-all border border-slate-200 outline-none;
+  @apply flex-shrink-0 px-6 py-2.5 rounded text-[13px] font-bold transition-all border border-slate-200 outline-none;
 }
 
+/* 활성 탭 스타일 */
 .c-disclosure-tabs__btn--active {
   @apply bg-slate-100 text-blue-600 border-blue-200 shadow-sm dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400;
 }
 
+/* 비활성 탭 스타일 */
 .c-disclosure-tabs__btn--inactive {
   @apply bg-white text-slate-400 hover:text-slate-900 dark:bg-slate-900 dark:border-slate-800 dark:hover:text-white;
 }
 
-/* DisclosureSubFilterTabs */
+/* -------------------------------------------------------------
+   2. DisclosureSubFilterTabs (서브 탭)
+------------------------------------------------------------- */
 .c-disclosure-sub-tabs {
   @apply flex items-center gap-3 mb-6 overflow-x-auto pb-1;
 }
 
 .c-disclosure-sub-tabs__btn {
-  @apply flex-shrink-0 px-4 py-1.5 rounded-lg text-xs font-black transition-all border border-transparent outline-none;
+  @apply flex-shrink-0 px-4 py-1.5 rounded text-xs font-bold transition-all border border-transparent outline-none;
 }
 
 .c-disclosure-sub-tabs__btn--active {
@@ -34,11 +43,9 @@
   @apply bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-400;
 }
 
-/* DisclosureDataTable */
-.c-disclosure-table-container {
-  @apply bg-white border border-slate-200 rounded-[2.5rem] p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800 flex flex-col gap-8;
-}
-
+/* -------------------------------------------------------------
+   3. DisclosureDataTable (데이터 테이블)
+------------------------------------------------------------- */
 .c-disclosure-table {
   @apply w-full border-collapse;
 }
@@ -47,8 +54,9 @@
   @apply border-b-2 border-slate-100 dark:border-slate-800;
 }
 
+/* 테이블 헤더 셀 (TH) */
 .c-disclosure-table__th {
-  @apply py-4 px-4 text-left text-xs font-black text-slate-400 uppercase tracking-widest;
+  @apply py-4 px-4 text-left text-xs font-bold text-slate-400 uppercase tracking-widest;
 }
 
 .c-disclosure-table__th--right { @apply text-right; }
@@ -58,6 +66,7 @@
   @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors dark:border-slate-800/50 dark:hover:bg-slate-800/20;
 }
 
+/* 테이블 데이터 셀 (TD) */
 .c-disclosure-table__td {
   @apply py-5 px-4 text-[14px] font-bold text-slate-700 dark:text-slate-300;
 }
@@ -65,9 +74,9 @@
 .c-disclosure-table__td--right { @apply text-right tabular-nums; }
 .c-disclosure-table__td--center { @apply text-center; }
 
-/* AI Analysis Section */
+/* AI 분석 요약 섹션 (테이블 내부) */
 .c-disclosure-table__ai-box {
-  @apply mt-2 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-start gap-3;
+  @apply mt-2 p-4 rounded bg-slate-50 dark:bg-slate-800/50 border border-slate-100 dark:border-slate-800 flex items-start gap-3;
 }
 
 .c-disclosure-table__ai-icon {
@@ -79,10 +88,8 @@
 }
 
 .c-disclosure-table__ai-label {
-  @apply text-slate-900 dark:text-white font-black mr-1;
+  @apply text-slate-900 dark:text-white font-bold mr-1;
 }
 
-/* Indicators */
-.indicator--positive { @apply text-red-500; }
-.indicator--negative { @apply text-blue-500; }
-.indicator--neutral { @apply text-slate-400; }
+/* Indicators handled by design-system.css */
+

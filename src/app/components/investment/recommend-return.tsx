@@ -118,7 +118,7 @@ export function RecommendReturn() {
                 <BarChart data={monthlyReturns}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="month" />
-                  <YAxis label={{ value: '수익률 (%)', angle: -90, position: 'insideLeft' }} />
+                  <YAxis label={{ value: "수익률 (%)", angle: -90, position: "insideLeft" }} />
                   <Tooltip />
                   <Bar dataKey="return" fill="#3b82f6" radius={[8, 8, 0, 0]} />
                 </BarChart>
@@ -135,16 +135,7 @@ export function RecommendReturn() {
             <div className="h-80">
               <ResponsiveContainer width="100%" height="100%">
                 <PieChart>
-                  <Pie
-                    data={categoryReturns}
-                    cx="50%"
-                    cy="50%"
-                    labelLine={false}
-                    label={(entry) => `${entry.name} ${entry.value}%`}
-                    outerRadius={100}
-                    fill="#8884d8"
-                    dataKey="value"
-                  >
+                  <Pie data={categoryReturns} cx="50%" cy="50%" labelLine={false} label={(entry) => `${entry.name} ${entry.value}%`} outerRadius={100} fill="#8884d8" dataKey="value">
                     {categoryReturns.map((entry, index) => (
                       <Cell key={`cell-${index}`} fill={entry.color} />
                     ))}
@@ -167,14 +158,7 @@ export function RecommendReturn() {
             {topPerformers.map((stock, index) => (
               <div key={stock.ticker} className="flex items-center justify-between p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors">
                 <div className="flex items-center gap-4">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${
-                    index === 0 ? 'bg-gradient-to-r from-yellow-400 to-orange-500' :
-                    index === 1 ? 'bg-gradient-to-r from-gray-300 to-gray-400' :
-                    index === 2 ? 'bg-gradient-to-r from-amber-600 to-amber-700' :
-                    'bg-slate-400'
-                  }`}>
-                    {index + 1}
-                  </div>
+                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-white ${index === 0 ? "bg-gradient-to-r from-yellow-400 to-orange-500" : index === 1 ? "bg-gradient-to-r from-gray-300 to-gray-400" : index === 2 ? "bg-gradient-to-r from-amber-600 to-amber-700" : "bg-slate-400"}`}>{index + 1}</div>
                   <div>
                     <p className="font-semibold">{stock.name}</p>
                     <p className="text-sm text-slate-500">{stock.ticker}</p>
@@ -182,7 +166,9 @@ export function RecommendReturn() {
                 </div>
                 <div className="text-right">
                   <p className="text-2xl font-bold text-green-600">+{stock.return}%</p>
-                  <Badge variant="secondary" className="text-xs">{stock.period}</Badge>
+                  <Badge variant="secondary" className="text-xs">
+                    {stock.period}
+                  </Badge>
                 </div>
               </div>
             ))}

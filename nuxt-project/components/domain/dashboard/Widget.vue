@@ -1,11 +1,19 @@
+<!--
+  위젯 컨테이너 컴포넌트 (Widget)
+  - 대시보드의 각 그리드 아이템 내부에 표시되는 실제 콘텐츠입니다.
+  - widgetId에 따라 다른 유형의 차트나 데이터를 렌더링합니다.
+  - (시장 지수, 매출Bar, AI 이슈Bubble, 고객 리스트 등 다양한 위젯 타입 지원)
+-->
 <template>
   <div class="c-widget">
+    <!-- 위젯 헤더: 아이콘, 제목, 삭제 버튼 -->
     <div class="c-widget__header">
       <div class="c-widget__header-inner">
         <div class="c-widget__title-wrapper">
             <component :is="icon" class="c-widget__icon" />
             <h3 class="c-widget__title">{{ title }}</h3>
         </div>
+        <!-- 편집 모드일 때만 삭제 버튼 노출 -->
         <button v-if="isEditing" @click="$emit('remove')" class="c-widget__remove-btn">
             <X class="u-icon-sm" />
         </button>
@@ -13,8 +21,9 @@
     </div>
 
     <div class="c-widget__content">
-        <!-- 시장 지수 위젯 (라인 차트 포함) -->
+        <!-- 1. 시장 지수 위젯 (값 + 라인 차트) -->
         <div v-if="isMarketWidget" class="c-widget__market-wrapper">
+            <!-- 좌측: 현재가 및 등락률 -->
             <div class="c-widget__value-area">
                 <p class="c-widget__value">{{ marketData.value.toLocaleString() }}</p>
                 <div class="c-widget__change" :class="isPositive ? 'c-widget__change--up' : 'c-widget__change--down'">
@@ -23,12 +32,13 @@
                     <span>({{ isPositive ? '+' : '' }}{{ marketData.changePercent.toFixed(2) }}%)</span>
                 </div>
             </div>
+            <!-- 우측: 미니 라인 차트 -->
             <div class="u-flex-1-min-h-0-relative-w-full">
                 <LineChart :chart-data="lineChartData" :options="lineChartOptions" class="u-full" />
             </div>
         </div>
 
-        <!-- 매출 위젯 (막대 차트) -->
+        <!-- 2. 매출 위젯 (막대 차트) -->
         <div v-else-if="widgetId === 'revenue'" class="c-widget__revenue-wrapper">
             <div class="c-widget__revenue-value">
                 <p class="c-widget__value">52,400,000원</p>
@@ -42,11 +52,12 @@
             </div>
         </div>
 
-        <!-- AI 이슈 버블 (버블 차트) -->
+        <!-- 3. AI 이슈 버블 (버블 차트) -->
         <div v-else-if="widgetId === 'ai-issue-bubble'" class="c-widget__bubble-wrapper">
              <div class="c-widget__chart-area">
                 <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="u-full" />
              </div>
+             <!-- 범례 -->
               <div class="c-widget__bubble-legend">
                 <div v-for="(color, category) in categoryColors" :key="category" class="c-widget__bubble-legend-item">
                     <div class="c-widget__bubble-dot" :style="{ backgroundColor: color }" />
@@ -55,7 +66,7 @@
              </div>
         </div>
 
-        <!-- 고객 수 및 운용자산(AUM) (텍스트로만 표시) -->
+        <!-- 4. 단순 수치 표시 위젯 (고객 수, AUM) -->
         <div v-else-if="widgetId === 'client-count' || widgetId === 'aum'" class="c-widget__simple-wrapper">
              <div>
                 <p class="c-widget__value">{{ widgetId === 'client-count' ? '247명' : '1,247억원' }}</p>
@@ -66,7 +77,7 @@
             </div>
         </div>
 
-        <!-- 주요 고객 목록 (리스트) -->
+        <!-- 5. 주요 고객 목록 (리스트 형태) -->
         <div v-else-if="widgetId === 'top-clients'" class="c-widget__list-wrapper">
              <div class="c-widget__list">
                 <div v-for="(client, idx) in mockClientData" :key="idx" class="c-widget__list-item">
@@ -81,6 +92,7 @@
                     </div>
                     <div class="c-widget__list-right">
                         <p class="c-widget__client-name">{{ (client.revenue / 10000).toFixed(0) }}만원</p>
+                        <!-- 위험도 태그 -->
                         <div
  :class="['c-widget__tag',
                             client.risk === 'high' ? 'c-widget__tag--high' :
@@ -93,7 +105,7 @@
              </div>
         </div>
 
-         <!-- 뉴스 위젯 (목록형) -->
+         <!-- 6. 뉴스 위젯 (텍스트 목록) -->
         <div v-else-if="widgetId === 'market-news' || widgetId === 'economy-news'" class="c-widget__news-wrapper">
             <div class="c-widget__news-list">
                <div v-for="(news, idx) in mockNews" :key="idx" class="c-widget__news-item">
@@ -107,7 +119,7 @@
             </div>
         </div>
 
-        <!-- 데이터 없는 예외 케이스 처리 -->
+        <!-- 예외 처리: 데이터가 없는 경우 -->
         <div v-else class="c-widget__fallback">
              <span class="c-widget__fallback-text">데이터 준비중: {{ widgetId }}</span>
         </div>
@@ -123,6 +135,7 @@ import BarChart from '@/components/charts/BarChart'
 import BubbleChart from '@/components/charts/BubbleChart'
 
 export default {
+  // 컴포넌트 이름: 대시보드 위젯 컨테이너
   name: 'Widget',
   components: {
     LineChart,
@@ -152,14 +165,17 @@ export default {
     PieChart
   },
   props: {
+    // 위젯 식별자 (ID)
     widgetId: {
       type: String,
       required: true
     },
+    // 편집 모드 여부
     isEditing: {
       type: Boolean,
       default: false
     },
+    // 위젯 크기 정보 (grid span용)
     size: {
       type: Object,
       default: () => ({ w: 1, h: 1 })
@@ -169,20 +185,20 @@ export default {
     return {
       mockClientData,
       mockNews,
-      // 카테고리별 색상 매핑 (AI 이슈 버블용)
+      // 카테고리별 색상 매핑 (AI 이슈 버블 차트용)
       categoryColors: {
-        tech: '#3b82f6',
-        auto: '#8b5cf6',
-        energy: '#10b981',
-        finance: '#f59e0b',
-        realestate: '#ef4444',
-        defense: '#06b6d4',
-        bio: '#ec4899'
+        tech: '#3b82f6',     // 기술
+        auto: '#8b5cf6',     // 자동차
+        energy: '#10b981',   // 에너지
+        finance: '#f59e0b',  // 금융
+        realestate: '#ef4444', // 부동산
+        defense: '#06b6d4',  // 방산
+        bio: '#ec4899'       // 바이오
       }
     }
   },
   computed: {
-    // 위젯 설정 정보 가져오기
+    // 위젯 설정 정보 조회
     config() {
       return AVAILABLE_WIDGETS.find(w => w.id === this.widgetId)
     },
@@ -194,25 +210,29 @@ export default {
     icon() {
       return this.config ? this.config.icon : null
     },
-    // 시장 지수 위젯 여부 확인
+    // 시장 지수 위젯인지 여부 확인
     isMarketWidget() {
       return this.widgetId in mockMarketData
     },
-    // 시장 지수 데이터 연결
+    // 시장 데이터 매핑
     marketData() {
       return mockMarketData[this.widgetId] || { value: 0, change: 0, changePercent: 0 }
     },
-    // 상승/하락 여부 확인
+    // 상승 여부 (양수일 경우 true)
     isPositive() {
       return this.marketData.change >= 0
     },
-    // 라인 차트 데이터 가공 (지수용)
+    /**
+     * 라인 차트 데이터 구성 (지수용)
+     */
     lineChartData() {
       if (!this.isMarketWidget) { return null }
-      // 실제 데이터 대신 시각화를 위한 무작위 데이터 생성
+      
+      // 데모를 위한 랜덤 데이터 생성
       const labels = Array.from({ length: 30 }, (_, i) => `${i + 1}일`)
       const data = Array.from({ length: 30 }, () => Math.random() * 1000 + 2000)
 
+      // 상승/하락 색상 결정
       const color = this.isPositive ? '#10b981' : '#ef4444'
 
       return {
@@ -222,7 +242,7 @@ export default {
             label: 'Value',
             borderColor: color,
             backgroundColor: () => {
-              // 상승 시 녹색, 하락 시 적색 반투명 채우기
+              // 배경색을 반투명하게 설정
               return this.isPositive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'
             },
             borderWidth: 2,
@@ -234,7 +254,7 @@ export default {
         ]
       }
     },
-    // 라인 차트 옵션 설정
+    // 라인 차트 옵션 (축 및 그리드 숨김으로 미니멀하게 표시)
     lineChartOptions() {
       return {
         maintainAspectRatio: false,
@@ -256,7 +276,7 @@ export default {
         }
       }
     },
-    // 매출 막대 차트 데이터 가공
+    // 매출 막대 차트 데이터 구성
     revenueChartData() {
       return {
         labels: Array.from({ length: 12 }, (_, i) => `${i + 1}월`),
@@ -269,6 +289,7 @@ export default {
         ]
       }
     },
+    // 막대 차트 옵션
     barChartOptions() {
       return {
         maintainAspectRatio: false,
@@ -285,7 +306,7 @@ export default {
         }
       }
     },
-    // AI 이슈 버블 차트 데이터 가공
+    // AI 이슈 버블 차트 데이터 구성
     scatterChartData() {
       return {
         datasets: mockAIIssueData.map(item => ({
@@ -293,13 +314,14 @@ export default {
           data: [{
             x: item.x,
             y: item.y,
-            r: Math.sqrt(item.size) // 버블 크기 결정
+            r: Math.sqrt(item.size) // 버블 크기 계산
           }],
           backgroundColor: this.categoryColors[item.category] || '#6b7280',
           borderColor: this.categoryColors[item.category] || '#6b7280'
         }))
       }
     },
+    // 버블 차트 옵션
     scatterChartOptions() {
       return {
         maintainAspectRatio: false,
@@ -327,6 +349,7 @@ export default {
     }
   },
   methods: {
+    // 카테고리 영문명을 한글로 변환
     getCategoryLabel(cat) {
       const labels = {
         tech: '기술',
@@ -342,4 +365,5 @@ export default {
   }
 }
 </script>
+<!-- 위젯 스타일 사용 -->
 <style src="@/assets/css/components/domain/dashboard/widget.css"></style>

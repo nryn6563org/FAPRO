@@ -242,15 +242,7 @@ export function MarketIndices() {
                 <CardTitle>상세 차트</CardTitle>
                 <div className="flex gap-2">
                   {domesticIndices.map((idx) => (
-                    <button
-                      key={idx.name}
-                      onClick={() => setSelectedDomestic(idx.name)}
-                      className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                        selectedDomestic === idx.name
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                      }`}
-                    >
+                    <button key={idx.name} onClick={() => setSelectedDomestic(idx.name)} className={`px-3 py-1 rounded-lg text-sm transition-colors ${selectedDomestic === idx.name ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                       {idx.name}
                     </button>
                   ))}
@@ -263,15 +255,9 @@ export function MarketIndices() {
                   <LineChart data={selectedDomesticData?.chartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} domain={['auto', 'auto']} />
+                    <YAxis tick={{ fontSize: 12 }} domain={["auto", "auto"]} />
                     <Tooltip />
-                    <Line 
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke="#1e40af" 
-                      strokeWidth={2}
-                      dot={false}
-                    />
+                    <Line type="monotone" dataKey="value" stroke="#1e40af" strokeWidth={2} dot={false} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>
@@ -294,15 +280,7 @@ export function MarketIndices() {
                 <CardTitle>상세 차트</CardTitle>
                 <div className="flex gap-2 flex-wrap">
                   {internationalIndices.map((idx) => (
-                    <button
-                      key={idx.name}
-                      onClick={() => setSelectedInternational(idx.name)}
-                      className={`px-3 py-1 rounded-lg text-sm transition-colors ${
-                        selectedInternational === idx.name
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
-                      }`}
-                    >
+                    <button key={idx.name} onClick={() => setSelectedInternational(idx.name)} className={`px-3 py-1 rounded-lg text-sm transition-colors ${selectedInternational === idx.name ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-700 hover:bg-slate-200"}`}>
                       {idx.name}
                     </button>
                   ))}
@@ -315,15 +293,9 @@ export function MarketIndices() {
                   <LineChart data={selectedInternationalData?.chartData}>
                     <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
                     <XAxis dataKey="date" tick={{ fontSize: 12 }} />
-                    <YAxis tick={{ fontSize: 12 }} domain={['auto', 'auto']} />
+                    <YAxis tick={{ fontSize: 12 }} domain={["auto", "auto"]} />
                     <Tooltip />
-                    <Line 
-                      type="monotone" 
-                      dataKey="value" 
-                      stroke="#1e40af" 
-                      strokeWidth={2}
-                      dot={false}
-                    />
+                    <Line type="monotone" dataKey="value" stroke="#1e40af" strokeWidth={2} dot={false} />
                   </LineChart>
                 </ResponsiveContainer>
               </div>

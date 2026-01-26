@@ -15,7 +15,7 @@
              :key="mode"
              @click="viewMode = mode"
              :class="[
-               'px-3 py-1 rounded text-xs font-medium border transition-colors',
+               'px-3 py-1 rounded-xl text-xs font-medium border transition-colors',
                viewMode === mode
                  ? 'bg-blue-600 text-white border-blue-600'
                  : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -28,7 +28,7 @@
 
       <div class="p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- KOSPI Chart -->
+          <!-- 코스피 차트 -->
           <div>
             <div class="mb-4">
               <div class="flex items-baseline gap-3 mb-3">
@@ -46,7 +46,7 @@
                    :key="period"
                    @click="kospiPeriod = period"
                    :class="[
-                     'px-2 py-1 rounded text-xs border transition-colors',
+                     'px-2 py-1 rounded-xl text-xs border transition-colors',
                      kospiPeriod === period
                        ? 'bg-blue-600 text-white border-blue-600'
                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -61,7 +61,7 @@
             </div>
           </div>
 
-          <!-- KOSDAQ Chart -->
+          <!-- 코스닥 차트 -->
           <div>
             <div class="mb-4">
               <div class="flex items-baseline gap-3 mb-3">
@@ -79,7 +79,7 @@
                    :key="period"
                    @click="kosdaqPeriod = period"
                    :class="[
-                     'px-2 py-1 rounded text-xs border transition-colors',
+                     'px-2 py-1 rounded-xl text-xs border transition-colors',
                      kosdaqPeriod === period
                        ? 'bg-blue-600 text-white border-blue-600'
                        : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -107,7 +107,7 @@
              :key="tab"
              @click="selectedTab = tab"
              :class="[
-               'px-3 py-1 rounded text-xs font-medium border transition-colors',
+               'px-3 py-1 rounded-xl text-xs font-medium border transition-colors',
                selectedTab === tab
                  ? 'bg-blue-600 text-white border-blue-600'
                  : 'bg-white text-slate-700 border-slate-300 hover:bg-slate-50'
@@ -177,6 +177,7 @@ import LineChart from '@/components/charts/LineChart'
 const now = new Date()
 
 export default {
+  // 컴포넌트 이름: 시세 분석 (도메인 컴포넌트)
   name: 'PriceAnalysis',
   components: {
     TrendingUp,
@@ -185,10 +186,11 @@ export default {
   },
   data() {
     return {
-      selectedTab: '이슈종목',
-      kospiPeriod: '1일',
-      kosdaqPeriod: '1년',
-      viewMode: '시간별',
+      selectedTab: '이슈종목', // 현재 선택된 시세 현황 탭
+      kospiPeriod: '1일', // KOSPI 차트 기간
+      kosdaqPeriod: '1년', // KOSDAQ 차트 기간
+      viewMode: '시간별', // 지수 보기 모드
+      // 다양한 시세 현황 필터 탭
       tabs: [
         '이슈종목', '52주신고가', '52주신저가', '상한가', '하한가', '거래비중상위',
         '관리종목', '거래정지', '투자주의', '투자경고', '투자위험'

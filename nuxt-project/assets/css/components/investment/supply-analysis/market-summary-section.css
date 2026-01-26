@@ -1,10 +1,10 @@
 /* MarketSummarySection Component Styles */
 .c-market-summary {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10;
+  @apply flex gap-6 mb-10;
 }
 
 .c-market-summary__card {
-  @apply bg-white border border-slate-200 rounded-[2.5rem] p-8 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-3;
+  @apply w-[calc((100%-170px)/8)] bg-white border border-slate-200 rounded p-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-3;
 }
 
 .c-market-summary__card:hover {
@@ -12,11 +12,11 @@
 }
 
 .c-market-summary__label {
-  @apply text-xs font-black text-slate-400 uppercase tracking-widest;
+  @apply text-xs font-bold text-slate-400 uppercase tracking-widest;
 }
 
 .c-market-summary__value {
-  @apply text-2xl font-black text-slate-900 dark:text-white tabular-nums;
+  @apply text-2xl font-bold text-slate-900 dark:text-white tabular-nums;
 }
 
 .c-market-summary__trend {
@@ -24,17 +24,11 @@
 }
 
 .c-market-summary__trend-text {
-  @apply text-xs font-black px-2 py-0.5 rounded-full;
+  @apply text-xs font-bold px-2 py-0.5 rounded-full;
 }
 
-/* Indicators */
-.indicator--positive {
-  @apply text-red-500 bg-red-50 dark:bg-red-500/10;
-}
+/* Indicators handled by design-system.css */
 
-.indicator--negative {
-  @apply text-blue-500 bg-blue-50 dark:bg-blue-500/10;
-}
 
 .c-market-summary__icon {
   @apply w-3.5 h-3.5;

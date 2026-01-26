@@ -103,16 +103,35 @@ export default {
               id: 'y-axis-1',
               type: 'linear',
               position: 'left',
-              gridLines: { color: '#f1f5f9' }
+              gridLines: {
+                color: '#f1f5f9',
+                borderDash: [5, 5],
+                drawBorder: false
+              },
+              ticks: {
+                fontColor: '#94a3b8',
+                fontSize: 10,
+                padding: 10
+              }
             },
             {
               id: 'y-axis-2',
               type: 'linear',
               position: 'right',
-              gridLines: { display: false }
+              gridLines: { display: false },
+              ticks: {
+                display: false
+              }
             }
           ],
-          xAxes: [{ gridLines: { display: false } }]
+          xAxes: [{
+            gridLines: { display: false },
+            ticks: {
+              fontColor: '#94a3b8',
+              fontSize: 10,
+              padding: 10
+            }
+          }]
         },
         tooltips: {
           mode: 'index',

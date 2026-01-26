@@ -1,9 +1,9 @@
 <!-- 수급분석 헤더: 페이지 타이틀 및 설명 정보 제공 -->
 <template>
-  <header class="c-supply-analysis-header">
-    <h2 class="c-supply-analysis-header__title">수급분석</h2>
-    <p class="c-supply-analysis-header__desc">기관 및 외국인 매수 동향 분석</p>
-  </header>
+  <div class="c-investment-header">
+    <h2 class="c-investment-header__title">수급 분석</h2>
+    <p class="c-investment-header__desc">외국인 및 기관 투자자의 수급 동향을 실시간으로 추적합니다.</p>
+  </div>
 </template>
 
 <script>
@@ -12,4 +12,4 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/investment/supply-analysis/supply-analysis-header.css"></style>
+

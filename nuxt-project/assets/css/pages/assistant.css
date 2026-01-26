@@ -10,7 +10,7 @@
 
 /* Chat Area */
 .p-assistant__chat-panel {
-    @apply flex flex-col h-[700px] bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply flex flex-col h-[700px] bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-assistant__chat-header {
@@ -26,7 +26,7 @@
 }
 
 .p-assistant__bot-name {
-    @apply text-lg font-extrabold text-slate-900 dark:text-white;
+    @apply text-lg font-bold text-slate-900 dark:text-white;
 }
 
 .p-assistant__bot-status {
@@ -67,15 +67,15 @@
 }
 
 .p-assistant__msg-bubble {
-    @apply p-4 rounded-2xl text-[13px] leading-relaxed shadow-sm;
+    @apply p-4 rounded-xl text-[13px] leading-relaxed shadow-sm;
 }
 
 .p-assistant__msg-bubble--bot {
-    @apply bg-white border border-slate-200 text-slate-800 rounded-tl-none dark:bg-slate-900 dark:border-slate-800 dark:text-slate-200;
+    @apply bg-white border border-slate-200 text-slate-800 rounded-xl rounded-tl-none dark:bg-slate-900 dark:border-slate-800 dark:text-slate-200;
 }
 
 .p-assistant__msg-bubble--user {
-    @apply bg-blue-600 text-white rounded-tr-none;
+    @apply bg-blue-600 text-white rounded-xl rounded-tr-none;
 }
 
 .p-assistant__msg-time {
@@ -101,11 +101,11 @@
 }
 
 .p-assistant__suggest-card {
-    @apply p-6 bg-white rounded-2xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply p-6 bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
 }
 
 .p-assistant__suggest-title {
-    @apply text-base font-extrabold text-slate-800 mb-6 dark:text-white;
+    @apply text-base font-bold text-slate-800 mb-6 dark:text-white;
 }
 
 .p-assistant__suggest-list {

@@ -196,25 +196,13 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab수주공시 === '매출액 10%이상' ? 'default' : 'outline'}
-              onClick={() => setSubTab수주공시('매출액 10%이상')}
-              className={subTab수주공시 === '매출액 10%이상' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab수주공시 === "매출액 10%이상" ? "default" : "outline"} onClick={() => setSubTab수주공시("매출액 10%이상")} className={subTab수주공시 === "매출액 10%이상" ? "bg-blue-500 text-white" : ""}>
               매출액 10%이상
             </Button>
-            <Button
-              variant={subTab수주공시 === '매출액 30%이상' ? 'default' : 'outline'}
-              onClick={() => setSubTab수주공시('매출액 30%이상')}
-              className={subTab수주공시 === '매출액 30%이상' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab수주공시 === "매출액 30%이상" ? "default" : "outline"} onClick={() => setSubTab수주공시("매출액 30%이상")} className={subTab수주공시 === "매출액 30%이상" ? "bg-blue-500 text-white" : ""}>
               매출액 30%이상
             </Button>
-            <Button
-              variant={subTab수주공시 === '매출액 50%이상' ? 'default' : 'outline'}
-              onClick={() => setSubTab수주공시('매출액 50%이상')}
-              className={subTab수주공시 === '매출액 50%이상' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab수주공시 === "매출액 50%이상" ? "default" : "outline"} onClick={() => setSubTab수주공시("매출액 50%이상")} className={subTab수주공시 === "매출액 50%이상" ? "bg-blue-500 text-white" : ""}>
               매출액 50%이상
             </Button>
           </div>
@@ -239,9 +227,7 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
@@ -263,18 +249,10 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab지분공시 === '주요주주지분변동' ? 'default' : 'outline'}
-              onClick={() => setSubTab지분공시('주요주주지분변동')}
-              className={subTab지분공시 === '주요주주지분변동' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab지분공시 === "주요주주지분변동" ? "default" : "outline"} onClick={() => setSubTab지분공시("주요주주지분변동")} className={subTab지분공시 === "주요주주지분변동" ? "bg-blue-500 text-white" : ""}>
               주요주주지분변동
             </Button>
-            <Button
-              variant={subTab지분공시 === '최대주주지분변동' ? 'default' : 'outline'}
-              onClick={() => setSubTab지분공시('최대주주지분변동')}
-              className={subTab지분공시 === '최대주주지분변동' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab지분공시 === "최대주주지분변동" ? "default" : "outline"} onClick={() => setSubTab지분공시("최대주주지분변동")} className={subTab지분공시 === "최대주주지분변동" ? "bg-blue-500 text-white" : ""}>
               최대주주지분변동
             </Button>
           </div>
@@ -299,9 +277,7 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
@@ -309,9 +285,7 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600 text-sm">{item.relation}</td>
                   <td className="py-3 px-4 text-slate-700">{item.reportReason}</td>
                   <td className="py-3 px-4 text-right font-semibold text-slate-900">{item.shares}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.changeRate.startsWith('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.changeRate}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.changeRate.startsWith("-") ? "text-blue-600" : "text-red-600"}`}>{item.changeRate}</td>
                 </tr>
               ))}
             </tbody>
@@ -325,18 +299,10 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab신규투자공시 === '신규투자예정' ? 'default' : 'outline'}
-              onClick={() => setSubTab신규투자공시('신규투자예정')}
-              className={subTab신규투자공시 === '신규투자예정' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab신규투자공시 === "신규투자예정" ? "default" : "outline"} onClick={() => setSubTab신규투자공시("신규투자예정")} className={subTab신규투자공시 === "신규투자예정" ? "bg-blue-500 text-white" : ""}>
               신규투자예정
             </Button>
-            <Button
-              variant={subTab신규투자공시 === '신규투자종료예정' ? 'default' : 'outline'}
-              onClick={() => setSubTab신규투자공시('신규투자종료예정')}
-              className={subTab신규투자공시 === '신규투자종료예정' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab신규투자공시 === "신규투자종료예정" ? "default" : "outline"} onClick={() => setSubTab신규투자공시("신규투자종료예정")} className={subTab신규투자공시 === "신규투자종료예정" ? "bg-blue-500 text-white" : ""}>
               신규투자종료예정
             </Button>
           </div>
@@ -361,9 +327,7 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
@@ -390,18 +354,10 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab전환사채공시 === '전환사채발행공시' ? 'default' : 'outline'}
-              onClick={() => setSubTab전환사채공시('전환사채발행공시')}
-              className={subTab전환사채공시 === '전환사채발행공시' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab전환사채공시 === "전환사채발행공시" ? "default" : "outline"} onClick={() => setSubTab전환사채공시("전환사채발행공시")} className={subTab전환사채공시 === "전환사채발행공시" ? "bg-blue-500 text-white" : ""}>
               전환사채발행공시
             </Button>
-            <Button
-              variant={subTab전환사채공시 === '전환사채 청구기간 시작' ? 'default' : 'outline'}
-              onClick={() => setSubTab전환사채공시('전환사채 청구기간 시작')}
-              className={subTab전환사채공시 === '전환사채 청구기간 시작' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab전환사채공시 === "전환사채 청구기간 시작" ? "default" : "outline"} onClick={() => setSubTab전환사채공시("전환사채 청구기간 시작")} className={subTab전환사채공시 === "전환사채 청구기간 시작" ? "bg-blue-500 text-white" : ""}>
               전환사채 청구기간 시작
             </Button>
           </div>
@@ -427,9 +383,7 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
@@ -452,25 +406,13 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab실적확정 === '전체보기' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적확정('전체보기')}
-              className={subTab실적확정 === '전체보기' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적확정 === "전체보기" ? "default" : "outline"} onClick={() => setSubTab실적확정("전체보기")} className={subTab실적확정 === "전체보기" ? "bg-blue-500 text-white" : ""}>
               전체보기
             </Button>
-            <Button
-              variant={subTab실적확정 === '어닝서프라이즈' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적확정('어닝서프라이즈')}
-              className={subTab실적확정 === '어닝서프라이즈' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적확정 === "어닝서프라이즈" ? "default" : "outline"} onClick={() => setSubTab실적확정("어닝서프라이즈")} className={subTab실적확정 === "어닝서프라이즈" ? "bg-blue-500 text-white" : ""}>
               어닝서프라이즈
             </Button>
-            <Button
-              variant={subTab실적확정 === '3년최고영업이익' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적확정('3년최고영업이익')}
-              className={subTab실적확정 === '3년최고영업이익' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적확정 === "3년최고영업이익" ? "default" : "outline"} onClick={() => setSubTab실적확정("3년최고영업이익")} className={subTab실적확정 === "3년최고영업이익" ? "bg-blue-500 text-white" : ""}>
               3년최고영업이익
             </Button>
           </div>
@@ -483,9 +425,15 @@ export function DisclosureAnalysis() {
                 <th className="text-center py-3 px-4 font-semibold text-slate-700">날짜</th>
                 <th className="text-left py-3 px-4 font-semibold text-slate-700">종목명</th>
                 <th className="text-center py-3 px-4 font-semibold text-slate-700">기준</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>매출액</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={3}>영업이익</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>당기순이익</th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>
+                  매출액
+                </th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={3}>
+                  영업이익
+                </th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>
+                  당기순이익
+                </th>
               </tr>
               <tr className="border-b border-slate-300 bg-slate-50">
                 <th className="py-2"></th>
@@ -506,29 +454,18 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
                   <td className="py-3 px-4 text-center text-slate-600 text-sm">{item.period}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.salesActual}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.salesGrowth === '-' ? 'text-slate-400' :
-                    item.salesGrowth.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.salesGrowth}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.salesGrowth === "-" ? "text-slate-400" : item.salesGrowth.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.salesGrowth}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.opActual}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.opGrowth === '-' ? 'text-slate-400' :
-                    item.opGrowth.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.opGrowth}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.opGrowth === "-" ? "text-slate-400" : item.opGrowth.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.opGrowth}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.npActual}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.npGrowth}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.npActual === '-' ? 'text-slate-400' :
-                    item.npActual.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.npActual}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.npActual === "-" ? "text-slate-400" : item.npActual.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.npActual}</td>
                 </tr>
               ))}
             </tbody>
@@ -542,25 +479,13 @@ export function DisclosureAnalysis() {
       return (
         <div>
           <div className="flex gap-4 mb-6">
-            <Button
-              variant={subTab실적잠정 === '전체보기' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적잠정('전체보기')}
-              className={subTab실적잠정 === '전체보기' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적잠정 === "전체보기" ? "default" : "outline"} onClick={() => setSubTab실적잠정("전체보기")} className={subTab실적잠정 === "전체보기" ? "bg-blue-500 text-white" : ""}>
               전체보기
             </Button>
-            <Button
-              variant={subTab실적잠정 === '어닝서프라이즈' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적잠정('어닝서프라이즈')}
-              className={subTab실적잠정 === '어닝서프라이즈' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적잠정 === "어닝서프라이즈" ? "default" : "outline"} onClick={() => setSubTab실적잠정("어닝서프라이즈")} className={subTab실적잠정 === "어닝서프라이즈" ? "bg-blue-500 text-white" : ""}>
               어닝서프라이즈
             </Button>
-            <Button
-              variant={subTab실적잠정 === '3년최고영업이익' ? 'default' : 'outline'}
-              onClick={() => setSubTab실적잠정('3년최고영업이익')}
-              className={subTab실적잠정 === '3년최고영업이익' ? 'bg-blue-500 text-white' : ''}
-            >
+            <Button variant={subTab실적잠정 === "3년최고영업이익" ? "default" : "outline"} onClick={() => setSubTab실적잠정("3년최고영업이익")} className={subTab실적잠정 === "3년최고영업이익" ? "bg-blue-500 text-white" : ""}>
               3년최고영업이익
             </Button>
           </div>
@@ -573,9 +498,15 @@ export function DisclosureAnalysis() {
                 <th className="text-center py-3 px-4 font-semibold text-slate-700">날짜</th>
                 <th className="text-left py-3 px-4 font-semibold text-slate-700">종목명</th>
                 <th className="text-center py-3 px-4 font-semibold text-slate-700">기준</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>매출액</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={3}>영업이익</th>
-                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>당기순이익</th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>
+                  매출액
+                </th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={3}>
+                  영업이익
+                </th>
+                <th className="text-center py-3 px-4 font-semibold text-slate-700" colSpan={2}>
+                  당기순이익
+                </th>
               </tr>
               <tr className="border-b border-slate-300 bg-slate-50">
                 <th className="py-2"></th>
@@ -596,29 +527,18 @@ export function DisclosureAnalysis() {
                   <td className="py-3 px-4 text-center text-slate-600">{item.date}</td>
                   <td className="py-3 px-4 font-medium text-blue-600">
                     <div className="flex items-center gap-2">
-                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>
-                        {item.stockName.charAt(0)}
-                      </div>
+                      <div className={`w-6 h-6 rounded-full ${getStockColor(item.stockName)} flex items-center justify-center text-white font-bold text-xs flex-shrink-0`}>{item.stockName.charAt(0)}</div>
                       <span>{item.stockName}</span>
                     </div>
                   </td>
                   <td className="py-3 px-4 text-center text-slate-600 text-sm">{item.period}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.salesActual}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.salesGrowth === '-' ? 'text-slate-400' :
-                    item.salesGrowth.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.salesGrowth}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.salesGrowth === "-" ? "text-slate-400" : item.salesGrowth.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.salesGrowth}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.opActual}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.opGrowth === '-' ? 'text-slate-400' :
-                    item.opGrowth.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.opGrowth}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.opGrowth === "-" ? "text-slate-400" : item.opGrowth.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.opGrowth}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.npActual}</td>
                   <td className="py-3 px-4 text-center text-slate-700">{item.npGrowth}</td>
-                  <td className={`py-3 px-4 text-center font-semibold ${
-                    item.npActual === '-' ? 'text-slate-400' :
-                    item.npActual.includes('-') ? 'text-blue-600' : 'text-red-600'
-                  }`}>{item.npActual}</td>
+                  <td className={`py-3 px-4 text-center font-semibold ${item.npActual === "-" ? "text-slate-400" : item.npActual.includes("-") ? "text-blue-600" : "text-red-600"}`}>{item.npActual}</td>
                 </tr>
               ))}
             </tbody>

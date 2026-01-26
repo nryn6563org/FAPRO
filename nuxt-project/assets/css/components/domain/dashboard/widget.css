@@ -1,5 +1,9 @@
-/* Widget Component Styles */
+/*
+  위젯 스타일 (Widget Styles)
+  - 대시보드 내 다양한 위젯(시장지수, 매출, 버블차트 등)의 공통 및 개별 스타일 정의
+*/
 
+/* 위젯 컨테이너 */
 .c-widget {
     @apply h-full bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm flex flex-col text-left items-start transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
 }
@@ -24,6 +28,7 @@
     @apply font-semibold text-base text-slate-900 dark:text-slate-100;
 }
 
+/* 위젯 삭제 버튼 (편집모드) */
 .c-widget__remove-btn {
     @apply text-slate-400 hover:text-red-500 transition-colors p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700;
 }
@@ -32,7 +37,7 @@
     @apply flex-1 p-5 pt-0 min-h-0 relative w-full;
 }
 
-/* Market Widget Content */
+/* 시장 지수 위젯 */
 .c-widget__market-wrapper {
     @apply h-full flex flex-col relative w-full bg-white dark:bg-slate-900;
 }
@@ -61,7 +66,7 @@
     @apply flex-1 min-h-0 relative w-full;
 }
 
-/* Revenue Widget */
+/* 매출 위젯 (Revenue) */
 .c-widget__revenue-wrapper {
     @apply h-full flex flex-col relative w-full;
 }
@@ -70,7 +75,7 @@
     @apply mb-2;
 }
 
-/* Bubble Chart Widget */
+/* 버블 차트 위젯 (Bubble) */
 .c-widget__bubble-wrapper {
     @apply h-full flex flex-col relative w-full;
 }
@@ -91,12 +96,12 @@
     @apply text-[10px] text-slate-600 dark:text-slate-400;
 }
 
-/* Simple Count/AUM Widget */
+/* 단순 카운트 위젯 (Count/AUM) */
 .c-widget__simple-wrapper {
     @apply h-full flex flex-col justify-center;
 }
 
-/* Top Clients List */
+/* 주요 고객 리스트 위젯 (Top Clients) */
 .c-widget__list-wrapper {
     @apply h-full overflow-y-auto w-full;
 }
@@ -106,7 +111,7 @@
 }
 
 .c-widget__list-item {
-    @apply flex items-center justify-between p-2 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700/50 border border-transparent hover:border-slate-100 dark:hover:border-slate-600 transition-colors w-full;
+    @apply flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 border border-transparent hover:border-slate-100 dark:hover:border-slate-600 transition-colors w-full;
 }
 
 .c-widget__client-info {
@@ -129,6 +134,7 @@
     @apply text-right;
 }
 
+/* 고객 위험도 태그 */
 .c-widget__tag {
     @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs whitespace-nowrap;
 }
@@ -145,7 +151,7 @@
     @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
 }
 
-/* News List */
+/* 뉴스 리스트 위젯 */
 .c-widget__news-wrapper {
     @apply h-full overflow-y-auto w-full;
 }
@@ -178,16 +184,16 @@
     @apply text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap;
 }
 
-/* Fallback */
+/* 예외/로딩 상태 */
 .c-widget__fallback {
-    @apply h-full flex items-center justify-center bg-slate-50 dark:bg-slate-700/50 rounded transition-colors;
+    @apply h-full flex items-center justify-center bg-slate-50 dark:bg-slate-700/50 rounded-xl transition-colors;
 }
 
 .c-widget__fallback-text {
     @apply text-xs text-slate-400;
 }
 
-/* Utils for Widget */
+/* 유틸리티 */
 .u-icon-sm { @apply w-4 h-4; }
 .u-full { @apply h-full w-full; }
 .u-flex-1-min-h-0-relative-w-full { @apply flex-1 min-h-0 relative w-full; }

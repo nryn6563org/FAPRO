@@ -1,9 +1,9 @@
 <!-- 테마/업종 헤더: 페이지 타이틀 및 설명 정보 제공 -->
 <template>
-  <header class="c-theme-sector-header">
-    <h2 class="c-theme-sector-header__title">테마/업종</h2>
-    <p class="c-theme-sector-header__desc">주요 테마 및 업종별 시황 분석</p>
-  </header>
+  <div class="c-investment-header">
+    <h2 class="c-investment-header__title">테마/업종 분석</h2>
+    <p class="c-investment-header__desc">당일 강세를 보이는 테마와 업종의 수익률 및 주도주를 분석합니다.</p>
+  </div>
 </template>
 
 <script>
@@ -12,4 +12,4 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/investment/theme-sector/theme-sector-header.css"></style>
+

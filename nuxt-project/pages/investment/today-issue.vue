@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import { SparklesIcon } from 'lucide-vue'
 import IssueHeader from '@/components/investment/today-issue/IssueHeader.vue'
 import IssueBubbleMap from '@/components/investment/today-issue/IssueBubbleMap.vue'
 import IssueTrendChart from '@/components/investment/today-issue/IssueTrendChart.vue'
@@ -53,12 +54,14 @@ import MajorStocksList from '@/components/investment/today-issue/MajorStocksList
 import NewsSummary from '@/components/investment/today-issue/NewsSummary.vue'
 import IssueHistory from '@/components/investment/today-issue/IssueHistory.vue'
 
-// 리액트 소스에서 가져온 데이터 (간략화된 예시, 실제로는 별도 데이터 파일로 분리 추천)
+// 리액트 소스에서 가져온 데이터 (Mock Data)
 import { domesticBubbles, usBubbles, keywordDataMap, allIssues } from '@/utils/today-issue-data'
 
 export default {
+  // 컴포넌트 이름: 오늘의 이슈 페이지
   name: 'TodayIssue',
   components: {
+    SparklesIcon,
     IssueHeader,
     IssueBubbleMap,
     IssueTrendChart,
@@ -68,29 +71,41 @@ export default {
   },
   data() {
     return {
-      selectedKeyword: '원전',
-      domesticBubbles,
-      usBubbles,
-      keywordDataMap,
-      allIssues
+      selectedKeyword: '원전', // 현재 선택된 이슈 키워드
+      domesticBubbles, // 국내 이슈 버블 차트 데이터
+      usBubbles, // 미국 이슈 버블 차트 데이터
+      keywordDataMap, // 키워드별 상세 분석 데이터 맵
+      allIssues // 전체 이슈 히스토리 데이터 목록
     }
   },
   computed: {
+    // 현재 선택된 키워드에 해당하는 분석 데이터 반환
     currentData() {
+      // 키워드가 없으면 기본값 '원전' 데이터 사용
       return this.keywordDataMap[this.selectedKeyword] || this.keywordDataMap['원전']
     },
+    // 현재 선택된 키워드와 관련된 과거 이슈 목록 필터링
     filteredIssues() {
       const relatedIds = this.currentData.relatedIssues || []
       return this.allIssues.filter(issue => relatedIds.includes(issue.id))
     }
   },
   methods: {
+    /**
+     * 키워드 변경 핸들러
+     * @param {string} keyword - 선택된 새로운 키워드
+     */
     handleKeywordChange(keyword) {
       this.selectedKeyword = keyword
     },
+    /**
+     * 데이터 새로고침 핸들러
+     * - 버블 맵의 상단 새로고침 버튼 클릭 시 호출
+     * - API 재호출 등을 통해 최신 데이터를 갱신
+     */
     handleRefresh() {
-      // 새로고침 로직 (필요 시 API 호출 등)
       console.log('Refreshing data...')
+      // TODO: 실제 API 연동 시 데이터 갱신 로직 구현
     }
   }
 }

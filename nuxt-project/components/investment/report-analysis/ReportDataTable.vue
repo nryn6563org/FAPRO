@@ -1,6 +1,6 @@
 <!-- 리포트 데이터 테이블: 증권사 리포트 목록 및 투자의견 요약 정보 제공 -->
 <template>
-  <div class="c-report-table-container">
+  <div class="c-investment-container">
     <div class="overflow-x-auto">
       <table class="c-report-table">
         <thead class="c-report-table__thead">

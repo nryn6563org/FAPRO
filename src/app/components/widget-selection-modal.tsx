@@ -65,29 +65,12 @@ export function WidgetSelectionModal({
                     const isSelected = selected.includes(widget.id);
                     const Icon = widget.icon;
                     return (
-                      <button
-                        key={widget.id}
-                        onClick={() => toggleWidget(widget.id)}
-                        className={cn(
-                          "relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all group",
-                          isSelected 
-                            ? "border-blue-600 bg-blue-50/50 ring-1 ring-blue-600" 
-                            : "border-slate-100 hover:border-blue-200 hover:bg-slate-50"
-                        )}
-                      >
-                        <div className={cn(
-                          "w-12 h-12 rounded-full flex items-center justify-center mb-3 transition-colors",
-                          isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600"
-                        )}>
+                      <button key={widget.id} onClick={() => toggleWidget(widget.id)} className={cn("relative flex flex-col items-center justify-center p-4 rounded-xl border-2 transition-all group", isSelected ? "border-blue-600 bg-blue-50/50 ring-1 ring-blue-600" : "border-slate-100 hover:border-blue-200 hover:bg-slate-50")}>
+                        <div className={cn("w-12 h-12 rounded-full flex items-center justify-center mb-3 transition-colors", isSelected ? "bg-blue-600 text-white" : "bg-slate-100 text-slate-500 group-hover:bg-blue-100 group-hover:text-blue-600")}>
                           <Icon className="w-6 h-6" />
                         </div>
-                        <span className={cn(
-                          "text-sm font-medium text-center",
-                          isSelected ? "text-blue-700" : "text-slate-700"
-                        )}>
-                          {widget.title}
-                        </span>
-                        
+                        <span className={cn("text-sm font-medium text-center", isSelected ? "text-blue-700" : "text-slate-700")}>{widget.title}</span>
+
                         {isSelected && (
                           <div className="absolute top-2 right-2 w-5 h-5 bg-blue-600 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
                             <Check className="w-3 h-3 text-white" />

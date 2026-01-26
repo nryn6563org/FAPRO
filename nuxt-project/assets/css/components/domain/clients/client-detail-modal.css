@@ -13,7 +13,7 @@
 }
 
 .c-client-detail__avatar {
-  @apply w-20 h-20 rounded-[2rem] bg-slate-100 flex items-center justify-center text-3xl font-black text-slate-800 shadow-sm border border-white dark:bg-slate-800 dark:text-white dark:border-slate-700;
+  @apply w-20 h-20 rounded-[2rem] bg-slate-100 flex items-center justify-center text-3xl font-bold text-slate-800 shadow-sm border border-white dark:bg-slate-800 dark:text-white dark:border-slate-700;
 }
 
 .c-client-detail__info-group {
@@ -25,11 +25,11 @@
 }
 
 .c-client-detail__name {
-  @apply text-[2rem] font-black text-slate-900 dark:text-white;
+  @apply text-[2rem] font-bold text-slate-900 dark:text-white;
 }
 
 .c-client-detail__risk-badge {
-  @apply px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider;
+  @apply px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider;
 }
 
 /* Scrollable Content Area */
@@ -47,7 +47,7 @@
 }
 
 .c-client-detail__section-title {
-  @apply text-sm font-black text-slate-900 mb-4 flex items-center gap-2 dark:text-white;
+  @apply text-sm font-bold text-slate-900 mb-4 flex items-center gap-2 dark:text-white;
 }
 
 .c-client-detail__metric-grid {
@@ -55,15 +55,15 @@
 }
 
 .c-client-detail__metric-box {
-  @apply bg-white p-4 rounded-2xl shadow-sm border border-slate-50 dark:bg-slate-900 dark:border-slate-800;
+  @apply bg-white p-4 rounded-xl shadow-sm border border-slate-50 dark:bg-slate-900 dark:border-slate-800;
 }
 
 .c-client-detail__metric-label {
-  @apply text-[11px] font-black text-slate-400 mb-1;
+  @apply text-[11px] font-bold text-slate-400 mb-1;
 }
 
 .c-client-detail__metric-val {
-  @apply text-lg font-black text-slate-900 dark:text-white;
+  @apply text-lg font-bold text-slate-900 dark:text-white;
 }
 
 .c-client-detail__contact-list {
@@ -106,7 +106,7 @@
 }
 
 .c-portfolio-legend__item {
-  @apply flex items-center gap-2 text-xs font-black;
+  @apply flex items-center gap-2 text-xs font-bold;
 }
 
 .c-portfolio-legend__dot {
@@ -119,7 +119,7 @@
 }
 
 .c-client-detail__tab {
-  @apply flex-1 py-2.5 text-xs font-black rounded-lg transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
+  @apply flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
 }
 
 .c-client-detail__tab--active {
@@ -131,7 +131,7 @@
 }
 
 .c-asset-table__th {
-  @apply py-3 px-4 text-[11px] font-black text-slate-400 border-b border-slate-50 dark:border-slate-800 text-left;
+  @apply py-3 px-4 text-[11px] font-bold text-slate-400 border-b border-slate-50 dark:border-slate-800 text-left;
 }
 
 .c-asset-table__tr {
@@ -146,7 +146,7 @@
 
 /* Memo and Footer */
 .c-client-detail__memo {
-  @apply p-6 bg-blue-50/50 rounded-2xl border border-blue-100/50 text-sm font-bold text-blue-900 leading-relaxed dark:bg-blue-900/10 dark:border-blue-900/20 dark:text-blue-300;
+  @apply p-6 bg-blue-50/50 rounded-xl border border-blue-100/50 text-sm font-bold text-blue-900 leading-relaxed dark:bg-blue-900/10 dark:border-blue-900/20 dark:text-blue-300;
 }
 
 .c-client-detail__footer {
@@ -154,7 +154,7 @@
 }
 
 .c-client-detail__btn {
-  @apply h-12 px-6 rounded-xl text-xs font-black flex items-center gap-2 transition-all;
+  @apply h-12 px-6 rounded-xl text-xs font-bold flex items-center gap-2 transition-all;
 }
 
 .c-client-detail__btn--primary {

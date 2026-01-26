@@ -7,7 +7,7 @@
     </div>
 
     <div class="p-settings__layout">
-      <!-- Sidebar Navigation -->
+      <!-- 사이드바 내비게이션 -->
       <div class="p-settings__sidebar">
           <button
             v-for="tab in tabs"
@@ -21,9 +21,9 @@
           </button>
       </div>
 
-      <!-- Content Area -->
+      <!-- 콘텐츠 영역 -->
       <div class="p-settings__content">
-         <!-- Profile Section -->
+         <!-- 프로필 설정 섹션 -->
          <div v-if="activeTab === 'profile'" class="p-settings__section-card">
              <div class="p-settings__profile-header">
                  <div class="p-settings__avatar">FA</div>
@@ -60,7 +60,7 @@
              </div>
          </div>
 
-         <!-- Notifications Section -->
+         <!-- 알림 설정 섹션 -->
          <div v-if="activeTab === 'notifications'" class="p-settings__section-card" style="padding: 1.5rem">
              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">알림 설정</h3>
 
@@ -81,7 +81,7 @@
              </div>
          </div>
 
-         <!-- System Section -->
+         <!-- 시스템 정보 섹션 -->
          <div v-if="activeTab === 'system'" class="p-settings__section-card" style="padding: 1.5rem">
              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">시스템 정보</h3>
 

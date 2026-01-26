@@ -6,7 +6,7 @@
     </div>
 
     <div class="p-assistant__layout">
-      <!-- Chat Interface Area -->
+      <!-- 대화창 인터페이스 영역 -->
       <div class="p-assistant__chat-panel">
         <div class="p-assistant__chat-header">
             <div class="p-assistant__bot-info">
@@ -74,7 +74,7 @@
         </div>
       </div>
 
-      <!-- Suggested Questions Sidebar -->
+      <!-- 우측 사이드바: 추천 질문 목록 -->
       <div class="p-assistant__sidebar">
         <div class="p-assistant__suggest-card">
            <h3 class="p-assistant__suggest-title">추천 질문</h3>

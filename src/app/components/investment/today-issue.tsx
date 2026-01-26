@@ -687,13 +687,9 @@ export function TodayIssue() {
             <div className="flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-blue-600" />
               <CardTitle className="text-lg">AI이슈포착</CardTitle>
-              {selectedKeyword && (
-                <Badge className="ml-2 bg-blue-600 text-base px-3 py-1">{selectedKeyword}</Badge>
-              )}
+              {selectedKeyword && <Badge className="ml-2 bg-blue-600 text-base px-3 py-1">{selectedKeyword}</Badge>}
             </div>
-            <div className="text-sm text-slate-600 font-medium">
-              {currentDate}
-            </div>
+            <div className="text-sm text-slate-600 font-medium">{currentDate}</div>
           </div>
         </CardHeader>
         <CardContent className="p-6">
@@ -703,26 +699,26 @@ export function TodayIssue() {
               {/* 탭 메뉴 */}
               <div className="flex items-center justify-center mb-4 gap-2">
                 <Button
-                  variant={selectedTab === 'domestic' ? 'default' : 'outline'}
+                  variant={selectedTab === "domestic" ? "default" : "outline"}
                   size="sm"
                   onClick={() => {
-                    setSelectedTab('domestic');
-                    setSelectedKeyword('원전');
+                    setSelectedTab("domestic");
+                    setSelectedKeyword("원전");
                     setCurrentPage(1);
                   }}
-                  className={selectedTab === 'domestic' ? 'bg-blue-600' : ''}
+                  className={selectedTab === "domestic" ? "bg-blue-600" : ""}
                 >
                   국내이슈포착
                 </Button>
                 <Button
-                  variant={selectedTab === 'us' ? 'default' : 'outline'}
+                  variant={selectedTab === "us" ? "default" : "outline"}
                   size="sm"
                   onClick={() => {
-                    setSelectedTab('us');
-                    setSelectedKeyword('금시장');
+                    setSelectedTab("us");
+                    setSelectedKeyword("금시장");
                     setCurrentPage(1);
                   }}
-                  className={selectedTab === 'us' ? 'bg-blue-600' : ''}
+                  className={selectedTab === "us" ? "bg-blue-600" : ""}
                 >
                   미국이슈포착
                 </Button>
@@ -730,38 +726,16 @@ export function TodayIssue() {
 
               <div className="relative h-[500px] bg-slate-50 rounded-lg overflow-hidden">
                 <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
-                  {(selectedTab === 'domestic' ? aiBubbles : usAiBubbles).map((bubble, idx) => (
-                    <g 
-                      key={idx}
-                      onClick={() => handleKeywordChange(bubble.keyword)}
-                      className="cursor-pointer"
-                    >
-                      <circle
-                        cx={bubble.x}
-                        cy={bubble.y}
-                        r={bubble.size / 14}
-                        fill={bubble.color}
-                        opacity={selectedKeyword === bubble.keyword ? '1' : '0.85'}
-                        className="hover:opacity-100 transition-opacity"
-                        stroke={selectedKeyword === bubble.keyword ? '#1e40af' : 'none'}
-                        strokeWidth={selectedKeyword === bubble.keyword ? '0.5' : '0'}
-                      />
-                      <text
-                        x={bubble.x}
-                        y={bubble.y}
-                        textAnchor="middle"
-                        dominantBaseline="middle"
-                        fill="white"
-                        fontSize={bubble.size / 24}
-                        fontWeight="600"
-                        className="pointer-events-none select-none"
-                      >
+                  {(selectedTab === "domestic" ? aiBubbles : usAiBubbles).map((bubble, idx) => (
+                    <g key={idx} onClick={() => handleKeywordChange(bubble.keyword)} className="cursor-pointer">
+                      <circle cx={bubble.x} cy={bubble.y} r={bubble.size / 14} fill={bubble.color} opacity={selectedKeyword === bubble.keyword ? "1" : "0.85"} className="hover:opacity-100 transition-opacity" stroke={selectedKeyword === bubble.keyword ? "#1e40af" : "none"} strokeWidth={selectedKeyword === bubble.keyword ? "0.5" : "0"} />
+                      <text x={bubble.x} y={bubble.y} textAnchor="middle" dominantBaseline="middle" fill="white" fontSize={bubble.size / 24} fontWeight="600" className="pointer-events-none select-none">
                         {bubble.keyword}
                       </text>
                     </g>
                   ))}
                 </svg>
-                
+
                 {/* 우측하단 날짜/시간 및 새로고침 */}
                 <div className="absolute bottom-3 right-3 flex items-center gap-2 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg shadow-sm border border-slate-200">
                   <div className="text-xs text-slate-600">
@@ -769,12 +743,7 @@ export function TodayIssue() {
                     <div className="text-slate-500">{currentTime}</div>
                   </div>
                   <div className="w-px h-8 bg-slate-300"></div>
-                  <Button 
-                    variant="ghost" 
-                    size="sm" 
-                    className="h-8 w-8 p-0 hover:bg-blue-50"
-                    onClick={handleRefresh}
-                  >
+                  <Button variant="ghost" size="sm" className="h-8 w-8 p-0 hover:bg-blue-50" onClick={handleRefresh}>
                     <RefreshCw className="w-4 h-4 text-blue-600" />
                   </Button>
                 </div>
@@ -785,48 +754,31 @@ export function TodayIssue() {
             <div className="flex flex-col h-[500px] space-y-4">
               <div className="flex-1 flex flex-col">
                 <div className="flex items-center justify-between mb-3">
-                  <h3 className="font-semibold text-blue-600">
-                    {selectedKeyword} 검색빈도 및 종목 누적 등락률
-                  </h3>
+                  <h3 className="font-semibold text-blue-600">{selectedKeyword} 검색빈도 및 종목 누적 등락률</h3>
                   <Button variant="ghost" size="sm" className="text-xs text-slate-500">
                     더보기 →
                   </Button>
                 </div>
-                
+
                 <div className="flex-1 min-h-0">
                   <ResponsiveContainer width="100%" height="100%">
                     <LineChart data={currentData.chartData}>
                       <CartesianGrid strokeDasharray="3 3" stroke="#e2e8f0" />
-                      <XAxis 
-                        dataKey="date" 
-                        tick={{ fontSize: 11 }}
-                        stroke="#94a3b8"
-                      />
-                      <YAxis 
-                        tick={{ fontSize: 11 }}
-                        stroke="#94a3b8"
-                      />
-                      <Tooltip 
-                        contentStyle={{ 
-                          backgroundColor: 'white', 
-                          border: '1px solid #e2e8f0',
-                          borderRadius: '8px',
-                          fontSize: '12px'
+                      <XAxis dataKey="date" tick={{ fontSize: 11 }} stroke="#94a3b8" />
+                      <YAxis tick={{ fontSize: 11 }} stroke="#94a3b8" />
+                      <Tooltip
+                        contentStyle={{
+                          backgroundColor: "white",
+                          border: "1px solid #e2e8f0",
+                          borderRadius: "8px",
+                          fontSize: "12px"
                         }}
                       />
                       <Line type="monotone" dataKey="value" stroke="#ef4444" strokeWidth={2} dot={false} name={selectedKeyword} />
                       {Object.keys(currentData.chartData[0] || {})
-                        .filter(key => key !== 'date' && key !== 'value')
+                        .filter((key) => key !== "date" && key !== "value")
                         .map((key, idx) => (
-                          <Line 
-                            key={key}
-                            type="monotone" 
-                            dataKey={key} 
-                            stroke={['#3b82f6', '#f97316', '#8b5cf6', '#10b981'][idx % 4]} 
-                            strokeWidth={1.5} 
-                            dot={false} 
-                            opacity={0.7}
-                          />
+                          <Line key={key} type="monotone" dataKey={key} stroke={["#3b82f6", "#f97316", "#8b5cf6", "#10b981"][idx % 4]} strokeWidth={1.5} dot={false} opacity={0.7} />
                         ))}
                     </LineChart>
                   </ResponsiveContainer>
@@ -847,9 +799,7 @@ export function TodayIssue() {
 
               <div className="bg-blue-50 rounded-lg p-4">
                 <h4 className="text-sm font-semibold mb-2">{currentData.news.title}</h4>
-                <p className="text-xs text-slate-600 leading-relaxed">
-                  {currentData.news.content}
-                </p>
+                <p className="text-xs text-slate-600 leading-relaxed">{currentData.news.content}</p>
               </div>
             </div>
           </div>
@@ -860,11 +810,9 @@ export function TodayIssue() {
       <div>
         <div className="flex items-center justify-between mb-4">
           <h3 className="text-lg font-semibold">{selectedKeyword} 관련 이슈 히스토리</h3>
-          <div className="text-sm text-slate-500">
-            총 {filteredIssues.length}건
-          </div>
+          <div className="text-sm text-slate-500">총 {filteredIssues.length}건</div>
         </div>
-        
+
         <div className="space-y-3">
           {currentIssues.map((issue) => (
             <Card key={issue.id} className="hover:shadow-md transition-shadow border-l-4 border-l-blue-500">
@@ -882,15 +830,12 @@ export function TodayIssue() {
                   <div className="flex-1">
                     <div className="flex items-start justify-between mb-2">
                       <h4 className="font-semibold text-slate-900 flex-1">{issue.title}</h4>
-                      <div className={`flex items-center gap-1 text-sm font-semibold ml-3 ${
-                        issue.trend === 'up' ? 'text-green-600' : 'text-red-600'
-                      }`}>
-                        {issue.trend === 'up' ? (
-                          <TrendingUp className="w-4 h-4" />
-                        ) : (
-                          <TrendingDown className="w-4 h-4" />
-                        )}
-                        <span>{issue.trend === 'up' ? '+' : ''}{issue.changeRate}%</span>
+                      <div className={`flex items-center gap-1 text-sm font-semibold ml-3 ${issue.trend === "up" ? "text-green-600" : "text-red-600"}`}>
+                        {issue.trend === "up" ? <TrendingUp className="w-4 h-4" /> : <TrendingDown className="w-4 h-4" />}
+                        <span>
+                          {issue.trend === "up" ? "+" : ""}
+                          {issue.changeRate}%
+                        </span>
                       </div>
                     </div>
 
@@ -898,9 +843,7 @@ export function TodayIssue() {
                       <span className="font-bold">[AI요약]</span> {issue.summary}
                     </p>
 
-                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
-                      {issue.newsContent}
-                    </p>
+                    <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">{issue.newsContent}</p>
                   </div>
                 </div>
               </CardContent>
@@ -911,35 +854,19 @@ export function TodayIssue() {
         {/* 페이징 */}
         {totalPages > 1 && (
           <div className="flex items-center justify-center gap-2 mt-6">
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage === 1}
-              onClick={() => setCurrentPage(currentPage - 1)}
-            >
+            <Button variant="outline" size="sm" disabled={currentPage === 1} onClick={() => setCurrentPage(currentPage - 1)}>
               이전
             </Button>
-            
+
             <div className="flex gap-1">
               {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-                <Button
-                  key={page}
-                  variant={currentPage === page ? "default" : "outline"}
-                  size="sm"
-                  className={`w-8 h-8 ${currentPage === page ? 'bg-blue-600' : ''}`}
-                  onClick={() => setCurrentPage(page)}
-                >
+                <Button key={page} variant={currentPage === page ? "default" : "outline"} size="sm" className={`w-8 h-8 ${currentPage === page ? "bg-blue-600" : ""}`} onClick={() => setCurrentPage(page)}>
                   {page}
                 </Button>
               ))}
             </div>
 
-            <Button
-              variant="outline"
-              size="sm"
-              disabled={currentPage === totalPages}
-              onClick={() => setCurrentPage(currentPage + 1)}
-            >
+            <Button variant="outline" size="sm" disabled={currentPage === totalPages} onClick={() => setCurrentPage(currentPage + 1)}>
               다음
             </Button>
           </div>

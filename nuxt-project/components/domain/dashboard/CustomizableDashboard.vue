@@ -1,24 +1,32 @@
+<!--
+  사용자 정의 대시보드 컴포넌트 (CustomizableDashboard)
+  - 사용자가 위젯을 추가, 삭제, 이동(Drag & Drop)할 수 있는 대시보드입니다.
+  - vuedraggable을 사용하여 그리드 내 위젯 이동 기능을 구현합니다.
+  - 위젯별 크기(w, h)를 설정하여 다양한 레이아웃을 지원합니다.
+-->
 <template>
   <div class="c-dashboard">
-    <!-- 대시보드 헤더 -->
+    <!-- 대시보드 헤더: 편집 모드 전환 및 위젯 추가 버튼 포함 -->
     <DashboardHeader
         :isEditing="isEditing"
         @edit="handleEditMode"
         @add="handleOpenDialog"
     />
 
-    <!-- 편집 모드 플로팅 바 -->
+    <!-- 편집 모드 플로팅 바 (상단 고정) -->
     <div v-if="isEditing" class="c-dashboard__edit-bar">
         <span class="c-dashboard__edit-label">위젯 편집 모드</span>
+        <!-- 취소 버튼: 편집 전 상태로 복구 -->
         <button @click="handleCancelEdit" class="c-dashboard__edit-btn-cancel">
             취소
         </button>
+        <!-- 저장 버튼: 변경 사항 확정 -->
         <button @click="handleSaveEdit" class="c-dashboard__edit-btn-save">
             저장 완료
         </button>
     </div>
 
-    <!-- 위젯 선택 다이얼로그 -->
+    <!-- 위젯 선택 다이얼로그 (모달) -->
     <DashboardWidgetDialog
         :isOpen="isDialogOpen"
         :currentWidgets="widgets"
@@ -28,7 +36,8 @@
         @save="handleSaveWidgets"
     />
 
-    <!-- 위젯 카드들이 배치되는 그리드 (Draggable 적용) -->
+    <!-- 위젯 그리드 영역 (Draggable 적용) -->
+    <!-- ghost-class: 드래그 중인 항목의 스타일 클래스 -->
     <draggable
         v-model="widgets"
         class="c-dashboard__grid"
@@ -37,13 +46,14 @@
         @start="drag=true"
         @end="drag=false"
     >
+        <!-- 각 위젯 아이템 -->
         <div
             v-for="widgetId in widgets"
             :key="widgetId"
             :class="['c-dashboard__grid-item', getWidgetGridClass(widgetId)]"
         >
             <div class="c-dashboard__grid-item-inner">
-                 <!-- 드래그 핸들 (편집 모드에서만 보임) -->
+                 <!-- 드래그 핸들: 편집 모드에서만 노출, 이 영역을 잡고 이동 가능 -->
                  <div
                     v-if="isEditing"
                     class="c-dashboard__drag-handle"
@@ -52,7 +62,7 @@
                     <GripVertical class="c-dashboard__drag-icon" />
                  </div>
 
-                 <!-- 실제 위젯 콘텐츠 -->
+                 <!-- 실제 위젯 콘텐츠 컴포넌트 -->
                  <Widget
                     :widgetId="widgetId"
                     :isEditing="isEditing"
@@ -63,7 +73,7 @@
         </div>
     </draggable>
 
-    <!-- 빈 상태 (위젯이 없을 때) -->
+    <!-- 빈 상태 (Empty State): 위젯이 하나도 없을 때 노출 -->
     <div v-if="widgets.length === 0" class="c-dashboard__empty">
         <div class="c-dashboard__empty-content">
             <Settings class="c-dashboard__empty-icon" />
@@ -81,6 +91,7 @@
 </template>
 
 <script>
+// 라이브러리 및 컴포넌트 임포트
 import draggable from 'vuedraggable'
 import { Settings, GripVertical, Plus } from 'lucide-vue'
 import Button from '@/components/common/Button.vue'
@@ -89,6 +100,7 @@ import DashboardHeader from '@/components/domain/dashboard/DashboardHeader.vue'
 import DashboardWidgetDialog from '@/components/domain/dashboard/DashboardWidgetDialog.vue'
 
 export default {
+  // 컴포넌트 이름: 사용자 정의 대시보드
   name: 'CustomizableDashboard',
   components: {
     draggable,
@@ -102,16 +114,18 @@ export default {
   },
   data() {
     return {
-      // 초기 위젯 목록
+      // 초기 위젯 ID 목록 (순서대로 렌더링됨)
       widgets: [
         'kospi', 'kosdaq', 'sp500', 'nasdaq', 'usd-krw',
         'client-count', 'aum', 'revenue', 'top-clients', 'market-news'
       ],
-      isDialogOpen: false, // 위젯 추가 다이얼로그 노출 여부
+      isDialogOpen: false, // 위젯 추가 다이얼로그 표시 여부
       isEditing: false, // 편집 모드 활성화 여부
       originalWidgets: [], // 편집 취소 시 복구를 위한 백업 데이터
-      drag: false, // 드래그 상태 플래그
-      // 위젯별 크기 설정 (w: 가로 칸 수, h: 세로 칸 수)
+      drag: false, // 드래그 중 상태 플래그
+      // 위젯별 크기 설정 (Grid Span)
+      // w: 가로 차지 칸 수 (Col Span)
+      // h: 세로 차지 칸 수 (Row Span)
       widgetSizes: {
         kospi: { w: 2, h: 1 },
         kosdaq: { w: 2, h: 1 },
@@ -130,22 +144,24 @@ export default {
   },
   methods: {
     /**
-     * 위젯 ID에 따른 그리드 클래스 반환 (가로/세로 크기 결정)
+     * 위젯 그리드 클래스 생성
+     * @param {string} widgetId - 위젯 ID
+     * @returns {string} - CSS 클래스 (예: c-dashboard__grid-item--w-2)
      */
     getWidgetGridClass(widgetId) {
       const size = this.widgetSizes[widgetId] || { w: 1, h: 1 }
       return `c-dashboard__grid-item--w-${size.w} c-dashboard__grid-item--h-${size.h}`
     },
-    // 편집 모드 진입 (현재 상태 백업)
+    // 편집 모드 시작: 현재 상태 백업 후 편집 모드 활성화
     handleEditMode() {
       this.originalWidgets = [...this.widgets]
       this.isEditing = true
     },
-    // 편집 사항 저장
+    // 편집 저장: 단순히 편집 모드 종료 (실제 API 연동 시 여기서 저장 로직 수행)
     handleSaveEdit() {
       this.isEditing = false
     },
-    // 편집 모드 취소 (이전 상태로 복구)
+    // 편집 취소: 백업된 상태로 복구하고 편집 모드 종료
     handleCancelEdit() {
       this.widgets = [...this.originalWidgets]
       this.isEditing = false
@@ -159,7 +175,8 @@ export default {
       this.isDialogOpen = false
     },
     /**
-     * 다이얼로그에서 선택된 위젯 목록 저장
+     * 다이얼로그 저장 핸들러
+     * @param {object} payload - { widgets: 위젯ID목록, sizes: 위젯크기객체 }
      */
     handleSaveWidgets({ widgets, sizes }) {
       this.widgets = [...widgets]
@@ -167,7 +184,8 @@ export default {
       this.isDialogOpen = false
     },
     /**
-     * 특정 위젯 삭제
+     * 위젯 삭제 핸들러
+     * @param {string} widgetId - 삭제할 위젯 ID
      */
     removeWidget(widgetId) {
       this.widgets = this.widgets.filter(w => w !== widgetId)
@@ -176,4 +194,5 @@ export default {
 }
 </script>
 
+<!-- 대시보드 스타일 (CSS) -->
 <style src="@/assets/css/components/domain/dashboard/dashboard.css"></style>

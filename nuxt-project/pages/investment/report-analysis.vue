@@ -37,10 +37,11 @@ import ReportFilterTabs from '@/components/investment/report-analysis/ReportFilt
 import ReportDataTable from '@/components/investment/report-analysis/ReportDataTable.vue'
 import ReportDetailModal from '@/components/domain/investment/ReportDetailModal.vue'
 
-// 데이터 유틸리티 임포트
+// 데이터 유틸리티 임포트 (Mock Data)
 import { reportCategories, mockReportData } from '@/utils/report-analysis-data'
 
 export default {
+  // 컴포넌트 이름: 리포트 분석 페이지
   name: 'ReportAnalysis',
   components: {
     ReportAnalysisHeader,
@@ -50,19 +51,24 @@ export default {
   },
   data() {
     return {
-      tabs: reportCategories,
-      activeTab: '신규리포트',
-      isDetailModalOpen: false,
-      selectedReport: null,
-      mockReportData
+      tabs: reportCategories, // 리포트 필터 카테고리 목록
+      activeTab: '신규리포트', // 현재 선택된 리포트 필터 탭
+      isDetailModalOpen: false, // 리포트 상세 모달 표시 여부
+      selectedReport: null, // 모달에 표시할 선택된 리포트 상세 데이터
+      mockReportData // 탭별 리포트 목록 데이터
     }
   },
   computed: {
+    // 현재 선택된 탭에 해당하는 리포트 목록 반환
     currentReports() {
       return this.mockReportData[this.activeTab] || []
     }
   },
   methods: {
+    /**
+     * 리포트 상세 보기 모달 오픈
+     * @param {Object} report - 선택된 리포트 객체
+     */
     openReportDetail(report) {
       this.selectedReport = report
       this.isDetailModalOpen = true

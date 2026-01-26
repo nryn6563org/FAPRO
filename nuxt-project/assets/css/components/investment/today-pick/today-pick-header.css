@@ -8,7 +8,7 @@
 }
 
 .c-today-pick-header__icon-box {
-  @apply w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center dark:bg-amber-900/20;
+  @apply w-12 h-12 rounded bg-amber-50 flex items-center justify-center dark:bg-amber-900/20;
 }
 
 .c-today-pick-header__icon {
@@ -20,7 +20,7 @@
 }
 
 .c-today-pick-header__title {
-  @apply text-[1.75rem] font-black text-slate-900 dark:text-white leading-tight;
+  @apply text-[1.75rem] font-bold text-slate-900 dark:text-white leading-tight;
 }
 
 .c-today-pick-header__desc {

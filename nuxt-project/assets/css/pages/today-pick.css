@@ -1,6 +1,6 @@
 /* 오늘의 종목 Pick 페이지 스타일 - 프리미엄 1920x1080 최적화 */
 .p-today-pick {
-  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
+  @apply flex flex-col min-h-screen bg-[#f8fafc] dark:bg-[#020617];
 }
 
 .p-today-pick__slider-container {
@@ -22,7 +22,7 @@
 
 /* Page Layout Container */
 .p-today-pick > * {
-  @apply w-full max-w-[1720px] mx-auto;
+  @apply w-full 
 }
 
 /* Hover effects for the grid inside slide */

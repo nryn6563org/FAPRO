@@ -28,10 +28,11 @@ import ThemeSectorHeader from '@/components/investment/theme-sector/ThemeSectorH
 import ThemeSectorTabs from '@/components/investment/theme-sector/ThemeSectorTabs.vue'
 import CategoryCard from '@/components/investment/theme-sector/CategoryCard.vue'
 
-// 데이터 유틸리티 임포트
+// 데이터 유틸리티 임포트 (Mock Data)
 import { mockThemes, mockSectors } from '@/utils/theme-sector-data'
 
 export default {
+  // 컴포넌트 이름: 테마/업종 분석 페이지
   name: 'ThemeSector',
   components: {
     ThemeSectorHeader,
@@ -40,12 +41,13 @@ export default {
   },
   data() {
     return {
-      activeTab: '테마',
-      mockThemes,
-      mockSectors
+      activeTab: '테마', // 현재 활성화된 탭 ('테마' | '업종')
+      mockThemes, // 테마 데이터 목록
+      mockSectors // 업종 데이터 목록
     }
   },
   computed: {
+    // 선택된 탭에 따라 표시할 데이터 목록 반환
     currentData() {
       return this.activeTab === '테마' ? this.mockThemes : this.mockSectors
     }

@@ -17,35 +17,37 @@
     </div>
 
     <div class="c-issue-header__market">
-      <div class="c-issue-header__market-list">
-        <div
-          v-for="(item, index) in marketIndices"
-          :key="index"
-          class="c-issue-header__market-item"
-        >
-          <span class="c-issue-header__market-name">{{ item.name }}</span>
-          <span class="c-issue-header__market-value">{{ item.value }}</span>
-          <span
-            class="c-issue-header__market-change"
-            :class="item.change > 0 ? 'c-issue-header__market-change--up' : 'c-issue-header__market-change--down'"
+      <div class="c-issue-header__market-container">
+        <div class="c-issue-header__market-list">
+          <div
+            v-for="(item, index) in marketIndices"
+            :key="index"
+            class="c-issue-header__market-item"
           >
-            {{ item.change > 0 ? '▲' : '▼' }} {{ Math.abs(item.change) }}%
-          </span>
-        </div>
-        <!-- 연이어 표시하기 위한 복제 -->
-        <div
-          v-for="(item, index) in marketIndices"
-          :key="'clone-' + index"
-          class="c-issue-header__market-item"
-        >
-          <span class="c-issue-header__market-name">{{ item.name }}</span>
-          <span class="c-issue-header__market-value">{{ item.value }}</span>
-          <span
-            class="c-issue-header__market-change"
-            :class="item.change > 0 ? 'c-issue-header__market-change--up' : 'c-issue-header__market-change--down'"
+            <span class="c-issue-header__market-name">{{ item.name }}</span>
+            <span class="c-issue-header__market-value">{{ item.value }}</span>
+            <span
+              class="c-issue-header__market-change"
+              :class="item.change > 0 ? 'c-issue-header__market-change--up' : 'c-issue-header__market-change--down'"
+            >
+              {{ item.change > 0 ? '▲' : '▼' }} {{ Math.abs(item.change) }}%
+            </span>
+          </div>
+          <!-- 연이어 표시하기 위한 복제 -->
+          <div
+            v-for="(item, index) in marketIndices"
+            :key="'clone-' + index"
+            class="c-issue-header__market-item"
           >
-            {{ item.change > 0 ? '▲' : '▼' }} {{ Math.abs(item.change) }}%
-          </span>
+            <span class="c-issue-header__market-name">{{ item.name }}</span>
+            <span class="c-issue-header__market-value">{{ item.value }}</span>
+            <span
+              class="c-issue-header__market-change"
+              :class="item.change > 0 ? 'c-issue-header__market-change--up' : 'c-issue-header__market-change--down'"
+            >
+              {{ item.change > 0 ? '▲' : '▼' }} {{ Math.abs(item.change) }}%
+            </span>
+          </div>
         </div>
       </div>
     </div>
