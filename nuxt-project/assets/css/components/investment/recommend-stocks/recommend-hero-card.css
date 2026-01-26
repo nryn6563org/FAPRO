@@ -1,0 +1,77 @@
+/* RecommendHeroCard Component Styles */
+.c-recommend-hero {
+  @apply relative mb-8 rounded-[2.5rem] p-10 overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8;
+  background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+}
+
+.c-recommend-hero__decoration {
+  @apply absolute -top-20 -right-20 w-80 h-80 bg-white/10 rounded-full blur-[100px];
+}
+
+.c-recommend-hero__content {
+  @apply relative z-10 flex-1 flex flex-col gap-6 text-white;
+}
+
+.c-recommend-hero__badge {
+  @apply self-start px-4 py-1.5 rounded-full bg-amber-400 text-amber-950 text-xs font-black uppercase tracking-widest shadow-lg;
+}
+
+.c-recommend-hero__name-row {
+  @apply flex items-center gap-4;
+}
+
+.c-recommend-hero__avatar {
+  @apply w-16 h-16 rounded-2xl bg-white/20 backdrop-blur-md flex items-center justify-center text-3xl font-black border border-white/30;
+}
+
+.c-recommend-hero__stock-info {
+  @apply flex flex-col;
+}
+
+.c-recommend-hero__name {
+  @apply text-[2.5rem] font-black leading-tight;
+}
+
+.c-recommend-hero__ticker {
+  @apply text-xl font-bold opacity-70;
+}
+
+.c-recommend-hero__desc {
+  @apply text-lg font-bold opacity-90 max-w-2xl leading-relaxed;
+}
+
+.c-recommend-hero__tags {
+  @apply flex flex-wrap gap-2;
+}
+
+.c-recommend-hero__tag {
+  @apply px-3 py-1 bg-white/10 rounded-lg text-sm font-bold border border-white/10;
+}
+
+.c-recommend-hero__yield-section {
+  @apply relative z-10 flex flex-col items-center md:items-end text-white text-right;
+}
+
+.c-recommend-hero__yield-label {
+  @apply text-lg font-bold opacity-70 mb-2;
+}
+
+.c-recommend-hero__yield-value {
+  @apply text-[5rem] font-black leading-none tabular-nums flex items-baseline gap-2;
+}
+
+.c-recommend-hero__yield-unit {
+  @apply text-4xl font-black;
+}
+
+.c-recommend-hero__history {
+  @apply mt-6 flex items-center gap-6 text-sm font-bold bg-black/10 backdrop-blur-md px-6 py-3 rounded-2xl border border-white/10;
+}
+
+.c-recommend-hero__history-item {
+  @apply flex items-center gap-2;
+}
+
+.c-recommend-hero__history-label {
+  @apply opacity-60;
+}

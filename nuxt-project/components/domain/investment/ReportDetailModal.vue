@@ -1,6 +1,6 @@
 <template>
-  <Dialog 
-    :open="open" 
+  <Dialog
+    :open="open"
     @update:open="$emit('update:open', $event)"
     className="c-dialog__content--xl"
   >
@@ -42,14 +42,14 @@
 
       <!-- Footer Actions -->
       <footer class="m-report-detail__footer">
-        <Button 
-          variant="outline" 
+        <Button
+          variant="outline"
           @click="$emit('update:open', false)"
           class="m-report-detail__btn-secondary"
         >
           취소
         </Button>
-        <Button 
+        <Button
           class="m-report-detail__btn-primary"
         >
           전체 리포트 보기
@@ -60,8 +60,8 @@
 </template>
 
 <script>
-import Dialog from '@/components/common/Dialog.vue';
-import Button from '@/components/common/Button.vue';
+import Dialog from '@/components/common/Dialog.vue'
+import Button from '@/components/common/Button.vue'
 
 export default {
   name: 'ReportDetailModal',
@@ -81,8 +81,8 @@ export default {
   },
   methods: {
     formatPrice(value) {
-      if (!value) return '0원';
-      return value.toLocaleString() + '원';
+      if (!value) { return '0원' }
+      return value.toLocaleString() + '원'
     }
   }
 }

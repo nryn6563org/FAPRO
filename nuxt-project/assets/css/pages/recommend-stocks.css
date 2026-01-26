@@ -1,100 +1,25 @@
-/* Recommended Stocks Page - Premium 1920x1080 Optimized */
+/* Recommended Stocks Page Styles - Premium Layout */
 .p-recommend-stocks {
-    @apply flex flex-col gap-10;
+  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
 }
 
-/* Page Header Stats */
-.p-recommend-stocks__summary {
-    @apply grid grid-cols-1 gap-6 md:grid-cols-3 mb-4;
+/* Page Layout Container */
+.p-recommend-stocks > * {
+  @apply w-full max-w-[1720px] mx-auto;
 }
 
-.p-recommend-stocks__summary-card {
-    @apply bg-white p-8 rounded-[2rem] border border-slate-200 shadow-sm flex items-center gap-6 dark:bg-slate-900 dark:border-slate-800;
-}
-
-.p-recommend-stocks__summary-icon {
-    @apply w-12 h-12 rounded-2xl flex items-center justify-center bg-slate-50 dark:bg-slate-800 text-slate-600;
-}
-
-.p-recommend-stocks__summary-label {
-    @apply text-xs font-black text-slate-400 uppercase tracking-widest;
-}
-
-.p-recommend-stocks__summary-value {
-    @apply text-2xl font-black text-slate-900 dark:text-white;
-}
-
-/* Stocks Grid - 3 cols on 1920x1080 */
 .p-recommend-stocks__grid {
-    @apply grid grid-cols-1 gap-8 xl:grid-cols-3;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
 }
 
-.c-recommend-card {
-    @apply bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm transition-all duration-300 flex flex-col gap-8 dark:bg-slate-900 dark:border-slate-800;
+/* Animation for category transition */
+.p-recommend-stocks__content {
+  @apply transition-all duration-500;
 }
 
-.c-recommend-card:hover {
-    @apply border-blue-200 shadow-xl transform -translate-y-2;
+.fade-enter-active, .fade-leave-active {
+  @apply transition-opacity duration-300;
 }
-
-.c-recommend-card__header {
-    @apply flex justify-between items-start;
-}
-
-.c-recommend-card__stock-info {
-    @apply flex items-center gap-4;
-}
-
-.c-recommend-card__avatar {
-    @apply w-14 h-14 rounded-2xl bg-blue-50 flex items-center justify-center font-black text-blue-600 border border-blue-100 dark:bg-blue-900/20 dark:border-blue-900/30;
-}
-
-.c-recommend-card__name {
-    @apply text-2xl font-black text-slate-900 dark:text-white;
-}
-
-.c-recommend-card__ticker {
-    @apply text-sm text-slate-400 font-mono mb-1;
-}
-
-.c-recommend-card__body {
-    @apply flex flex-col gap-6;
-}
-
-.c-recommend-card__metrics {
-    @apply grid grid-cols-2 gap-4 bg-slate-50/50 p-6 rounded-3xl dark:bg-slate-800/50;
-}
-
-.c-recommend-card__metric-item {
-    @apply flex flex-col gap-1;
-}
-
-.c-recommend-card__metric-label {
-    @apply text-[10px] font-black text-slate-400 uppercase tracking-widest;
-}
-
-.c-recommend-card__metric-value {
-    @apply text-xl font-black text-slate-900 dark:text-white;
-}
-
-.c-recommend-card__metric-value--target { @apply text-blue-600; }
-
-.c-recommend-card__reason {
-    @apply p-6 bg-slate-50 rounded-2xl border border-slate-100 dark:bg-slate-800 dark:border-slate-700;
-}
-
-.c-recommend-card__reason-title {
-    @apply text-xs font-black text-slate-400 mb-2 uppercase;
-}
-
-.c-recommend-card__reason-text {
-    @apply text-[14px] text-slate-700 leading-relaxed font-bold line-clamp-2 dark:text-slate-300;
-}
-
-.c-recommend-card__actions {
-    @apply mt-2;
-}
-
-.c-recommend-card__action-btn {
-    @apply w-full h-14 rounded-2xl font-black;
+.fade-enter, .fade-leave-to {
+  @apply opacity-0;
 }

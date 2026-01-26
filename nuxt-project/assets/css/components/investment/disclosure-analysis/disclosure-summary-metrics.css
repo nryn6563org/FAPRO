@@ -1,0 +1,28 @@
+/* DisclosureSummaryMetrics Component Styles */
+.c-disclosure-metrics {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10;
+}
+
+.c-disclosure-metrics__card {
+  @apply bg-white border border-slate-200 rounded-[2.5rem] p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-900 dark:border-slate-800 flex items-center gap-6;
+}
+
+.c-disclosure-metrics__icon-box {
+  @apply w-16 h-16 rounded-[1.75rem] flex items-center justify-center shrink-0 shadow-inner;
+}
+
+.c-disclosure-metrics__icon {
+  @apply w-7 h-7;
+}
+
+.c-disclosure-metrics__content {
+  @apply flex flex-col gap-1;
+}
+
+.c-disclosure-metrics__label {
+  @apply text-xs font-black text-slate-400 uppercase tracking-widest;
+}
+
+.c-disclosure-metrics__value {
+  @apply text-[1.5rem] font-black text-slate-900 dark:text-white leading-tight;
+}

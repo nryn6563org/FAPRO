@@ -21,21 +21,22 @@
 </template>
 
 <script>
-import Button from '@/components/common/Button.vue';
-import { Edit, Plus } from 'lucide-vue';
+import { Edit, Plus } from 'lucide-vue'
+import Button from '@/components/common/Button.vue'
 
 export default {
-    name: 'DashboardHeader',
-    components: {
-        Button,
-        Edit, Plus
-    },
-    props: {
-        isEditing: {
-            type: Boolean,
-            default: false
-        }
+  name: 'DashboardHeader',
+  components: {
+    Button,
+    Edit,
+    Plus
+  },
+  props: {
+    isEditing: {
+      type: Boolean,
+      default: false
     }
+  }
 }
 </script>
 

@@ -1,0 +1,28 @@
+/* TodayPickHeader Component Styles */
+.c-today-pick-header {
+  @apply flex items-center justify-between gap-4 mb-8;
+}
+
+.c-today-pick-header__content {
+  @apply flex items-center gap-4;
+}
+
+.c-today-pick-header__icon-box {
+  @apply w-12 h-12 rounded-2xl bg-amber-50 flex items-center justify-center dark:bg-amber-900/20;
+}
+
+.c-today-pick-header__icon {
+  @apply w-7 h-7 text-amber-500 fill-amber-500;
+}
+
+.c-today-pick-header__text {
+  @apply flex flex-col gap-1;
+}
+
+.c-today-pick-header__title {
+  @apply text-[1.75rem] font-black text-slate-900 dark:text-white leading-tight;
+}
+
+.c-today-pick-header__desc {
+  @apply text-[15px] font-bold text-slate-400 leading-relaxed;
+}

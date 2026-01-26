@@ -1,0 +1,91 @@
+/* CategoryCard Component Styles */
+.c-category-card {
+  @apply bg-white border border-slate-200 rounded-[2.5rem] p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
+}
+
+/* Header */
+.c-category-card__header {
+  @apply flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800;
+}
+
+.c-category-card__info {
+  @apply flex items-center gap-4;
+}
+
+.c-category-card__icon-wrapper {
+  @apply w-14 h-14 rounded-2xl flex items-center justify-center;
+}
+
+.c-category-card__icon-wrapper--positive {
+  @apply bg-red-50 text-red-500 dark:bg-red-500/10;
+}
+
+.c-category-card__icon-wrapper--negative {
+  @apply bg-blue-50 text-blue-500 dark:bg-blue-500/10;
+}
+
+.c-category-card__icon {
+  @apply w-7 h-7;
+}
+
+.c-category-card__title-group {
+  @apply flex flex-col;
+}
+
+.c-category-card__name {
+  @apply text-lg font-black text-slate-900 dark:text-white;
+}
+
+.c-category-card__count {
+  @apply text-xs font-bold text-slate-400;
+}
+
+.c-category-card__yield {
+  @apply flex items-center gap-1 text-[1.1rem] font-black tabular-nums;
+}
+
+/* Stock List Table */
+.c-category-card__table-wrapper {
+  @apply overflow-hidden;
+}
+
+.c-category-card__table {
+  @apply w-full border-separate border-spacing-0;
+}
+
+.c-category-card__th {
+  @apply pb-3 px-2 text-left text-[11px] font-black text-slate-400 uppercase tracking-widest border-b border-slate-50 dark:border-slate-800;
+}
+
+.c-category-card__th--right {
+  @apply text-right;
+}
+
+.c-category-card__tr {
+  @apply transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/20;
+}
+
+.c-category-card__td {
+  @apply py-3 px-2 text-[13px] font-bold text-slate-700 dark:text-slate-300 border-b border-slate-50/50 dark:border-slate-800/50;
+}
+
+.c-category-card__td--right {
+  @apply text-right tabular-nums;
+}
+
+/* Stock Logo & Name */
+.c-category-card__stock-info {
+  @apply flex items-center gap-2;
+}
+
+.c-category-card__stock-logo {
+  @apply w-6 h-6 rounded-full flex items-center justify-center text-white text-[10px] font-black flex-shrink-0;
+}
+
+.c-category-card__stock-name {
+  @apply truncate max-w-[100px] text-slate-900 font-black dark:text-slate-200;
+}
+
+/* Indicators */
+.indicator--positive { @apply text-red-500; }
+.indicator--negative { @apply text-blue-500; }

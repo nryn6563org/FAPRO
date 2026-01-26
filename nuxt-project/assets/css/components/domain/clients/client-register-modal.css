@@ -1,0 +1,60 @@
+/* ClientRegisterModal Component Styles */
+.c-client-register {
+  @apply p-8 flex flex-col gap-8;
+}
+
+.c-client-register__header {
+  @apply flex items-center justify-between pb-6 border-b border-slate-100 dark:border-slate-800;
+}
+
+.c-client-register__title {
+  @apply text-[1.5rem] font-black text-slate-900 dark:text-white;
+}
+
+.c-client-register__close {
+  @apply p-2 rounded-xl hover:bg-slate-100 transition-colors dark:hover:bg-slate-800;
+}
+
+.c-client-register__form {
+  @apply grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-6;
+}
+
+.c-client-register__field {
+  @apply flex flex-col gap-2;
+}
+
+.c-client-register__field--full {
+  @apply md:col-span-2;
+}
+
+.c-client-register__label {
+  @apply text-[13px] font-black text-slate-900 dark:text-slate-400 ml-1;
+}
+
+.c-client-register__input {
+  @apply h-14 bg-slate-50 border-transparent rounded-2xl px-5 text-sm font-bold focus:bg-white focus:border-blue-500 transition-all dark:bg-slate-900 dark:text-white;
+}
+
+.c-client-register__textarea {
+  @apply min-h-[140px] pt-4 resize-none;
+}
+
+.c-client-register__select {
+  @apply h-14 appearance-none pr-10 bg-[url('https://api.iconify.design/lucide:chevron-down.svg?color=%2394a3b8')] bg-[length:20px] bg-[right_20px_center] bg-no-repeat;
+}
+
+.c-client-register__footer {
+  @apply flex items-center justify-end gap-3 pt-4;
+}
+
+.c-client-register__btn {
+  @apply h-14 px-8 rounded-2xl text-sm font-black transition-all min-w-[120px];
+}
+
+.c-client-register__btn--submit {
+  @apply bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/20 active:scale-95;
+}
+
+.c-client-register__btn--cancel {
+  @apply border-transparent hover:bg-slate-100 dark:hover:bg-slate-800;
+}

@@ -1,7 +1,7 @@
 /* Button Component Styles */
 
 .c-button {
-    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none;
+    @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none;
 }
 
 .c-button svg {
@@ -43,11 +43,11 @@
 }
 
 .c-button--sm {
-    @apply h-8 rounded-md px-3 text-xs;
+    @apply h-8 rounded px-3 text-xs;
 }
 
 .c-button--lg {
-    @apply h-10 rounded-md px-8;
+    @apply h-10 rounded px-8;
 }
 
 .c-button--icon {

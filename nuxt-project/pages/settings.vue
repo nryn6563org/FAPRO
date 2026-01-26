@@ -9,8 +9,8 @@
     <div class="p-settings__layout">
       <!-- Sidebar Navigation -->
       <div class="p-settings__sidebar">
-          <button 
-            v-for="tab in tabs" 
+          <button
+            v-for="tab in tabs"
             :key="tab.id"
             @click="activeTab = tab.id"
             class="p-settings__nav-item"
@@ -33,7 +33,7 @@
                  </div>
                  <Button variant="outline" size="sm" style="margin-left: auto">프로필 사진 변경</Button>
              </div>
-             
+
              <div class="p-settings__form-body">
                  <div class="p-settings__form-grid">
                      <div class="p-settings__form-field">
@@ -53,7 +53,7 @@
                     <label class="p-settings__label">연락처</label>
                     <Input value="010-1234-5678" />
                  </div>
-                 
+
                  <div class="p-settings__actions">
                      <Button class="bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900">변경사항 저장</Button>
                  </div>
@@ -63,14 +63,14 @@
          <!-- Notifications Section -->
          <div v-if="activeTab === 'notifications'" class="p-settings__section-card" style="padding: 1.5rem">
              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">알림 설정</h3>
-             
+
              <div class="p-settings__noti-list">
                  <div v-for="noti in notificationSettings" :key="noti.id" class="p-settings__noti-item">
                      <div>
                          <p class="p-settings__noti-title">{{ noti.label }}</p>
                          <p class="p-settings__noti-desc">{{ noti.desc }}</p>
                      </div>
-                     <div 
+                     <div
                         @click="noti.enabled = !noti.enabled"
                         class="p-settings__switch"
                         :class="noti.enabled ? 'p-settings__switch--on' : 'p-settings__switch--off'"
@@ -84,7 +84,7 @@
          <!-- System Section -->
          <div v-if="activeTab === 'system'" class="p-settings__section-card" style="padding: 1.5rem">
              <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-6">시스템 정보</h3>
-             
+
              <div class="p-settings__info-list">
                  <div class="p-settings__info-row">
                      <span class="p-settings__info-label">앱 버전</span>
@@ -102,7 +102,7 @@
                      </span>
                  </div>
              </div>
-             
+
              <div class="mt-8 pt-6 border-t border-slate-100 dark:border-slate-800 flex justify-end">
                  <Button variant="outline" class="text-red-500 hover:text-red-600 border-red-200 hover:border-red-300 hover:bg-red-50 dark:border-red-900/30 dark:hover:bg-red-900/10">
                      캐시 삭제 및 초기화
@@ -115,36 +115,41 @@
 </template>
 
 <script>
-import { User, Bell, Shield, Info, Smartphone } from 'lucide-vue';
-import Button from '@/components/common/Button.vue';
-import Input from '@/components/common/Input.vue';
+import { User, Bell, Shield, Info, Smartphone } from 'lucide-vue'
+import Button from '@/components/common/Button.vue'
+import Input from '@/components/common/Input.vue'
 
 export default {
-    name: 'SettingsPage',
-    components: {
-        Button, Input,
-        User, Bell, Shield, Info, Smartphone
-    },
-    data() {
-        return {
-            // 현재 활성화된 탭 ID
-            activeTab: 'profile',
-            // 설정 네비게이션 탭 구성
-            tabs: [
-                { id: 'profile', label: '프로필 설정', icon: 'User' },
-                { id: 'notifications', label: '알림 설정', icon: 'Bell' },
-                { id: 'security', label: '보안 및 로그인', icon: 'Shield' },
-                { id: 'system', label: '시스템 정보', icon: 'Info' },
-            ],
-            // 알림 항목별 설정 상태
-            notificationSettings: [
-                { id: 'push', label: '푸시 알림', desc: '주요 시장 이슈 및 AI 매매신호 알림', enabled: true },
-                { id: 'email', label: '이메일 리포트', desc: '일일/주간 시장 분석 리포트 수신', enabled: true },
-                { id: 'marketing', label: '마케팅 정보', desc: '새로운 기능 및 프로모션 안내', enabled: false },
-                { id: 'sound', label: '알림음', desc: '앱 사용 중 알림음 재생', enabled: true },
-            ]
-        };
+  name: 'SettingsPage',
+  components: {
+    Button,
+    Input,
+    User,
+    Bell,
+    Shield,
+    Info,
+    Smartphone
+  },
+  data() {
+    return {
+      // 현재 활성화된 탭 ID
+      activeTab: 'profile',
+      // 설정 네비게이션 탭 구성
+      tabs: [
+        { id: 'profile', label: '프로필 설정', icon: 'User' },
+        { id: 'notifications', label: '알림 설정', icon: 'Bell' },
+        { id: 'security', label: '보안 및 로그인', icon: 'Shield' },
+        { id: 'system', label: '시스템 정보', icon: 'Info' }
+      ],
+      // 알림 항목별 설정 상태
+      notificationSettings: [
+        { id: 'push', label: '푸시 알림', desc: '주요 시장 이슈 및 AI 매매신호 알림', enabled: true },
+        { id: 'email', label: '이메일 리포트', desc: '일일/주간 시장 분석 리포트 수신', enabled: true },
+        { id: 'marketing', label: '마케팅 정보', desc: '새로운 기능 및 프로모션 안내', enabled: false },
+        { id: 'sound', label: '알림음', desc: '앱 사용 중 알림음 재생', enabled: true }
+      ]
     }
+  }
 }
 </script>
 

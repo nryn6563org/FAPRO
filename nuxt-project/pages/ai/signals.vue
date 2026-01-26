@@ -69,7 +69,7 @@
     <!-- Signals List -->
     <div class="p-signals__list">
        <div
-         v-for="signal in filteredSignals" :key="signal.id" 
+         v-for="signal in filteredSignals" :key="signal.id"
          class="p-signals__item"
        >
           <!-- Left Panel -->
@@ -125,7 +125,7 @@
                      <span class="p-signals__confidence-label" style="font-family: monospace">{{ signal.confidence }}%</span>
                   </div>
                   <div class="p-signals__confidence-bar-bg">
-                     <div 
+                     <div
                         class="h-full rounded-full transition-all duration-500"
                         :class="signal.confidence >= 80 ? 'bg-red-500' : signal.confidence >= 60 ? 'bg-orange-500' : 'bg-blue-500'"
                         :style="{ width: signal.confidence + '%' }"
@@ -163,8 +163,8 @@
 </template>
 
 <script>
-import Button from '@/components/common/Button.vue';
-import { Zap, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight, Clock, Target, AlertTriangle, CheckCircle2, ChevronRight, Filter } from 'lucide-vue';
+import { Zap, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight, Clock, Target, AlertTriangle, CheckCircle2, ChevronRight, Filter } from 'lucide-vue'
+import Button from '@/components/common/Button.vue'
 
 const mockSignals = [
   {
@@ -242,84 +242,94 @@ const mockSignals = [
     timeframe: '일봉',
     indicators: ['Trend', 'Volume']
   }
-];
+]
 
 export default {
-  name: "TradingSignals",
+  name: 'TradingSignals',
   components: {
     Button,
-    Zap, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight, Clock, Target, AlertTriangle, CheckCircle2, ChevronRight, Filter
+    Zap,
+    TrendingUp,
+    TrendingDown,
+    ArrowUpRight,
+    ArrowDownRight,
+    Clock,
+    Target,
+    AlertTriangle,
+    CheckCircle2,
+    ChevronRight,
+    Filter
   },
   data() {
-      return {
-          signals: mockSignals,
-          filter: 'all',
-          filters: [
-              { value: 'all', label: '전체' },
-              { value: 'buy', label: '매수' },
-              { value: 'sell', label: '매도' },
-              { value: 'hold', label: '보유' }
-          ]
-      }
+    return {
+      signals: mockSignals,
+      filter: 'all',
+      filters: [
+        { value: 'all', label: '전체' },
+        { value: 'buy', label: '매수' },
+        { value: 'sell', label: '매도' },
+        { value: 'hold', label: '보유' }
+      ]
+    }
   },
   computed: {
-      filteredSignals() {
-          return this.filter === 'all' ? this.signals : this.signals.filter(s => s.type === this.filter);
-      },
-      counts() {
-          return {
-              buy: this.signals.filter(s => s.type === 'buy').length,
-              sell: this.signals.filter(s => s.type === 'sell').length,
-              hold: this.signals.filter(s => s.type === 'hold').length
-          }
+    filteredSignals() {
+      return this.filter === 'all' ? this.signals : this.signals.filter(s => s.type === this.filter)
+    },
+    counts() {
+      return {
+        buy: this.signals.filter(s => s.type === 'buy').length,
+        sell: this.signals.filter(s => s.type === 'sell').length,
+        hold: this.signals.filter(s => s.type === 'hold').length
       }
+    }
   },
   methods: {
-      formatPrice(price) {
-          if (typeof price === 'number' && price > 1000) return price.toLocaleString() + '원';
-          return '$' + price.toFixed(2);
-      },
-      getSignalBadgeClass(type) {
-        switch (type) {
-            case 'buy': return 'bg-red-50 text-red-600 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800';
-            case 'sell': return 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800';
-            case 'hold': return 'bg-slate-50 text-slate-400 border-slate-200 dark:bg-slate-800/50 dark:text-slate-500 dark:border-slate-700';
-            default: return '';
-        }
-      },
-      getSignalTextClass(type) {
-         switch (type) {
-            case 'buy': return 'text-red-500 bg-red-50 dark:bg-red-900/20';
-            case 'sell': return 'text-blue-500 bg-blue-50 dark:bg-blue-900/20';
-            case 'hold': return 'text-slate-500 bg-slate-50 dark:bg-slate-800/50';
-            default: return '';
-         }
-      },
-      getSignalIcon(type) {
-          switch (type) {
-              case 'buy': return 'ArrowUpRight';
-              case 'sell': return 'ArrowDownRight';
-              default: return 'Target';
-          }
-      },
-      getSignalLabel(type) {
-          switch (type) {
-            case 'buy': return '매수';
-            case 'sell': return '매도';
-            case 'hold': return '보유';
-            default: return '';
-          }
-      },
-      getStrengthLabel(strength) {
-        switch (strength) {
-            case 'strong': return '강';
-            case 'moderate': return '중';
-            case 'weak': return '약';
-            default: return '';
-          }
+    formatPrice(price) {
+      if (typeof price === 'number' && price > 1000) { return price.toLocaleString() + '원' }
+      return '$' + price.toFixed(2)
+    },
+    getSignalBadgeClass(type) {
+      switch (type) {
+        case 'buy': return 'bg-red-50 text-red-600 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800'
+        case 'sell': return 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
+        case 'hold': return 'bg-slate-50 text-slate-400 border-slate-200 dark:bg-slate-800/50 dark:text-slate-500 dark:border-slate-700'
+        default: return ''
       }
+    },
+    getSignalTextClass(type) {
+      switch (type) {
+        case 'buy': return 'text-red-500 bg-red-50 dark:bg-red-900/20'
+        case 'sell': return 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
+        case 'hold': return 'text-slate-500 bg-slate-50 dark:bg-slate-800/50'
+        default: return ''
+      }
+    },
+    getSignalIcon(type) {
+      switch (type) {
+        case 'buy': return 'ArrowUpRight'
+        case 'sell': return 'ArrowDownRight'
+        default: return 'Target'
+      }
+    },
+    getSignalLabel(type) {
+      switch (type) {
+        case 'buy': return '매수'
+        case 'sell': return '매도'
+        case 'hold': return '보유'
+        default: return ''
+      }
+    },
+    getStrengthLabel(strength) {
+      switch (strength) {
+        case 'strong': return '강'
+        case 'moderate': return '중'
+        case 'weak': return '약'
+        default: return ''
+      }
+    }
   }
-};
+}
 </script>
 
 <style src="@/assets/css/pages/signals.css"></style>

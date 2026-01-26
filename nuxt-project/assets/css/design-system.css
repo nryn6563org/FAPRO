@@ -50,7 +50,7 @@
    */
   .c-content-card {
     background-color: var(--card-bg);
-    border-radius: 0.75rem;
+    border-radius: 2px;
     border: 1px solid var(--card-border);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
     overflow: hidden;
@@ -79,7 +79,7 @@
   /* 페이지 대제목 스타일 (굵게, 마이너스 자간 적용) */
   .c-page-header__title {
     font-size: 1.5rem;
-    font-weight: 800;
+    font-weight: 700;
     letter-spacing: -0.025em;
     color: var(--slate-900);
   }
@@ -115,7 +115,7 @@
   .investment-tab-trigger--active {
     background-color: var(--blue-600) !important;
     color: white !important;
-    font-weight: 800 !important;
+    font-weight: 700 !important;
     box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
     border: none !important;
     transition: all 0.2s ease;

@@ -25,7 +25,7 @@
           </button>
         </div>
       </div>
-      
+
       <div class="p-6">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           <!-- KOSPI Chart -->
@@ -137,8 +137,8 @@
               </tr>
             </thead>
             <tbody>
-              <tr 
-                v-for="(stock, index) in currentData" 
+              <tr
+                v-for="(stock, index) in currentData"
                 :key="index"
                 class="border-b border-slate-200 hover:bg-slate-50 transition-colors"
               >
@@ -171,10 +171,10 @@
 </template>
 
 <script>
-import { TrendingUp, TrendingDown } from 'lucide-vue';
-import LineChart from '@/components/charts/LineChart';
+import { TrendingUp, TrendingDown } from 'lucide-vue'
+import LineChart from '@/components/charts/LineChart'
 
-const now = new Date();
+const now = new Date()
 
 export default {
   name: 'PriceAnalysis',
@@ -201,11 +201,11 @@ export default {
         maintainAspectRatio: false,
         legend: { display: false },
         scales: {
-          xAxes: [{ 
+          xAxes: [{
             gridLines: { display: false },
             ticks: { fontSize: 10 }
           }],
-          yAxes: [{ 
+          yAxes: [{
             gridLines: { borderDash: [4, 4] },
             ticks: { fontSize: 10 }
           }]
@@ -216,79 +216,79 @@ export default {
         },
         tooltips: {
           mode: 'index',
-          intersect: false,
+          intersect: false
         }
       },
       // 탭별 시계 데이터 (이슈종목, 신고가 등)
       mockDataByTab: {
-          '이슈종목': [
-            { date: '01/20', time: '09:08', stockName: '유비쿼스', currentPrice: 0, changeRate: 0, issueContent: '피지컬SI 수혜 전망…PBR 역사적 저점 분석에 상승세' },
-            { date: '01/20', time: '15:00', stockName: '우진', currentPrice: 25200, changeRate: 13.26, issueContent: '국내 유일 원전 계측기 공급사…후대특형 원전 필요 발...' },
-            { date: '01/20', time: '14:30', stockName: '카카오페이', currentPrice: 53800, changeRate: 12.08, issueContent: '스테이블코인 법안 기대에 강세' },
-            { date: '01/20', time: '14:28', stockName: '일진파워', currentPrice: 17610, changeRate: 29.96, issueContent: '신규원전 건설 업종 현안 원인 일진 전기철강까지 \'...' },
-            { date: '01/20', time: '14:22', stockName: '오로비덱', currentPrice: 5140, changeRate: 25.83, issueContent: '신규 원전 필요 현안 원전계 초기협상 기대감까지...' },
-            { date: '01/20', time: '14:00', stockName: '우리기술', currentPrice: 7980, changeRate: 29.97, issueContent: '쫓 국연 원전 필요 신규원전 검토에 현안 원전계...' },
-            { date: '01/20', time: '13:58', stockName: '한국전력', currentPrice: 65400, changeRate: 16.16, issueContent: '발전 공기업 동행한 기대감에 15%대↑' },
-            { date: '01/20', time: '13:42', stockName: '티앤씨', currentPrice: 17600, changeRate: 25.18, issueContent: '이 대통령 전력난 핵소 원전 필요상에 ↑…원전 필수...' },
-            { date: '01/20', time: '13:28', stockName: '나노스에이스틱글로벌지', currentPrice: 46650, changeRate: 29.94, issueContent: '우주발도래 과제 수주에 13% 급등' },
-            { date: '01/20', time: '11:46', stockName: '한화에어로스페이스', currentPrice: 1309000, changeRate: -1.58, issueContent: '그림판도 돌리면 자잘하적 건강작 \'상승...' },
-          ],
-          '52주신고가': [
-            { date: '01/20', time: '15:30', stockName: '삼성전자', currentPrice: 72500, changeRate: 3.42, issueContent: 'AI 반도체 수요 증가로 52주 신고가 경신' },
-            { date: '01/20', time: '14:25', stockName: 'SK하이닉스', currentPrice: 145000, changeRate: 4.18, issueContent: 'HBM 공급 확대 소식에 52주 최고가 달성' },
-          ],
-          '52주신저가': [
-            { date: '01/20', time: '15:10', stockName: '카카오', currentPrice: 42500, changeRate: -5.22, issueContent: '규제 우려로 52주 신저가 기록' },
-          ],
-          '상한가': [],
-          '하한가': [],
-          '거래비중상위': [],
-          '관리종목': [],
-          '거래정지': [],
-          '투자주의': [],
-          '투자경고': [],
-          '투자위험': [],
+        이슈종목: [
+          { date: '01/20', time: '09:08', stockName: '유비쿼스', currentPrice: 0, changeRate: 0, issueContent: '피지컬SI 수혜 전망…PBR 역사적 저점 분석에 상승세' },
+          { date: '01/20', time: '15:00', stockName: '우진', currentPrice: 25200, changeRate: 13.26, issueContent: '국내 유일 원전 계측기 공급사…후대특형 원전 필요 발...' },
+          { date: '01/20', time: '14:30', stockName: '카카오페이', currentPrice: 53800, changeRate: 12.08, issueContent: '스테이블코인 법안 기대에 강세' },
+          { date: '01/20', time: '14:28', stockName: '일진파워', currentPrice: 17610, changeRate: 29.96, issueContent: '신규원전 건설 업종 현안 원인 일진 전기철강까지 \'...' },
+          { date: '01/20', time: '14:22', stockName: '오로비덱', currentPrice: 5140, changeRate: 25.83, issueContent: '신규 원전 필요 현안 원전계 초기협상 기대감까지...' },
+          { date: '01/20', time: '14:00', stockName: '우리기술', currentPrice: 7980, changeRate: 29.97, issueContent: '쫓 국연 원전 필요 신규원전 검토에 현안 원전계...' },
+          { date: '01/20', time: '13:58', stockName: '한국전력', currentPrice: 65400, changeRate: 16.16, issueContent: '발전 공기업 동행한 기대감에 15%대↑' },
+          { date: '01/20', time: '13:42', stockName: '티앤씨', currentPrice: 17600, changeRate: 25.18, issueContent: '이 대통령 전력난 핵소 원전 필요상에 ↑…원전 필수...' },
+          { date: '01/20', time: '13:28', stockName: '나노스에이스틱글로벌지', currentPrice: 46650, changeRate: 29.94, issueContent: '우주발도래 과제 수주에 13% 급등' },
+          { date: '01/20', time: '11:46', stockName: '한화에어로스페이스', currentPrice: 1309000, changeRate: -1.58, issueContent: '그림판도 돌리면 자잘하적 건강작 \'상승...' }
+        ],
+        '52주신고가': [
+          { date: '01/20', time: '15:30', stockName: '삼성전자', currentPrice: 72500, changeRate: 3.42, issueContent: 'AI 반도체 수요 증가로 52주 신고가 경신' },
+          { date: '01/20', time: '14:25', stockName: 'SK하이닉스', currentPrice: 145000, changeRate: 4.18, issueContent: 'HBM 공급 확대 소식에 52주 최고가 달성' }
+        ],
+        '52주신저가': [
+          { date: '01/20', time: '15:10', stockName: '카카오', currentPrice: 42500, changeRate: -5.22, issueContent: '규제 우려로 52주 신저가 기록' }
+        ],
+        상한가: [],
+        하한가: [],
+        거래비중상위: [],
+        관리종목: [],
+        거래정지: [],
+        투자주의: [],
+        투자경고: [],
+        투자위험: []
       }
-    };
+    }
   },
   computed: {
     // 선택된 탭에 해당하는 시세 데이터 반환
     currentData() {
-        return this.mockDataByTab[this.selectedTab] || [];
+      return this.mockDataByTab[this.selectedTab] || []
     },
     // 코스피 차트 데이터 가공 (선택된 기간에 대응)
     getKospiChartData() {
-         const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
-         const data = [4820, 4830, 4850, 4860, 4880, 4890, 4897]; // 더미 데이터
-         
-         return {
-             labels,
-             datasets: [{
-                 label: 'KOSPI',
-                 data,
-                 borderColor: '#3b82f6',
-                 backgroundColor: 'transparent',
-                 borderWidth: 2,
-                 pointRadius: 0
-             }]
-         };
+      const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00']
+      const data = [4820, 4830, 4850, 4860, 4880, 4890, 4897] // 더미 데이터
+
+      return {
+        labels,
+        datasets: [{
+          label: 'KOSPI',
+          data,
+          borderColor: '#3b82f6',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 0
+        }]
+      }
     },
     // 코스닥 차트 데이터 가공 (선택된 기간에 대응)
     getKosdaqChartData() {
-         const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00'];
-         const data = [920, 930, 925, 935, 940, 945, 950]; // 더미 데이터
-         return {
-             labels,
-             datasets: [{
-                 label: 'KOSDAQ',
-                 data,
-                 borderColor: '#3b82f6',
-                 backgroundColor: 'transparent',
-                 borderWidth: 2,
-                 pointRadius: 0
-             }]
-         };
+      const labels = ['9:00', '10:00', '11:00', '12:00', '13:00', '14:00', '15:00']
+      const data = [920, 930, 925, 935, 940, 945, 950] // 더미 데이터
+      return {
+        labels,
+        datasets: [{
+          label: 'KOSDAQ',
+          data,
+          borderColor: '#3b82f6',
+          backgroundColor: 'transparent',
+          borderWidth: 2,
+          pointRadius: 0
+        }]
+      }
     }
   }
-};
+}
 </script>

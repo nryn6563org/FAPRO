@@ -1,0 +1,20 @@
+/* IssueTrendChart Component Styles */
+.c-issue-trend {
+  @apply flex flex-col h-full bg-slate-50 rounded-3xl p-6 dark:bg-slate-900/50;
+}
+
+.c-issue-trend__header {
+  @apply flex items-center justify-between mb-4;
+}
+
+.c-issue-trend__title {
+  @apply text-sm font-black text-blue-600 dark:text-blue-400;
+}
+
+.c-issue-trend__more {
+  @apply text-[10px] font-bold text-slate-400 hover:text-slate-600 transition-colors;
+}
+
+.c-issue-trend__chart-container {
+  @apply flex-1 min-h-0;
+}

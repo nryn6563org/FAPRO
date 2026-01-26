@@ -37,3 +37,12 @@
 .c-dialog__content--lg { @apply max-w-lg rounded-2xl; }
 .c-dialog__content--xl { @apply max-w-xl rounded-2xl; }
 .c-dialog__content--full { @apply max-w-[95vw] h-[90vh] rounded-[2.5rem]; }
+
+/* Custom Client Modals */
+.c-dialog-register {
+    @apply max-w-[600px] rounded-[2.5rem] !important;
+}
+
+.c-dialog-detail {
+    @apply max-w-[1100px] rounded-[2.5rem] !important;
+}

@@ -1,122 +1,58 @@
-/* Price Analysis Page - Premium 1920x1080 Optimized */
+/* Price Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-price-analysis {
-    @apply flex flex-col gap-10;
+  @apply flex flex-col gap-10 min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
 }
 
-/* Market Indices Grid */
+/* Market Indices Section */
 .p-price-analysis__market-section {
-    @apply bg-white rounded-[2.5rem] border border-slate-200 p-10 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+  @apply flex flex-col gap-8;
 }
 
 .p-price-analysis__section-header {
-    @apply flex justify-between items-center mb-10;
+  @apply flex items-center justify-between;
 }
 
 .p-price-analysis__section-title {
-    @apply text-2xl font-black text-slate-900 dark:text-white;
+  @apply text-xl font-black text-slate-900 dark:text-white;
 }
 
 .p-price-analysis__view-tabs {
-    @apply flex gap-2 bg-slate-50 p-1.5 rounded-2xl dark:bg-slate-800/50;
+  @apply flex items-center gap-1 bg-white p-1 rounded-2xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+}
+
+.p-price-analysis__view-btn {
+  @apply px-5 py-2 rounded-xl text-xs font-black transition-all border-none;
+}
+
+.p-price-analysis__view-btn--active {
+  @apply bg-slate-900 text-white shadow-md dark:bg-blue-600;
+}
+
+.p-price-analysis__view-btn--inactive {
+  @apply bg-transparent text-slate-400 hover:text-slate-900 dark:hover:text-white;
 }
 
 .p-price-analysis__market-grid {
-    @apply grid grid-cols-1 gap-10 xl:grid-cols-2;
-}
-
-.p-price-analysis__market-card {
-    @apply flex flex-col gap-8;
-}
-
-.p-price-analysis__market-card-header {
-    @apply flex justify-between items-end;
-}
-
-.p-price-analysis__market-name {
-    @apply text-sm font-black text-slate-400 uppercase tracking-widest mb-1;
-}
-
-.p-price-analysis__market-value {
-    @apply text-4xl font-black text-slate-900 dark:text-white;
-}
-
-.p-price-analysis__market-change {
-    @apply flex flex-col items-end gap-1;
-}
-
-.p-price-analysis__market-change-val {
-    @apply flex items-center gap-1.5 text-lg font-black;
-}
-
-.p-price-analysis__market-change-pct {
-    @apply text-sm font-bold;
-}
-
-.p-price-analysis__chart-wrapper {
-    @apply h-[250px] w-full relative;
-}
-
-.p-price-analysis__period-selector {
-    @apply flex gap-1 mt-4;
-}
-
-.p-price-analysis__period-btn {
-    @apply h-8 px-4 rounded-xl text-xs font-bold transition-all;
+  @apply grid grid-cols-1 xl:grid-cols-2 gap-8;
 }
 
 /* Status Section */
 .p-price-analysis__status-section {
-    @apply bg-white rounded-[2.5rem] border border-slate-200 p-10 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+  @apply bg-white border border-slate-200 rounded-[3rem] p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800 flex flex-col gap-8;
 }
 
 .p-price-analysis__status-header {
-    @apply flex flex-col gap-6 mb-10;
+  @apply flex flex-col gap-6;
 }
 
-.p-price-analysis__status-tabs {
-    @apply flex flex-wrap gap-2;
+.p-price-analysis__update-box {
+  @apply flex justify-between items-center;
 }
 
 .p-price-analysis__update-meta {
-    @apply text-xs font-bold text-slate-400 flex items-center gap-2;
+  @apply text-xs font-bold text-slate-400;
 }
 
-.p-price-analysis__table-container {
-    @apply overflow-hidden rounded-3xl border border-slate-100 dark:border-slate-800;
-}
-
-.p-price-analysis__table {
-    @apply w-full text-left border-collapse;
-}
-
-.p-price-analysis__table-thead {
-    @apply bg-slate-50/50 dark:bg-slate-800/50;
-}
-
-.p-price-analysis__table-th {
-    @apply py-5 px-8 text-[11px] font-black text-slate-400 uppercase tracking-widest;
-}
-
-.p-price-analysis__table-th--right { @apply text-right; }
-
-.p-price-analysis__table-tr {
-    @apply border-b border-slate-50 transition-colors hover:bg-slate-50/50 dark:border-slate-800/50 dark:hover:bg-slate-800/30;
-}
-
-.p-price-analysis__table-td {
-    @apply py-5 px-8 text-[15px] font-medium text-slate-700 dark:text-slate-300;
-}
-
-.p-price-analysis__table-td--right { @apply text-right; }
-
-.p-price-analysis__stock-cell {
-    @apply font-black text-slate-900 dark:text-white;
-}
-
-.p-price-analysis__issue-cell {
-    @apply text-slate-500 font-medium line-clamp-1 max-w-xl;
-}
-
-.p-price-analysis__indicator {
-    @apply font-black;
+.p-price-analysis__table-wrapper {
+  @apply overflow-x-auto;
 }

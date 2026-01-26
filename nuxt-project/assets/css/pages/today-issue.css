@@ -1,64 +1,36 @@
-/* Today's Issue Page - Premium 1920x1080 Optimized */
+/* Today's Issue Page Styles - Premium 1920x1080 Optimized */
 .p-today-issue {
-    @apply flex flex-col gap-10;
+  @apply flex flex-col gap-8 min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
 }
 
-.p-today-issue__feed {
-    @apply grid grid-cols-1 gap-8 xl:grid-cols-2;
+.p-today-issue__main-section {
+  @apply bg-white border border-slate-200 rounded-md p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800;
 }
 
-.c-issue-card {
-    @apply bg-white rounded-[2.5rem] border border-slate-200 shadow-sm overflow-hidden transition-all duration-300 flex flex-col dark:bg-slate-900 dark:border-slate-800;
+.p-today-issue__section-header {
+  @apply flex items-center gap-2 mb-8;
 }
 
-.c-issue-card:hover {
-    @apply border-blue-200 shadow-xl transform -translate-y-1;
+.p-today-issue__section-icon {
+  @apply w-6 h-6 text-blue-600;
 }
 
-.c-issue-card__image-box {
-    @apply h-64 w-full relative bg-slate-100 dark:bg-slate-800;
+.p-today-issue__section-title {
+  @apply text-xl font-bold text-slate-900 dark:text-white/90;
 }
 
-.c-issue-card__image {
-    @apply w-full h-full object-cover;
+.p-today-issue__keyword-badge {
+  @apply px-4 py-1.5 bg-blue-600 text-white rounded text-sm font-bold shadow-md;
 }
 
-.c-issue-card__content {
-    @apply p-8 flex flex-col gap-6;
+.p-today-issue__analysis-grid {
+  @apply grid grid-cols-1 lg:grid-cols-2 gap-10;
 }
 
-.c-issue-card__header {
-    @apply flex justify-between items-center;
+.p-today-issue__analysis-right {
+  @apply flex flex-col gap-8;
 }
 
-.c-issue-card__category {
-    @apply px-4 py-1.5 bg-blue-50 text-blue-600 rounded-xl text-xs font-black dark:bg-blue-900/20 dark:text-blue-400;
-}
-
-.c-issue-card__time {
-    @apply text-xs font-bold text-slate-400;
-}
-
-.c-issue-card__title {
-    @apply text-2xl font-black text-slate-900 leading-tight dark:text-white;
-}
-
-.c-issue-card__summary {
-    @apply text-[15px] text-slate-600 leading-relaxed font-medium dark:text-slate-400;
-}
-
-.c-issue-card__footer {
-    @apply mt-auto flex justify-between items-center pt-6 border-t border-slate-50 dark:border-slate-800;
-}
-
-.c-issue-card__author {
-    @apply flex items-center gap-3;
-}
-
-.c-issue-card__author-avatar {
-    @apply w-8 h-8 rounded-full bg-slate-100;
-}
-
-.c-issue-card__author-name {
-    @apply text-xs font-bold text-slate-600;
+.p-today-issue__info-group {
+  @apply flex flex-col gap-4;
 }

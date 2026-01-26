@@ -1,0 +1,22 @@
+/* ReportFilterTabs Component Styles */
+.c-report-filter {
+  @apply flex items-center gap-2 mb-8 overflow-x-auto pb-2;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.c-report-filter::-webkit-scrollbar {
+  display: none;
+}
+
+.c-report-filter__btn {
+  @apply flex-shrink-0 px-6 py-2.5 rounded-2xl text-[13px] font-black transition-all border border-slate-200 outline-none;
+}
+
+.c-report-filter__btn--active {
+  @apply bg-slate-900 text-white border-slate-900 shadow-md dark:bg-blue-600 dark:border-blue-600;
+}
+
+.c-report-filter__btn--inactive {
+  @apply bg-white text-slate-400 hover:text-slate-900 dark:bg-slate-900 dark:border-slate-800 dark:hover:text-white;
+}

@@ -1,44 +1,20 @@
-/* Theme & Sector Page - Premium 1920x1080 Optimized */
+/* Themes/Sectors Page Styles - Premium 1920x1080 Optimized */
 .p-theme-sector {
-    @apply flex flex-col gap-10;
+  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
 }
 
 .p-theme-sector__grid {
-    @apply grid grid-cols-1 gap-8 lg:grid-cols-2;
+  @apply grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8;
 }
 
-.c-theme-card {
-    @apply bg-white p-8 rounded-[2.5rem] border border-slate-200 shadow-sm transition-all duration-300 flex flex-col gap-6 dark:bg-slate-900 dark:border-slate-800;
+/* Animations for grid items */
+.p-theme-sector__item {
+  @apply transition-all duration-500;
 }
 
-.c-theme-card:hover {
-    @apply border-blue-200 shadow-lg;
-}
-
-.c-theme-card__header {
-    @apply flex justify-between items-center;
-}
-
-.c-theme-card__title {
-    @apply text-xl font-black text-slate-900 dark:text-white;
-}
-
-.c-theme-card__yield {
-    @apply text-lg font-black;
-}
-
-.c-theme-card__stocks {
-    @apply flex flex-col gap-3;
-}
-
-.c-theme-stock-item {
-    @apply flex justify-between items-center p-4 bg-slate-50 rounded-2xl dark:bg-slate-800/50;
-}
-
-.c-theme-stock-item__name {
-    @apply font-black text-slate-900 dark:text-white;
-}
-
-.c-theme-stock-item__price {
-    @apply text-sm font-bold text-slate-500;
+/* Responsive adjustments */
+@media (min-width: 1920px) {
+  .p-theme-sector__grid {
+    @apply grid-cols-4;
+  }
 }

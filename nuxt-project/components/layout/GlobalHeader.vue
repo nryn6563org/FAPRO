@@ -2,7 +2,7 @@
   <header class="l-header">
     <!-- 좌측: 로고 및 사이드바 토글 버튼 -->
     <div class="l-header__left">
-      <button 
+      <button
         @click="$emit('toggle-sidebar')"
         class="l-header__toggle-btn"
       >
@@ -23,7 +23,7 @@
     <div class="l-header__right">
        <!-- 테마 전환 버튼 (Light/Dark/System) -->
        <div class="l-header__theme-wrapper">
-          <button 
+          <button
              @click="toggleThemeMenu"
              class="l-header__theme-btn"
           >
@@ -31,7 +31,7 @@
              <Moon v-else-if="currentTheme === 'dark'" class="l-header__icon" />
              <Monitor v-else class="l-header__icon" />
           </button>
-          
+
           <!-- 테마 선택 드롭다운 메뉴 -->
           <div v-if="isThemeMenuOpen" class="l-header__theme-menu">
              <button @click="setTheme('light')" class="l-header__theme-item">
@@ -57,7 +57,7 @@
                 <User class="l-header__user-icon" />
              </div>
           </div>
-          <button 
+          <button
             @click="$emit('logout')"
             class="l-header__logout-btn"
             title="로그아웃"
@@ -68,7 +68,7 @@
 
        <!-- 비로그인 상태 (로그인 유도 버튼) -->
        <div v-else class="l-header__login-wrapper">
-          <button 
+          <button
              @click="$emit('login')"
              class="l-header__login-btn"
           >
@@ -81,10 +81,10 @@
 </template>
 
 <script>
-import { Menu, LogOut, LogIn, User, Sun, Moon, Monitor } from 'lucide-vue';
+import { Menu, LogOut, LogIn, User, Sun, Moon, Monitor } from 'lucide-vue'
 
 export default {
-  name: "GlobalHeader",
+  name: 'GlobalHeader',
   components: {
     Menu, LogOut, LogIn, User, Sun, Moon, Monitor
   },
@@ -101,18 +101,18 @@ export default {
   data() {
     return {
       isThemeMenuOpen: false
-    };
+    }
   },
   methods: {
     toggleThemeMenu() {
-        this.isThemeMenuOpen = !this.isThemeMenuOpen;
+      this.isThemeMenuOpen = !this.isThemeMenuOpen
     },
     setTheme(mode) {
-        this.$emit('theme-change', mode);
-        this.isThemeMenuOpen = false;
+      this.$emit('theme-change', mode)
+      this.isThemeMenuOpen = false
     }
   }
-};
+}
 </script>
 
 <style src="@/assets/css/components/layout/header.css"></style>

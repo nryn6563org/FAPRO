@@ -2,7 +2,7 @@
   <div class="min-h-screen bg-slate-50 p-8">
     <div class="max-w-7xl mx-auto space-y-12">
       <h1 class="text-3xl font-bold mb-8">Chart Migration Verification</h1>
-      
+
       <section>
         <h2 class="text-xl font-bold mb-4 text-blue-600">1. Market Indices</h2>
         <MarketIndices />

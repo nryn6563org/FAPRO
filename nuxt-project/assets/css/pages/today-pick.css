@@ -1,149 +1,35 @@
-/* Today's Pick Page - Premium 1920x1080 Optimized */
+/* 오늘의 종목 Pick 페이지 스타일 - 프리미엄 1920x1080 최적화 */
 .p-today-pick {
-    @apply flex flex-col gap-10;
+  @apply flex flex-col min-h-screen bg-[#f8fafc] p-10 dark:bg-[#020617];
 }
 
-.p-today-pick__header {
-    @apply flex items-center gap-4;
+.p-today-pick__slider-container {
+  @apply w-full overflow-hidden;
 }
 
-.p-today-pick__highlight-icon {
-    @apply w-10 h-10 text-amber-500 fill-amber-500;
+.swiper-container {
+  @apply w-full overflow-visible !important;
 }
 
-/* 1920x1080 Grid Layout: 3 columns for large screens */
-.p-today-pick__grid {
-    @apply grid grid-cols-1 gap-8 xl:grid-cols-3;
+.p-today-pick__day-grid {
+  /* 5개 종목을 1920 해상도에서 효과적으로 배치 (3+2 혹은 5개 가로 배열) */
+  @apply flex flex-wrap w-full gap-6;
 }
 
-.p-today-pick__card {
-    @apply relative flex flex-col p-8 bg-white border border-slate-200 rounded-[2rem] shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800;
+.swiper-slide {
+  @apply h-auto flex;
 }
 
-.p-today-pick__card:hover {
-    @apply border-blue-200 -translate-y-2 shadow-[0_32px_64px_-12px_rgba(0,0,0,0.1)];
+/* Page Layout Container */
+.p-today-pick > * {
+  @apply w-full max-w-[1720px] mx-auto;
 }
 
-.p-today-pick__favorite-btn {
-    @apply absolute top-8 right-8 w-11 h-11 rounded-full flex items-center justify-center bg-slate-50 border border-slate-100 text-slate-400 transition-all duration-300 dark:bg-slate-800 dark:border-slate-700;
+/* Hover effects for the grid inside slide */
+.p-today-pick__day-grid:hover > *:not(:hover) {
+  @apply opacity-60 scale-[0.98];
 }
 
-.p-today-pick__favorite-btn--active {
-    @apply text-amber-500 bg-amber-50 border-amber-100;
-}
-
-.p-today-pick__favorite-icon {
-    @apply w-5 h-5;
-}
-
-.p-today-pick__favorite-icon--filled {
-    @apply fill-current;
-}
-
-/* Rank Icons */
-.p-today-pick__rank-box {
-    @apply mb-6;
-}
-
-.p-today-pick__rank-icon {
-    @apply w-14 h-14;
-}
-
-.rank-icon-gold { @apply text-amber-500 drop-shadow-lg; }
-.rank-icon-silver { @apply text-slate-400 drop-shadow-lg; }
-.rank-icon-bronze { @apply text-orange-700 drop-shadow-lg; }
-
-/* Core Info Section */
-.p-today-pick__core-info {
-    @apply flex gap-6 mb-8;
-}
-
-.p-today-pick__icon-container {
-    @apply w-16 h-16 rounded-2xl bg-slate-50 flex items-center justify-center text-slate-900 border border-slate-100 dark:bg-slate-800 dark:text-white dark:border-slate-700;
-}
-
-.p-today-pick__type-icon {
-    @apply w-8 h-8;
-}
-
-.p-today-pick__name {
-    @apply text-3xl font-black text-slate-900 dark:text-white mb-2;
-}
-
-.p-today-pick__tag {
-    @apply text-xs font-black bg-slate-100 text-slate-600 px-3 py-1.5 rounded-xl dark:bg-slate-800 dark:text-slate-400;
-}
-
-.p-today-pick__ticker {
-    @apply text-sm text-slate-400 font-mono mb-4;
-}
-
-.p-today-pick__stats-badge-row {
-    @apply flex gap-3;
-}
-
-.p-today-pick__ai-badge {
-    @apply text-xs font-black bg-blue-50 text-blue-600 px-4 py-1.5 rounded-full dark:bg-blue-900/20 dark:text-blue-400;
-}
-
-.p-today-pick__timing-badge {
-    @apply text-xs font-black bg-rose-50 text-rose-600 px-4 py-1.5 rounded-full dark:bg-rose-900/20 dark:text-rose-400;
-}
-
-/* Metrics Dashboard */
-.p-today-pick__metrics {
-    @apply grid grid-cols-2 gap-4 p-6 bg-slate-50 border border-slate-100 rounded-3xl mb-8 dark:bg-slate-800/50 dark:border-slate-800;
-}
-
-.p-today-pick__metric-item {
-    @apply flex flex-col gap-1;
-}
-
-.p-today-pick__metric-label {
-    @apply text-[10px] font-black text-slate-400 uppercase tracking-widest;
-}
-
-.p-today-pick__metric-value {
-    @apply text-xl font-black text-slate-900 dark:text-white;
-}
-
-.p-today-pick__metric-value--target { @apply text-blue-600; }
-.p-today-pick__metric-value--stoploss { @apply text-slate-400; }
-
-.p-today-pick__upside-group {
-    @apply flex items-center gap-1;
-}
-
-/* Reason Content */
-.p-today-pick__reason-box {
-    @apply p-6 bg-amber-50/50 border border-amber-100/50 rounded-3xl mb-8 flex gap-5 dark:bg-amber-900/5 dark:border-amber-900/10;
-}
-
-.p-today-pick__reason-icon {
-    @apply w-7 h-7 text-amber-500 shrink-0;
-}
-
-.p-today-pick__reason-title {
-    @apply text-sm font-black text-amber-950 mb-1 dark:text-amber-500;
-}
-
-.p-today-pick__reason-text {
-    @apply text-[15px] text-amber-900/80 leading-relaxed font-bold dark:text-amber-600;
-}
-
-/* Actions Section */
-.p-today-pick__actions {
-    @apply flex gap-4;
-}
-
-.p-today-pick__action-btn {
-    @apply flex-1 h-14 rounded-2xl font-black text-sm;
-}
-
-.p-today-pick__btn-star-icon {
-    @apply mr-2 h-4 w-4 transition-colors;
-}
-
-.p-today-pick__btn-star-icon--filled {
-    @apply fill-current;
+.p-today-pick__day-grid > * {
+  @apply transition-all duration-300;
 }

@@ -1,0 +1,166 @@
+/* ClientDetailModal Component Styles */
+.c-client-detail {
+  @apply flex flex-col bg-white dark:bg-slate-900 h-full max-h-[90vh] overflow-hidden;
+}
+
+/* Header Section */
+.c-client-detail__header {
+  @apply p-8 flex items-center justify-between border-b border-slate-50 dark:border-slate-800;
+}
+
+.c-client-detail__profile {
+  @apply flex items-center gap-6;
+}
+
+.c-client-detail__avatar {
+  @apply w-20 h-20 rounded-[2rem] bg-slate-100 flex items-center justify-center text-3xl font-black text-slate-800 shadow-sm border border-white dark:bg-slate-800 dark:text-white dark:border-slate-700;
+}
+
+.c-client-detail__info-group {
+  @apply flex flex-col gap-2;
+}
+
+.c-client-detail__name-row {
+  @apply flex items-center gap-3;
+}
+
+.c-client-detail__name {
+  @apply text-[2rem] font-black text-slate-900 dark:text-white;
+}
+
+.c-client-detail__risk-badge {
+  @apply px-3 py-1 rounded-full text-[11px] font-black uppercase tracking-wider;
+}
+
+/* Scrollable Content Area */
+.c-client-detail__content {
+  @apply flex-1 overflow-y-auto p-8 grid grid-cols-1 lg:grid-cols-12 gap-8;
+}
+
+/* Left Sidebar (Columns 1-4) */
+.c-client-detail__sidebar {
+  @apply lg:col-span-4 flex flex-col gap-6;
+}
+
+.c-client-detail__section-card {
+  @apply bg-slate-50 rounded-[2rem] p-6 border border-slate-100 dark:bg-slate-800/50 dark:border-slate-800;
+}
+
+.c-client-detail__section-title {
+  @apply text-sm font-black text-slate-900 mb-4 flex items-center gap-2 dark:text-white;
+}
+
+.c-client-detail__metric-grid {
+  @apply grid grid-cols-2 gap-4;
+}
+
+.c-client-detail__metric-box {
+  @apply bg-white p-4 rounded-2xl shadow-sm border border-slate-50 dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-client-detail__metric-label {
+  @apply text-[11px] font-black text-slate-400 mb-1;
+}
+
+.c-client-detail__metric-val {
+  @apply text-lg font-black text-slate-900 dark:text-white;
+}
+
+.c-client-detail__contact-list {
+  @apply flex flex-col gap-4;
+}
+
+.c-client-detail__contact-item {
+  @apply flex items-center gap-3 text-sm font-bold text-slate-600 dark:text-slate-400;
+}
+
+.c-client-detail__contact-icon {
+  @apply w-4 h-4 text-slate-400;
+}
+
+/* Main Content (Columns 5-12) */
+.c-client-detail__main {
+  @apply lg:col-span-8 flex flex-col gap-6;
+}
+
+/* Portfolio Chart */
+.c-portfolio-viz {
+  @apply flex flex-col gap-6 mb-4;
+}
+
+.c-portfolio-bar {
+  @apply h-8 w-full flex rounded-full overflow-hidden shadow-inner bg-slate-100 dark:bg-slate-800;
+}
+
+.c-portfolio-bar__segment {
+  @apply h-full transition-all duration-700;
+}
+
+.segment--stocks { @apply bg-blue-500; }
+.segment--bonds { @apply bg-indigo-500; }
+.segment--cash { @apply bg-teal-500; }
+.segment--alternatives { @apply bg-amber-500; }
+
+.c-portfolio-legend {
+  @apply flex flex-wrap gap-x-6 gap-y-2;
+}
+
+.c-portfolio-legend__item {
+  @apply flex items-center gap-2 text-xs font-black;
+}
+
+.c-portfolio-legend__dot {
+  @apply w-2.5 h-2.5 rounded-full;
+}
+
+/* Tabs and Table */
+.c-client-detail__tabs {
+  @apply flex items-center gap-1 mb-4 bg-white/50 p-1 rounded-xl border border-slate-100 dark:bg-slate-900/50 dark:border-slate-800;
+}
+
+.c-client-detail__tab {
+  @apply flex-1 py-2.5 text-xs font-black rounded-lg transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
+}
+
+.c-client-detail__tab--active {
+  @apply bg-white text-blue-600 shadow-sm dark:bg-slate-800 dark:text-blue-400;
+}
+
+.c-asset-table {
+  @apply w-full border-separate border-spacing-0;
+}
+
+.c-asset-table__th {
+  @apply py-3 px-4 text-[11px] font-black text-slate-400 border-b border-slate-50 dark:border-slate-800 text-left;
+}
+
+.c-asset-table__tr {
+  @apply transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30;
+}
+
+.c-asset-table__td {
+  @apply py-4 px-4 text-sm font-bold text-slate-900 dark:text-white border-b border-slate-50 dark:border-slate-800;
+}
+
+.c-asset-table__td--right { @apply text-right; }
+
+/* Memo and Footer */
+.c-client-detail__memo {
+  @apply p-6 bg-blue-50/50 rounded-2xl border border-blue-100/50 text-sm font-bold text-blue-900 leading-relaxed dark:bg-blue-900/10 dark:border-blue-900/20 dark:text-blue-300;
+}
+
+.c-client-detail__footer {
+  @apply p-8 border-t border-slate-50 dark:border-slate-800 flex items-center justify-end gap-3;
+}
+
+.c-client-detail__btn {
+  @apply h-12 px-6 rounded-xl text-xs font-black flex items-center gap-2 transition-all;
+}
+
+.c-client-detail__btn--primary {
+  @apply bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-500/10;
+}
+
+.c-client-detail__btn--outline {
+  @apply border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 dark:border-slate-700 dark:text-slate-400;
+}

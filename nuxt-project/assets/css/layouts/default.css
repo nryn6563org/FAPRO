@@ -117,7 +117,7 @@
 }
 
 .c-mini-card {
-    @apply flex flex-col justify-between bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-all rounded-xl px-4 py-3 min-w-[160px] border border-slate-100 dark:border-slate-700 h-24 relative overflow-hidden;
+    @apply flex flex-col justify-between bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-all rounded px-4 py-3 min-w-[160px] border border-slate-100 dark:border-slate-700 h-24 relative overflow-hidden;
 }
 
 .c-mini-card__content {

@@ -1,10 +1,10 @@
 <template>
   <div class="c-dashboard">
     <!-- 대시보드 헤더 -->
-    <DashboardHeader 
-        :isEditing="isEditing" 
-        @edit="handleEditMode" 
-        @add="handleOpenDialog" 
+    <DashboardHeader
+        :isEditing="isEditing"
+        @edit="handleEditMode"
+        @add="handleOpenDialog"
     />
 
     <!-- 편집 모드 플로팅 바 -->
@@ -19,7 +19,7 @@
     </div>
 
     <!-- 위젯 선택 다이얼로그 -->
-    <DashboardWidgetDialog 
+    <DashboardWidgetDialog
         :isOpen="isDialogOpen"
         :currentWidgets="widgets"
         :currentWidgetSizes="widgetSizes"
@@ -37,8 +37,8 @@
         @start="drag=true"
         @end="drag=false"
     >
-        <div 
-            v-for="widgetId in widgets" 
+        <div
+            v-for="widgetId in widgets"
             :key="widgetId"
             :class="['c-dashboard__grid-item', getWidgetGridClass(widgetId)]"
         >
@@ -51,13 +51,13 @@
                  >
                     <GripVertical class="c-dashboard__drag-icon" />
                  </div>
-                 
+
                  <!-- 실제 위젯 콘텐츠 -->
-                 <Widget 
-                    :widgetId="widgetId" 
+                 <Widget
+                    :widgetId="widgetId"
                     :isEditing="isEditing"
                     :size="widgetSizes[widgetId] || { w: 1, h: 1 }"
-                    @remove="removeWidget(widgetId)" 
+                    @remove="removeWidget(widgetId)"
                  />
             </div>
         </div>
@@ -81,97 +81,99 @@
 </template>
 
 <script>
-import draggable from 'vuedraggable';
-import { Settings, GripVertical, Plus } from 'lucide-vue';
-import Button from '@/components/common/Button.vue';
-import Widget from '@/components/domain/dashboard/Widget.vue';
-import DashboardHeader from '@/components/domain/dashboard/DashboardHeader.vue';
-import DashboardWidgetDialog from '@/components/domain/dashboard/DashboardWidgetDialog.vue';
+import draggable from 'vuedraggable'
+import { Settings, GripVertical, Plus } from 'lucide-vue'
+import Button from '@/components/common/Button.vue'
+import Widget from '@/components/domain/dashboard/Widget.vue'
+import DashboardHeader from '@/components/domain/dashboard/DashboardHeader.vue'
+import DashboardWidgetDialog from '@/components/domain/dashboard/DashboardWidgetDialog.vue'
 
 export default {
-  name: "CustomizableDashboard",
+  name: 'CustomizableDashboard',
   components: {
     draggable,
     Button,
     Widget,
     DashboardHeader,
     DashboardWidgetDialog,
-    Settings, GripVertical, Plus
+    Settings,
+    GripVertical,
+    Plus
   },
   data() {
     return {
       // 초기 위젯 목록
       widgets: [
         'kospi', 'kosdaq', 'sp500', 'nasdaq', 'usd-krw',
-        'client-count', 'aum', 'revenue', 'top-clients', 'market-news',
+        'client-count', 'aum', 'revenue', 'top-clients', 'market-news'
       ],
-      isDialogOpen: false,  // 위젯 추가 다이얼로그 노출 여부
-      isEditing: false,    // 편집 모드 활성화 여부
+      isDialogOpen: false, // 위젯 추가 다이얼로그 노출 여부
+      isEditing: false, // 편집 모드 활성화 여부
       originalWidgets: [], // 편집 취소 시 복구를 위한 백업 데이터
-      drag: false,         // 드래그 상태 플래그
+      drag: false, // 드래그 상태 플래그
       // 위젯별 크기 설정 (w: 가로 칸 수, h: 세로 칸 수)
       widgetSizes: {
-        'kospi': { w: 2, h: 1 },
-        'kosdaq': { w: 2, h: 1 },
-        'sp500': { w: 2, h: 1 },
-        'nasdaq': { w: 2, h: 1 },
+        kospi: { w: 2, h: 1 },
+        kosdaq: { w: 2, h: 1 },
+        sp500: { w: 2, h: 1 },
+        nasdaq: { w: 2, h: 1 },
         'usd-krw': { w: 2, h: 1 },
         'client-count': { w: 2, h: 1 },
-        'aum': { w: 2, h: 1 },
-        'revenue': { w: 2, h: 2 },
+        aum: { w: 2, h: 1 },
+        revenue: { w: 2, h: 2 },
         'top-clients': { w: 2, h: 2 },
         'market-news': { w: 2, h: 2 },
         'ai-issue-bubble': { w: 2, h: 2 },
-        'economy-news': { w: 2, h: 2 },
+        'economy-news': { w: 2, h: 2 }
       }
-    };
+    }
   },
   methods: {
     /**
      * 위젯 ID에 따른 그리드 클래스 반환 (가로/세로 크기 결정)
      */
     getWidgetGridClass(widgetId) {
-       const size = this.widgetSizes[widgetId] || { w: 1, h: 1 };
-       return `c-dashboard__grid-item--w-${size.w} c-dashboard__grid-item--h-${size.h}`;
+      const size = this.widgetSizes[widgetId] || { w: 1, h: 1 }
+      return `c-dashboard__grid-item--w-${size.w} c-dashboard__grid-item--h-${size.h}`
     },
     // 편집 모드 진입 (현재 상태 백업)
     handleEditMode() {
-        this.originalWidgets = [...this.widgets];
-        this.isEditing = true;
+      this.originalWidgets = [...this.widgets]
+      this.isEditing = true
     },
     // 편집 사항 저장
     handleSaveEdit() {
-        this.isEditing = false;
+      this.isEditing = false
     },
     // 편집 모드 취소 (이전 상태로 복구)
     handleCancelEdit() {
-        this.widgets = [...this.originalWidgets];
-        this.isEditing = false;
+      this.widgets = [...this.originalWidgets]
+      this.isEditing = false
     },
     // 위젯 추가 다이얼로그 열기
     handleOpenDialog() {
-       this.isDialogOpen = true;
+      this.isDialogOpen = true
     },
     // 다이얼로그 닫기
     handleCancelDialog() {
-       this.isDialogOpen = false;
+      this.isDialogOpen = false
     },
     /**
      * 다이얼로그에서 선택된 위젯 목록 저장
      */
     handleSaveWidgets({ widgets, sizes }) {
-       this.widgets = [...widgets];
-       this.widgetSizes = { ...this.widgetSizes, ...sizes };
-       this.isDialogOpen = false;
+      this.widgets = [...widgets]
+      this.widgetSizes = { ...this.widgetSizes, ...sizes }
+      this.isDialogOpen = false
     },
     /**
      * 특정 위젯 삭제
      */
     removeWidget(widgetId) {
-       this.widgets = this.widgets.filter(w => w !== widgetId);
+      this.widgets = this.widgets.filter(w => w !== widgetId)
     }
   }
-};
+}
 </script>
 
 <style src="@/assets/css/components/domain/dashboard/dashboard.css"></style>

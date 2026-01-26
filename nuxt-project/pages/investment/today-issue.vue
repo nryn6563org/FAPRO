@@ -1,53 +1,96 @@
-<!-- 오늘의 이슈 페이지: 실시간 시장 주요 뉴스 및 AI 이슈 분석 피드 제공 -->
+<!-- 오늘의 이슈 페이지: AI 분석 및 시장 이슈의 종합적인 피드 제공 -->
 <template>
   <div class="p-today-issue">
-    <div class="c-page-header">
-      <div class="c-page-header__inner">
-        <div class="c-page-header__content">
-          <h2 class="c-page-header__title">오늘의 이슈</h2>
-          <p class="c-page-header__desc">AI가 분석한 오늘의 핵심 투자 이슈와 뉴스입니다.</p>
+    <!-- 헤더 영역 -->
+    <IssueHeader />
+
+    <!-- AI 이슈 분석 섹션 -->
+    <section class="p-today-issue__main-section">
+      <div class="p-today-issue__section-header">
+        <SparklesIcon class="p-today-issue__section-icon" />
+        <h2 class="p-today-issue__section-title">AI이슈포착</h2>
+        <span class="p-today-issue__keyword-badge">{{ selectedKeyword }}</span>
+      </div>
+
+      <div class="p-today-issue__analysis-grid">
+        <!-- 왼쪽: 버블 맵 -->
+        <IssueBubbleMap
+          :selected-keyword="selectedKeyword"
+          :domestic-bubbles="domesticBubbles"
+          :us-bubbles="usBubbles"
+          @select="handleKeywordChange"
+          @refresh="handleRefresh"
+        />
+
+        <!-- 오른쪽: 분석 데이터 (차트, 종목, 뉴스) -->
+        <div class="p-today-issue__analysis-right">
+          <IssueTrendChart
+            :title="selectedKeyword"
+            :data="currentData.chartData"
+          />
+
+          <div class="p-today-issue__info-group">
+            <MajorStocksList :stocks="currentData.stocks" />
+            <NewsSummary :news="currentData.news" />
+          </div>
         </div>
       </div>
-    </div>
 
-    <!-- Issue Feed (2 columns on 1920x1080) -->
-    <div class="p-today-issue__feed">
-       <div v-for="issue in issues" :key="issue.id" class="c-issue-card">
-          <div class="c-issue-card__image-box">
-             <img src="https://images.unsplash.com/photo-1611974717537-43406f0e3868?auto=format&fit=crop&q=80&w=800" alt="issue image" class="c-issue-card__image" />
-          </div>
-          <div class="c-issue-card__content">
-             <div class="c-issue-card__header">
-                <span class="c-issue-card__category">{{ issue.category }}</span>
-                <span class="c-issue-card__time">{{ issue.time }}</span>
-             </div>
-             <h3 class="c-issue-card__title">{{ issue.title }}</h3>
-             <p class="c-issue-card__summary">{{ issue.summary }}</p>
-             <div class="c-issue-card__footer">
-                <div class="c-issue-card__author">
-                   <div class="c-issue-card__author-avatar"></div>
-                   <span class="c-issue-card__author-name">{{ issue.author }}</span>
-                </div>
-                <Button variant="outline" size="sm">자세히 보기</Button>
-             </div>
-          </div>
-       </div>
-    </div>
+      <!-- 하단: 이슈 히스토리 -->
+      <IssueHistory
+        :selected-keyword="selectedKeyword"
+        :issues="filteredIssues"
+      />
+    </section>
   </div>
 </template>
 
 <script>
-import Button from '@/components/common/Button.vue';
+import IssueHeader from '@/components/investment/today-issue/IssueHeader.vue'
+import IssueBubbleMap from '@/components/investment/today-issue/IssueBubbleMap.vue'
+import IssueTrendChart from '@/components/investment/today-issue/IssueTrendChart.vue'
+import MajorStocksList from '@/components/investment/today-issue/MajorStocksList.vue'
+import NewsSummary from '@/components/investment/today-issue/NewsSummary.vue'
+import IssueHistory from '@/components/investment/today-issue/IssueHistory.vue'
+
+// 리액트 소스에서 가져온 데이터 (간략화된 예시, 실제로는 별도 데이터 파일로 분리 추천)
+import { domesticBubbles, usBubbles, keywordDataMap, allIssues } from '@/utils/today-issue-data'
 
 export default {
-  name: "TodayIssue",
-  components: { Button },
+  name: 'TodayIssue',
+  components: {
+    IssueHeader,
+    IssueBubbleMap,
+    IssueTrendChart,
+    MajorStocksList,
+    NewsSummary,
+    IssueHistory
+  },
   data() {
     return {
-      issues: [
-        { id: 1, category: '반도체', time: '10분 전', title: '엔비디아 시가총액 1위 탈환, 하이닉스 수혜 기대', summary: '글로벌 AI 반도체 시장의 주도권 경쟁이 심화되는 가운데...', author: 'AI 분석가' },
-        { id: 2, category: '금리/매크로', time: '1시간 전', title: '미 국채 금리 하락 안정세, 기술주 반등 서막?', summary: '시장 예상치를 하회하는 고용 지표 발표로 인해 금리 인하 기대감이...', author: '금융 이슈팀' }
-      ]
+      selectedKeyword: '원전',
+      domesticBubbles,
+      usBubbles,
+      keywordDataMap,
+      allIssues
+    }
+  },
+  computed: {
+    currentData() {
+      return this.keywordDataMap[this.selectedKeyword] || this.keywordDataMap['원전']
+    },
+    filteredIssues() {
+      const relatedIds = this.currentData.relatedIssues || []
+      return this.allIssues.filter(issue => relatedIds.includes(issue.id))
+    }
+  },
+  methods: {
+    handleKeywordChange(keyword) {
+      this.selectedKeyword = keyword
+    },
+    handleRefresh() {
+      // 새로고침 로직 (필요 시 API 호출 등)
+      console.log('Refreshing data...')
     }
   }
 }

@@ -11,7 +11,7 @@
         </button>
       </div>
     </div>
-    
+
     <div class="c-widget__content">
         <!-- 시장 지수 위젯 (라인 차트 포함) -->
         <div v-if="isMarketWidget" class="c-widget__market-wrapper">
@@ -82,7 +82,7 @@
                     <div class="c-widget__list-right">
                         <p class="c-widget__client-name">{{ (client.revenue / 10000).toFixed(0) }}만원</p>
                         <div
- :class="['c-widget__tag', 
+ :class="['c-widget__tag',
                             client.risk === 'high' ? 'c-widget__tag--high' :
                             client.risk === 'medium' ? 'c-widget__tag--medium' :
                             'c-widget__tag--low']">
@@ -92,7 +92,7 @@
                 </div>
              </div>
         </div>
-        
+
          <!-- 뉴스 위젯 (목록형) -->
         <div v-else-if="widgetId === 'market-news' || widgetId === 'economy-news'" class="c-widget__news-wrapper">
             <div class="c-widget__news-list">
@@ -116,22 +116,45 @@
 </template>
 
 <script>
-import { AVAILABLE_WIDGETS, mockMarketData, mockClientData, mockNews, mockAIIssueData } from '@/utils/dashboard-data';
-import { X, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart } from 'lucide-vue';
-import LineChart from '@/components/charts/LineChart';
-import BarChart from '@/components/charts/BarChart';
-import BubbleChart from '@/components/charts/BubbleChart';
+import { X, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart } from 'lucide-vue'
+import { AVAILABLE_WIDGETS, mockMarketData, mockClientData, mockNews, mockAIIssueData } from '@/utils/dashboard-data'
+import LineChart from '@/components/charts/LineChart'
+import BarChart from '@/components/charts/BarChart'
+import BubbleChart from '@/components/charts/BubbleChart'
 
 export default {
-  name: "Widget",
+  name: 'Widget',
   components: {
-    LineChart, BarChart, BubbleChart,
-    X, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart
+    LineChart,
+    BarChart,
+    BubbleChart,
+    X,
+    TrendingUp,
+    TrendingDown,
+    Globe,
+    DollarSign,
+    Activity,
+    Award,
+    Wallet,
+    Users,
+    Briefcase,
+    Calculator,
+    Target,
+    Newspaper,
+    Building2,
+    Sparkles,
+    Lightbulb,
+    Layers,
+    FileBarChart,
+    ClipboardList,
+    Star,
+    CalendarDays,
+    PieChart
   },
   props: {
     widgetId: {
       type: String,
-      required: true,
+      required: true
     },
     isEditing: {
       type: Boolean,
@@ -144,179 +167,179 @@ export default {
   },
   data() {
     return {
-       mockClientData,
-       mockNews,
-       // 카테고리별 색상 매핑 (AI 이슈 버블용)
-       categoryColors: {
-            tech: '#3b82f6',
-            auto: '#8b5cf6',
-            energy: '#10b981',
-            finance: '#f59e0b',
-            realestate: '#ef4444',
-            defense: '#06b6d4',
-            bio: '#ec4899',
-       }
-    };
+      mockClientData,
+      mockNews,
+      // 카테고리별 색상 매핑 (AI 이슈 버블용)
+      categoryColors: {
+        tech: '#3b82f6',
+        auto: '#8b5cf6',
+        energy: '#10b981',
+        finance: '#f59e0b',
+        realestate: '#ef4444',
+        defense: '#06b6d4',
+        bio: '#ec4899'
+      }
+    }
   },
   computed: {
     // 위젯 설정 정보 가져오기
     config() {
-       return AVAILABLE_WIDGETS.find(w => w.id === this.widgetId);
+      return AVAILABLE_WIDGETS.find(w => w.id === this.widgetId)
     },
     // 위젯 제목
     title() {
-       return this.config ? this.config.title : 'Unknown Widget';
+      return this.config ? this.config.title : 'Unknown Widget'
     },
     // 위젯 아이콘
     icon() {
-       return this.config ? this.config.icon : null;
+      return this.config ? this.config.icon : null
     },
     // 시장 지수 위젯 여부 확인
     isMarketWidget() {
-        return this.widgetId in mockMarketData;
+      return this.widgetId in mockMarketData
     },
     // 시장 지수 데이터 연결
     marketData() {
-        return mockMarketData[this.widgetId] || { value: 0, change: 0, changePercent: 0 };
+      return mockMarketData[this.widgetId] || { value: 0, change: 0, changePercent: 0 }
     },
     // 상승/하락 여부 확인
     isPositive() {
-        return this.marketData.change >= 0;
+      return this.marketData.change >= 0
     },
     // 라인 차트 데이터 가공 (지수용)
     lineChartData() {
-        if (!this.isMarketWidget) return null;
-        // 실제 데이터 대신 시각화를 위한 무작위 데이터 생성
-        const labels = Array.from({ length: 30 }, (_, i) => `${i + 1}일`);
-        const data = Array.from({ length: 30 }, () => Math.random() * 1000 + 2000); 
-        
-        const color = this.isPositive ? '#10b981' : '#ef4444';
-        
-        return {
-            labels,
-            datasets: [
-                {
-                    label: 'Value',
-                    borderColor: color,
-                    backgroundColor: () => {
-                       // 상승 시 녹색, 하락 시 적색 반투명 채우기
-                       return this.isPositive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)';
-                    },
-                    borderWidth: 2,
-                    data: data,
-                    fill: true,
-                    pointRadius: 0,
-                    pointHoverRadius: 4,
-                }
-            ]
-        };
+      if (!this.isMarketWidget) { return null }
+      // 실제 데이터 대신 시각화를 위한 무작위 데이터 생성
+      const labels = Array.from({ length: 30 }, (_, i) => `${i + 1}일`)
+      const data = Array.from({ length: 30 }, () => Math.random() * 1000 + 2000)
+
+      const color = this.isPositive ? '#10b981' : '#ef4444'
+
+      return {
+        labels,
+        datasets: [
+          {
+            label: 'Value',
+            borderColor: color,
+            backgroundColor: () => {
+              // 상승 시 녹색, 하락 시 적색 반투명 채우기
+              return this.isPositive ? 'rgba(16, 185, 129, 0.1)' : 'rgba(239, 68, 68, 0.1)'
+            },
+            borderWidth: 2,
+            data,
+            fill: true,
+            pointRadius: 0,
+            pointHoverRadius: 4
+          }
+        ]
+      }
     },
     // 라인 차트 옵션 설정
     lineChartOptions() {
-        return {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: {
-                display: false
-            },
-            scales: {
-                xAxes: [{
-                    display: false
-                }],
-                yAxes: [{
-                    display: false
-                }]
-            },
-            tooltips: {
-                mode: 'index',
-                intersect: false,
-            }
-        };
+      return {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: {
+          display: false
+        },
+        scales: {
+          xAxes: [{
+            display: false
+          }],
+          yAxes: [{
+            display: false
+          }]
+        },
+        tooltips: {
+          mode: 'index',
+          intersect: false
+        }
+      }
     },
     // 매출 막대 차트 데이터 가공
     revenueChartData() {
-        return {
-            labels: Array.from({length: 12}, (_, i) => `${i+1}월`),
-            datasets: [
-                {
-                    label: 'Revenue',
-                    backgroundColor: '#1e40af',
-                    data: Array.from({ length: 12 }, () => Math.random() * 50 + 30)
-                }
-            ]
-        };
+      return {
+        labels: Array.from({ length: 12 }, (_, i) => `${i + 1}월`),
+        datasets: [
+          {
+            label: 'Revenue',
+            backgroundColor: '#1e40af',
+            data: Array.from({ length: 12 }, () => Math.random() * 50 + 30)
+          }
+        ]
+      }
     },
     barChartOptions() {
-        return {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: { display: false },
-            scales: {
-                xAxes: [{
-                    gridLines: { display: false }
-                }],
-                yAxes: [{
-                    ticks: { display: false },
-                    gridLines: { display: false }
-                }]
-            }
-        };
+      return {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: { display: false },
+        scales: {
+          xAxes: [{
+            gridLines: { display: false }
+          }],
+          yAxes: [{
+            ticks: { display: false },
+            gridLines: { display: false }
+          }]
+        }
+      }
     },
     // AI 이슈 버블 차트 데이터 가공
     scatterChartData() {
-        return {
-            datasets: mockAIIssueData.map(item => ({
-                label: item.keyword,
-                data: [{
-                    x: item.x,
-                    y: item.y,
-                    r: Math.sqrt(item.size) // 버블 크기 결정
-                }],
-                backgroundColor: this.categoryColors[item.category] || '#6b7280',
-                borderColor: this.categoryColors[item.category] || '#6b7280',
-            }))
-        };
+      return {
+        datasets: mockAIIssueData.map(item => ({
+          label: item.keyword,
+          data: [{
+            x: item.x,
+            y: item.y,
+            r: Math.sqrt(item.size) // 버블 크기 결정
+          }],
+          backgroundColor: this.categoryColors[item.category] || '#6b7280',
+          borderColor: this.categoryColors[item.category] || '#6b7280'
+        }))
+      }
     },
     scatterChartOptions() {
-        return {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: { display: false },
-             scales: {
-                xAxes: [{
-                     scaleLabel: { display: true, labelString: '시간 흐름 →' },
-                     gridLines: { color: '#e2e8f0' }
-                }],
-                yAxes: [{
-                     scaleLabel: { display: true, labelString: '관심도 ↑' },
-                     gridLines: { color: '#e2e8f0' }
-                }]
-            },
-            tooltips: {
-                callbacks: {
-                    label: (tooltipItem, data) => {
-                        const dataset = data.datasets[tooltipItem.datasetIndex];
-                        return dataset.label;
-                    }
-                }
+      return {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: { display: false },
+        scales: {
+          xAxes: [{
+            scaleLabel: { display: true, labelString: '시간 흐름 →' },
+            gridLines: { color: '#e2e8f0' }
+          }],
+          yAxes: [{
+            scaleLabel: { display: true, labelString: '관심도 ↑' },
+            gridLines: { color: '#e2e8f0' }
+          }]
+        },
+        tooltips: {
+          callbacks: {
+            label: (tooltipItem, data) => {
+              const dataset = data.datasets[tooltipItem.datasetIndex]
+              return dataset.label
             }
-        };
+          }
+        }
+      }
     }
   },
   methods: {
-      getCategoryLabel(cat) {
-            const labels = {
-                tech: '기술',
-                auto: '자동차',
-                energy: '에너지',
-                finance: '금융',
-                realestate: '부동산',
-                defense: '방산',
-                bio: '바이오'
-            };
-            return labels[cat] || cat;
+    getCategoryLabel(cat) {
+      const labels = {
+        tech: '기술',
+        auto: '자동차',
+        energy: '에너지',
+        finance: '금융',
+        realestate: '부동산',
+        defense: '방산',
+        bio: '바이오'
       }
+      return labels[cat] || cat
+    }
   }
-};
+}
 </script>
 <style src="@/assets/css/components/domain/dashboard/widget.css"></style>

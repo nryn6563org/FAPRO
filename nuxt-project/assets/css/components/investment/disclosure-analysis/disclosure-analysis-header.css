@@ -1,0 +1,24 @@
+/* DisclosureAnalysisHeader Component Styles */
+.c-disclosure-header {
+  @apply flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8;
+}
+
+.c-disclosure-header__content {
+  @apply flex flex-col gap-2;
+}
+
+.c-disclosure-header__title {
+  @apply text-[1.75rem] font-black text-slate-900 dark:text-white leading-tight;
+}
+
+.c-disclosure-header__desc {
+  @apply text-[15px] font-bold text-slate-400 leading-relaxed;
+}
+
+.c-disclosure-header__meta {
+  @apply flex items-center gap-2 text-xs font-black text-slate-400 bg-slate-100 dark:bg-slate-800 px-4 py-2 rounded-xl;
+}
+
+.c-disclosure-header__icon {
+  @apply w-3.5 h-3.5;
+}

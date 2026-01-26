@@ -54,8 +54,8 @@
       </div>
       <div class="p-6">
         <div class="space-y-3">
-          <div 
-            v-for="(stock, index) in topPerformers" 
+          <div
+            v-for="(stock, index) in topPerformers"
             :key="stock.ticker"
             class="flex items-center justify-between p-4 rounded-lg bg-slate-50 hover:bg-slate-100 transition-colors"
           >
@@ -113,9 +113,9 @@
 </template>
 
 <script>
-import { TrendingUp, Target, Award, CheckCircle2 } from 'lucide-vue';
-import BarChart from '@/components/charts/BarChart';
-import PieChart from '@/components/charts/PieChart';
+import { TrendingUp, Target, Award, CheckCircle2 } from 'lucide-vue'
+import BarChart from '@/components/charts/BarChart'
+import PieChart from '@/components/charts/PieChart'
 
 export default {
   name: 'RecommendReturn',
@@ -171,20 +171,20 @@ export default {
         legend: { display: false },
         scales: {
           yAxes: [{
-             ticks: { beginAtZero: true },
-             gridLines: { borderDash: [4, 4] },
-             scaleLabel: { display: true, labelString: '수익률 (%)' }
+            ticks: { beginAtZero: true },
+            gridLines: { borderDash: [4, 4] },
+            scaleLabel: { display: true, labelString: '수익률 (%)' }
           }],
           xAxes: [{
-              gridLines: { display: false }
+            gridLines: { display: false }
           }]
         },
         tooltips: {
-            callbacks: {
-                label: function(tooltipItem) {
-                    return tooltipItem.yLabel + '%';
-                }
+          callbacks: {
+            label: function(tooltipItem) {
+              return tooltipItem.yLabel + '%'
             }
+          }
         }
       },
       pieChartOptions: {
@@ -192,47 +192,47 @@ export default {
         maintainAspectRatio: false,
         legend: { position: 'right' }
       }
-    };
+    }
   },
   computed: {
     summaryCards() {
-        return [
-            { title: '누적 수익률', value: `+${this.performanceData.totalReturns}%`, textColor: 'text-green-600', bgColor: 'bg-green-100', iconColor: 'text-green-600', icon: 'TrendingUp' },
-            { title: '승률', value: `${this.performanceData.winRate}%`, textColor: 'text-blue-600', bgColor: 'bg-blue-100', iconColor: 'text-blue-600', icon: 'Target' },
-            { title: '총 거래', value: `${this.performanceData.totalTrades}건`, textColor: 'text-purple-600', bgColor: 'bg-purple-100', iconColor: 'text-purple-600', icon: 'Award' },
-            { title: '평균 수익률', value: `+${this.performanceData.avgReturn}%`, textColor: 'text-orange-600', bgColor: 'bg-orange-100', iconColor: 'text-orange-600', icon: 'CheckCircle2' }
-        ];
+      return [
+        { title: '누적 수익률', value: `+${this.performanceData.totalReturns}%`, textColor: 'text-green-600', bgColor: 'bg-green-100', iconColor: 'text-green-600', icon: 'TrendingUp' },
+        { title: '승률', value: `${this.performanceData.winRate}%`, textColor: 'text-blue-600', bgColor: 'bg-blue-100', iconColor: 'text-blue-600', icon: 'Target' },
+        { title: '총 거래', value: `${this.performanceData.totalTrades}건`, textColor: 'text-purple-600', bgColor: 'bg-purple-100', iconColor: 'text-purple-600', icon: 'Award' },
+        { title: '평균 수익률', value: `+${this.performanceData.avgReturn}%`, textColor: 'text-orange-600', bgColor: 'bg-orange-100', iconColor: 'text-orange-600', icon: 'CheckCircle2' }
+      ]
     },
     monthlyChartData() {
-        return {
-            labels: this.monthlyReturns.map(item => item.month),
-            datasets: [{
-                label: '수익률',
-                data: this.monthlyReturns.map(item => item.return),
-                backgroundColor: '#3b82f6',
-                borderRadius: 4 // Note: check if chart.js v2 supports borderRadius, might be ignored
-            }]
-        };
+      return {
+        labels: this.monthlyReturns.map(item => item.month),
+        datasets: [{
+          label: '수익률',
+          data: this.monthlyReturns.map(item => item.return),
+          backgroundColor: '#3b82f6',
+          borderRadius: 4 // Note: check if chart.js v2 supports borderRadius, might be ignored
+        }]
+      }
     },
     categoryChartData() {
       return {
-        labels: this.categoryReturns.map((d) => d.name),
+        labels: this.categoryReturns.map(d => d.name),
         datasets: [
           {
-            data: this.categoryReturns.map((d) => d.value),
-            backgroundColor: this.categoryReturns.map((d) => d.color)
+            data: this.categoryReturns.map(d => d.value),
+            backgroundColor: this.categoryReturns.map(d => d.color)
           }
         ]
-      };
+      }
     }
   },
   methods: {
     getRankColor(index) {
-        if (index === 0) return 'bg-gradient-to-r from-yellow-400 to-orange-500';
-        if (index === 1) return 'bg-gradient-to-r from-gray-300 to-gray-400';
-        if (index === 2) return 'bg-gradient-to-r from-amber-600 to-amber-700';
-        return 'bg-slate-400';
+      if (index === 0) { return 'bg-gradient-to-r from-yellow-400 to-orange-500' }
+      if (index === 1) { return 'bg-gradient-to-r from-gray-300 to-gray-400' }
+      if (index === 2) { return 'bg-gradient-to-r from-amber-600 to-amber-700' }
+      return 'bg-slate-400'
     }
   }
-};
+}
 </script>

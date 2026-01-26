@@ -1,8 +1,8 @@
 /**
  * 파이 차트(Pie Chart) 컴포넌트
  */
-import { Pie, mixins } from "vue-chartjs";
-const { reactiveProp } = mixins;
+import { Pie, mixins } from 'vue-chartjs'
+const { reactiveProp } = mixins
 
 export default {
   extends: Pie,
@@ -16,6 +16,6 @@ export default {
   },
   mounted() {
     // 차트 데이터와 옵션을 기반으로 렌더링 실행
-    this.renderChart(this.chartData, this.options);
+    this.renderChart(this.chartData, this.options)
   }
-};
+}

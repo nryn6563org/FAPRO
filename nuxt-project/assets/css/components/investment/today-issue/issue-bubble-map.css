@@ -1,0 +1,68 @@
+/* IssueBubbleMap Component Styles */
+.c-issue-bubble-map {
+  @apply relative w-full h-[500px] bg-slate-50 rounded-[2.5rem] overflow-hidden dark:bg-slate-900/50;
+}
+
+.c-issue-bubble-map__svg {
+  @apply w-full h-full;
+}
+
+.c-issue-bubble-map__bubble {
+  @apply cursor-pointer transition-all duration-300;
+}
+
+.c-issue-bubble-map__bubble--active {
+  @apply stroke-blue-700 stroke-[0.5px];
+}
+
+.c-issue-bubble-map__bubble-circle {
+  @apply transition-opacity duration-300;
+}
+
+.c-issue-bubble-map__bubble-text {
+  @apply pointer-events-none select-none text-white font-black;
+}
+
+.c-issue-bubble-map__info {
+  @apply absolute bottom-6 right-6 flex items-center gap-3 bg-white/90 backdrop-blur-md px-4 py-3 rounded-2xl shadow-lg border border-slate-200 dark:bg-slate-900/90 dark:border-slate-800;
+}
+
+.c-issue-bubble-map__time-box {
+  @apply flex flex-col;
+}
+
+.c-issue-bubble-map__update-date {
+  @apply text-xs font-black text-slate-900 dark:text-white;
+}
+
+.c-issue-bubble-map__update-time {
+  @apply text-[10px] font-bold text-slate-500;
+}
+
+.c-issue-bubble-map__divider {
+  @apply w-px h-8 bg-slate-200 dark:bg-slate-800;
+}
+
+.c-issue-bubble-map__refresh-btn {
+  @apply flex items-center justify-center w-8 h-8 rounded-xl text-blue-600 hover:bg-blue-50 transition-colors dark:hover:bg-blue-900/30;
+}
+
+.c-issue-bubble-map__refresh-icon {
+  @apply w-4 h-4;
+}
+
+.c-issue-bubble-map__tab-menu {
+  @apply absolute top-6 left-1/2 -translate-x-1/2 flex items-center gap-1 bg-white/80 backdrop-blur-md p-1 rounded-2xl border border-slate-200 shadow-sm dark:bg-slate-900/80 dark:border-slate-800;
+}
+
+.c-issue-bubble-map__tab-btn {
+  @apply px-4 py-2 rounded-xl text-xs font-black transition-all;
+}
+
+.c-issue-bubble-map__tab-btn--active {
+  @apply bg-blue-600 text-white shadow-md;
+}
+
+.c-issue-bubble-map__tab-btn--inactive {
+  @apply text-slate-500 hover:text-slate-900 dark:hover:text-white;
+}

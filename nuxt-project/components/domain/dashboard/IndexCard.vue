@@ -27,13 +27,12 @@
   </div>
 </template>
 
-
 <script>
-import { TrendingUp, TrendingDown } from 'lucide-vue';
-import AreaChart from '@/components/charts/AreaChart';
+import { TrendingUp, TrendingDown } from 'lucide-vue'
+import AreaChart from '@/components/charts/AreaChart'
 
 export default {
-  name: "IndexCard",
+  name: 'IndexCard',
   components: {
     TrendingUp, TrendingDown, AreaChart
   },
@@ -44,50 +43,49 @@ export default {
     changePercent: Number,
     unit: String,
     chartData: {
-        type: Array, // Expected: [{ date: string, value: number }]
-        default: () => []
+      type: Array, // Expected: [{ date: string, value: number }]
+      default: () => []
     }
   },
   computed: {
     isPositive() {
-        return this.change >= 0;
+      return this.change >= 0
     },
     chartDataConfig() {
-        // Convert array of objects to Chart.js format
-        return {
-            labels: this.chartData.map(d => d.date),
-            datasets: [
-                {
-                    label: this.name,
-                    borderColor: this.isPositive ? '#10b981' : '#ef4444', 
-                    // backgroundColor handled in AreaChart via gradient
-                    data: this.chartData.map(d => d.value),
-                    borderWidth: 2,
-                    pointRadius: 0,
-                    pointHoverRadius: 0,
-                    fill: true,
-                    lineTension: 0.4 
-                }
-            ]
-        };
+      // Convert array of objects to Chart.js format
+      return {
+        labels: this.chartData.map(d => d.date),
+        datasets: [
+          {
+            label: this.name,
+            borderColor: this.isPositive ? '#10b981' : '#ef4444',
+            // backgroundColor handled in AreaChart via gradient
+            data: this.chartData.map(d => d.value),
+            borderWidth: 2,
+            pointRadius: 0,
+            pointHoverRadius: 0,
+            fill: true,
+            lineTension: 0.4
+          }
+        ]
+      }
     },
     chartOptions() {
-        return {
-            maintainAspectRatio: false,
-            responsive: true,
-            legend: { display: false },
-            scales: {
-                xAxes: [{ display: false }],
-                yAxes: [{ display: false }]
-            },
-            tooltips: { enabled: false },
-            elements: {
-                point: { radius: 0 }
-            }
-        };
+      return {
+        maintainAspectRatio: false,
+        responsive: true,
+        legend: { display: false },
+        scales: {
+          xAxes: [{ display: false }],
+          yAxes: [{ display: false }]
+        },
+        tooltips: { enabled: false },
+        elements: {
+          point: { radius: 0 }
+        }
+      }
     }
   }
-};
+}
 </script>
 <style src="@/assets/css/components/domain/dashboard/index-card.css"></style>
-
