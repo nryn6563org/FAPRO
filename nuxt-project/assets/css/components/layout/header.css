@@ -30,7 +30,7 @@
 
 /* 브랜드 영역(로고+타이틀) */
 .l-header__brand {
-    @apply flex items-center gap-3;
+    @apply flex items-center gap-3 cursor-pointer;
 }
 
 /* 로고 아이콘 */

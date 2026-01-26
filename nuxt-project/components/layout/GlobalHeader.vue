@@ -16,7 +16,7 @@
       </button>
 
       <!-- 브랜드 로고 및 타이틀 -->
-      <div class="l-header__brand">
+      <div class="l-header__brand" @click="gotoMain">
         <div class="l-header__logo">
           <span class="l-header__logo-text">FA</span>
         </div>
@@ -206,6 +206,9 @@ export default {
     setTheme(mode) {
       this.$emit('theme-change', mode)
       this.isThemeMenuOpen = false
+    },
+    gotoMain() {
+      this.$router.push('/')
     }
   }
 }
