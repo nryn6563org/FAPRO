@@ -107,7 +107,7 @@
     @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-slate-400 w-5 h-5;
 }
 
-.l-main__search-input {
+.l-main__search-wrapper .l-main__search-input {
     @apply pl-10 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-400;
 }
 

@@ -58,6 +58,9 @@ export default {
           data: this.data.map(item => item.value),
           borderWidth: 2,
           pointRadius: 3,
+          hoverBorderWidth: 4,
+          hoverRadius: 5,
+          fill: false,
           yAxisID: 'y-axis-1'
         }
       ]
@@ -73,9 +76,11 @@ export default {
             borderColor: colors[index % colors.length],
             backgroundColor: 'transparent',
             data: this.data.map(item => item[key]),
-            borderWidth: 1,
+            borderWidth: 1.5,
             pointRadius: 2,
-            borderDash: [5, 5],
+            hoverBorderWidth: 3,
+            hoverRadius: 4,
+            fill: false,
             yAxisID: 'y-axis-2'
           })
         })
@@ -87,6 +92,11 @@ export default {
       return {
         responsive: true,
         maintainAspectRatio: false,
+        hover: {
+          mode: 'dataset',
+          intersect: false,
+          animationDuration: 400
+        },
         legend: {
           display: true,
           position: 'bottom',
