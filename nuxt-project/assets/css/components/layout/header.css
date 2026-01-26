@@ -54,8 +54,36 @@
 }
 
 /* 테마 선택 래퍼 */
-.l-header__theme-wrapper {
+.l-header__theme-wrapper,
+.l-header__lang-wrapper {
     @apply relative;
+}
+
+/* 언어/자동번역 버튼 */
+.l-header__lang-btn {
+    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded transition-all duration-200 flex items-center justify-center relative;
+}
+
+.l-header__lang-btn--active {
+    @apply text-blue-700 bg-blue-50 dark:bg-blue-900/40 dark:text-blue-300 shadow-inner;
+}
+
+/* 언어 선택 드롭다운 메뉴 */
+.l-header__lang-menu {
+    @apply absolute right-0 top-full mt-2 w-40 bg-white dark:bg-slate-800 rounded shadow-xl border border-slate-200 dark:border-slate-700 py-1 z-50 overflow-hidden;
+}
+
+.l-header__lang-item {
+    @apply w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-3 transition-colors font-medium;
+}
+
+.l-header__lang-flag {
+    @apply text-lg;
+}
+
+/* 헤더 상단 액션 그룹 (테마 + 언어 등) */
+.l-header__actions-group {
+    @apply flex items-center gap-1.5;
 }
 
 /* 테마 변경 버튼 */
@@ -121,4 +149,30 @@
 /* 로그인 버튼 */
 .l-header__login-btn {
     @apply flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded text-sm font-medium transition-colors;
+}
+
+/* --- Utility: Premium Tooltips --- */
+.u-tooltip {
+    @apply relative;
+}
+
+.u-tooltip::after {
+    content: attr(data-tooltip);
+    @apply absolute top-full left-1/2 -translate-x-1/2 mt-2 px-2 py-1 bg-slate-900 text-white text-[10px] font-bold rounded opacity-0 invisible transition-all duration-200 whitespace-nowrap z-[100] shadow-xl pointer-events-none;
+    transform: translate(-50%, 4px);
+}
+
+.u-tooltip:hover::after {
+    @apply opacity-100 visible;
+    transform: translate(-50%, 0);
+}
+
+/* 툴팁 화살표 */
+.u-tooltip::before {
+    content: '';
+    @apply absolute top-full left-1/2 -translate-x-1/2 mt-[2px] border-4 border-transparent border-b-slate-900 opacity-0 invisible transition-all duration-200 z-[100] pointer-events-none;
+}
+
+.u-tooltip:hover::before {
+    @apply opacity-100 visible;
 }

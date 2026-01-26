@@ -32,7 +32,7 @@
         </div>
         <div class="c-client-register__field">
           <label class="c-client-register__label">초기 자산</label>
-          <Input type="number" placeholder="0" class="c-client-register__input" />
+          <Input type="number" placeholder="0" class="c-client-register__input c-client-register__input--right" />
         </div>
         <div class="c-client-register__field c-client-register__field--full">
           <label class="c-client-register__label">메모 (특이사항)</label>

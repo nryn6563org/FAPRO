@@ -310,7 +310,7 @@ export default {
             ticks: { fontSize: 12 }
           }],
           yAxes: [{
-            gridLines: { borderDash: [4, 4], color: '#e2e8f0' },
+            gridLines: { borderDash: [4, 4], color: '#717478' },
             ticks: { fontSize: 12 }
           }]
         },

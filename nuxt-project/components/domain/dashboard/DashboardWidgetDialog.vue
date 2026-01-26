@@ -58,10 +58,10 @@
                            @click="enterEditMode"
                            variant="outline"
                            size="sm"
-                           class="flex items-center gap-2 px-3 h-10 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800"
+                           class="c-widget-dialog__btn-edit-mode"
                        >
-                           <Settings class="w-4 h-4 text-slate-500" />
-                           <span class="text-xs font-bold text-slate-600 dark:text-slate-300">위젯 편집</span>
+                           <Settings class="c-widget-dialog__btn-edit-mode-icon" />
+                           <span class="c-widget-dialog__btn-edit-mode-text">위젯 편집</span>
                        </Button>
 
                        <div class="c-widget-dialog__search-wrapper">
@@ -128,22 +128,24 @@
               </div>
 
               <!-- 편집 모드 하단 플로팅 바 -->
-              <div v-if="isEditMode" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3 bg-slate-900 text-white px-6 py-3 rounded-full shadow-xl">
-                  <span class="text-sm font-bold mr-2">위젯 크기 편집 중</span>
-                  <button
-                      @click="cancelEditMode"
-                      class="px-3 py-1.5 rounded-xl bg-slate-700 hover:bg-slate-600 text-xs font-bold transition-colors"
-                  >
-                      취소
-                  </button>
-                  <button
-                      @click="saveEditMode"
-                      class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold transition-colors flex items-center gap-1.5"
-                  >
-                      <Save class="w-3 h-3" />
-                      저장
-                  </button>
-              </div>
+              <transition name="slide-up">
+                  <div v-if="isEditMode" class="c-widget-dialog__edit-mode-bar">
+                      <span class="c-widget-dialog__edit-mode-label">위젯 크기 편집 중</span>
+                      <button
+                          @click="cancelEditMode"
+                          class="c-widget-dialog__edit-mode-btn-cancel"
+                      >
+                          취소
+                      </button>
+                      <button
+                          @click="saveEditMode"
+                          class="c-widget-dialog__edit-mode-btn-save"
+                      >
+                          <Save class="c-widget-dialog__edit-mode-icon" />
+                          저장
+                      </button>
+                  </div>
+              </transition>
           </div>
       </div>
   </Dialog>

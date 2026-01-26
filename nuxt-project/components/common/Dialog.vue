@@ -4,25 +4,27 @@
   - 배경 클릭 시 닫기, 닫기 버튼, 슬롯(Slot)을 통한 콘텐츠 주입 기능을 제공합니다.
 -->
 <template>
-  <div v-if="open" class="c-dialog">
-    <!-- 배경(Backdrop): 클릭 시 모달 닫힘 ($emit 'update:open') -->
-    <div class="c-dialog__backdrop" @click="$emit('update:open', false)"></div>
+  <transition name="zoom">
+    <div v-if="open" class="c-dialog">
+      <!-- 배경(Backdrop): 클릭 시 모달 닫힘 ($emit 'update:open') -->
+      <div class="c-dialog__backdrop" @click="$emit('update:open', false)"></div>
 
-    <!-- 다이얼로그 본문 영역: 실제 콘텐츠 표시 -->
-    <div class="c-dialog__content" :class="contentClass">
-       <!-- 슬롯: 부모 컴포넌트에서 전달한 내용 렌더링 -->
-       <slot></slot>
-       
-       <!-- 닫기 버튼: 우측 상단 X 아이콘 -->
-       <button
-         class="c-dialog__close"
-         @click="$emit('update:open', false)"
-       >
-         <X class="c-dialog__close-icon" />
-         <span class="sr-only">닫기</span>
-       </button>
+      <!-- 다이얼로그 본문 영역: 실제 콘텐츠 표시 -->
+      <div class="c-dialog__content" :class="contentClass">
+         <!-- 슬롯: 부모 컴포넌트에서 전달한 내용 렌더링 -->
+         <slot></slot>
+         
+         <!-- 닫기 버튼: 우측 상단 X 아이콘 -->
+         <button
+           class="c-dialog__close"
+           @click="$emit('update:open', false)"
+         >
+           <X class="c-dialog__close-icon" />
+           <span class="sr-only">닫기</span>
+         </button>
+      </div>
     </div>
-  </div>
+  </transition>
 </template>
 
 <script>

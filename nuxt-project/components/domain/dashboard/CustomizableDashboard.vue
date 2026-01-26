@@ -16,14 +16,16 @@
     <!-- 편집 모드 플로팅 바 (상단 고정) -->
     <div v-if="isEditing" class="c-dashboard__edit-bar">
         <span class="c-dashboard__edit-label">위젯 편집 모드</span>
-        <!-- 취소 버튼: 편집 전 상태로 복구 -->
-        <button @click="handleCancelEdit" class="c-dashboard__edit-btn-cancel">
-            취소
-        </button>
-        <!-- 저장 버튼: 변경 사항 확정 -->
-        <button @click="handleSaveEdit" class="c-dashboard__edit-btn-save">
-            저장 완료
-        </button>
+        <div class="c-dashboard__edit-actions">
+            <!-- 취소 버튼: 편집 전 상태로 복구 -->
+            <button @click="handleCancelEdit" class="c-dashboard__edit-btn-cancel">
+                취소
+            </button>
+            <!-- 저장 버튼: 변경 사항 확정 -->
+            <button @click="handleSaveEdit" class="c-dashboard__edit-btn-save">
+                저장 완료
+            </button>
+        </div>
     </div>
 
     <!-- 위젯 선택 다이얼로그 (모달) -->

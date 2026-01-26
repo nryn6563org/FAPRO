@@ -93,12 +93,13 @@
 
 /* 고객 카드 그리드 레이아웃 */
 .p-clients__grid {
-    @apply flex flex-wrap gap-4 justify-start;
+    @apply grid gap-4;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
 }
 
 /* 개별 고객 카드 컴포넌트 */
 .c-client-card {
-    @apply w-[280px] bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
+    @apply w-full bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
 }
 
 /* 카드 호버 효과 */

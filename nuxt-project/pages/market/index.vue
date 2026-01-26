@@ -164,11 +164,11 @@ export default {
         legend: { display: false },
         scales: {
           xAxes: [{
-            gridLines: { color: '#e2e8f0' },
+            gridLines: { color: '#717478' },
             ticks: { fontSize: 12 }
           }],
           yAxes: [{
-            gridLines: { color: '#e2e8f0' },
+            gridLines: { color: '#717478' },
             ticks: { fontSize: 12 }
           }]
         },

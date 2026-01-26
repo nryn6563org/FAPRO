@@ -330,11 +330,11 @@ export default {
         scales: {
           xAxes: [{
             scaleLabel: { display: true, labelString: '시간 흐름 →' },
-            gridLines: { color: '#e2e8f0' }
+            gridLines: { color: '#717478' }
           }],
           yAxes: [{
             scaleLabel: { display: true, labelString: '관심도 ↑' },
-            gridLines: { color: '#e2e8f0' }
+            gridLines: { color: '#717478' }
           }]
         },
         tooltips: {
