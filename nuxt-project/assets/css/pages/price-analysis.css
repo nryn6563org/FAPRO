@@ -1,6 +1,6 @@
 /* Price Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-price-analysis {
-  @apply flex flex-col gap-10 min-h-screen bg-[#f8fafc] dark:bg-[#020617];
+  @apply flex flex-col gap-10 min-h-screen dark:bg-[#020617];
 }
 
 /* Market Indices Section */

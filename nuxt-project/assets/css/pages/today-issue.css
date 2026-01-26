@@ -1,6 +1,6 @@
 /* Today's Issue Page Styles - Premium 1920x1080 Optimized */
 .p-today-issue {
-  @apply flex flex-col gap-8 min-h-screen bg-[#f8fafc] dark:bg-[#020617];
+  @apply flex flex-col gap-8 min-h-screen dark:bg-[#020617];
 }
 
 .p-today-issue__main-section {

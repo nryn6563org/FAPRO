@@ -1,6 +1,6 @@
 /* Recommended Stocks Page Styles - Premium Layout */
 .p-recommend-stocks {
-  @apply flex flex-col min-h-screen bg-[#f8fafc] dark:bg-[#020617];
+  @apply flex flex-col min-h-screen dark:bg-[#020617];
 }
 
 /* Page Layout Container */
