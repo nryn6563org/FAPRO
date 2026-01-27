@@ -6,6 +6,7 @@
 
 .p-assistant__layout {
     @apply grid grid-cols-1 gap-6 lg:grid-cols-[1fr_350px];
+    width: 1584px; /* Fixed to l-main content width at 1920 viewport */
 }
 
 /* Chat Area */
@@ -97,23 +98,53 @@
 
 /* Sidebar suggestions */
 .p-assistant__sidebar {
-    @apply flex flex-col gap-6;
+    @apply flex flex-col gap-6 h-[700px];
 }
 
 .p-assistant__suggest-card {
-    @apply p-6 bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply p-6 bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6 h-full overflow-hidden;
 }
 
-.p-assistant__suggest-title {
-    @apply text-base font-bold text-slate-800 mb-6 dark:text-white;
+.p-assistant__suggest-tabs {
+    @apply flex border-b border-slate-100 dark:border-slate-800;
+}
+
+.p-assistant__suggest-tab {
+    @apply flex-1 pb-3 text-[13px] font-bold text-slate-400 transition-all relative text-center;
+}
+
+.p-assistant__suggest-tab--active {
+    @apply text-blue-600;
+}
+
+.p-assistant__suggest-tab--active::after {
+    content: "";
+    @apply absolute bottom-[-1px] left-0 w-full h-[2px] bg-blue-600;
 }
 
 .p-assistant__suggest-list {
-    @apply flex flex-col gap-3;
+    @apply flex flex-col gap-3 flex-1 overflow-y-auto pr-1;
+}
+
+/* Scrollbar styling for suggestion list */
+.p-assistant__suggest-list::-webkit-scrollbar {
+    @apply w-1.5;
+}
+
+.p-assistant__suggest-list::-webkit-scrollbar-track {
+    @apply bg-transparent;
+}
+
+.p-assistant__suggest-list::-webkit-scrollbar-thumb {
+    @apply bg-slate-200 rounded-full dark:bg-slate-800;
 }
 
 .p-assistant__suggest-item {
-    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-400;
+    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-400 flex items-center gap-3;
+}
+
+.p-assistant__suggest-item span {
+    @apply flex-1;
 }
 
 .p-assistant__suggest-item:hover {

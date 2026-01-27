@@ -1,341 +1,277 @@
 <template>
   <div class="p-signals">
-    <div class="p-signals__header-group">
+    <div class="p-signals__header">
       <div class="c-page-header">
         <h2 class="c-page-header__title">AI 매매 시그널</h2>
         <p class="c-page-header__desc">실시간 AI 기반 매매 신호 및 투자 추천</p>
       </div>
-      <Button variant="outline" size="sm" class="gap-2">
-        <Filter class="w-4 h-4" />
-        필터 설정
-      </Button>
-    </div>
-
-    <!-- 요약 카드 영역 (전체, 매수, 매도, 보유) -->
-    <div class="p-signals__summary-grid">
-      <div class="p-signals__summary-card p-signals__summary-card--total">
-        <div>
-          <p class="p-signals__summary-label">전체 시그널</p>
-          <p class="p-signals__summary-value">{{ signals.length }}</p>
-        </div>
-        <div class="p-signals__summary-icon-box bg-blue-100 dark:bg-blue-800 text-blue-600 dark:text-blue-300">
-          <Zap class="w-5 h-5" />
-        </div>
-      </div>
-
-      <div class="p-signals__summary-card">
-        <div>
-          <p class="p-signals__summary-label">매수 시그널</p>
-          <p class="p-signals__summary-value" style="color: var(--red-500)">{{ counts.buy }}</p>
-        </div>
-        <div class="p-signals__summary-icon-box bg-red-50 dark:bg-red-900/20 text-red-500">
-          <TrendingUp class="w-5 h-5" />
-        </div>
-      </div>
-
-      <div class="p-signals__summary-card">
-        <div>
-          <p class="p-signals__summary-label">매도 시그널</p>
-          <p class="p-signals__summary-value" style="color: var(--blue-500)">{{ counts.sell }}</p>
-        </div>
-        <div class="p-signals__summary-icon-box bg-blue-50 dark:bg-blue-900/20 text-blue-500">
-          <TrendingDown class="w-5 h-5" />
-        </div>
-      </div>
-
-      <div class="p-signals__summary-card">
-        <div>
-          <p class="p-signals__summary-label">보유 시그널</p>
-          <p class="p-signals__summary-value" style="color: var(--slate-400)">{{ counts.hold }}</p>
-        </div>
-        <div class="p-signals__summary-icon-box bg-slate-50 dark:bg-slate-800/50 text-slate-400">
-          <Target class="w-5 h-5" />
-        </div>
+      <div class="p-signals__header-actions">
+        <Button variant="outline" size="sm" class="p-signals__filter-btn">
+          <Filter class="p-signals__icon-filter" />
+          필터 설정
+        </Button>
       </div>
     </div>
 
-    <!-- 필터 탭 (전체/매수/매도/보유) -->
-    <div class="p-signals__filter-nav">
-       <button
-          v-for="tab in filters" :key="tab.value"
-          @click="filter = tab.value"
-          class="p-signals__filter-btn"
-          :class="filter === tab.value ? 'p-signals__filter-btn--active' : ''"
-       >
-          {{ tab.label }}
-       </button>
-    </div>
-
-    <!-- 시그널 리스트 영역 -->
-    <div class="p-signals__list">
-       <div
-         v-for="signal in filteredSignals" :key="signal.id"
-         class="p-signals__item"
-       >
-          <!-- 왼쪽 패널: 종목 정보 및 시그널 뱃지 -->
-          <div class="p-signals__info-panel">
-             <div class="p-signals__stock-header">
-                <div class="p-signals__stock-icon" :class="getSignalBadgeClass(signal.type)">
-                   <component :is="getSignalIcon(signal.type)" class="w-6 h-6" />
-                </div>
-                <div>
-                   <h3 class="p-signals__ticker">{{ signal.ticker }}</h3>
-                   <div class="p-signals__badge-group">
-                      <span class="p-signals__badge" :class="getSignalTextClass(signal.type)">
-                         {{ getSignalLabel(signal.type) }}
-                      </span>
-                      <span class="p-signals__badge bg-slate-200 dark:bg-slate-700 text-slate-600 dark:text-slate-300">
-                         {{ getStrengthLabel(signal.strength) }}
-                      </span>
-                   </div>
-                   <p class="text-xs text-slate-500 mt-1">{{ signal.name }}</p>
-                </div>
-             </div>
-             <div class="p-signals__timestamp-row">
-                <div class="flex items-center gap-1">
-                   <Clock class="w-3.5 h-3.5" />
-                   {{ signal.timestamp }}
-                </div>
-                <div class="px-2 py-0.5 rounded-xl bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 font-bold">
-                   {{ signal.timeframe }}
-                </div>
-             </div>
+    <!-- 첫 번째 행: 현황 및 최근 내역 -->
+    <div class="p-signals__top-grid">
+      <div class="p-signals__status-card c-content-card">
+        <h3 class="p-signals__card-title">오늘의 AI매매신호 현황</h3>
+        <div class="p-signals__status-visual">
+          <div class="p-signals__status-circle p-signals__status-circle--buy">
+            <span class="p-signals__status-label">매수</span>
+            <span class="p-signals__status-value">10종목</span>
           </div>
-
-          <!-- 오른쪽 패널: 가격 정보 및 상세 분석 -->
-          <div class="p-signals__data-panel">
-              <div class="p-signals__price-grid">
-                 <div>
-                    <p class="p-signals__price-label">현재가</p>
-                    <p class="p-signals__price-value">{{ formatPrice(signal.price) }}</p>
-                 </div>
-                 <div>
-                    <p class="p-signals__price-label">목표가</p>
-                    <p class="p-signals__price-value indicator--positive">{{ formatPrice(signal.targetPrice) }}</p>
-                 </div>
-                 <div>
-                    <p class="p-signals__price-label">손절가</p>
-                    <p class="p-signals__price-value indicator--negative">{{ formatPrice(signal.stopLoss) }}</p>
-                 </div>
-              </div>
-
-              <div class="p-signals__confidence-section">
-                  <div class="p-signals__confidence-header">
-                     <span class="p-signals__confidence-label">AI 신뢰도</span>
-                     <span class="p-signals__confidence-label" style="font-family: monospace">{{ signal.confidence }}%</span>
-                  </div>
-                  <div class="p-signals__confidence-bar-bg">
-                     <div
-                        class="h-full rounded-full transition-all duration-500"
-                        :class="signal.confidence >= 80 ? 'bg-red-500' : signal.confidence >= 60 ? 'bg-orange-500' : 'bg-blue-500'"
-                        :style="{ width: signal.confidence + '%' }"
-                     ></div>
-                  </div>
-              </div>
-
-              <div class="p-signals__analysis-box">
-                 <p class="p-signals__reason">💡 {{ signal.reason }}</p>
-                 <div class="p-signals__tag-group">
-                    <span v-for="(indicator, idx) in signal.indicators" :key="idx" class="p-signals__tag">
-                       #{{ indicator }}
-                    </span>
-                 </div>
-              </div>
-
-             <div class="p-signals__actions">
-                <Button variant="outline" size="sm" class="gap-1">
-                   상세 분석 <ChevronRight class="w-3.5 h-3.5" />
-                </Button>
-                <Button size="sm" class="gap-1 bg-slate-900 text-white hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-100">
-                   <CheckCircle2 class="w-3.5 h-3.5" /> 시그널 적용
-                </Button>
-             </div>
+          <div class="p-signals__status-circle p-signals__status-circle--sell">
+            <span class="p-signals__status-label">매도</span>
+            <span class="p-signals__status-value">47종목</span>
           </div>
-       </div>
+        </div>
+        <div class="p-signals__countdown">
+          AI의 다음 신호 발생일까지 <span class="p-signals__countdown-time">10분05초</span>
+        </div>
+        <div class="p-signals__status-banner">
+          02:45 새로운 <span class="p-signals__status-highlight">매수신호</span>가 3종목에서 발생
+        </div>
+      </div>
 
-       <div v-if="filteredSignals.length === 0" class="c-content-card p-12 text-center text-slate-500">
-           <AlertTriangle class="w-12 h-12 mx-auto mb-4 text-slate-300" />
-           <h3 class="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">시그널이 없습니다</h3>
-           <p>해당 필터에 맞는 매매 시그널이 없습니다</p>
-       </div>
+      <div class="p-signals__recent-card c-content-card">
+        <div class="p-signals__recent-header">
+          <h3 class="p-signals__card-title">최근 AI매매신호 내역</h3>
+          <span class="p-signals__recent-subtitle">최근 매도 종목</span>
+        </div>
+        <div class="p-signals__recent-list">
+          <div v-for="item in recentSignals" :key="item.name" class="p-signals__recent-item">
+            <div class="p-signals__recent-info">
+              <div class="p-signals__recent-name-group">
+                <span class="p-signals__stock-name">{{ item.name }}</span>
+                <Info class="p-signals__icon-info" />
+              </div>
+              <div class="p-signals__recent-type">최근 {{ item.type }} 종목</div>
+            </div>
+            <span class="p-signals__profit-value" :class="item.profit > 0 ? 'p-signals__profit-value--up' : 'p-signals__profit-value--down'">
+              +{{ item.profit }}%
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 두 번째 행: 종목 카테고리 그리드 -->
+    <div class="p-signals__category-grid">
+      <!-- 인기 종목 -->
+      <div class="p-signals__category-card c-content-card">
+        <h3 class="p-signals__card-title">지금 인기 종목들은</h3>
+        <div class="p-signals__stock-list">
+          <div v-for="stock in popularStocks" :key="stock.name" class="p-signals__stock-item">
+            <div class="p-signals__stock-info">
+              <div class="p-signals__stock-icon p-signals__stock-icon--ai">
+                AI
+              </div>
+              <div class="p-signals__stock-name-group">
+                <div class="p-signals__stock-title">{{ stock.name }}</div>
+                <div class="p-signals__stock-status">{{ stock.status }}</div>
+              </div>
+            </div>
+            <div class="p-signals__stock-data">
+              <div class="p-signals__stock-profit" :class="stock.profit > 0 ? 'p-signals__stock-profit--up' : 'p-signals__stock-profit--down'">
+                +{{ stock.profit }}%
+              </div>
+              <div class="p-signals__stock-details">{{ stock.date }} {{ stock.type }} {{ formatPrice(stock.price) }}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 매수 후 급등 종목 -->
+      <div class="p-signals__category-card c-content-card">
+        <h3 class="p-signals__card-title">매수 후 급등 종목</h3>
+        <div class="p-signals__stock-list">
+          <div v-for="stock in spikedStocks" :key="stock.name" class="p-signals__stock-item">
+            <div class="p-signals__stock-info">
+              <div class="p-signals__stock-icon p-signals__stock-icon--hot">
+                HOT
+              </div>
+              <div class="p-signals__stock-name-group">
+                <div class="p-signals__stock-title">{{ stock.name }}</div>
+                <div class="p-signals__stock-status">실시간 급등중</div>
+              </div>
+            </div>
+            <div class="p-signals__stock-data">
+              <div class="p-signals__stock-profit p-signals__stock-profit--up">
+                +{{ stock.profit }}%
+              </div>
+              <div class="p-signals__stock-details">{{ stock.date }} 매수</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 수익률 상위 종목 -->
+      <div class="p-signals__category-card c-content-card">
+        <h3 class="p-signals__card-title">수익률 상위 종목 (최근 12개월)</h3>
+        <div class="p-signals__stock-list">
+          <div v-for="stock in topPerformanceStocks" :key="stock.name" class="p-signals__stock-item">
+            <div class="p-signals__stock-info">
+              <div class="p-signals__stock-icon p-signals__stock-icon--top">
+                TOP
+              </div>
+              <div class="p-signals__stock-name-group">
+                <div class="p-signals__stock-title">{{ stock.name }}</div>
+                <div class="p-signals__stock-status">보유기간 {{ stock.period }}</div>
+              </div>
+            </div>
+            <div class="p-signals__stock-data">
+              <div class="p-signals__stock-profit p-signals__stock-profit--best">
+                +{{ stock.maxProfit }}%
+              </div>
+              <div class="p-signals__stock-details">최고 수익기록</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 세 번째 행: 실시간 피드 -->
+    <div class="p-signals__feed-grid">
+      <!-- 오늘 발생한 매수신호 -->
+      <div class="p-signals__feed-card">
+        <div class="p-signals__feed-header p-signals__feed-header--buy">
+          오늘 발생한 AI매수신호
+        </div>
+        <div class="p-signals__feed-content">
+          <p class="p-signals__feed-summary">현재 매수 신호 발생 종목 총 <span class="p-signals__feed-count p-signals__feed-count--buy">67</span> 종목</p>
+          <div class="p-signals__feed-list">
+            <div v-for="(signal, idx) in buySignals" :key="idx" class="p-signals__feed-item p-signals__feed-item--buy">
+              <div class="p-signals__feed-time">
+                <div class="p-signals__time-label">
+                  <Clock class="p-signals__icon-clock" />
+                  {{ signal.time }}
+                </div>
+                <div class="p-signals__time-dot"></div>
+              </div>
+              <div class="p-signals__feed-box">
+                <div class="p-signals__feed-stock">
+                  <div class="p-signals__stock-avatar p-signals__stock-avatar--buy">
+                    <Zap class="p-signals__icon-zap p-signals__icon-zap--buy" />
+                  </div>
+                  <div class="p-signals__stock-main">
+                    <div class="p-signals__stock-name">{{ signal.name }}</div>
+                    <div class="p-signals__stock-code">{{ signal.code }}</div>
+                  </div>
+                </div>
+                <div class="p-signals__feed-action p-signals__feed-action--buy">
+                  <span class="p-signals__action-badge p-signals__action-badge--buy">매수</span>
+                  <span class="p-signals__action-price">{{ formatPrice(signal.price) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 오늘 발생한 매도신호 -->
+      <div class="p-signals__feed-card">
+        <div class="p-signals__feed-header p-signals__feed-header--sell">
+          오늘 발생한 AI매도신호
+        </div>
+        <div class="p-signals__feed-content">
+          <p class="p-signals__feed-summary">현재 매도 신호 발생 종목 총 <span class="p-signals__feed-count p-signals__feed-count--sell">45</span> 종목</p>
+          <div class="p-signals__feed-list">
+            <div v-for="(signal, idx) in sellSignals" :key="idx" class="p-signals__feed-item p-signals__feed-item--sell">
+              <div class="p-signals__feed-time">
+                <div class="p-signals__time-label">
+                  <Clock class="p-signals__icon-clock" />
+                  {{ signal.time }}
+                </div>
+                <div class="p-signals__time-dot"></div>
+              </div>
+              <div class="p-signals__feed-box">
+                <div class="p-signals__feed-stock">
+                  <div class="p-signals__stock-avatar p-signals__stock-avatar--sell">
+                    <Zap class="p-signals__icon-zap p-signals__icon-zap--sell" />
+                  </div>
+                  <div class="p-signals__stock-main">
+                    <div class="p-signals__stock-name">{{ signal.name }}</div>
+                    <div class="p-signals__stock-code">{{ signal.code }}</div>
+                  </div>
+                </div>
+                <div class="p-signals__feed-action p-signals__feed-action--sell">
+                  <span class="p-signals__action-badge p-signals__action-badge--sell">매도</span>
+                  <span class="p-signals__action-price">{{ formatPrice(signal.price) }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { Zap, TrendingUp, TrendingDown, ArrowUpRight, ArrowDownRight, Clock, Target, AlertTriangle, CheckCircle2, ChevronRight, Filter } from 'lucide-vue'
+import { Search, Info, Filter, Zap, TrendingUp, TrendingDown, Clock, ChevronRight } from 'lucide-vue'
 import Button from '@/components/common/Button.vue'
 
-const mockSignals = [
-  {
-    id: '1',
-    ticker: 'AAPL',
-    name: 'Apple Inc.',
-    type: 'buy',
-    strength: 'strong',
-    price: 185.50,
-    targetPrice: 200.00,
-    stopLoss: 178.00,
-    confidence: 87,
-    reason: 'RSI 과매도 구간 진입, MACD 골든크로스 형성, 거래량 급증',
-    timestamp: '2026-01-20 09:30',
-    timeframe: '일봉',
-    indicators: ['RSI', 'MACD', 'Volume']
-  },
-  {
-    id: '2',
-    ticker: 'TSLA',
-    name: 'Tesla Inc.',
-    type: 'sell',
-    strength: 'moderate',
-    price: 248.30,
-    targetPrice: 235.00,
-    stopLoss: 255.00,
-    confidence: 72,
-    reason: '저항선 도달, 상대적 강도 약화, 매도 거래량 증가',
-    timestamp: '2026-01-20 10:15',
-    timeframe: '일봉',
-    indicators: ['Support/Resistance', 'RSI', 'Volume']
-  },
-  {
-    id: '3',
-    ticker: '삼성전자',
-    name: 'Samsung Electronics',
-    type: 'buy',
-    strength: 'strong',
-    price: 72500,
-    targetPrice: 78000,
-    stopLoss: 69000,
-    confidence: 91,
-    reason: '이동평균선 상향 돌파, 외국인 순매수 지속, 기관 매수세 강화',
-    timestamp: '2026-01-20 11:00',
-    timeframe: '일봉',
-    indicators: ['MA', 'Foreign/Institution', 'Volume']
-  },
-  {
-    id: '4',
-    ticker: 'NVDA',
-    name: 'NVIDIA Corp.',
-    type: 'buy',
-    strength: 'moderate',
-    price: 520.80,
-    targetPrice: 550.00,
-    stopLoss: 505.00,
-    confidence: 78,
-    reason: '볼린저밴드 하단 터치 후 반등, AI 섹터 모멘텀 강화',
-    timestamp: '2026-01-20 11:30',
-    timeframe: '4시간봉',
-    indicators: ['Bollinger Bands', 'Sector Analysis']
-  },
-  {
-    id: '5',
-    ticker: 'SK하이닉스',
-    name: 'SK Hynix',
-    type: 'hold',
-    strength: 'weak',
-    price: 145000,
-    targetPrice: 148000,
-    stopLoss: 142000,
-    confidence: 55,
-    reason: '횡보 구간, 추세 불명확, 추가 신호 대기 필요',
-    timestamp: '2026-01-20 12:00',
-    timeframe: '일봉',
-    indicators: ['Trend', 'Volume']
-  }
-]
-
 export default {
-  // 컴포넌트 이름: 매매 시그널 페이지
   name: 'TradingSignals',
   components: {
     Button,
+    Search,
+    Info,
+    Filter,
     Zap,
     TrendingUp,
     TrendingDown,
-    ArrowUpRight,
-    ArrowDownRight,
     Clock,
-    Target,
-    AlertTriangle,
-    CheckCircle2,
-    ChevronRight,
-    Filter
+    ChevronRight
   },
   data() {
     return {
-      signals: mockSignals,
-      filter: 'all',
-      filters: [
-        { value: 'all', label: '전체' },
-        { value: 'buy', label: '매수' },
-        { value: 'sell', label: '매도' },
-        { value: 'hold', label: '보유' }
+      recentSignals: [
+        { name: '베노티엠알', profit: 38.35, type: '매도' },
+        { name: '이엔시스', profit: 35.65, type: '매수' },
+        { name: '라온텍', profit: 35.52, type: '매도' }
+      ],
+      popularStocks: [
+        { name: '한국전력', status: '관망중', date: '01/22', type: '매도', price: 61400, profit: 23.73 },
+        { name: '현대차', status: '관망중', date: '01/22', type: '매수', price: 552000, profit: 83.54 },
+        { name: '삼성중공업', status: '관망중', date: '01/20', type: '매도', price: 30600, profit: 13.33 },
+        { name: '삼성전자', status: '보유중', date: '12/22', type: '매수', price: 110300, profit: 38.44 },
+        { name: '미래에셋증권', status: '보유중', date: '12/18', type: '매수', price: 22600, profit: 51.88 }
+      ],
+      spikedStocks: [
+        { name: 'LG전자', date: '01/22', profit: 28.15 },
+        { name: '포스코', date: '01/20', profit: 45.28 },
+        { name: '기아', date: '01/18', profit: 18.92 },
+        { name: '네이버', date: '01/15', profit: 52.67 },
+        { name: '카카오', date: '01/12', profit: 35.42 }
+      ],
+      topPerformanceStocks: [
+        { name: '실룽필산', maxProfit: 314.39, period: '9일' },
+        { name: '영일구축', maxProfit: 306.72, period: '106일' },
+        { name: '계양전기', maxProfit: 183.28, period: '44일' },
+        { name: '녹십자홀딩스2우', maxProfit: 176.92, period: '11일' },
+        { name: '계양전기우', maxProfit: 164.54, period: '44일' }
+      ],
+      buySignals: [
+        { time: '5분전', name: '크리스탈지노믹스', code: '030790', price: 85.3 },
+        { time: '12분전', name: '펩트론', code: '081930', price: 23500 },
+        { time: '25분전', name: 'HANA금융22호', code: '417100', price: 15400 }
+      ],
+      sellSignals: [
+        { time: '3분전', name: '쿠콘', code: '294570', price: 34500 },
+        { time: '8분전', name: '와이즈버즈', code: '227140', price: 27850 },
+        { time: '16분전', name: '에이비엘바이오', code: '298380', price: 7190 }
       ]
     }
   },
-  computed: {
-    // 선택된 필터에 따라 시그널 목록 필터링
-    filteredSignals() {
-      return this.filter === 'all' ? this.signals : this.signals.filter(s => s.type === this.filter)
-    },
-    // 시그널 타입별 카운트 계산
-    counts() {
-      return {
-        buy: this.signals.filter(s => s.type === 'buy').length,
-        sell: this.signals.filter(s => s.type === 'sell').length,
-        hold: this.signals.filter(s => s.type === 'hold').length
-      }
-    }
-  },
   methods: {
-    // 가격 포맷팅 (원화/달러 구분)
     formatPrice(price) {
-      if (typeof price === 'number' && price > 1000) { return price.toLocaleString() + '원' }
-      return '$' + price.toFixed(2)
-    },
-    // 시그널 타입에 따른 뱃지 스타일 클래스 반환
-    getSignalBadgeClass(type) {
-      switch (type) {
-        case 'buy': return 'bg-red-50 text-red-600 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800'
-        case 'sell': return 'bg-blue-50 text-blue-600 border-blue-200 dark:bg-blue-900/20 dark:text-blue-400 dark:border-blue-800'
-        case 'hold': return 'bg-slate-50 text-slate-400 border-slate-200 dark:bg-slate-800/50 dark:text-slate-500 dark:border-slate-700'
-        default: return ''
+      if (typeof price === 'number') {
+        return price.toLocaleString() + '원'
       }
-    },
-    // 시그널 타입에 따른 텍스트 스타일 클래스 반환
-    getSignalTextClass(type) {
-      switch (type) {
-        case 'buy': return 'text-red-500 bg-red-50 dark:bg-red-900/20'
-        case 'sell': return 'text-blue-500 bg-blue-50 dark:bg-blue-900/20'
-        case 'hold': return 'text-slate-500 bg-slate-50 dark:bg-slate-800/50'
-        default: return ''
-      }
-    },
-    // 시그널 타입에 따른 아이콘 컴포넌트 이름 반환
-    getSignalIcon(type) {
-      switch (type) {
-        case 'buy': return 'ArrowUpRight'
-        case 'sell': return 'ArrowDownRight'
-        default: return 'Target'
-      }
-    },
-    // 시그널 타입 한글 라벨 반환
-    getSignalLabel(type) {
-      switch (type) {
-        case 'buy': return '매수'
-        case 'sell': return '매도'
-        case 'hold': return '보유'
-        default: return ''
-      }
-    },
-    // 강도(Strength) 한글 라벨 반환
-    getStrengthLabel(strength) {
-      switch (strength) {
-        case 'strong': return '강'
-        case 'moderate': return '중'
-        case 'weak': return '약'
-        default: return ''
-      }
+      return price
     }
   }
 }
