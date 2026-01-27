@@ -12,8 +12,9 @@
 }
 
 .p-today-pick__day-grid {
-  /* 5개 종목을 1920 해상도에서 효과적으로 배치 (3+2 혹은 5개 가로 배열) */
+  /* 6개 종목을 1920 해상도에서 효과적으로 배치, 화면이 작아지면 자동으로 줄바꿈 */
   @apply flex flex-wrap w-full gap-6;
+  align-items: stretch;
 }
 
 .swiper-slide {
@@ -23,13 +24,4 @@
 /* Page Layout Container */
 .p-today-pick > * {
   @apply w-full 
-}
-
-/* Hover effects for the grid inside slide */
-.p-today-pick__day-grid:hover > *:not(:hover) {
-  @apply opacity-60 scale-[0.98];
-}
-
-.p-today-pick__day-grid > * {
-  @apply transition-all duration-300;
 }

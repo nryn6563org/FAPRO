@@ -2,9 +2,9 @@
 <template>
   <div class="c-recommend-header">
     <div class="c-recommend-header__top">
-      <div class="c-recommend-header__title-group">
-        <LightbulbIcon class="c-recommend-header__icon" />
-        <h2 class="c-recommend-header__title">추천종목</h2>
+      <div class="c-disclosure-header__content">
+        <h2 class="c-investment-header__title">추천종목</h2>
+        <p class="c-investment-header__desc">투자 기간별 AI 추천 종목</p>
       </div>
       <div class="c-recommend-header__status">
         <span>01/22 장마감</span>
@@ -27,12 +27,11 @@
 </template>
 
 <script>
-import { LightbulbIcon, RefreshCwIcon } from 'lucide-vue'
+import { RefreshCwIcon } from 'lucide-vue'
 
 export default {
   name: 'RecommendStocksHeader',
   components: {
-    LightbulbIcon,
     RefreshCwIcon
   },
   props: {
@@ -48,4 +47,5 @@ export default {
 }
 </script>
 
+<style src="@/assets/css/components/investment/disclosure-analysis/disclosure-header.css"></style>
 <style src="@/assets/css/components/investment/recommend-stocks/recommend-header.css"></style>

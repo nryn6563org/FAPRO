@@ -21,7 +21,7 @@
       :currentTheme="currentTheme"
       @toggle-sidebar="sidebarOpen = !sidebarOpen"
       @logout="isLoggedIn = false"
-      @login="isLoggedIn = true"
+      @login="$router.push('/login')"
       @theme-change="handleThemeChange"
     />
 
@@ -34,6 +34,16 @@
           sidebarOpen ? 'l-sidebar--open' : 'l-sidebar--closed'
         ]"
       >
+        <div class="px-3 pt-4 pb-2">
+          <button
+            @click="$router.push('/settings/plans')"
+            class="w-full flex items-center gap-3 px-3 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 group"
+          >
+            <Crown class="w-5 h-5 flex-shrink-0 text-yellow-300" />
+            <span v-if="sidebarOpen" class="font-bold text-sm whitespace-nowrap">플랜 업그레이드</span>
+          </button>
+        </div>
+
         <nav class="l-sidebar__nav">
           <!-- 1차 메뉴 반복 렌더링 -->
           <div v-for="item in navItems" :key="item.id">
@@ -57,8 +67,8 @@
               
               <!-- 하위 메뉴 화살표 표시 -->
               <template v-if="sidebarOpen && item.children">
-                <ChevronDown v-if="expandedMenus.includes(item.id)" class="u-icon-sm-shrink-0" />
-                <ChevronRight v-else class="u-icon-sm-shrink-0" />
+                <ChevronDown v-if="expandedMenus.includes(item.id)" class="w-4 h-4 flex-shrink-0" />
+                <ChevronRight v-else class="w-4 h-4 flex-shrink-0" />
               </template>
             </button>
 
@@ -78,7 +88,7 @@
                   <component
                     :is="subItem.icon"
                     :class="[
-                      'u-icon-sm-shrink-0 transition-colors',
+                      'w-4 h-4 flex-shrink-0 transition-colors',
                        isActive(subItem.id) ? 'l-sidebar__subicon--active' : (currentTheme !== 'dark' ? subItem.color : 'l-sidebar__subicon--inactive')
                     ]"
                   />
@@ -101,7 +111,7 @@
                       <component
                         :is="subSubItem.icon"
                         :class="[
-                          'u-icon-xs-shrink-0 transition-colors',
+                          'w-3.5 h-3.5 flex-shrink-0 transition-colors',
                           isActive(subSubItem.id) ? 'l-sidebar__subicon--active' : (currentTheme !== 'dark' ? subSubItem.color : 'l-sidebar__subicon--inactive')
                         ]"
                       />
@@ -118,20 +128,20 @@
       <!-- 3. 메인 콘텐츠 영역 -->
       <div class="l-main">
         <!-- 메인 섹션 상단 헤더 (검색 및 지수 정보) -->
-        <header class="l-main__header">
-          <div class="u-flex-col-gap-3">
+        <header v-if="!$route.path.includes('/settings/plans')" class="l-main__header">
+          <div class="flex flex-col gap-3">
             <!-- 사용자 환영 메시지 및 날짜 -->
             <div class="l-main__welcome">
               <div>
-                <p class="u-text-lg-bold">안녕하세요! 김승원FA님, 오늘도 좋은 하루 보내세요!</p>
+                <p class="text-lg font-bold">안녕하세요! 김승원FA님, 오늘도 좋은 하루 보내세요!</p>
               </div>
               <div>
-                <p class="u-text-xs-slate">2026년 1월 20일 화요일</p>
+                <p class="text-xs text-slate-500 dark:text-slate-400 font-medium">2026년 1월 20일 화요일</p>
               </div>
             </div>
 
             <!-- 종목 검색바 및 시장 지수 요약 카드 -->
-            <div class="u-flex-col-gap-3">
+            <div class="flex flex-col gap-3">
               <div class="l-main__search-wrapper">
                 <Search class="l-main__search-icon" />
                 <Input
@@ -157,7 +167,7 @@
 
                       <!-- 지수 장식용 SVG 미니 차트 (상승 시 적색, 하락 시 청색) -->
                       <div class="c-mini-card__chart">
-                          <svg viewBox="0 0 100 40" class="u-full" preserveAspectRatio="none">
+                          <svg viewBox="0 0 100 40" class="w-full h-full" preserveAspectRatio="none">
                               <path d="M0 30 Q 25 35, 50 20 T 100 10 V 40 H 0 Z" :fill="index.change >= 0 ? '#ef4444' : '#3b82f6'" />
                           </svg>
                       </div>
@@ -175,7 +185,7 @@
          <!-- 4. 페이지 하단 푸터 영역 -->
          <footer class="l-footer">
             <div class="l-footer__inner">
-              <div class="u-flex-center-gap-6">
+              <div class="flex items-center gap-6">
                 <p>© 2026 RASSI FApro. All rights reserved.</p>
                 <div class="l-footer__links">
                   <a href="#" class="l-footer__link">이용약관</a>
@@ -183,7 +193,7 @@
                   <a href="#" class="l-footer__link">고객센터</a>
                 </div>
               </div>
-              <div class="u-flex-center-gap-2">
+              <div class="flex items-center gap-2">
                 <span>고객문의: 1588-1234</span>
                 <span>|</span>
                 <span>support@rassi.co.kr</span>
@@ -221,7 +231,8 @@ import {
   Star,
   PieChart,
   LogOut,
-  LogIn
+  LogIn,
+  Crown
 } from 'lucide-vue'
 // 공통 컴포넌트 임포트
 import Button from '@/components/common/Button.vue'
@@ -256,6 +267,7 @@ export default {
     PieChart,
     LogOut,
     LogIn,
+    Crown,
     // UI 컴포넌트 등록
     Button,
     Input,
@@ -322,6 +334,17 @@ export default {
   },
   mounted() {
     this.initTheme() // 컴포넌트 마운트 시 저장된 테마 불러오기
+  },
+  watch: {
+    $route() {
+      // 페이지 이동 시 메인 콘텐츠 영역 스크롤 최상단으로 이동
+      this.$nextTick(() => {
+        const contentArea = this.$el.querySelector('.l-main__content')
+        if (contentArea) {
+          contentArea.scrollTop = 0
+        }
+      })
+    }
   },
   methods: {
     /**

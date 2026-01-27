@@ -1,6 +1,6 @@
 /* Report Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-report-analysis {
-  @apply flex flex-col w-full min-h-screen dark:bg-[#020617];
+  @apply flex flex-col w-full min-h-screen dark:bg-[#020617] gap-8;
 }
 
 .p-report-analysis__content {
@@ -14,5 +14,5 @@
 
 /* Ensure the layout holds the full width */
 .p-report-analysis > * {
-  @apply w-full max-w-[1720px];
+  @apply w-full max-w-full min-w-[1280px];
 }

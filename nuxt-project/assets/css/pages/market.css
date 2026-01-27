@@ -9,9 +9,6 @@
 }
 
 /* 페이지 헤더 영역 (제목 및 부설명) */
-.p-market__header {
-    @apply mb-6;
-}
 
 .p-market__title {
     @apply text-2xl font-bold text-slate-900 dark:text-white;
@@ -23,7 +20,7 @@
 
 /* 시장 분류 탭 (국내, 해외, 환율 등) */
 .p-market__tabs {
-    @apply bg-slate-100 p-1 rounded-xl inline-flex mb-6 dark:bg-slate-800;
+    @apply bg-slate-100 p-1 rounded-xl inline-flex dark:bg-slate-800;
 }
 
 .p-market__tab-btn {
@@ -36,7 +33,7 @@
 
 /* 주요 지표 그리드 레이아웃 */
 .p-market__indices-grid {
-    @apply grid grid-cols-1 md:grid-cols-3 gap-6 mb-6;
+    @apply grid grid-cols-1 md:grid-cols-3 gap-6;
 }
 
 /* 해외 지수 전용 그리드 (반응형 최적화) */

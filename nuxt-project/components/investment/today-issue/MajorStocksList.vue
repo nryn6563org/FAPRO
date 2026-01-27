@@ -13,8 +13,10 @@
 
 <script>
 export default {
+  // 컴포넌트 이름: 주요 종목 리스트
   name: 'MajorStocksList',
   props: {
+    // 이슈 관련 종목 목록 데이터
     stocks: {
       type: Array,
       required: true

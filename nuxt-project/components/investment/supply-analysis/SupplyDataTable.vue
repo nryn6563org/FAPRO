@@ -27,7 +27,7 @@
           <td class="c-supply-data-table__td c-supply-data-table__td--right">
             <span
               class="c-supply-data-table__change"
-              :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'text-slate-400'"
+              :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'"
             >
               {{ stock.changeRate === 0 ? '-' : (stock.changeRate > 0 ? '+' : '') + stock.changeRate.toFixed(2) + '%' }}
             </span>
@@ -35,6 +35,9 @@
         </tr>
       </tbody>
     </table>
+    <div v-if="updateTime" class="c-supply-data-table__footer">
+      업데이트 {{ updateTime }}
+    </div>
   </div>
 </template>
 
@@ -45,7 +48,8 @@ export default {
     title: { type: String, default: '' },
     data: { type: Array, required: true },
     valueType: { type: String, default: 'ratio' }, // 'ratio', 'amount', 'days'
-    dataLabel: { type: String, required: true }
+    dataLabel: { type: String, required: true },
+    updateTime: { type: String, default: '' }
   },
   methods: {
     formatValue(stock) {

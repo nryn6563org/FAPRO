@@ -11,14 +11,6 @@
   @apply flex flex-col gap-1;
 }
 
-.c-issue-header__user {
-  @apply text-2xl font-bold text-slate-900 dark:text-white;
-}
-
-.c-issue-header__date {
-  @apply text-sm font-bold text-slate-400;
-}
-
 .c-issue-header__search {
   @apply relative w-80;
 }

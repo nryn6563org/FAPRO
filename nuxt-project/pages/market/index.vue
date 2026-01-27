@@ -94,6 +94,7 @@
 import IndexCard from '@/components/domain/dashboard/IndexCard.vue'
 import LineChart from '@/components/charts/LineChart'
 
+// 차트 데이터 생성 유틸리티 함수 (랜덤 변동성 적용)
 const generateChartData = (baseValue, volatility = 50) => {
   return Array.from({ length: 30 }, (_, i) => ({
     date: `${i + 1}일`,
@@ -102,12 +103,13 @@ const generateChartData = (baseValue, volatility = 50) => {
 }
 
 export default {
+  // 컴포넌트 이름: 시장 지수 페이지
   name: 'MarketPage',
   components: {
     IndexCard, LineChart
   },
   data() {
-    // Static Data Creation
+    // 정적 데이터 생성 (실제 API 연동 시 제거 예정)
     const domesticIndices = [
       { name: 'KOSPI', value: 2547.82, change: 15.34, changePercent: 0.61, chartData: generateChartData(2547, 30) },
       { name: 'KOSDAQ', value: 742.15, change: -3.21, changePercent: -0.43, chartData: generateChartData(742, 15) },
@@ -151,12 +153,15 @@ export default {
     }
   },
   computed: {
+    // 선택된 국내 지수 상세 데이터 반환
     selectedDomesticData() {
       return this.domesticIndices.find(idx => idx.name === this.selectedDomestic)
     },
+    // 선택된 해외 지수 상세 데이터 반환
     selectedInternationalData() {
       return this.internationalIndices.find(idx => idx.name === this.selectedInternational)
     },
+    // 상세 차트 옵션 설정
     detailedChartOptions() {
       return {
         maintainAspectRatio: false,
@@ -180,6 +185,7 @@ export default {
     }
   },
   methods: {
+    // 상세 차트용 데이터 포맷팅
     getDetailedChartData(data) {
       if (!data || !data.chartData) { return {} }
       return {

@@ -76,8 +76,8 @@
                 <td class="c-disclosure-table__td">{{ item.title }}</td>
                 <td class="c-disclosure-table__td c-disclosure-table__td--right">{{ formatAmount(item.amount) }}</td>
                 <td class="c-disclosure-table__td c-disclosure-table__td--right">{{ item.exercisePrice.toLocaleString() }}</td>
-                <td class="c-disclosure-table__td c-disclosure-table__td--right text-red-500 font-black">{{ item.ratio }}%</td>
-                <td class="c-disclosure-table__td text-xs">{{ item.period }}</td>
+                <td class="c-disclosure-table__td c-disclosure-table__td--right c-disclosure-table__ratio--high">{{ item.ratio }}%</td>
+                <td class="c-disclosure-table__td c-disclosure-table__td--small">{{ item.period }}</td>
               </template>
 
               <template v-else-if="type.includes('실적공시')">
@@ -103,7 +103,7 @@
             </tr>
             <!-- AI 분석 요약 (보조 행) -->
             <tr :key="`ai-${idx}`" class="c-disclosure-table__ai-tr">
-              <td colspan="7" class="py-0 px-4 pb-4">
+              <td colspan="7" class="c-disclosure-table__td--expanded">
                 <div class="c-disclosure-table__ai-box">
                   <SparklesIcon class="c-disclosure-table__ai-icon" />
                   <p class="c-disclosure-table__ai-text">

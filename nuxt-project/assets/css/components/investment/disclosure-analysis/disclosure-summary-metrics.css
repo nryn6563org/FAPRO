@@ -5,7 +5,7 @@
 
 /* 메트릭 섹션 그리드 컨테이너 */
 .c-disclosure-metrics {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10;
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6;
 }
 
 /* 개별 메트릭 카드 */

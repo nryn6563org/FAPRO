@@ -9,7 +9,7 @@
 }
 
 .p-recommend-stocks__grid {
-  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8;
+  @apply flex flex-wrap gap-6;
 }
 
 /* Animation for category transition */

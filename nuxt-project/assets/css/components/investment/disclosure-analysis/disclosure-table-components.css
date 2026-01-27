@@ -7,7 +7,7 @@
    1. DisclosureFilterTabs (메인 탭)
 ------------------------------------------------------------- */
 .c-disclosure-tabs {
-  @apply flex items-center gap-2 mb-8 overflow-x-auto pb-2;
+  @apply flex items-center gap-2 overflow-x-auto;
 }
 
 .c-disclosure-tabs__btn {
@@ -28,7 +28,7 @@
    2. DisclosureSubFilterTabs (서브 탭)
 ------------------------------------------------------------- */
 .c-disclosure-sub-tabs {
-  @apply flex items-center gap-3 mb-6 overflow-x-auto pb-1;
+  @apply flex items-center gap-3 overflow-x-auto;
 }
 
 .c-disclosure-sub-tabs__btn {
@@ -92,4 +92,16 @@
 }
 
 /* Indicators handled by design-system.css */
+
+.c-disclosure-table__ratio--high {
+  @apply text-red-500 font-black;
+}
+
+.c-disclosure-table__td--small {
+    @apply text-xs;
+}
+
+.c-disclosure-table__td--expanded {
+    @apply py-0 px-4 pb-4;
+}
 

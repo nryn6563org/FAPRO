@@ -8,6 +8,7 @@
     @apply inline-flex items-center justify-center gap-2 whitespace-nowrap rounded text-sm font-medium transition-all focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 shrink-0 outline-none;
 }
 
+
 /* 버튼 내부 SVG 아이콘 스타일 */
 .c-button svg {
     @apply pointer-events-none shrink-0;

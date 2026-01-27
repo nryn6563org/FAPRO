@@ -147,6 +147,7 @@ import ClientDetailModal from '@/components/domain/clients/ClientDetailModal.vue
 import { mockClients, getRiskBadgeClass, getRiskLabel } from '@/utils/client-data'
 
 export default {
+  // 컴포넌트 이름: 고객 관리 페이지
   name: 'ClientManagement',
   components: {
     Button,
@@ -163,11 +164,12 @@ export default {
   },
   data() {
     return {
-      clients: mockClients,
-      searchTerm: '',
-      isAddDialogOpen: false,
-      sortBy: 'aum',
-      selectedClient: null,
+      clients: mockClients, // 전체 고객 데이터 목록
+      searchTerm: '', // 검색어
+      isAddDialogOpen: false, // 고객 등록 모달 열림 상태
+      sortBy: 'aum', // 정렬 기준 (기본값: 자산순)
+      selectedClient: null, // 선택된 고객 상세 정보
+      // 정렬 옵션 목록
       sortOptions: [
         { value: 'aum', label: '자산순' },
         { value: 'name', label: '이름순' },
@@ -177,21 +179,26 @@ export default {
     }
   },
   computed: {
+    // 검색 및 정렬이 적용된 고객 목록 반환
     filteredClients() {
       return this.clients
+        // 1. 검색어 필터링 (이름 또는 이메일)
         .filter(client =>
           client.name.toLowerCase().includes(this.searchTerm.toLowerCase()) ||
           client.email.toLowerCase().includes(this.searchTerm.toLowerCase())
         )
+        // 2. 정렬 로직 적용
         .sort((a, b) => {
+          // 즐겨찾기 된 고객 우선 노출
           if (a.isFavorite && !b.isFavorite) { return -1 }
           if (!a.isFavorite && b.isFavorite) { return 1 }
 
+          // 선택된 정렬 기준에 따른 정렬
           switch (this.sortBy) {
-            case 'aum': return b.aum - a.aum
-            case 'name': return a.name.localeCompare(b.name, 'ko')
-            case 'lastContact': return new Date(b.lastContact) - new Date(a.lastContact)
-            case 'returns': return b.returns - a.returns
+            case 'aum': return b.aum - a.aum // 자산 내림차순
+            case 'name': return a.name.localeCompare(b.name, 'ko') // 이름 가나다순
+            case 'lastContact': return new Date(b.lastContact) - new Date(a.lastContact) // 최근상담 내림차순
+            case 'returns': return b.returns - a.returns // 수익률 내림차순
             default: return 0
           }
         })

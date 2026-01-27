@@ -15,19 +15,19 @@
     />
 
     <div class="p-supply-analysis__content">
-      <div class="p-supply-analysis__update-meta">
-        업데이트 {{ currentDate }} {{ currentTime }}
-      </div>
+
 
       <!-- 1. 매수비중 탭 -->
       <div v-if="selectedTab === '매수비중'" class="p-supply-analysis__grid p-supply-analysis__grid--2">
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="기관"
           :data="buyRatioData.institution"
           data-label="매수비중"
           value-type="ratio"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="외국인"
           :data="buyRatioData.foreign"
           data-label="매수비중"
@@ -38,24 +38,28 @@
       <!-- 2. 순매수 탭 -->
       <div v-else-if="selectedTab === '순매수'" class="p-supply-analysis__grid p-supply-analysis__grid--4">
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="기관 코스피"
           :data="netBuyData.institutionKospi"
           data-label="순매수금액"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="기관 코스닥"
           :data="netBuyData.institutionKosdaq"
           data-label="순매수금액"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="외국인 코스피"
           :data="netBuyData.foreignKospi"
           data-label="순매수금액"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="외국인 코스닥"
           :data="netBuyData.foreignKosdaq"
           data-label="순매수금액"
@@ -66,12 +70,14 @@
       <!-- 3. 순매수 상위 신규진입 탭 -->
       <div v-else-if="selectedTab === '순매수 상위 신규진입'" class="p-supply-analysis__grid p-supply-analysis__grid--2">
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="기관"
           :data="newEntryData.institution"
           data-label="순매수"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="외국인"
           :data="newEntryData.foreign"
           data-label="순매수"
@@ -82,18 +88,21 @@
       <!-- 4. 주요기관 순매수 상위 탭 -->
       <div v-else-if="selectedTab === '주요기관 순매수 상위'" class="p-supply-analysis__grid p-supply-analysis__grid--3">
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="연기금"
           :data="majorInstitutionData.pension"
           data-label="순매수"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="투신"
           :data="majorInstitutionData.trust"
           data-label="순매수"
           value-type="amount"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="사모펀드"
           :data="majorInstitutionData.private"
           data-label="순매수"
@@ -104,12 +113,14 @@
       <!-- 5. 연속순매수 탭 -->
       <div v-else-if="selectedTab === '연속순매수'" class="p-supply-analysis__grid p-supply-analysis__grid--2">
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="기관"
           :data="continuousBuyData.institution"
           data-label="연속순매수"
           value-type="days"
         />
         <SupplyDataTable
+          :update-time="formattedUpdateTime"
           title="외국인"
           :data="continuousBuyData.foreign"
           data-label="연속순매수"
@@ -168,6 +179,10 @@ export default {
     // 현재 시간 포맷 (HH:MM)
     currentTime() {
       return `${String(this.now.getHours()).padStart(2, '0')}:${String(this.now.getMinutes()).padStart(2, '0')}`
+    },
+    // 통합 업데이트 시간 포맷
+    formattedUpdateTime() {
+      return `${this.currentDate} ${this.currentTime}`
     }
   },
   mounted() {

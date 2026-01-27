@@ -1,6 +1,6 @@
 /* Supply Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-supply-analysis {
-  @apply flex flex-col min-h-screen dark:bg-[#020617];
+  @apply flex flex-col min-h-screen dark:bg-[#020617] gap-8;
 }
 
 .p-supply-analysis__content {
@@ -25,5 +25,5 @@
 }
 
 .p-supply-analysis__grid--4 {
-  @apply grid-cols-1 md:grid-cols-2 xl:grid-cols-4;
+  @apply grid-cols-1 md:grid-cols-2 xl:grid-cols-2;
 }

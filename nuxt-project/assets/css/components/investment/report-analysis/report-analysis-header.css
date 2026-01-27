@@ -1,6 +1,6 @@
 /* ReportAnalysisHeader Component Styles */
 .c-report-analysis-header {
-  @apply flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8;
+  @apply flex flex-col md:flex-row md:items-end justify-between gap-4;
 }
 
 .c-report-analysis-header__content {

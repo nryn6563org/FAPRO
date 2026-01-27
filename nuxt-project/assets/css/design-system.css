@@ -187,7 +187,7 @@
    * 투자 도메인 페이지 헤더 (타이틀 + 부설명)
    */
   .c-investment-header {
-    @apply flex flex-col gap-2 mb-8;
+    @apply flex w-full justify-between gap-2
   }
 
   .c-investment-header__title {

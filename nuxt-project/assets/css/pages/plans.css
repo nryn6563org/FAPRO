@@ -1,0 +1,200 @@
+.p-plans {
+  @apply min-h-screen dark:bg-slate-950;
+}
+
+/* Plan State Debugger */
+.p-plans__debugger {
+  @apply mb-12 p-6 bg-white border border-dashed border-slate-300 rounded-xl max-w-[1000px] mx-auto dark:bg-slate-900 dark:border-slate-700;
+}
+
+.p-plans__debugger-title {
+  @apply text-xs font-bold text-slate-400 uppercase mb-4 tracking-wider;
+}
+
+.p-plans__debugger-btns {
+  @apply flex flex-wrap gap-2;
+}
+
+.p-plans__debugger-btns button {
+  @apply px-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs font-bold text-slate-600 transition-all hover:bg-slate-100 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400;
+}
+
+.p-plans__debugger-btns button.active {
+  @apply bg-blue-600 border-blue-600 text-white shadow-md shadow-blue-600/20;
+}
+
+.p-plans__inner {
+  @apply max-w-[1000px] mx-auto;
+}
+
+/* Header Styles */
+.p-plans__header {
+  @apply text-center mb-16;
+}
+
+.p-plans__title {
+  @apply text-3xl font-black text-slate-900 mb-3 dark:text-white;
+}
+
+.p-plans__subtitle {
+  @apply text-slate-500 mb-10;
+}
+
+/* Toggle Switch */
+.p-plans__toggle-wrapper {
+  @apply flex justify-center mb-10;
+}
+
+.p-plans__toggle {
+  @apply flex p-1.5 bg-white border border-slate-200 rounded-[32px] shadow-sm dark:bg-slate-900 dark:border-slate-800;
+}
+
+.p-plans__toggle-btn {
+  @apply px-10 py-2.5 rounded-[28px] text-sm font-bold text-slate-400 transition-all;
+}
+
+.p-plans__toggle-btn--active {
+  @apply bg-slate-900 text-white shadow-lg shadow-slate-900/10 dark:bg-blue-600 dark:shadow-blue-600/20;
+}
+
+/* Status Banner */
+.p-plans__status-banner {
+  @apply inline-flex items-center gap-2 px-6 py-2.5 bg-blue-50 border border-blue-100 rounded-full text-sm text-blue-600 dark:bg-blue-900/20 dark:border-blue-800/50 dark:text-blue-400;
+}
+
+.p-plans__status-banner--none {
+  @apply bg-slate-100 border-slate-200 text-slate-500 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-500;
+}
+
+.p-plans__status-icon {
+  @apply text-base;
+}
+
+/* Plans Grid */
+.p-plans__grid {
+  @apply flex flex-col md:flex-row gap-8 items-stretch mb-20;
+}
+
+/* Plan Card Styles */
+.c-plan-card {
+  @apply relative flex-1 bg-white border border-slate-100 rounded-[24px] p-1 shadow-sm transition-all hover:shadow-xl hover:shadow-slate-200/50 dark:bg-slate-900 dark:border-slate-800 dark:hover:shadow-none;
+}
+
+.c-plan-card--highlighted {
+  @apply border-blue-600 ring-1 ring-blue-600 dark:border-blue-500 dark:ring-blue-500;
+}
+
+.c-plan-card--active {
+  @apply border-slate-400 dark:border-slate-600 bg-slate-50/50 dark:bg-slate-800/50;
+}
+
+.c-plan-card__badge {
+  @apply absolute -top-5 left-1/2 -translate-x-1/2 px-6 py-2 rounded-full text-[15px] font-bold text-white shadow-md z-10;
+}
+
+.c-plan-card__badge--dimmed {
+  @apply bg-slate-800;
+}
+
+.c-plan-card__badge--primary {
+  @apply bg-blue-600;
+}
+
+.c-plan-card__content {
+  @apply p-8 flex flex-col h-full;
+}
+
+.c-plan-card__header {
+  @apply mb-10;
+}
+
+.c-plan-card__title {
+  @apply text-2xl font-black text-slate-900 dark:text-white;
+}
+
+.c-plan-card__subtitle {
+  @apply text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-4;
+}
+
+.c-plan-card__price {
+  @apply flex items-baseline gap-1 mb-2;
+}
+
+.c-plan-card__amount {
+  @apply text-4xl font-black text-slate-900 dark:text-white;
+}
+
+.c-plan-card__period {
+  @apply text-base text-slate-400;
+}
+
+.c-plan-card__promo {
+  @apply text-sm font-bold text-red-500 mb-4;
+}
+
+.c-plan-card__desc {
+  @apply text-sm text-slate-500 leading-relaxed;
+}
+
+/* Features List */
+.c-plan-card__features {
+  @apply flex flex-col gap-4 mb-10 flex-grow;
+}
+
+.c-plan-card__feature {
+  @apply flex items-start gap-3 text-[13px] text-slate-600 dark:text-slate-400;
+}
+
+.c-plan-card__feature-icon {
+  @apply w-4 h-4 text-slate-300 mt-0.5 shrink-0;
+}
+
+.c-plan-card__feature-icon--primary {
+  @apply text-blue-600;
+}
+
+/* Plan Button */
+.c-plan-card__btn {
+  @apply w-full py-4 rounded-[12px] font-bold text-base transition-all mb-6 bg-slate-900 text-white shadow-lg shadow-slate-900/10 hover:bg-slate-800 hover:shadow-slate-900/20 transform hover:-translate-y-0.5 active:translate-y-0 dark:bg-slate-100 dark:text-slate-900 dark:hover:bg-white;
+}
+
+.c-plan-card__btn--disabled {
+  @apply bg-slate-100 text-slate-500 border border-slate-200 cursor-default transform-none hover:translate-y-0 shadow-none dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700 !important;
+}
+
+.c-plan-card__btn--primary {
+  @apply bg-blue-600 text-white shadow-lg shadow-blue-600/20 hover:bg-blue-700 hover:shadow-blue-600/40 transform hover:-translate-y-0.5 active:translate-y-0 dark:bg-blue-500;
+}
+
+.c-plan-card__note {
+  @apply text-[11px] text-slate-400 text-center;
+}
+
+.c-plan-card__note a {
+  @apply text-blue-600 font-bold underline underline-offset-4 hover:text-blue-700;
+}
+
+/* FAQ Section Styles */
+.p-plans__faq {
+  @apply bg-white rounded-[24px] p-10 border border-slate-100 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+}
+
+.p-plans__faq-title {
+  @apply text-xl font-black text-slate-900 mb-8 dark:text-white;
+}
+
+.p-plans__faq-list {
+  @apply flex flex-col gap-6;
+}
+
+.c-faq-item {
+  @apply flex flex-col gap-2;
+}
+
+.c-faq-item__q {
+  @apply text-sm text-slate-800 font-bold dark:text-slate-200;
+}
+
+.c-faq-item__a {
+  @apply text-sm text-slate-500 leading-relaxed dark:text-slate-400;
+}

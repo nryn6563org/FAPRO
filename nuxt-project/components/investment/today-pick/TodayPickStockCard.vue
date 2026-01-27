@@ -6,7 +6,7 @@
       :class="{ 'c-today-pick-card__favorite--active': pick.isFavorite }"
       @click="$emit('toggle-favorite', pick)"
     >
-      <StarIcon class="w-6 h-6" :class="{ 'fill-current': pick.isFavorite }" />
+      <StarIcon class="c-today-pick-card__fav-icon" />
     </button>
 
     <div class="c-today-pick-card__header">
@@ -31,8 +31,8 @@
       <div class="c-today-pick-card__price-group">
         <div class="c-today-pick-card__price">{{ pick.price.toLocaleString() }}</div>
         <div class="c-today-pick-card__change" :class="pick.changeRate >= 0 ? 'indicator--positive' : 'indicator--negative'">
-          <ChevronUpIcon v-if="pick.changeRate >= 0" class="w-3.5 h-3.5" />
-          <ChevronDownIcon v-else class="w-3.5 h-3.5" />
+          <ChevronUpIcon v-if="pick.changeRate >= 0" class="c-today-pick-card__change-icon" />
+          <ChevronDownIcon v-else class="c-today-pick-card__change-icon" />
           {{ pick.changeAmount > 0 ? '+' : '' }}{{ pick.changeAmount.toLocaleString() }}
           ({{ pick.changeRate > 0 ? '+' : '' }}{{ pick.changeRate }}%)
         </div>
@@ -40,7 +40,7 @@
 
       <!-- Sparkline Chart (Inline SVG) -->
       <div class="c-today-pick-card__chart">
-        <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="w-full h-full">
+        <svg viewBox="0 0 100 40" preserveAspectRatio="none" class="c-today-pick-card__sparkline">
           <path
             :d="sparklinePath"
             fill="none"

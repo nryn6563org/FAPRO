@@ -32,3 +32,5 @@ export default {
 </script>
 
 
+<style src="@/assets/css/components/investment/disclosure-analysis/disclosure-header.css"></style>
+

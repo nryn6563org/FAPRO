@@ -22,7 +22,7 @@
         <td class="c-price-status-table__td c-price-status-table__td--right">
           <span
             class="c-price-status-table__change"
-            :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'text-slate-400'"
+            :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'"
           >
             {{ stock.changeRate === 0 ? '-' : (stock.changeRate > 0 ? '+' : '') + stock.changeRate.toFixed(2) + '%' }}
           </span>

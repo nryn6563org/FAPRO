@@ -56,8 +56,8 @@
              </div>
           </div>
 
-          <!-- 언어/자동번역 버튼 및 드롭다운 -->
-          <div class="l-header__lang-wrapper">
+          <!-- 언어/자동번역 버튼 및 드롭다운 (일시 숨김) -->
+          <!-- <div class="l-header__lang-wrapper">
              <button
                 @click="toggleLangMenu"
                 :class="['l-header__lang-btn u-tooltip', isTranslated ? 'l-header__lang-btn--active' : '']"
@@ -66,7 +66,6 @@
                 <Globe class="l-header__icon" />
              </button>
 
-             <!-- 언어 선택 드롭다운 메뉴 -->
              <div v-if="isLangMenuOpen" class="l-header__lang-menu">
                 <button @click="selectLanguage('ko')" class="l-header__lang-item">
                    <span class="l-header__lang-flag">🇰🇷</span> 한국어
@@ -81,7 +80,7 @@
                    <span class="l-header__lang-flag">🇨🇳</span> 简体中文
                 </button>
              </div>
-          </div>
+          </div> -->
        </div>
 
        <!-- 구글 번역 엘리먼트 (아이콘 클릭 시 트리거 되도록 최적화 가능) -->
@@ -89,10 +88,10 @@
 
        <!-- 로그인 상태일 때: 사용자 프로필 및 로그아웃 버튼 -->
        <div v-if="isLoggedIn" class="l-header__user-wrapper">
-          <div class="l-header__user-info">
+          <div class="l-header__user-info u-cursor-pointer" @click="$router.push('/settings')">
              <div class="l-header__user-text">
                <p class="l-header__user-name">김승원 FA</p>
-               <p class="l-header__user-rank">프리미어 등급</p>
+               <p class="l-header__user-rank">베이직 플랜</p>
              </div>
              <div class="l-header__user-avatar">
                 <User class="l-header__user-icon" />

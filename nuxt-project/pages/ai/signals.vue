@@ -245,6 +245,7 @@ const mockSignals = [
 ]
 
 export default {
+  // 컴포넌트 이름: 매매 시그널 페이지
   name: 'TradingSignals',
   components: {
     Button,
@@ -273,9 +274,11 @@ export default {
     }
   },
   computed: {
+    // 선택된 필터에 따라 시그널 목록 필터링
     filteredSignals() {
       return this.filter === 'all' ? this.signals : this.signals.filter(s => s.type === this.filter)
     },
+    // 시그널 타입별 카운트 계산
     counts() {
       return {
         buy: this.signals.filter(s => s.type === 'buy').length,
@@ -285,10 +288,12 @@ export default {
     }
   },
   methods: {
+    // 가격 포맷팅 (원화/달러 구분)
     formatPrice(price) {
       if (typeof price === 'number' && price > 1000) { return price.toLocaleString() + '원' }
       return '$' + price.toFixed(2)
     },
+    // 시그널 타입에 따른 뱃지 스타일 클래스 반환
     getSignalBadgeClass(type) {
       switch (type) {
         case 'buy': return 'bg-red-50 text-red-600 border-red-200 dark:bg-red-900/20 dark:text-red-400 dark:border-red-800'
@@ -297,6 +302,7 @@ export default {
         default: return ''
       }
     },
+    // 시그널 타입에 따른 텍스트 스타일 클래스 반환
     getSignalTextClass(type) {
       switch (type) {
         case 'buy': return 'text-red-500 bg-red-50 dark:bg-red-900/20'
@@ -305,6 +311,7 @@ export default {
         default: return ''
       }
     },
+    // 시그널 타입에 따른 아이콘 컴포넌트 이름 반환
     getSignalIcon(type) {
       switch (type) {
         case 'buy': return 'ArrowUpRight'
@@ -312,6 +319,7 @@ export default {
         default: return 'Target'
       }
     },
+    // 시그널 타입 한글 라벨 반환
     getSignalLabel(type) {
       switch (type) {
         case 'buy': return '매수'
@@ -320,6 +328,7 @@ export default {
         default: return ''
       }
     },
+    // 강도(Strength) 한글 라벨 반환
     getStrengthLabel(strength) {
       switch (strength) {
         case 'strong': return '강'

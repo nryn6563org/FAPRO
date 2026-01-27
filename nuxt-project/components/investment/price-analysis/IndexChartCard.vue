@@ -11,8 +11,8 @@
               class="c-index-chart-card__change-val"
               :class="change > 0 ? 'indicator--positive' : 'indicator--negative'"
             >
-              <TrendingUpIcon v-if="change > 0" class="w-3.5 h-3.5" />
-              <TrendingDownIcon v-else class="w-3.5 h-3.5" />
+              <TrendingUpIcon v-if="change > 0" class="c-index-chart-card__icon" />
+              <TrendingDownIcon v-else class="c-index-chart-card__icon" />
               {{ Math.abs(change) }}
             </span>
             <span

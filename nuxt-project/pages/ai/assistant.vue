@@ -99,7 +99,7 @@ import { Send, Bot, User, TrendingUp, BookOpen, Calculator, HelpCircle, DollarSi
 import Button from '@/components/common/Button.vue'
 import Input from '@/components/common/Input.vue'
 
-// Mock Responses
+// 모의 답변 데이터 (실제 AI API 연동 전 테스트용)
 const mockResponses = {
   KOSPI: 'KOSPI 지수가 최근 상승한 주요 원인은 다음과 같습니다:\n\n1. 외국인 투자자들의 순매수 증가\n2. 미국 연준의 금리 동결 시사\n3. 반도체 업종의 실적 개선 기대감\n4. 중국 경기 회복 기대\n\n특히 삼성전자와 SK하이닉스 등 대형 기술주들의 강세가 지수 상승을 주도하고 있습니다.',
   복리: '복리 수익률 계산 방법을 설명드리겠습니다:\n\n복리 수익률 공식:\n최종금액 = 원금 × (1 + 수익률)^기간\n\n예시:\n원금: 1,000만원\n연 수익률: 5%\n투자기간: 10년\n\n최종금액 = 1,000만원 × (1.05)^10\n         = 1,000만원 × 1.629\n         = 1,629만원\n\n복리 효과로 인해 단순 이자(500만원)보다 더 많은 수익(629만원)을 얻을 수 있습니다.',
@@ -109,6 +109,7 @@ const mockResponses = {
 }
 
 export default {
+  // 컴포넌트 이름: AI 투자 비서
   name: 'AIAssistant',
   components: {
     Button,
@@ -177,15 +178,19 @@ export default {
           { icon: 'DollarSign', question: '리츠(REITs) 투자 장단점' },
           { icon: 'BarChart3', question: '손절매 타이밍 결정 방법' }
         ]
-      }
+      },
+      // 스크롤 제어를 위한 ref
+      scrollRef: null
     }
   },
   computed: {
+    // 현재 선택된 탭에 해당하는 질문 목록 반환
     currentQuestions() {
       return this.questions[this.activeTab]
     }
   },
   watch: {
+    // 메시지가 추가될 때마다 스크롤을 최하단으로 이동
     messages() {
       this.$nextTick(() => {
         const container = this.$refs.scrollArea
@@ -196,12 +201,15 @@ export default {
     }
   },
   methods: {
+    // 추천 질문 클릭 시 입력창에 자동 입력
     handleSuggestedQuestion(question) {
       this.input = question
     },
+    // 메시지 전송 처리
     handleSend() {
       if (!this.input.trim()) { return }
 
+      // 사용자 메시지 추가
       const userMsg = {
         id: Date.now().toString(),
         role: 'user',
@@ -211,12 +219,15 @@ export default {
       this.messages.push(userMsg)
       const query = this.input.toLowerCase()
       this.input = ''
-      this.isTyping = true
+      this.isTyping = true // 입력 중 상태 표시
 
+      // 모의 응답 지연 시뮬레이션
       setTimeout(() => {
         let response = mockResponses['default']
+        // 키워드 매칭을 통한 간단한 응답 선택 로직
         if (query.includes('kospi') || query.includes('코스피') || query.includes('지수')) { response = mockResponses['KOSPI'] } else if (query.includes('복리') || query.includes('수익률')) { response = mockResponses['복리'] } else if (query.includes('etf') || query.includes('펀드')) { response = mockResponses['ETF'] } else if (query.includes('금리') || query.includes('주식')) { response = mockResponses['금리'] }
 
+        // 봇 메시지 추가
         this.messages.push({
           id: (Date.now() + 1).toString(),
           role: 'assistant',

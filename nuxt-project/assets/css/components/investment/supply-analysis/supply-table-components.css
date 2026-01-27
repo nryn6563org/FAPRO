@@ -2,7 +2,7 @@
 
 /* SupplyTabNavigation */
 .c-supply-tabs {
-  @apply flex flex-wrap gap-2 mb-10;
+  @apply flex flex-wrap gap-2;
 }
 
 .c-supply-tabs__btn {
@@ -31,7 +31,7 @@
 }
 
 .c-supply-data-table__thead {
-  @apply border-b-2 border-slate-100 dark:border-slate-800;
+  @apply border-b-2 border-slate-300 dark:border-slate-800;
 }
 
 .c-supply-data-table__th {
@@ -43,7 +43,7 @@
 }
 
 .c-supply-data-table__tr {
-  @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors dark:border-slate-800/50 dark:hover:bg-slate-800/20;
+  @apply border-b border-slate-200 hover:bg-slate-50/50 transition-colors dark:border-slate-800/50 dark:hover:bg-slate-800/20;
 }
 
 .c-supply-data-table__td {
@@ -64,4 +64,7 @@
 
 .c-supply-data-table__change {
   @apply font-bold;
+}
+.c-supply-data-table__footer {
+  @apply text-right text-xs font-bold text-slate-400 mt-2;
 }

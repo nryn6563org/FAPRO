@@ -29,7 +29,7 @@
               </div>
             </td>
             <td class="c-report-table__td c-report-table__td--right">
-              <span :class="report.changeRate > 0 ? 'indicator--positive' : report.changeRate < 0 ? 'indicator--negative' : 'text-slate-400'">
+              <span :class="report.changeRate > 0 ? 'indicator--positive' : report.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'">
                 {{ report.changeRate > 0 ? '+' : '' }}{{ report.changeRate }}%
               </span>
             </td>
@@ -66,7 +66,7 @@
 
       <div class="c-report-pager">
         <button class="c-report-pager__btn c-report-pager__btn--inactive">
-          <ChevronLeftIcon class="w-4 h-4" />
+          <ChevronLeftIcon class="c-report-pager__icon" />
         </button>
         <button
           v-for="page in 3"
@@ -77,7 +77,7 @@
           {{ page }}
         </button>
         <button class="c-report-pager__btn c-report-pager__btn--inactive">
-          <ChevronRightIcon class="w-4 h-4" />
+          <ChevronRightIcon class="c-report-pager__icon" />
         </button>
       </div>
     </div>

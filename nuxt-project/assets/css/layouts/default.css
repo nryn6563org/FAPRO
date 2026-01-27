@@ -174,12 +174,4 @@
     @apply hover:text-blue-600 dark:hover:text-blue-400 transition-colors;
 }
 
-/* Utils for Layout */
-.u-icon-sm-shrink-0 { @apply w-4 h-4 flex-shrink-0; }
-.u-icon-xs-shrink-0 { @apply w-3.5 h-3.5 flex-shrink-0 transition-colors; }
-.u-flex-col-gap-3 { @apply flex flex-col gap-3; }
-.u-text-lg-bold { @apply text-lg font-bold; }
-.u-text-xs-slate { @apply text-xs text-slate-500 dark:text-slate-400 font-medium; }
-.u-shrink-0 { @apply flex-shrink-0; }
-.u-flex-center-gap-6 { @apply flex items-center gap-6; }
-.u-flex-center-gap-2 { @apply flex items-center gap-2; }
+

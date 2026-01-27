@@ -19,8 +19,8 @@
               class="c-issue-history__change-rate"
               :class="issue.trend === 'up' ? 'c-issue-history__change-rate--up' : 'c-issue-history__change-rate--down'"
             >
-              <TrendingUpIcon v-if="issue.trend === 'up'" class="w-4 h-4" />
-              <TrendingDownIcon v-else class="w-4 h-4" />
+              <TrendingUpIcon v-if="issue.trend === 'up'" class="c-issue-history__icon" />
+              <TrendingDownIcon v-else class="c-issue-history__icon" />
               +{{ issue.changeRate }}%
             </div>
           </div>

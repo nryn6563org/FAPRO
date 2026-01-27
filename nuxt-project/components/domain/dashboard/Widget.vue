@@ -15,7 +15,7 @@
         </div>
         <!-- 편집 모드일 때만 삭제 버튼 노출 -->
         <button v-if="isEditing" @click="$emit('remove')" class="c-widget__remove-btn">
-            <X class="u-icon-sm" />
+            <X class="w-4 h-4" />
         </button>
       </div>
     </div>
@@ -27,14 +27,14 @@
             <div class="c-widget__value-area">
                 <p class="c-widget__value">{{ marketData.value.toLocaleString() }}</p>
                 <div class="c-widget__change" :class="isPositive ? 'c-widget__change--up' : 'c-widget__change--down'">
-                    <component :is="isPositive ? 'TrendingUp' : 'TrendingDown'" class="u-icon-sm" />
+                    <component :is="isPositive ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
                     <span>{{ isPositive ? '+' : '' }}{{ marketData.change.toFixed(2) }}</span>
                     <span>({{ isPositive ? '+' : '' }}{{ marketData.changePercent.toFixed(2) }}%)</span>
                 </div>
             </div>
             <!-- 우측: 미니 라인 차트 -->
-            <div class="u-flex-1-min-h-0-relative-w-full">
-                <LineChart :chart-data="lineChartData" :options="lineChartOptions" class="u-full" />
+            <div class="c-widget__chart-container">
+                <LineChart :chart-data="lineChartData" :options="lineChartOptions" class="w-full h-full" />
             </div>
         </div>
 
@@ -43,19 +43,19 @@
             <div class="c-widget__revenue-value">
                 <p class="c-widget__value">52,400,000원</p>
                 <div class="c-widget__change c-widget__change--up">
-                    <TrendingUp class="u-icon-sm" />
+                    <TrendingUp class="w-4 h-4" />
                     <span>+8.5% (전월 대비)</span>
                 </div>
             </div>
             <div class="c-widget__chart-area">
-                <BarChart :chart-data="revenueChartData" :options="barChartOptions" class="u-full" />
+                <BarChart :chart-data="revenueChartData" :options="barChartOptions" class="w-full h-full" />
             </div>
         </div>
 
         <!-- 3. AI 이슈 버블 (버블 차트) -->
         <div v-else-if="widgetId === 'ai-issue-bubble'" class="c-widget__bubble-wrapper">
              <div class="c-widget__chart-area">
-                <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="u-full" />
+                <BubbleChart :chart-data="scatterChartData" :options="scatterChartOptions" class="w-full h-full" />
              </div>
              <!-- 범례 -->
               <div class="c-widget__bubble-legend">
@@ -71,7 +71,7 @@
              <div>
                 <p class="c-widget__value">{{ widgetId === 'client-count' ? '247명' : '1,247억원' }}</p>
                 <div class="c-widget__change c-widget__change--up">
-                  <TrendingUp class="u-icon-sm" />
+                  <TrendingUp class="w-4 h-4" />
                   <span>{{ widgetId === 'client-count' ? '+12명 (이번 달)' : '+3.2% (전월 대비)' }}</span>
                 </div>
             </div>

@@ -19,8 +19,8 @@
         class="c-category-card__yield"
         :class="isPositive ? 'indicator--positive' : 'indicator--negative'"
       >
-        <TrendingUpIcon v-if="isPositive" class="w-5 h-5" />
-        <TrendingDownIcon v-else class="w-5 h-5" />
+        <TrendingUpIcon v-if="isPositive" class="c-category-card__trend-icon" />
+        <TrendingDownIcon v-else class="c-category-card__trend-icon" />
         {{ isPositive ? '+' : '' }}{{ item.change }}%
       </div>
     </div>
@@ -59,7 +59,7 @@
             </td>
             <td
               class="c-category-card__td c-category-card__td--right"
-              :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'text-slate-400'"
+              :class="stock.changeRate > 0 ? 'indicator--positive' : stock.changeRate < 0 ? 'indicator--negative' : 'indicator--neutral'"
             >
               {{ stock.changeRate > 0 ? '+' : '' }}{{ stock.changeRate.toFixed(2) }}%
             </td>

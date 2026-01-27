@@ -35,7 +35,7 @@
                 :chart-data="chartDataConfig" 
                 :options="chartOptions" 
                 :gradient-color="isPositive ? '#10b981' : '#ef4444'" 
-                class="u-full" 
+                class="w-full h-full" 
              />
         </div>
     </div>

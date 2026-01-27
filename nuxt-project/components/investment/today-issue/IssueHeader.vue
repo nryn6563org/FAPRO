@@ -3,8 +3,8 @@
   <header class="c-issue-header">
     <div class="c-issue-header__top">
       <div class="c-issue-header__greeting">
-        <h1 class="c-issue-header__user">안녕하세요! {{ userName }}님</h1>
-        <span class="c-issue-header__date">{{ currentDate }}</span>
+        <h2 class="c-investment-header__title">오늘의 이슈</h2>
+        <p class="c-investment-header__desc">실시간으로 업데이트되는 주요 시장 이슈</p>
       </div>
       <div class="c-issue-header__search">
         <SearchIcon class="c-issue-header__search-icon" />
@@ -64,13 +64,6 @@ export default {
   },
   data() {
     return {
-      userName: '김승원', // 실제 앱에서는 스토어에서 가져올 수 있음
-      currentDate: new Date().toLocaleDateString('ko-KR', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-        weekday: 'short'
-      }),
       marketIndices: [
         { name: '코스피', value: '2,584.14', change: 0.12 },
         { name: '코스닥', value: '857.14', change: -0.45 },

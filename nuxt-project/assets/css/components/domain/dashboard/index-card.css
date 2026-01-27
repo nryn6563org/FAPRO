@@ -4,7 +4,7 @@
 */
 
 .c-index-card {
-    @apply bg-white rounded border shadow-sm hover:shadow-lg transition-shadow overflow-hidden;
+    @apply bg-white rounded-xl border shadow-sm hover:shadow-lg transition-shadow overflow-hidden;
 }
 
 .c-index-card__header {
@@ -60,7 +60,4 @@
     @apply h-24;
 }
 
-/* 유틸리티: 꽉 찬 크기 */
-.u-full {
-    @apply h-full w-full;
-}
+

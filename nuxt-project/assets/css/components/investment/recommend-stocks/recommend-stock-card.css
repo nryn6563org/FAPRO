@@ -1,62 +1,53 @@
 /* RecommendStockCard Component Styles */
 .c-recommend-card {
-  @apply bg-white border border-slate-100 rounded-xl p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6 relative;
-}
-
-.c-recommend-card__rank {
-  @apply absolute top-6 right-8 text-[10px] font-bold px-2.5 py-1 bg-slate-900 text-white rounded dark:bg-slate-700;
-}
-
-.c-recommend-card__header {
-  @apply flex items-start gap-4;
-}
-
-.c-recommend-card__avatar {
-  @apply w-14 h-14 rounded bg-blue-50 flex items-center justify-center text-blue-600 text-xl font-bold shadow-sm shrink-0 dark:bg-blue-900/20 dark:text-blue-400;
-}
-
-.c-recommend-card__info {
-  @apply flex-1 min-w-0;
-}
-
-.c-recommend-card__name {
-  @apply text-[1.25rem] font-bold text-slate-900 dark:text-white truncate mb-1;
-}
-
-.c-recommend-card__desc {
-  @apply text-xs font-bold text-slate-500 line-clamp-2 leading-relaxed;
+  @apply w-[calc((100%-48px)/3)] shrink-0 bg-white border border-slate-100 rounded-2xl p-[10px_12px] shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex items-start gap-4 relative;  
+  
 }
 
 .c-recommend-card__yield-section {
-  @apply flex items-center justify-between gap-4 py-4 border-y border-slate-50 dark:border-slate-800/50;
-}
-
-.c-recommend-card__yield-label {
-  @apply text-xs font-bold text-slate-400;
+  @apply absolute top-5 right-5 shrink-0;
 }
 
 .c-recommend-card__yield-value {
-  @apply text-[1.5rem] font-bold text-red-500 tabular-nums;
+  @apply h-7 text-[14px] font-semibold text-red-500 tabular-nums flex items-center gap-0.5;
 }
 
-.c-recommend-card__history {
-  @apply flex flex-col gap-3;
+.c-recommend-card__yield-unit {
+  @apply text-xs font-bold;
 }
 
-.c-recommend-card__history-item {
-  @apply flex items-center justify-between text-[13px] font-bold;
+.c-recommend-card__avatar {
+  @apply w-12 h-12 rounded-full flex items-center justify-center text-white text-lg font-bold shadow-sm shrink-0 bg-blue-400;
 }
 
-.c-recommend-card__history-label {
-  @apply text-slate-400 flex items-center gap-1.5;
+.c-recommend-card__info-group {
+  @apply flex-1 min-w-0 flex flex-col gap-[5px];
 }
 
-.c-recommend-card__dot {
-  @apply w-1.5 h-1.5 rounded-full bg-slate-200 dark:bg-slate-700;
+.c-recommend-card__name-row {
+  @apply flex items-center gap-2;
 }
 
-.c-recommend-card__history-val {
-  @apply text-slate-700 dark:text-slate-300;
+.c-recommend-card__rank-badge {
+  @apply flex items-center gap-1 px-2.5 py-1 rounded bg-slate-100 text-slate-700 text-[11px] font-bold whitespace-nowrap;
+}
+
+.c-recommend-card__rank-badge.is-rank-1 { @apply bg-amber-100 text-amber-700; }
+.c-recommend-card__rank-badge.is-rank-2 { @apply bg-slate-200 text-slate-700; }
+.c-recommend-card__rank-badge.is-rank-3 { @apply bg-orange-100 text-orange-700; }
+.c-recommend-card__rank-badge.is-rank-4, 
+.c-recommend-card__rank-badge.is-rank-5 { @apply bg-blue-50 text-blue-600; }
+
+.c-recommend-card__rank-icon {
+  @apply text-xs grayscale-[0.5];
+}
+
+.c-recommend-card__name {
+  @apply text-lg font-bold text-slate-900 dark:text-white truncate;
+}
+
+.c-recommend-card__desc {
+  @apply text-xs font-bold text-slate-500 line-clamp-1 leading-tight;
 }
 
 .c-recommend-card__tags {
@@ -64,13 +55,9 @@
 }
 
 .c-recommend-card__tag {
-  @apply px-2 py-0.5 rounded bg-slate-50 text-slate-500 text-[10px] font-bold border border-slate-100 dark:bg-slate-800 dark:text-slate-400 dark:border-slate-700;
+  @apply px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[10px] font-bold dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400;
 }
 
-.c-recommend-card__actions {
-  @apply mt-2;
-}
-
-.c-recommend-card__btn {
-  @apply w-full py-3.5 rounded text-[13px] font-bold transition-all;
+.c-recommend-card__history {
+  @apply text-[11px] font-bold text-slate-400 mt-0.5;
 }
