@@ -102,6 +102,6 @@
 }
 
 .c-disclosure-table__td--expanded {
-    @apply py-0 px-4 pb-4;
+    @apply pb-4;
 }
 
