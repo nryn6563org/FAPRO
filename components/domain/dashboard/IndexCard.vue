@@ -35,7 +35,7 @@
                 :chart-data="chartDataConfig" 
                 :options="chartOptions" 
                 :gradient-color="isPositive ? '#10b981' : '#ef4444'" 
-                class="w-full h-full" 
+                class="c-index-card__chart-inner" 
              />
         </div>
     </div>
@@ -117,4 +117,3 @@ export default {
 }
 </script>
 <!-- 지수 카드 스타일 사용 -->
-<style src="@/assets/css/components/domain/dashboard/index-card.css"></style>

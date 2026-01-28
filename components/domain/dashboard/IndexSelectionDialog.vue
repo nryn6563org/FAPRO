@@ -21,9 +21,9 @@
                   <Search class="c-index-dialog__search-icon" />
                 </template>
                 <template #item="{ item }">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="font-bold">{{ item.name }}</span>
-                    <span class="text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">{{ item.category }}</span>
+                  <div class="c-index-dialog__item">
+                    <span class="c-index-dialog__item-name">{{ item.name }}</span>
+                    <span class="c-index-dialog__item-badge">{{ item.category }}</span>
                   </div>
                 </template>
               </Autocomplete>
@@ -119,4 +119,3 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/domain/dashboard/index-dialog.css"></style>

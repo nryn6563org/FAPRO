@@ -1,22 +1,20 @@
 <template>
-  <div class="space-y-6">
-    <div>
-      <h2 class="text-2xl font-bold">리포트 분석</h2>
-      <p class="text-slate-600 mt-1">증권사 애널리스트 리포트 및 목표가 분석</p>
+  <div class="c-report-analysis">
+    <div class="c-report-analysis__header">
+      <h2 class="c-report-analysis__title">리포트 분석</h2>
+      <p class="c-report-analysis__desc">증권사 애널리스트 리포트 및 목표가 분석</p>
     </div>
 
     <!-- 리포트 분류 탭 메뉴 -->
-    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-4">
-      <div class="grid grid-cols-4 lg:grid-cols-8 gap-2">
+    <div class="c-report-analysis__tabs-card">
+      <div class="c-report-analysis__tabs-grid">
         <button
           v-for="tab in tabs"
           :key="tab"
           @click="activeTab = tab"
           :class="[
-            'text-xs py-2 rounded-xl transition-colors',
-            activeTab === tab
-              ? 'bg-blue-600 text-white shadow-sm'
-              : 'bg-white text-slate-700 border border-slate-200 hover:bg-slate-50'
+            'c-report-analysis__tab-btn',
+            activeTab === tab ? 'c-report-analysis__tab-btn--active' : ''
           ]"
         >
           {{ tab }}
@@ -25,102 +23,105 @@
     </div>
 
     <!-- 리포트 리스트 테이블 섹션 -->
-    <div class="bg-white rounded-xl border border-slate-200 shadow-sm p-6">
-      <div class="flex justify-end mb-4">
-        <span class="text-sm text-slate-500">업데이트 01/22 09:25</span>
+    <div class="c-report-analysis__list-card">
+      <div class="c-report-analysis__update-info">
+        <span class="c-report-analysis__update-text">업데이트 01/22 09:25</span>
       </div>
 
-      <div class="overflow-x-auto">
-        <table class="w-full">
+      <div class="c-report-analysis__table-wrapper">
+        <table class="c-report-analysis__table">
           <thead>
-            <tr class="border-b-2 border-slate-300">
-              <th class="text-center py-3 px-4 font-semibold text-slate-700">날짜</th>
-              <th class="text-left py-3 px-4 font-semibold text-slate-700">종목명</th>
-              <th class="text-right py-3 px-4 font-semibold text-slate-700">등락률</th>
+            <tr>
+              <th class="c-report-analysis__th c-report-analysis__th--center">날짜</th>
+              <th class="c-report-analysis__th c-report-analysis__th--left">종목명</th>
+              <th class="c-report-analysis__th c-report-analysis__th--right">등락률</th>
 
               <template v-if="activeTab === '기관관심리포트'">
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">기관누적순매매금액</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">기관누적순매매금액</th>
               </template>
               <template v-else-if="activeTab === '외국인관심리포트'">
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">외국인누적순매매금액</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">외국인누적순매매금액</th>
               </template>
               <template v-else-if="activeTab === '연기금관심리포트'">
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">연기금누적순매매금액</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">연기금누적순매매금액</th>
               </template>
               <template v-else-if="activeTab === '증권사관심종목'">
-                <th class="text-center py-3 px-4 font-semibold text-slate-700">리포트수량</th>
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">최고목표가</th>
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">최저목표가</th>
+                <th class="c-report-analysis__th c-report-analysis__th--center">리포트수량</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">최고목표가</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">최저목표가</th>
               </template>
               <template v-else-if="activeTab === '목표가높음'">
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">목표가</th>
-                <th class="text-center py-3 px-4 font-semibold text-slate-700">주가대비</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">목표가</th>
+                <th class="c-report-analysis__th c-report-analysis__th--center">주가대비</th>
               </template>
               <template v-else>
-                <th class="text-right py-3 px-4 font-semibold text-slate-700">목표가</th>
-                <th class="text-center py-3 px-4 font-semibold text-slate-700">투자의견</th>
+                <th class="c-report-analysis__th c-report-analysis__th--right">목표가</th>
+                <th class="c-report-analysis__th c-report-analysis__th--center">투자의견</th>
               </template>
 
-              <th class="text-left py-3 px-4 font-semibold text-slate-700">
+              <th class="c-report-analysis__th c-report-analysis__th--left">
                 {{ activeTab === '증권사관심종목' ? '최신리포트' : '제목' }}
               </th>
-              <th v-if="activeTab !== '증권사관심종목'" class="text-center py-3 px-4 font-semibold text-slate-700">증권사</th>
+              <th v-if="activeTab !== '증권사관심종목'" class="c-report-analysis__th c-report-analysis__th--center">증권사</th>
             </tr>
           </thead>
           <tbody>
             <tr
               v-for="(report, idx) in currentData"
               :key="idx"
-              class="border-b border-slate-200 hover:bg-slate-50 transition-colors"
+              class="c-report-analysis__tr"
             >
-              <td class="py-3 px-4 text-center text-slate-600">{{ report.date }}</td>
-              <td class="py-3 px-4 font-medium text-blue-600 cursor-pointer hover:underline">
-                <div class="flex items-center gap-2">
-                  <div :class="['w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0', getStockColor(report.stockName)]">
+              <td class="c-report-analysis__td c-report-analysis__td--center">{{ report.date }}</td>
+              <td class="c-report-analysis__td c-report-analysis__td--stock">
+                <div class="c-report-analysis__avatar-box">
+                  <div :class="['c-report-analysis__avatar', getStockColor(report.stockName)]">
                     {{ report.stockName.charAt(0) }}
                   </div>
                   <span>{{ report.stockName }}</span>
                 </div>
               </td>
-              <td :class="['py-3 px-4 text-right font-semibold', report.changeRate > 0 ? 'text-red-600' : report.changeRate < 0 ? 'text-blue-600' : 'text-slate-600']">
+              <td
+                   class="c-report-analysis__td c-report-analysis__td--rate"
+                   :class="report.changeRate > 0 ? 'c-report-analysis__rate--up' : report.changeRate < 0 ? 'c-report-analysis__rate--down' : 'c-report-analysis__rate--neutral'"
+              >
                  {{ report.changeRate > 0 ? '+' : '' }}{{ report.changeRate }}%
               </td>
 
               <!-- 선택된 탭에 따른 동적 컬럼 렌더링 -->
               <template v-if="activeTab === '기관관심리포트'">
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ report.institutionalAmount }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ report.institutionalAmount }}</td>
               </template>
               <template v-else-if="activeTab === '외국인관심리포트'">
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ report.foreignAmount }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ report.foreignAmount }}</td>
               </template>
               <template v-else-if="activeTab === '연기금관심리포트'">
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ report.pensionAmount }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ report.pensionAmount }}</td>
               </template>
               <template v-else-if="activeTab === '증권사관심종목'">
-                 <td class="py-3 px-4 text-center font-semibold text-slate-900">{{ report.reportCount }}</td>
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ formatPrice(report.highestTargetPrice) }}</td>
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ formatPrice(report.lowestTargetPrice) }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value-center">{{ report.reportCount }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ formatPrice(report.highestTargetPrice) }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ formatPrice(report.lowestTargetPrice) }}</td>
               </template>
               <template v-else-if="activeTab === '목표가높음'">
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ formatPrice(report.targetPrice) }}</td>
-                 <td class="py-3 px-4 text-center font-semibold text-slate-900">{{ report.targetVsPrice }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ formatPrice(report.targetPrice) }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--value-center">{{ report.targetVsPrice }}</td>
               </template>
               <template v-else>
-                 <td class="py-3 px-4 text-right font-semibold text-slate-900">{{ formatPrice(report.targetPrice) }}</td>
-                 <td class="py-3 px-4 text-center">
-                    <span :class="['inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 border-transparent', getRatingColor(report.rating)]">
+                 <td class="c-report-analysis__td c-report-analysis__td--value">{{ formatPrice(report.targetPrice) }}</td>
+                 <td class="c-report-analysis__td c-report-analysis__td--center">
+                    <span :class="['c-report-analysis__rating-badge', getRatingColor(report.rating)]">
                         {{ report.rating }}
                     </span>
                  </td>
               </template>
 
               <td
-                class="py-3 px-4 text-slate-700 max-w-md truncate cursor-pointer hover:text-blue-600 hover:underline"
+                class="c-report-analysis__td c-report-analysis__td--title"
                 @click="selectedReport = report"
               >
                 {{ report.title }}
               </td>
-              <td v-if="activeTab !== '증권사관심종목'" class="py-3 px-4 text-center text-slate-600">
+              <td v-if="activeTab !== '증권사관심종목'" class="c-report-analysis__td c-report-analysis__td--firm">
                 {{ report.firm }}
               </td>
             </tr>
@@ -129,51 +130,51 @@
       </div>
 
        <!-- 페이지네이션 및 하단 설명 문구 -->
-      <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-200">
-        <div class="text-sm text-slate-600">
+      <div class="c-report-analysis__footer">
+        <div class="c-report-analysis__footer-desc">
             {{ getTabDescription(activeTab) }}
         </div>
-        <div class="flex items-center gap-2">
-            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed">‹</button>
-            <button class="px-3 py-1 bg-blue-600 text-white rounded-xl">1</button>
-            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100">2</button>
-            <button class="px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100">›</button>
+        <div class="c-report-analysis__pagination">
+            <button class="c-report-analysis__page-btn">‹</button>
+            <button class="c-report-analysis__page-btn c-report-analysis__page-btn--active">1</button>
+            <button class="c-report-analysis__page-btn">2</button>
+            <button class="c-report-analysis__page-btn">›</button>
         </div>
       </div>
     </div>
 
     <!-- 리포트 상세 모달 -->
-    <div v-if="selectedReport" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6" role="dialog" aria-modal="true">
-        <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" @click="selectedReport = null"></div>
+    <div v-if="selectedReport" class="c-report-analysis__modal-overlay" role="dialog" aria-modal="true">
+        <div class="c-report-analysis__modal-backdrop" aria-hidden="true" @click="selectedReport = null"></div>
 
-        <div class="bg-white rounded-xl shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200">
-            <div class="p-6 overflow-y-auto">
-                <div class="flex justify-between items-start mb-4">
-                     <h3 class="text-lg font-bold pr-8">
+        <div class="c-report-analysis__modal-content">
+            <div class="c-report-analysis__modal-body">
+                <div class="c-report-analysis__modal-header">
+                     <h3 class="c-report-analysis__modal-title">
                         [{{ selectedReport.stockName }}]<br />
                         {{ selectedReport.title }}
                      </h3>
-                     <button @click="selectedReport = null" type="button" class="text-slate-400 hover:text-slate-600">
+                     <button @click="selectedReport = null" type="button" class="c-report-analysis__modal-close">
                         <x class="w-6 h-6" />
                      </button>
                 </div>
 
-                <div class="text-sm text-slate-500 mb-6">
+                <div class="c-report-analysis__modal-meta">
                     {{ selectedReport.firm }} | {{ selectedReport.date }}
                 </div>
 
-                <div class="space-y-3 mb-6">
+                <div class="c-report-analysis__modal-stats">
                     <div>
-                        <span class="text-sm text-slate-600">목표가 : </span>
-                        <span class="font-semibold">{{ formatPrice(selectedReport.targetPrice) }} 원</span>
+                        <span class="c-report-analysis__stat-label">목표가 : </span>
+                        <span class="c-report-analysis__stat-value">{{ formatPrice(selectedReport.targetPrice) }} 원</span>
                     </div>
                      <div>
-                        <span class="text-sm text-slate-600">투자의견 : </span>
-                        <span class="font-semibold">{{ selectedReport.rating }}</span>
+                        <span class="c-report-analysis__stat-label">투자의견 : </span>
+                        <span class="c-report-analysis__stat-value">{{ selectedReport.rating }}</span>
                     </div>
                 </div>
 
-                 <div class="text-sm text-slate-700 leading-relaxed">
+                 <div class="c-report-analysis__modal-text">
                     {{ selectedReport.content || '상세 내용이 제공되지 않습니다.' }}
                 </div>
             </div>
@@ -280,3 +281,4 @@ export default {
   }
 }
 </script>
+

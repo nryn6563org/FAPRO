@@ -238,4 +238,3 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/pages/clients.css"></style>

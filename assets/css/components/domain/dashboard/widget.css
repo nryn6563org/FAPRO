@@ -33,6 +33,10 @@
     @apply text-slate-400 hover:text-red-500 transition-colors p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700;
 }
 
+.c-widget__remove-icon {
+    @apply w-4 h-4;
+}
+
 .c-widget__content {
     @apply flex-1 p-5 pt-0 min-h-0 relative w-full;
 }
@@ -47,23 +51,31 @@
 }
 
 .c-widget__value {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold dark:text-white;
 }
 
 .c-widget__change {
     @apply flex items-center gap-1 text-sm;
 }
 
+.c-widget__change-icon {
+    @apply w-4 h-4;
+}
+
 .c-widget__change--up {
-    @apply text-green-600;
+    @apply text-green-600 dark:text-green-400;
 }
 
 .c-widget__change--down {
-    @apply text-red-600;
+    @apply text-red-600 dark:text-red-400;
 }
 
 .c-widget__chart-area {
     @apply flex-1 min-h-0 relative w-full;
+}
+
+.c-widget__chart-inner {
+    @apply w-full h-full;
 }
 
 /* 매출 위젯 (Revenue) */
