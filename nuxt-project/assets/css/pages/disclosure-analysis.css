@@ -1,0 +1,18 @@
+/* Disclosure Analysis Page Styles - Premium 1920x1080 Optimized */
+.p-disclosure-analysis {
+  @apply flex flex-col min-h-screen dark:bg-[#020617] gap-8;
+}
+
+.p-disclosure-analysis__content {
+  @apply flex flex-col;
+}
+
+/* Animations for data transitions */
+.p-disclosure-analysis__table-wrapper {
+  @apply transition-all duration-500 ease-in-out;
+}
+
+/* Page Layout Container */
+.p-disclosure-analysis > * {
+  @apply w-full 
+}

@@ -1,0 +1,16 @@
+/* ThemeSectorTabs Component Styles */
+.c-theme-sector-tabs {
+  @apply flex items-center gap-3;
+}
+
+.c-theme-sector-tabs__btn {
+  @apply px-8 py-3 rounded text-[15px] font-bold transition-all border border-slate-200 outline-none;
+}
+
+.c-theme-sector-tabs__btn--active {
+  @apply bg-blue-500 text-white border-blue-500 shadow-[0_8px_16px_rgba(59,130,246,0.3)];
+}
+
+.c-theme-sector-tabs__btn--inactive {
+  @apply bg-slate-100 text-slate-500 hover:bg-slate-200 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400;
+}

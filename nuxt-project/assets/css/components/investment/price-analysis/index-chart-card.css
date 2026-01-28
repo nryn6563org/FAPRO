@@ -1,0 +1,62 @@
+.c-index-chart-card {
+  @apply bg-white border border-slate-200 rounded-xl p-6 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
+}
+
+.c-index-chart-card:hover {
+  @apply shadow-lg border-blue-100;
+}
+
+.c-index-chart-card__header {
+  @apply flex justify-between items-start;
+}
+
+.c-index-chart-card__info {
+  @apply flex flex-col gap-2;
+}
+
+.c-index-chart-card__name {
+  @apply text-sm font-bold text-slate-400 uppercase tracking-wider;
+}
+
+.c-index-chart-card__price-row {
+  @apply flex items-baseline gap-3;
+}
+
+.c-index-chart-card__value {
+  @apply text-3xl font-bold text-slate-900 dark:text-white tabular-nums;
+}
+
+.c-index-chart-card__change {
+  @apply flex items-center gap-2;
+}
+
+.c-index-chart-card__change-val {
+  @apply flex items-center gap-0.5 text-sm font-bold;
+}
+
+.c-index-chart-card__change-pct {
+  @apply text-sm font-bold;
+}
+
+/* Indicators handled by design-system.css */
+
+
+.c-index-chart-card__chart-wrapper {
+  @apply h-64 w-full relative overflow-hidden;
+}
+
+.c-index-chart-card__period-selector {
+  @apply flex items-center gap-1 bg-slate-100 p-1 rounded w-fit dark:bg-slate-800;
+}
+
+.c-index-chart-card__period-btn {
+  @apply px-4 py-1.5 rounded text-xs font-bold transition-all;
+}
+
+.c-index-chart-card__period-btn--active {
+  @apply bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white;
+}
+
+.c-index-chart-card__period-btn--inactive {
+  @apply text-slate-400 hover:text-slate-600 dark:hover:text-slate-200;
+}

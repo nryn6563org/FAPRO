@@ -1,0 +1,27 @@
+/* 오늘의 종목 Pick 페이지 스타일 - 프리미엄 1920x1080 최적화 */
+.p-today-pick {
+  @apply flex flex-col min-h-screen dark:bg-[#020617];
+}
+
+.p-today-pick__slider-container {
+  @apply w-full overflow-hidden;
+}
+
+.swiper-container {
+  @apply w-full overflow-visible !important;
+}
+
+.p-today-pick__day-grid {
+  /* 6개 종목을 1920 해상도에서 효과적으로 배치, 화면이 작아지면 자동으로 줄바꿈 */
+  @apply flex flex-wrap w-full gap-6;
+  align-items: stretch;
+}
+
+.swiper-slide {
+  @apply h-auto flex;
+}
+
+/* Page Layout Container */
+.p-today-pick > * {
+  @apply w-full 
+}

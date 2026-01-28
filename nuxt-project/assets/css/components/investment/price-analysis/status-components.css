@@ -1,0 +1,59 @@
+/* StatusFilterSection & PriceStatusTable Styles */
+
+/* StatusFilterSection */
+.c-status-filter {
+  @apply flex flex-wrap gap-2;
+}
+
+.c-status-filter__btn {
+  @apply px-4 py-2 rounded text-xs font-bold transition-all border border-slate-200;
+}
+
+.c-status-filter__btn--active {
+  @apply bg-blue-600 text-white border-blue-600 shadow-md;
+}
+
+.c-status-filter__btn--inactive {
+  @apply bg-white text-slate-500 hover:text-slate-900 dark:bg-slate-900 dark:border-slate-800 dark:hover:text-white;
+}
+
+/* PriceStatusTable */
+.c-price-status-table {
+  @apply w-full border-collapse;
+}
+
+.c-price-status-table__thead {
+  @apply border-b-2 border-slate-100 dark:border-slate-800;
+}
+
+.c-price-status-table__th {
+  @apply py-4 px-4 text-left text-xs font-bold text-slate-400 uppercase tracking-wider;
+}
+
+.c-price-status-table__th--right {
+  @apply text-right;
+}
+
+.c-price-status-table__tr {
+  @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors dark:border-slate-800/50 dark:hover:bg-slate-800/20;
+}
+
+.c-price-status-table__td {
+  @apply py-4 px-4 text-sm font-bold text-slate-700 dark:text-slate-300;
+}
+
+.c-price-status-table__td--right {
+  @apply text-right tabular-nums;
+}
+
+.c-price-status-table__stock-name {
+  @apply font-bold text-slate-900 dark:text-white;
+}
+
+.c-price-status-table__change {
+  @apply font-bold;
+}
+
+.c-price-status-table__issue {
+  @apply text-xs font-medium text-slate-500 max-w-md line-clamp-1;
+}
