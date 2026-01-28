@@ -103,7 +103,13 @@
 
 /* Index Cards Scroller */
 .l-main__indices {
-    @apply flex items-center gap-4 overflow-x-auto pb-2 scrollbar-hide;
+    @apply flex items-center gap-4 overflow-x-auto pb-2;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.l-main__indices::-webkit-scrollbar {
+    display: none;
 }
 
 .c-mini-card {

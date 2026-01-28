@@ -1,6 +1,6 @@
 <!-- 공시 필터 탭: 수주, 지분, 실적 등 다양한 공시 유형 분류 필터 제공 -->
 <template>
-  <nav class="c-disclosure-tabs scrollbar-hide">
+  <nav class="c-disclosure-tabs">
     <button
       v-for="tab in tabs"
       :key="tab"

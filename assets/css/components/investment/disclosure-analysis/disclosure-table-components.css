@@ -8,6 +8,11 @@
 ------------------------------------------------------------- */
 .c-disclosure-tabs {
   @apply flex items-center gap-2 overflow-x-auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.c-disclosure-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .c-disclosure-tabs__btn {
@@ -29,6 +34,11 @@
 ------------------------------------------------------------- */
 .c-disclosure-sub-tabs {
   @apply flex items-center gap-3 overflow-x-auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.c-disclosure-sub-tabs::-webkit-scrollbar {
+  display: none;
 }
 
 .c-disclosure-sub-tabs__btn {

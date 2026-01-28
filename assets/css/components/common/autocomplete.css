@@ -9,7 +9,13 @@
 }
 
 .c-autocomplete__list {
-    @apply flex flex-col max-h-60 overflow-y-auto scrollbar-hide;
+    @apply flex flex-col max-h-60 overflow-y-auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.c-autocomplete__list::-webkit-scrollbar {
+    display: none;
 }
 
 .c-autocomplete__item {

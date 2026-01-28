@@ -136,6 +136,4 @@ export default {
 }
 </script>
 
-<style>
-@import url('@/assets/css/components/domain/dashboard/widget.css');
-</style>
+<style src="@/assets/css/components/domain/dashboard/widget.css"></style>

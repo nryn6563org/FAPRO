@@ -1,6 +1,6 @@
 <!-- 공시 서브 필터 탭: 매출 규모, 지분 유형 등 상세 분류 필터 제공 -->
 <template>
-  <nav class="c-disclosure-sub-tabs scrollbar-hide">
+  <nav class="c-disclosure-sub-tabs">
     <button
       v-for="tab in tabs"
       :key="tab"
