@@ -1,0 +1,104 @@
+.p-login {
+  @apply relative min-h-screen w-full flex items-center justify-center overflow-hidden;
+  background-color: hsl(222.2 84% 4.9%);
+}
+
+.p-login__bg {
+  @apply absolute inset-0 w-full h-full;
+  background: radial-gradient(circle at center, #1e3a8a 0%, hsl(222.2 84% 4.9%) 100%);
+  filter: blur(100px);
+  opacity: 0.8;
+  z-index: 0;
+}
+
+.p-login__container {
+  @apply relative z-10 w-full max-w-[480px] px-6;
+}
+
+.p-login__card {
+  @apply w-full bg-white rounded-[24px] p-10 flex flex-col items-center shadow-[0_20px_50px_rgba(0,0,0,0.3)] dark:bg-slate-900;
+}
+
+.p-login__header {
+  @apply w-full text-center mb-8;
+}
+
+.p-login__logo-box {
+  @apply inline-flex flex-col items-center justify-center w-24 h-24 bg-blue-600 rounded-[20px] mb-4 shadow-lg shadow-blue-500/30;
+}
+
+.p-login__logo-text {
+  @apply text-white text-xl font-black italic tracking-tighter leading-none;
+}
+
+.p-login__logo-subtext {
+  @apply text-white text-[10px] font-bold uppercase tracking-widest mt-0.5 border-t border-white/30 pt-0.5;
+}
+
+.p-login__subtitle {
+  @apply text-[15px] font-medium text-slate-400 dark:text-slate-500;
+}
+
+.p-login__form {
+  @apply w-full flex flex-col gap-5;
+}
+
+.p-login__field {
+  @apply flex flex-col gap-2;
+}
+
+.p-login__label {
+  @apply text-[13px] font-bold text-slate-700 dark:text-slate-300 ml-1;
+}
+
+.p-login__input-wrapper {
+  @apply relative w-full;
+}
+
+.p-login__input {
+  @apply w-full px-4 py-3.5 bg-slate-50 border border-slate-100 rounded-[12px] text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500/20 focus:border-blue-500 transition-all dark:bg-slate-800 dark:border-slate-800 dark:text-white;
+}
+
+.p-login__toggle-password {
+  @apply absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-blue-500 transition-colors;
+}
+
+.p-login__options {
+  @apply flex items-center gap-4 mt-1;
+}
+
+.p-login__checkbox-label {
+  @apply flex items-center gap-2 cursor-pointer text-[13px] text-slate-500 dark:text-slate-400 hover:text-slate-700 transition-colors;
+}
+
+.p-login__checkbox {
+  @apply w-4 h-4 rounded border-slate-200 text-blue-600 focus:ring-blue-500;
+}
+
+.p-login__submit-btn {
+  @apply w-full py-4 bg-blue-600 text-white font-bold rounded-[12px] shadow-lg shadow-blue-500/20 hover:bg-blue-700 hover:shadow-blue-500/40 transform hover:-translate-y-0.5 active:translate-y-0 transition-all mt-4;
+}
+
+.p-login__divider {
+  @apply w-full flex items-center gap-4 my-8 text-[12px] text-slate-400 before:content-[''] before:h-px before:flex-1 before:bg-slate-100 after:content-[''] after:h-px after:flex-1 after:bg-slate-100 dark:before:bg-slate-800 dark:after:bg-slate-800;
+}
+
+.p-login__links {
+  @apply flex items-center justify-center gap-3 mb-6;
+}
+
+.p-login__link {
+  @apply text-[13px] font-medium text-slate-500 hover:text-blue-600 transition-colors;
+}
+
+.p-login__link-divider {
+  @apply w-px h-3 bg-slate-100 dark:bg-slate-800;
+}
+
+.p-login__signup-btn {
+  @apply w-full py-3.5 bg-white border border-slate-100 text-slate-700 font-bold rounded-[12px] hover:bg-slate-50 hover:border-slate-200 transition-all dark:bg-slate-900 dark:border-slate-800 dark:text-slate-300 dark:hover:bg-slate-800;
+}
+
+.p-login__footer {
+  @apply mt-8 text-[11px] text-slate-400 text-center;
+}

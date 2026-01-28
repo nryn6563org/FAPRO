@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./*"]
+    },
+    "checkJs": false,
+    "jsx": "preserve",
+    "allowJs": true
+  },
+  "vueCompilerOptions": {
+    "target": 2.7
+  },
+  "exclude": ["node_modules", ".nuxt", "dist"]
+
+}

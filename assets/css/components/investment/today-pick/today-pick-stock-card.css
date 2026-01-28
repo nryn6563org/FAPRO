@@ -1,0 +1,97 @@
+/* TodayPickStockCard Component Styles */
+.c-today-pick-card {
+  @apply bg-white border-2 border-yellow-300 rounded-xl py-6 px-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-5 relative overflow-hidden;
+  width: calc((100% - 96px) / 5);
+  flex-shrink: 0;
+}
+
+.c-today-pick-card__favorite {
+  @apply absolute top-5 right-5 text-slate-300 transition-colors z-10 w-6 h-6;
+}
+
+.c-today-pick-card__favorite--active {
+  @apply text-amber-500;
+}
+
+.c-today-pick-card__header {
+  @apply flex items-start gap-4;
+}
+
+.c-today-pick-card__avatar {
+  @apply w-12 h-12 rounded flex items-center justify-center text-white text-lg font-bold shadow-md shrink-0;
+}
+
+.c-today-pick-card__info {
+  @apply flex-1 min-w-0;
+}
+
+.c-today-pick-card__name-row {
+  @apply flex items-center gap-2 mb-1;
+}
+
+.c-today-pick-card__name {
+  @apply text-lg font-bold text-slate-900 dark:text-white truncate;
+}
+
+.c-today-pick-card__ticker {
+  @apply text-xs font-bold text-slate-400;
+}
+
+.c-today-pick-card__desc {
+  @apply text-sm font-bold text-slate-500 line-clamp-2 leading-relaxed mb-2.5;
+}
+
+.c-today-pick-card__tags {
+  @apply flex flex-wrap gap-1.5;
+}
+
+.c-today-pick-card__tag {
+  @apply px-2 py-0.5 rounded bg-slate-50 text-slate-600 text-[10px] font-bold border border-slate-200 dark:bg-slate-800/50 dark:text-slate-400 dark:border-slate-700;
+}
+
+.c-today-pick-card__price-section {
+  @apply bg-slate-50 border border-slate-100 rounded p-4 dark:bg-slate-800/50 dark:border-slate-800 flex items-center justify-between gap-4;
+}
+
+.c-today-pick-card__price-group {
+  @apply flex flex-col gap-1;
+}
+
+.c-today-pick-card__price {
+  @apply text-xl font-bold text-slate-900 dark:text-white tabular-nums leading-tight;
+}
+
+.c-today-pick-card__change {
+  @apply flex items-center gap-1 text-sm font-bold tabular-nums;
+}
+
+.c-today-pick-card__chart {
+  @apply w-24 h-12 shrink-0;
+}
+
+.c-today-pick-card__reason-box {
+  @apply p-4 rounded bg-slate-50/80 border-l-4 border-blue-400 dark:bg-slate-800/30 flex flex-col gap-2;
+}
+
+.c-today-pick-card__reason-label {
+  @apply flex items-center gap-1.5 text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wide;
+}
+
+.c-today-pick-card__reason-icon {
+  @apply w-3 h-3 fill-slate-500;
+}
+
+.c-today-pick-card__reason-text {
+  @apply text-sm font-bold text-slate-700 dark:text-slate-300 leading-relaxed;
+}
+
+.c-today-pick-card__actions {
+  @apply grid grid-cols-2 gap-2.5 mt-auto;
+}
+
+.c-today-pick-card__btn {
+  @apply py-2.5 rounded text-sm font-bold transition-all;
+}
+
+/* Indicators handled by design-system.css */
+

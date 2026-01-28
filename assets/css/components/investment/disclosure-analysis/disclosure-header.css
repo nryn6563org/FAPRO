@@ -1,0 +1,24 @@
+/* Disclosure Analysis Header Styles */
+.c-investment-header {
+  @apply flex justify-between items-end;
+}
+
+.c-disclosure-header__content {
+  @apply flex flex-col gap-2;
+}
+
+.c-investment-header__title {
+  @apply text-2xl font-bold text-slate-900 dark:text-white;
+}
+
+.c-investment-header__desc {
+  @apply text-sm text-slate-500 dark:text-slate-400;
+}
+
+.c-disclosure-header__meta {
+  @apply flex items-center gap-1.5 text-xs font-medium text-slate-400 bg-slate-50 dark:bg-slate-800/50 px-3 py-1.5 rounded-full border border-slate-100 dark:border-slate-800;
+}
+
+.c-disclosure-header__icon {
+  @apply w-3.5 h-3.5;
+}

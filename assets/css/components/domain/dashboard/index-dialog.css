@@ -1,0 +1,41 @@
+/* Index Selection Dialog Styles - Minimalist V3 */
+
+.c-index-dialog__content {
+    @apply w-[420px] max-w-none rounded-2xl;
+}
+
+#index-selection-modal {
+    @apply flex flex-col gap-4 p-6;
+}
+
+.c-index-dialog__header {
+    @apply flex flex-col gap-4;
+}
+
+.c-index-dialog__title {
+    @apply text-lg font-extrabold text-slate-900 dark:text-white tracking-tight;
+}
+
+.c-index-dialog__search-box {
+    @apply relative flex items-center;
+}
+
+.c-index-dialog__search-icon {
+    @apply absolute top-[15px] left-4 w-4 h-4 text-slate-400;
+}
+
+.c-index-dialog__search-input {
+    @apply w-full h-11 pl-11 pr-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium;
+}
+
+.c-index-dialog__footer {
+    @apply flex items-center justify-center pt-2;
+}
+
+.c-index-dialog__actions {
+    @apply flex items-center gap-2 w-full;
+}
+
+.c-index-dialog__btn {
+    @apply flex-1 h-11 font-bold text-sm rounded-xl transition-all;
+}

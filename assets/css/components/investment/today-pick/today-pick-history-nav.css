@@ -1,0 +1,33 @@
+/* TodayPickHistoryNav Component Styles */
+.c-today-pick-nav {
+  @apply flex flex-col items-center gap-4 mb-10;
+}
+
+.c-today-pick-nav__selector {
+  @apply flex items-center justify-center gap-8 py-4 px-10 bg-white border border-slate-200 rounded-full shadow-lg dark:bg-slate-900 dark:border-slate-800 transition-all;
+}
+
+.c-today-pick-nav__btn {
+  @apply text-slate-400 hover:text-slate-900 transition-colors dark:hover:text-white outline-none disabled:opacity-30 disabled:cursor-not-allowed;
+}
+
+.c-today-pick-nav__icon {
+  @apply w-6 h-6;
+}
+
+.c-today-pick-nav__date {
+  @apply text-[1.25rem] font-bold text-slate-900 dark:text-white min-w-[220px] text-center select-none;
+}
+
+.c-today-pick-nav__indicators {
+  @apply flex items-center justify-center gap-2 h-4;
+}
+
+/* Swiper pagination classes integration */
+.c-today-pick-nav__indicator {
+  @apply w-2 h-2 rounded-full transition-all duration-300 bg-slate-200 dark:bg-slate-800 cursor-pointer;
+}
+
+.c-today-pick-nav__indicator--active {
+  @apply w-8 bg-blue-500 !important;
+}
