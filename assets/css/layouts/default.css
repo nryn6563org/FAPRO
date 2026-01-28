@@ -256,3 +256,28 @@
 .l-footer__contact-wrapper {
     @apply flex items-center gap-2;
 }
+
+/* Dialog Styles */
+.c-dialog--small {
+    @apply !w-[320px] rounded-xl;
+}
+
+.c-dialog-content {
+    @apply p-6 text-center;
+}
+
+.c-dialog-title {
+    @apply text-lg font-bold text-slate-900 dark:text-slate-100 mb-2;
+}
+
+.c-dialog-desc {
+    @apply text-slate-600 dark:text-slate-400 mb-6;
+}
+
+.c-dialog-actions {
+    @apply flex justify-end gap-3;
+}
+
+.c-dialog-btn-delete {
+    @apply bg-red-600 hover:bg-red-700 text-white border-transparent;
+}

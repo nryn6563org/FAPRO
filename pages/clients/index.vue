@@ -30,9 +30,9 @@
               <Search class="p-clients__search-field-icon" />
             </template>
             <template #item="{ item }">
-              <div class="flex items-center justify-between w-full">
-                <span class="font-bold">{{ item.name }}</span>
-                <span class="text-[10px] text-slate-400 opacity-60">{{ item.email }}</span>
+              <div class="c-clients-search-item">
+                <span class="c-clients-search-item__name">{{ item.name }}</span>
+                <span class="c-clients-search-item__email">{{ item.email }}</span>
               </div>
             </template>
           </Autocomplete>

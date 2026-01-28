@@ -62,6 +62,19 @@
     @apply flex items-center gap-2;
 }
 
+/* AI 검색 결과 아이템 스타일 */
+.c-clients-search-item {
+    @apply flex items-center justify-between w-full;
+}
+
+.c-clients-search-item__name {
+    @apply font-bold;
+}
+
+.c-clients-search-item__email {
+    @apply text-[10px] text-slate-400 opacity-60;
+}
+
 /* 정렬 및 필터 바 */
 .p-clients__sort-bar {
     @apply flex flex-col gap-4 items-start justify-between sm:flex-row sm:items-center;

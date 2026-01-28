@@ -230,13 +230,13 @@
     />
 
     <!-- 삭제 확인 다이얼로그 -->
-    <Dialog :open="isDeleteConfirmOpen" className="!w-[320px] rounded-xl" @update:open="isDeleteConfirmOpen = $event">
-      <div class="p-6 text-center">
-        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">삭제 확인</h3>
-        <p class="text-slate-600 dark:text-slate-400 mb-6">선택한 지수를 화면에서 삭제하시겠습니까?</p>
-        <div class="flex justify-end gap-3">
+    <Dialog :open="isDeleteConfirmOpen" className="c-dialog--small" @update:open="isDeleteConfirmOpen = $event">
+      <div class="c-dialog-content">
+        <h3 class="c-dialog-title">삭제 확인</h3>
+        <p class="c-dialog-desc">선택한 지수를 화면에서 삭제하시겠습니까?</p>
+        <div class="c-dialog-actions">
           <Button variant="outline" @click="cancelDelete">취소</Button>
-          <Button @click="confirmDelete" class="bg-red-600 hover:bg-red-700 text-white border-transparent">삭제</Button>
+          <Button @click="confirmDelete" class="c-dialog-btn-delete">삭제</Button>
         </div>
       </div>
     </Dialog>
