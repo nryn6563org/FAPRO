@@ -395,3 +395,7 @@ export default {
 }
 </script>
 
+<style scoped>
+@import url('@/assets/css/components/domain/market-indices.css');
+</style>
+

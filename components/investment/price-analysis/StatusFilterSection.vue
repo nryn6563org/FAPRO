@@ -23,4 +23,6 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/investment/price-analysis/status-components.css"></style>
+<style scoped>
+@import url('@/assets/css/components/investment/price-analysis/status-components.css');
+</style>

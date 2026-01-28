@@ -11,6 +11,10 @@
   @apply text-slate-400 hover:text-slate-900 transition-colors dark:hover:text-white outline-none disabled:opacity-30 disabled:cursor-not-allowed;
 }
 
+.c-today-pick-nav__btn.swiper-button-disabled {
+  @apply opacity-30 cursor-not-allowed;
+}
+
 .c-today-pick-nav__icon {
   @apply w-6 h-6;
 }

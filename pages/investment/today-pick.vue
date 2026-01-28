@@ -45,11 +45,15 @@ export default {
     TodayPickStockCard
   },
   data() {
+    // 과거 날짜부터 오름차순으로 정렬 (Past -> Present)
+    const sortedHistory = [...historyPicks].reverse()
+
     return {
-      historyData: historyPicks, // 일자별 추천 종목 리스트 데이터
-      activeDate: historyPicks[0].date, // 현재 보고 있는 날짜 (초기값: 가장 최근 날짜)
+      historyData: sortedHistory, // 정렬된 데이터 할당
+      activeDate: sortedHistory[sortedHistory.length - 1].date, // 현재 보고 있는 날짜 (초기값: 가장 최근 날짜)
       // Swiper 슬라이더 옵션 설정
       swiperOption: {
+        initialSlide: sortedHistory.length - 1, // 가장 마지막 슬라이드(최신 날짜)부터 시작
         slidesPerView: 1, // 한 번에 하나의 날짜(카드 그룹)만 표시
         spaceBetween: 50, // 슬라이드 간 간격
         navigation: {

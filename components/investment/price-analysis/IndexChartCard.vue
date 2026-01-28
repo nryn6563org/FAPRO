@@ -163,4 +163,6 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/investment/price-analysis/index-chart-card.css"></style>
+<style scoped>
+@import url('@/assets/css/components/investment/price-analysis/index-chart-card.css');
+</style>

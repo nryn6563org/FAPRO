@@ -282,3 +282,7 @@ export default {
 }
 </script>
 
+<style scoped>
+@import url('@/assets/css/components/domain/report-analysis.css');
+</style>
+

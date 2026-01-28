@@ -11,7 +11,7 @@
 
 /* 배경 딤 처리 (Backdrop) */
 .c-dialog__backdrop {
-    @apply absolute inset-0 bg-slate-950/40 backdrop-blur-sm transition-opacity duration-300;
+    @apply absolute inset-0 bg-slate-950/50 transition-opacity duration-300;
 }
 
 /* 다이얼로그 본문 (Content) */

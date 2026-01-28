@@ -286,3 +286,7 @@ export default {
 }
 </script>
 
+<style scoped>
+@import url('@/assets/css/components/domain/price-analysis.css');
+</style>
+

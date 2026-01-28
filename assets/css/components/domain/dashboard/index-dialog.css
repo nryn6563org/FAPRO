@@ -1,7 +1,7 @@
 /* Index Selection Dialog Styles - Minimalist V3 */
 
 .c-index-dialog__content {
-    @apply w-[420px] max-w-none rounded-2xl dark:bg-slate-900 dark:border-slate-800;
+    @apply w-[480px] max-w-none rounded-xl dark:bg-slate-900 dark:border-slate-800 !important;
 }
 
 .c-index-dialog {

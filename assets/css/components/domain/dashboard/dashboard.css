@@ -126,12 +126,7 @@
 
 /* 드래그 핸들 (편집 모드 시 노출) */
 .c-dashboard__drag-handle {
-    @apply absolute -left-3 top-[-10px] z-20 cursor-move bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-full p-1.5 shadow-md hover:scale-110 transition-transform hover:border-blue-500 flex items-center justify-center opacity-0;
-}
-
-/* 호버 시 드래그 핸들 표시 */
-.c-dashboard__grid-item-inner:hover .c-dashboard__drag-handle {
-    @apply opacity-100;
+    @apply absolute -left-3 top-[-10px] z-20 cursor-move bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-full p-1.5 shadow-md hover:scale-110 transition-transform hover:border-blue-500 flex items-center justify-center;
 }
 
 .c-dashboard__drag-icon {
@@ -151,6 +146,13 @@
 /* 고스트 카드 내부 콘텐츠 숨김 */
 .ghost-card > * {
     @apply invisible;
+}
+
+/* 드래그 중인 원본 아이템 스타일 (Fallback) */
+.sortable-fallback {
+    @apply opacity-90 scale-105 shadow-2xl cursor-grabbing ring-2 ring-blue-500 rounded-xl z-50 !important;
+    transform-origin: center center;
+    transition: none !important; /* 드래그 시 딜레이 제거 */
 }
 
 /* 빈 상태 (Empty State) - 위젯 없을 때 */

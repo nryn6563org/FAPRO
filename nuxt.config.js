@@ -43,6 +43,9 @@ export default {
     cssSourceMap: true,
     postcss: {
       plugins: {
+        "postcss-import": {},
+        tailwindcss: {},
+        autoprefixer: {},
         "postcss-custom-properties": false
       }
     },

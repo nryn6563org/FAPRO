@@ -45,8 +45,10 @@
         class="c-dashboard__grid"
         :disabled="!isEditing"
         ghost-class="ghost-card"
-        @start="drag=true"
-        @end="drag=false"
+        :force-fallback="true"
+        :fallback-on-body="true"
+        @start="onDragStart"
+        @end="onDragEnd"
     >
         <!-- 각 위젯 아이템 -->
         <div
@@ -176,10 +178,6 @@ export default {
     handleCancelDialog() {
       this.isDialogOpen = false
     },
-    /**
-     * 다이얼로그 저장 핸들러
-     * @param {object} payload - { widgets: 위젯ID목록, sizes: 위젯크기객체 }
-     */
     handleSaveWidgets({ widgets, sizes }) {
       this.widgets = [...widgets]
       this.widgetSizes = { ...this.widgetSizes, ...sizes }
@@ -191,6 +189,16 @@ export default {
      */
     removeWidget(widgetId) {
       this.widgets = this.widgets.filter(w => w !== widgetId)
+    },
+    // 드래그 시작 시 텍스트 선택 방지
+    onDragStart() {
+      this.drag = true
+      document.body.style.userSelect = 'none'
+    },
+    // 드래그 종료 시 텍스트 선택 복구
+    onDragEnd() {
+      this.drag = false
+      document.body.style.userSelect = ''
     }
   }
 }

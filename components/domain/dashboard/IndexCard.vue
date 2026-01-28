@@ -116,4 +116,8 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import url('@/assets/css/components/domain/dashboard/index-card.css');
+</style>
 <!-- 지수 카드 스타일 사용 -->

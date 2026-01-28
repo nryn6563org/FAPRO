@@ -119,3 +119,7 @@ export default {
 }
 </script>
 
+<style>
+@import url('@/assets/css/components/domain/dashboard/index-dialog.css');
+</style>
+

@@ -207,3 +207,17 @@
 
 /* 유틸리티 */
 .c-widget__chart-container { @apply flex-1 min-h-0 relative w-full; }
+
+/* Edit Animation */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(0.3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-0.3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.c-widget--editing {
+  animation: shake 0.5s infinite;
+  @apply cursor-move border-blue-400 dark:border-blue-500 ring-2 ring-blue-100 dark:ring-blue-900/30;
+}
