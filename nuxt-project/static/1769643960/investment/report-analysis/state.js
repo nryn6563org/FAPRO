@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002FFAPRO\u002Fnuxt-project\u002Fstatic\u002F1769643960",layout:"default",error:a,serverRendered:true,routePath:"\u002Finvestment\u002Freport-analysis",config:{_app:{basePath:"\u002FFAPRO\u002F",assetsPath:"\u002FFAPRO\u002Fnuxt-project\u002F",cdnURL:a}}}}(null));
