@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/investment/disclosure-analysis", {data:[{}],fetch:{},mutations:void 0});

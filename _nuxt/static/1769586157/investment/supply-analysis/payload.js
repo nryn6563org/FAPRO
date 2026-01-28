@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/investment/supply-analysis", {data:[{}],fetch:{},mutations:void 0});

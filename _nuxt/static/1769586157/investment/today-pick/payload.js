@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/investment/today-pick", {data:[{}],fetch:{},mutations:void 0});

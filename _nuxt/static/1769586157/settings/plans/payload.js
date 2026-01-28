@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/settings/plans", {data:[{}],fetch:{},mutations:void 0});

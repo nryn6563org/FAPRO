@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/investment/today-issue", {data:[{}],fetch:{},mutations:void 0});

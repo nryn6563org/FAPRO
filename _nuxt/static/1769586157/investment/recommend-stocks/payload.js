@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/investment/recommend-stocks", {data:[{}],fetch:{},mutations:void 0});
