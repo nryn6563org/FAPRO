@@ -170,11 +170,17 @@
                           <p class="c-mini-card__value">{{ index.value.toLocaleString() }}</p>
                       </div>
 
+
                       <!-- 지수 장식용 SVG 미니 차트 (상승 시 적색, 하락 시 청색) -->
                       <div class="c-mini-card__chart">
                           <svg viewBox="0 0 100 40" class="c-mini-card__chart-svg" preserveAspectRatio="none">
                               <path d="M0 30 Q 25 35, 50 20 T 100 10 V 40 H 0 Z" :fill="index.change >= 0 ? '#ef4444' : '#3b82f6'" />
                           </svg>
+                      </div>
+
+                      <!-- [NEW] 삭제 마스킹 (호버 시 노출) -->
+                      <div class="c-mini-card__mask" @click.stop="removeIndex(index.id)">
+                          <Trash2 class="c-mini-card__delete-icon" />
                       </div>
                   </div>
                   
@@ -253,7 +259,8 @@ import {
   LogOut,
   LogIn,
   Crown,
-  Plus
+  Plus,
+  Trash2
 } from 'lucide-vue'
 // 공통 컴포넌트 임포트
 // 공통 컴포넌트 임포트
@@ -292,6 +299,7 @@ export default {
     LogIn,
     Crown,
     Plus,
+    Trash2,
     // UI 컴포넌트 등록
     Button,
     Input,
@@ -478,6 +486,14 @@ export default {
       this.selectedIndexIds = newSelectedIds
       this.isIndexModalOpen = false
     },
+
+    /**
+     * 메인화면 지수 카드 삭제 핸들러
+     */
+    removeIndex(id) {
+      this.selectedIndexIds = this.selectedIndexIds.filter(itemId => itemId !== id)
+    },
+
 
     /**
      * 지수 이름에 따른 동적 클래스 반환 (KOSPI, KOSDAQ 배경색)

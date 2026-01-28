@@ -290,6 +290,19 @@
     @apply w-full;
 }
 
+/* [NEW] 위젯 삭제 마스킹 (호버 시 노출) */
+.c-widget-card__mask {
+    @apply absolute inset-0 bg-slate-900/60 z-10 opacity-0 transition-opacity flex items-center justify-center rounded cursor-pointer duration-200 backdrop-blur-[1px];
+}
+
+.c-widget-card:hover .c-widget-card__mask {
+    @apply opacity-100;
+}
+
+.c-widget-card__delete-icon {
+    @apply w-8 h-8 text-white drop-shadow-md hover:scale-110 transition-transform;
+}
+
 /* 위젯 선택 카드 스타일 (Enhanced Widget Card) */
 .c-widget-card {
     @apply relative flex flex-col items-start p-[12px_20px] rounded border-2 transition-all duration-300 text-left bg-white dark:bg-slate-900 border-white dark:border-slate-800 shadow-sm hover:translate-y-[-4px] hover:shadow-xl;

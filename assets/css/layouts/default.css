@@ -140,7 +140,20 @@
 
 
 .c-mini-card__chart {
-    @apply absolute bottom-0 left-0 right-0 h-10 opacity-20 group-hover:opacity-30 transition-opacity;
+    @apply absolute bottom-0 right-0 w-full h-10 opacity-30 z-0;
+}
+
+/* [NEW] 미니 카드 삭제 마스킹 */
+.c-mini-card__mask {
+    @apply absolute inset-0 bg-slate-900/60 z-20 opacity-0 transition-opacity flex items-center justify-center rounded cursor-pointer duration-200 backdrop-blur-[1px];
+}
+
+.c-mini-card:hover .c-mini-card__mask {
+    @apply opacity-100;
+}
+
+.c-mini-card__delete-icon {
+    @apply w-6 h-6 text-white drop-shadow-md hover:scale-110 transition-transform;
 }
 
 .c-mini-card__chart-svg {
