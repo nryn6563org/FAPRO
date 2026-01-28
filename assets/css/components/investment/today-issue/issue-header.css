@@ -1,0 +1,61 @@
+/* IssueHeader Component Styles */
+.c-issue-header {
+  @apply flex flex-col gap-6;
+}
+
+.c-issue-header__top {
+  @apply flex justify-between items-end;
+}
+
+.c-issue-header__greeting {
+  @apply flex flex-col gap-1;
+}
+
+
+
+.c-issue-header__market {
+  @apply py-4 bg-white border border-slate-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-issue-header__market-container {
+  @apply overflow-hidden;
+  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+}
+
+.c-issue-header__market-list {
+  @apply flex items-center gap-8 animate-marquee whitespace-nowrap;
+}
+
+.c-issue-header__market-item {
+  @apply flex items-center gap-2;
+}
+
+.c-issue-header__market-name {
+  @apply text-sm font-bold text-slate-600 dark:text-slate-400;
+}
+
+.c-issue-header__market-value {
+  @apply text-sm font-bold text-slate-900 dark:text-white;
+}
+
+.c-issue-header__market-change {
+  @apply text-sm font-bold flex items-center gap-0.5;
+}
+
+.c-issue-header__market-change--up {
+  @apply text-red-500;
+}
+
+.c-issue-header__market-change--down {
+  @apply text-blue-500;
+}
+
+/* Marquee Animation */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}

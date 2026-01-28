@@ -1,0 +1,378 @@
+/* AI Signals Page Overhaul Styles */
+
+.p-signals {
+    @apply flex flex-col gap-8;
+}
+
+/* Page Header */
+.p-signals__header {
+    @apply flex justify-between items-end;
+    padding-left: var(--padding-h-offset);
+    padding-right: var(--padding-h-offset);
+}
+
+.p-signals__header .c-page-header {
+    @apply mb-0 px-0;
+}
+
+.p-signals__filter-btn {
+    @apply flex items-center gap-2;
+}
+
+.p-signals__icon-filter {
+    @apply w-4 h-4;
+}
+
+/* Top Grid (Status & Recent) */
+.p-signals__top-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+}
+
+.p-signals__status-card,
+.p-signals__recent-card,
+.p-signals__category-card {
+    @apply p-10 !rounded-2xl !border-slate-200 !shadow-sm transition-all;
+}
+
+.p-signals__card-title {
+    @apply text-[17px] font-bold text-slate-900 tracking-tight flex items-center gap-2;
+}
+
+/* Status Card Visuals */
+.p-signals__status-visual {
+    @apply flex justify-center gap-16 my-10;
+}
+
+.p-signals__status-circle {
+    @apply w-32 h-32 rounded-full border-4 flex flex-col items-center justify-center gap-1.5 transition-transform hover:scale-105;
+}
+
+.p-signals__status-circle--buy {
+    @apply border-red-500 text-red-500 bg-red-50/30;
+}
+
+.p-signals__status-circle--sell {
+    @apply border-blue-500 text-blue-500 bg-blue-50/30;
+}
+
+.p-signals__status-label {
+    @apply text-xs;
+}
+
+.p-signals__status-value {
+    @apply text-xl font-bold;
+}
+
+.p-signals__countdown {
+    @apply text-center text-[14.5px] text-slate-500 mb-6;
+}
+
+.p-signals__countdown-time {
+    @apply text-slate-900 font-bold;
+}
+
+.p-signals__status-banner {
+    @apply bg-slate-50 rounded-xl py-3.5 px-6 text-center text-[13px] text-slate-600 border border-slate-100 font-medium;
+}
+
+.p-signals__status-highlight {
+    @apply text-blue-600 font-bold;
+}
+
+/* Recent Signals List */
+.p-signals__recent-header {
+    @apply flex justify-between items-center mb-4;
+}
+
+.p-signals__recent-subtitle {
+    @apply text-xs text-slate-400;
+}
+
+.p-signals__recent-list {
+    @apply flex flex-col gap-3 mt-4;
+}
+
+.p-signals__recent-item {
+    @apply flex justify-between items-center p-5 border border-slate-200 rounded-xl bg-white transition-all hover:border-slate-300 hover:shadow-sm cursor-pointer;
+}
+
+.p-signals__recent-info {
+    @apply flex flex-col;
+}
+
+.p-signals__recent-name-group {
+    @apply flex items-center gap-2;
+}
+
+.p-signals__stock-name {
+    @apply text-lg font-bold text-slate-900;
+}
+
+.p-signals__icon-info {
+    @apply w-3 h-3 text-slate-300;
+}
+
+.p-signals__recent-type {
+    @apply text-[11px] text-slate-400 mt-0.5;
+}
+
+.p-signals__profit-value {
+    @apply text-lg font-extrabold tracking-tight;
+}
+
+.p-signals__profit-value--up {
+    @apply text-red-500;
+}
+
+.p-signals__profit-value--down {
+    @apply text-blue-500;
+}
+
+/* Category Grid (3 columns) */
+.p-signals__category-grid {
+    @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.p-signals__stock-list {
+    @apply flex flex-col gap-2 mt-4;
+}
+
+.p-signals__stock-item {
+    @apply flex justify-between items-center py-3 rounded-xl transition-all duration-200 hover:bg-slate-50 hover:shadow-sm cursor-pointer border border-transparent hover:border-slate-100;
+}
+
+.p-signals__stock-info {
+    @apply flex items-center gap-3;
+}
+
+.p-signals__stock-icon {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center text-[12px] font-bold border flex-shrink-0;
+}
+
+.p-signals__stock-icon--ai {
+    @apply bg-slate-50 text-slate-400 border-slate-100;
+}
+
+.p-signals__stock-icon--hot {
+    @apply bg-orange-50 text-orange-400 border-orange-100;
+}
+
+.p-signals__stock-icon--top {
+    @apply bg-red-50 text-red-400 border-red-100;
+}
+
+.p-signals__stock-name-group {
+    @apply flex flex-col;
+}
+
+.p-signals__stock-title {
+    @apply text-[16px] font-bold text-slate-900;
+}
+
+.p-signals__stock-status {
+    @apply text-[13px] text-slate-400 font-medium;
+}
+
+.p-signals__stock-data {
+    @apply text-right;
+}
+
+.p-signals__stock-profit {
+    @apply text-[17px] font-extrabold;
+}
+
+.p-signals__stock-profit--up {
+    @apply text-red-500;
+}
+
+.p-signals__stock-profit--down {
+    @apply text-blue-500;
+}
+
+.p-signals__stock-profit--best {
+    @apply text-red-600;
+}
+
+.p-signals__stock-details {
+    @apply text-[12px] text-slate-400 mt-0.5;
+}
+
+/* Feed Grid (2 columns) */
+.p-signals__feed-grid {
+    @apply grid grid-cols-1 lg:grid-cols-2 gap-8;
+}
+
+.p-signals__feed-card {
+    @apply p-0 border-0 shadow-none bg-transparent;
+}
+
+.p-signals__feed-header {
+    @apply py-4 px-8 text-base font-bold text-white rounded-t-2xl shadow-sm;
+}
+
+.p-signals__feed-header--buy {
+    @apply bg-gradient-to-r from-red-500 to-rose-600;
+}
+
+.p-signals__feed-header--sell {
+    @apply bg-gradient-to-r from-blue-600 to-indigo-700;
+}
+
+.p-signals__feed-content {
+    @apply p-8 bg-white border border-slate-200 rounded-b-2xl shadow-sm;
+}
+
+.p-signals__feed-summary {
+    @apply text-sm font-bold mb-4;
+}
+
+.p-signals__feed-count--buy {
+    @apply text-red-500;
+}
+
+.p-signals__feed-count--sell {
+    @apply text-blue-600;
+}
+
+.p-signals__feed-list {
+    @apply flex flex-col gap-0;
+}
+
+.p-signals__feed-item {
+    @apply flex gap-6;
+}
+
+.p-signals__feed-time {
+    @apply relative pl-[50px] w-6;
+}
+
+.p-signals__time-label {
+    @apply text-[10px] text-slate-400 font-bold uppercase absolute top-[30px] left-0 flex items-center whitespace-nowrap;
+}
+
+.p-signals__icon-clock {
+    @apply w-3 h-3 mr-1;
+}
+
+.p-signals__time-dot {
+    @apply w-2.5 h-2.5 rounded-full border-2 border-slate-300 bg-white relative z-30 mb-2 shadow-sm mt-8;
+}
+
+.p-signals__feed-time::after {
+    @apply content-[''] absolute top-0 left-[54.5px] w-[1px] h-full bg-slate-200 z-10;
+}
+
+.p-signals__feed-item--buy .p-signals__time-dot {
+    @apply border-red-500 bg-red-500;
+}
+
+.p-signals__feed-item--buy .p-signals__time-label {
+    @apply text-red-500;
+}
+
+.p-signals__feed-item--buy .p-signals__feed-time::after {
+    @apply bg-red-100;
+}
+
+.p-signals__feed-item--sell .p-signals__time-dot {
+    @apply border-blue-500 bg-blue-500;
+}
+
+.p-signals__feed-item--sell .p-signals__time-label {
+    @apply text-blue-500;
+}
+
+.p-signals__feed-item--sell .p-signals__feed-time::after {
+    @apply bg-blue-100;
+}
+
+.p-signals__feed-box {
+    @apply flex-grow bg-slate-50/80 rounded-2xl p-6 mb-6 border border-slate-100 hover:border-slate-300 hover:bg-white hover:shadow-md transition-all;
+}
+
+.p-signals__feed-stock {
+    @apply flex items-center gap-3 mb-2;
+}
+
+.p-signals__stock-avatar {
+    @apply w-8 h-8 rounded-full flex items-center justify-center;
+}
+
+.p-signals__stock-avatar--buy {
+    @apply bg-blue-100;
+}
+
+.p-signals__stock-avatar--sell {
+    @apply bg-orange-100;
+}
+
+.p-signals__icon-zap {
+    @apply w-4 h-4;
+}
+
+.p-signals__icon-zap--buy {
+    @apply text-blue-600;
+}
+
+.p-signals__icon-zap--sell {
+    @apply text-orange-600;
+}
+
+.p-signals__stock-main {
+    @apply flex flex-col;
+}
+
+.p-signals__stock-code {
+    @apply text-[10px] text-slate-400;
+}
+
+.p-signals__feed-action {
+    @apply flex justify-start items-center gap-2;
+}
+
+.p-signals__action-badge {
+    @apply px-2 py-0.5 rounded text-white text-[10px] font-bold;
+}
+
+.p-signals__action-badge--buy {
+    @apply bg-red-500;
+}
+
+.p-signals__action-badge--sell {
+    @apply bg-blue-600;
+}
+
+.p-signals__action-price {
+    @apply text-sm font-bold;
+}
+
+/* Dark Mode Overrides (Subtle) */
+.dark .p-signals {
+    @apply bg-slate-950 text-slate-100;
+}
+
+.dark .c-content-card {
+    @apply !bg-slate-800 !border-slate-700;
+}
+
+.dark .p-signals__card-title,
+.dark .p-signals__stock-name,
+.dark .p-signals__stock-title {
+    @apply text-white;
+}
+
+.dark .p-signals__feed-content {
+    @apply bg-slate-800 border-slate-700;
+}
+
+.dark .p-signals__feed-box {
+    @apply bg-slate-900 border-slate-700 text-slate-100;
+}
+
+.dark .p-signals__status-banner {
+    @apply bg-slate-900 border-slate-700 text-slate-400;
+}
+
+.dark .p-signals__stock-item:hover {
+    @apply bg-slate-700/50;
+}
