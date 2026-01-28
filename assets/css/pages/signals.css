@@ -373,6 +373,22 @@
     @apply bg-slate-900 border-slate-700 text-slate-400;
 }
 
+.dark .p-signals__recent-item {
+    @apply bg-slate-900 border-slate-700 hover:border-slate-500;
+}
+
+.dark .p-signals__status-circle--buy {
+    @apply bg-red-950/20 border-red-500;
+}
+
+.dark .p-signals__status-circle--sell {
+    @apply bg-blue-950/20 border-blue-500;
+}
+
+.dark .p-signals__countdown-time {
+    @apply text-white;
+}
+
 .dark .p-signals__stock-item:hover {
     @apply bg-slate-700/50;
 }

@@ -104,6 +104,15 @@
                               <Check v-if="tempSelectedWidgets.includes(widget.id)" class="c-widget-card__check-icon" />
                           </div>
 
+                          <!-- [NEW] 삭제 마스킹 (호버 시 노출) -->
+                          <div
+                              v-if="tempSelectedWidgets.includes(widget.id)"
+                              class="c-widget-card__mask"
+                              @click.stop="toggleTempWidget(widget.id)"
+                          >
+                              <Trash2 class="c-widget-card__delete-icon" />
+                          </div>
+
                           <!-- 위젯 아이콘 -->
                           <div :class="['c-widget-card__icon-wrapper', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__icon-wrapper--selected' : '']">
                               <component :is="widget.icon" class="c-widget-card__icon" />
@@ -169,7 +178,7 @@
 
 <script>
 // 필요한 아이콘 및 컴포넌트 임포트
-import { Search, Check, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart, Settings, X, Save } from 'lucide-vue'
+import { Search, Check, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart, Settings, X, Save, Trash2 } from 'lucide-vue'
 import Dialog from '@/components/common/Dialog.vue'
 import Button from '@/components/common/Button.vue'
 import Autocomplete from '@/components/common/Autocomplete.vue'
@@ -208,7 +217,9 @@ export default {
     ClipboardList,
     Star,
     CalendarDays,
-    PieChart
+    CalendarDays,
+    PieChart,
+    Trash2
   },
   props: {
     // 다이얼로그 노출 여부
@@ -282,7 +293,10 @@ export default {
     },
     onWidgetSelect(widget) {
       this.activeCategory = widget.category
-      this.toggleTempWidget(widget.id)
+      // 이미 선택된 위젯이면 아무 동작 안함 (자동완성에서 선택 시 삭제 방지)
+      if (!this.tempSelectedWidgets.includes(widget.id)) {
+        this.toggleTempWidget(widget.id)
+      }
       this.searchQuery = ''
     },
     /**

@@ -140,7 +140,20 @@
 
 
 .c-mini-card__chart {
-    @apply absolute bottom-0 left-0 right-0 h-10 opacity-20 group-hover:opacity-30 transition-opacity;
+    @apply absolute bottom-0 right-0 w-full h-10 opacity-30 z-0;
+}
+
+/* [NEW] 미니 카드 삭제 마스킹 */
+.c-mini-card__mask {
+    @apply absolute inset-0 bg-slate-900/60 z-20 opacity-0 transition-opacity flex items-center justify-center rounded cursor-pointer duration-200 backdrop-blur-[1px];
+}
+
+.c-mini-card:hover .c-mini-card__mask {
+    @apply opacity-100;
+}
+
+.c-mini-card__delete-icon {
+    @apply w-6 h-6 text-white drop-shadow-md hover:scale-110 transition-transform;
 }
 
 .c-mini-card__chart-svg {
@@ -215,11 +228,11 @@
 }
 
 .c-mini-card--kospi {
-    @apply bg-rose-50 dark:bg-rose-900/10 border-rose-100 dark:border-rose-900/20;
+    @apply bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700;
 }
 
 .c-mini-card--kosdaq {
-    @apply bg-sky-50 dark:bg-sky-900/10 border-sky-100 dark:border-sky-900/20;
+    @apply bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700;
 }
 
 /* Add Button Card (Dashed) */
@@ -242,4 +255,29 @@
 
 .l-footer__contact-wrapper {
     @apply flex items-center gap-2;
+}
+
+/* Dialog Styles */
+.c-dialog--small {
+    @apply !w-[320px] rounded-xl;
+}
+
+.c-dialog-content {
+    @apply p-6 text-center;
+}
+
+.c-dialog-title {
+    @apply text-lg font-bold text-slate-900 dark:text-slate-100 mb-2;
+}
+
+.c-dialog-desc {
+    @apply text-slate-600 dark:text-slate-400 mb-6;
+}
+
+.c-dialog-actions {
+    @apply flex justify-end gap-3;
+}
+
+.c-dialog-btn-delete {
+    @apply bg-red-600 hover:bg-red-700 text-white border-transparent;
 }

@@ -170,11 +170,17 @@
                           <p class="c-mini-card__value">{{ index.value.toLocaleString() }}</p>
                       </div>
 
+
                       <!-- 지수 장식용 SVG 미니 차트 (상승 시 적색, 하락 시 청색) -->
                       <div class="c-mini-card__chart">
                           <svg viewBox="0 0 100 40" class="c-mini-card__chart-svg" preserveAspectRatio="none">
                               <path d="M0 30 Q 25 35, 50 20 T 100 10 V 40 H 0 Z" :fill="index.change >= 0 ? '#ef4444' : '#3b82f6'" />
                           </svg>
+                      </div>
+
+                      <!-- [NEW] 삭제 마스킹 (호버 시 노출) -->
+                      <div class="c-mini-card__mask" @click.stop="removeIndex(index.id)">
+                          <Trash2 class="c-mini-card__delete-icon" />
                       </div>
                   </div>
                   
@@ -222,6 +228,18 @@
       @close="isIndexModalOpen = false"
       @save="handleIndexSave"
     />
+
+    <!-- 삭제 확인 다이얼로그 -->
+    <Dialog :open="isDeleteConfirmOpen" className="c-dialog--small" @update:open="isDeleteConfirmOpen = $event">
+      <div class="c-dialog-content">
+        <h3 class="c-dialog-title">삭제 확인</h3>
+        <p class="c-dialog-desc">선택한 지수를 화면에서 삭제하시겠습니까?</p>
+        <div class="c-dialog-actions">
+          <Button variant="outline" @click="cancelDelete">취소</Button>
+          <Button @click="confirmDelete" class="c-dialog-btn-delete">삭제</Button>
+        </div>
+      </div>
+    </Dialog>
   </div>
 </template>
 
@@ -253,7 +271,8 @@ import {
   LogOut,
   LogIn,
   Crown,
-  Plus
+  Plus,
+  Trash2
 } from 'lucide-vue'
 // 공통 컴포넌트 임포트
 // 공통 컴포넌트 임포트
@@ -261,6 +280,7 @@ import Button from '@/components/common/Button.vue'
 import Input from '@/components/common/Input.vue'
 import GlobalHeader from '@/components/layout/GlobalHeader.vue'
 import IndexSelectionDialog from '@/components/domain/dashboard/IndexSelectionDialog.vue'
+import Dialog from '@/components/common/Dialog.vue'
 
 export default {
   name: 'DefaultLayout',
@@ -292,11 +312,13 @@ export default {
     LogIn,
     Crown,
     Plus,
+    Trash2,
     // UI 컴포넌트 등록
     Button,
     Input,
     GlobalHeader,
-    IndexSelectionDialog
+    IndexSelectionDialog,
+    Dialog
   },
   data() {
     return {
@@ -317,6 +339,10 @@ export default {
       
       // 현재 선택된 지수들의 ID 목록 (기본값 설정)
       selectedIndexIds: ['kospi', 'kosdaq', 'sp500', 'nasdaq', 'usdkrw'],
+
+      // 삭제 확인 모달 상태
+      isDeleteConfirmOpen: false,
+      indexToDelete: null,
 
       sidebarOpen: true, // 사이드바 펼침(true)/접힘(false) 상태
       // 초기 확장 메뉴 설정 (투자정보, 마켓정보, AI추천종목을 기본으로 펼침)
@@ -478,6 +504,28 @@ export default {
       this.selectedIndexIds = newSelectedIds
       this.isIndexModalOpen = false
     },
+
+    /**
+     * 메인화면 지수 카드 삭제 핸들러 (컨펌 모달 오픈)
+     */
+    removeIndex(id) {
+      this.indexToDelete = id
+      this.isDeleteConfirmOpen = true
+    },
+
+    confirmDelete() {
+      if (this.indexToDelete) {
+        this.selectedIndexIds = this.selectedIndexIds.filter(itemId => itemId !== this.indexToDelete)
+        this.indexToDelete = null
+      }
+      this.isDeleteConfirmOpen = false
+    },
+
+    cancelDelete() {
+      this.indexToDelete = null
+      this.isDeleteConfirmOpen = false
+    },
+
 
     /**
      * 지수 이름에 따른 동적 클래스 반환 (KOSPI, KOSDAQ 배경색)

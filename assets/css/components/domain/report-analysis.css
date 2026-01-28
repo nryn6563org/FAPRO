@@ -1,0 +1,201 @@
+/* 리포트 분석 도메인 컴포넌트 스타일 (ReportAnalysis Styles) */
+
+.c-report-analysis {
+    @apply space-y-6;
+}
+
+.c-report-analysis__header {
+    @apply mb-4;
+}
+
+.c-report-analysis__title {
+    @apply text-2xl font-bold dark:text-white;
+}
+
+.c-report-analysis__desc {
+    @apply text-slate-600 mt-1 dark:text-slate-400;
+}
+
+/* 탭 메뉴 섹션 */
+.c-report-analysis__tabs-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-4 dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-report-analysis__tabs-grid {
+    @apply grid grid-cols-4 lg:grid-cols-8 gap-2;
+}
+
+.c-report-analysis__tab-btn {
+    @apply text-xs py-2 rounded-xl transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700;
+}
+
+.c-report-analysis__tab-btn--active {
+    @apply bg-blue-600 text-white shadow-sm border-blue-600 dark:bg-blue-600 dark:text-white dark:border-blue-600;
+}
+
+/* 리포트 리스트 테이블 섹션 */
+.c-report-analysis__list-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-6 dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-report-analysis__update-info {
+    @apply flex justify-end mb-4;
+}
+
+.c-report-analysis__update-text {
+    @apply text-sm text-slate-500 dark:text-slate-400;
+}
+
+.c-report-analysis__table-wrapper {
+    @apply overflow-x-auto;
+}
+
+.c-report-analysis__table {
+    @apply w-full;
+}
+
+.c-report-analysis__th {
+    @apply py-3 px-4 font-semibold text-slate-700 border-b-2 border-slate-300 dark:text-slate-300 dark:border-slate-700;
+}
+
+.c-report-analysis__th--center {
+    @apply text-center;
+}
+
+.c-report-analysis__th--left {
+    @apply text-left;
+}
+
+.c-report-analysis__th--right {
+    @apply text-right;
+}
+
+.c-report-analysis__tr {
+    @apply border-b border-slate-200 hover:bg-slate-50 transition-colors dark:border-slate-800 dark:hover:bg-slate-800/50;
+}
+
+.c-report-analysis__td {
+    @apply py-3 px-4;
+}
+
+.c-report-analysis__td--center {
+    @apply text-center text-slate-600 dark:text-slate-400;
+}
+
+.c-report-analysis__td--stock {
+    @apply font-medium text-blue-600 cursor-pointer hover:underline dark:text-blue-400;
+}
+
+.c-report-analysis__avatar-box {
+    @apply flex items-center gap-2;
+}
+
+.c-report-analysis__avatar {
+    @apply w-6 h-6 rounded-full flex items-center justify-center text-white font-bold text-xs flex-shrink-0;
+}
+
+.c-report-analysis__td--rate {
+    @apply text-right font-semibold;
+}
+
+.c-report-analysis__rate--up {
+    @apply text-red-600 dark:text-red-400;
+}
+
+.c-report-analysis__rate--down {
+    @apply text-blue-600 dark:text-blue-400;
+}
+
+.c-report-analysis__rate--neutral {
+    @apply text-slate-600 dark:text-slate-400;
+}
+
+.c-report-analysis__td--value {
+    @apply text-right font-semibold text-slate-900 dark:text-white;
+}
+
+.c-report-analysis__td--value-center {
+    @apply text-center font-semibold text-slate-900 dark:text-white;
+}
+
+.c-report-analysis__rating-badge {
+    @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none border-transparent;
+}
+
+.c-report-analysis__td--title {
+    @apply text-slate-700 max-w-md truncate cursor-pointer hover:text-blue-600 hover:underline dark:text-slate-300 dark:hover:text-blue-400;
+}
+
+.c-report-analysis__td--firm {
+    @apply text-center text-slate-600 dark:text-slate-400;
+}
+
+/* 페이지네이션 및 하단 설명 */
+.c-report-analysis__footer {
+    @apply flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 gap-4;
+}
+
+.c-report-analysis__footer-desc {
+    @apply text-sm text-slate-600 dark:text-slate-400;
+}
+
+.c-report-analysis__pagination {
+    @apply flex items-center gap-2;
+}
+
+.c-report-analysis__page-btn {
+    @apply px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800;
+}
+
+.c-report-analysis__page-btn--active {
+    @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:text-white;
+}
+
+/* 리포트 상세 모달 */
+.c-report-analysis__modal-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6;
+}
+
+.c-report-analysis__modal-backdrop {
+    @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity dark:bg-black dark:bg-opacity-80;
+}
+
+.c-report-analysis__modal-content {
+    @apply bg-white rounded-xl shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200 dark:bg-slate-900 dark:border-slate-800;
+}
+
+.c-report-analysis__modal-body {
+    @apply p-6 overflow-y-auto;
+}
+
+.c-report-analysis__modal-header {
+    @apply flex justify-between items-start mb-4;
+}
+
+.c-report-analysis__modal-title {
+    @apply text-lg font-bold pr-8 dark:text-white;
+}
+
+.c-report-analysis__modal-close {
+    @apply text-slate-400 hover:text-slate-600 dark:hover:text-slate-200;
+}
+
+.c-report-analysis__modal-meta {
+    @apply text-sm text-slate-500 mb-6 dark:text-slate-400;
+}
+
+.c-report-analysis__modal-stats {
+    @apply space-y-3 mb-6;
+}
+
+.c-report-analysis__stat-label {
+    @apply text-sm text-slate-600 dark:text-slate-400;
+}
+
+.c-report-analysis__stat-value {
+    @apply font-semibold dark:text-white;
+}
+
+.c-report-analysis__modal-text {
+    @apply text-sm text-slate-700 leading-relaxed dark:text-slate-300;
+}

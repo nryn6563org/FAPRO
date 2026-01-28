@@ -21,9 +21,9 @@
                   <Search class="c-index-dialog__search-icon" />
                 </template>
                 <template #item="{ item }">
-                  <div class="flex items-center justify-between w-full">
-                    <span class="font-bold">{{ item.name }}</span>
-                    <span class="text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">{{ item.category }}</span>
+                  <div class="c-index-dialog__item">
+                    <span class="c-index-dialog__item-name">{{ item.name }}</span>
+                    <span class="c-index-dialog__item-badge">{{ item.category }}</span>
                   </div>
                 </template>
               </Autocomplete>
@@ -106,12 +106,9 @@ export default {
     },
     toggleIndex(id) {
       if (this.selectedIds.includes(id)) {
-        this.selectedIds = this.selectedIds.filter(itemId => itemId !== id)
+        // 이미 선택된 경우 아무 동작 안 함 (자동완성에서 선택 시 삭제 방지)
+        return
       } else {
-        if (this.selectedIds.length >= 5) {
-          alert('최대 5개까지만 선택할 수 있습니다.')
-          return
-        }
         this.selectedIds.push(id)
       }
     },
@@ -122,4 +119,7 @@ export default {
 }
 </script>
 
-<style src="@/assets/css/components/domain/dashboard/index-dialog.css"></style>
+<style>
+@import url('@/assets/css/components/domain/dashboard/index-dialog.css');
+</style>
+

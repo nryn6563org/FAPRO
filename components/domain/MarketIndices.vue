@@ -1,22 +1,20 @@
 <template>
-  <div class="space-y-6">
+  <div class="c-market-indices">
     <div class="c-page-header">
       <h2 class="c-page-header__title">시장 지수</h2>
       <p class="c-page-header__desc">실시간 국내외 주요 지수와 환율 정보</p>
     </div>
 
     <!-- 시장 분류 탭 (국내, 해외, 환율, 원자재) -->
-    <div class="space-y-6">
-      <div class="flex space-x-1 rounded-xl bg-slate-100 p-1 w-full lg:w-auto lg:inline-flex">
+    <div class="c-market-indices__stack">
+      <div class="c-market-indices__tabs">
         <button
           v-for="tab in tabs"
           :key="tab.value"
           @click="activeTab = tab.value"
           :class="[
-            'flex-1 lg:flex-none px-3 py-1.5 text-sm font-medium rounded-xl transition-all',
-            activeTab === tab.value
-              ? 'bg-white text-slate-900 shadow'
-              : 'text-slate-500 hover:text-slate-900'
+            'c-market-indices__tab-btn',
+            activeTab === tab.value ? 'c-market-indices__tab-btn--active' : ''
           ]"
         >
           {{ tab.label }}
@@ -24,22 +22,22 @@
       </div>
 
       <!-- 국내 지수 목록 -->
-      <div v-if="activeTab === 'domestic'" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div v-if="activeTab === 'domestic'" class="c-market-indices__stack">
+        <div class="c-market-indices__grid">
           <div
             v-for="index in domesticIndices"
             :key="index.name"
             class="c-content-card p-6"
           >
-            <div class="space-y-4">
+            <div class="c-market-indices__card-content">
               <div>
-                <h3 class="text-base font-semibold">{{ index.name }}</h3>
-                <p class="text-2xl font-bold mt-2">
+                <h3 class="c-market-indices__card-name">{{ index.name }}</h3>
+                <p class="c-market-indices__card-value">
                   {{ formatNumber(index.value) }}
                 </p>
                 <div
-                  class="flex items-center gap-1 mt-2"
-                  :class="index.change >= 0 ? 'text-green-600' : 'text-red-600'"
+                  class="c-market-indices__card-change"
+                  :class="index.change >= 0 ? 'c-market-indices__card-change--up' : 'c-market-indices__card-change--down'"
                 >
                   <component :is="index.change >= 0 ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
                   <span class="font-medium">
@@ -51,7 +49,7 @@
                 </div>
               </div>
 
-              <div class="h-24 relative">
+              <div class="c-market-indices__sparkline">
                 <area-chart
                   :chart-data="getSparklineData(index)"
                   :options="sparklineOptions"
@@ -65,25 +63,23 @@
 
         <!-- 상세 차트 영역 -->
         <div class="c-content-card p-6">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-lg font-semibold">상세 차트</h3>
-            <div class="flex gap-2">
+          <div class="c-market-indices__detail-chart">
+            <h3 class="c-market-indices__detail-title">상세 차트</h3>
+            <div class="c-market-indices__detail-actions">
               <button
                 v-for="idx in domesticIndices"
                 :key="idx.name"
                 @click="selectedDomestic = idx.name"
                 :class="[
-                  'px-3 py-1 rounded-xl text-sm transition-colors',
-                  selectedDomestic === idx.name
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  'c-market-indices__detail-btn',
+                  selectedDomestic === idx.name ? 'c-market-indices__detail-btn--active' : ''
                 ]"
               >
                 {{ idx.name }}
               </button>
             </div>
           </div>
-          <div class="h-80 relative">
+          <div class="c-market-indices__chart-body">
              <line-chart
               :chart-data="getDetailChartData(domesticIndices.find(i => i.name === selectedDomestic))"
               :options="detailChartOptions"
@@ -94,22 +90,22 @@
       </div>
 
        <!-- 해외 지수 목록 -->
-      <div v-if="activeTab === 'international'" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div v-if="activeTab === 'international'" class="c-market-indices__stack">
+        <div class="c-market-indices__grid--international">
           <div
             v-for="index in internationalIndices"
             :key="index.name"
              class="c-content-card p-6"
           >
-            <div class="space-y-4">
+            <div class="c-market-indices__card-content">
               <div>
-                <h3 class="text-base font-semibold">{{ index.name }}</h3>
-                <p class="text-2xl font-bold mt-2">
+                <h3 class="c-market-indices__card-name">{{ index.name }}</h3>
+                <p class="c-market-indices__card-value">
                   {{ formatNumber(index.value) }}
                 </p>
                 <div
-                  class="flex items-center gap-1 mt-2"
-                  :class="index.change >= 0 ? 'text-green-600' : 'text-red-600'"
+                  class="c-market-indices__card-change"
+                  :class="index.change >= 0 ? 'c-market-indices__card-change--up' : 'c-market-indices__card-change--down'"
                 >
                    <component :is="index.change >= 0 ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
                   <span class="font-medium">
@@ -120,7 +116,7 @@
                   </span>
                 </div>
               </div>
-              <div class="h-24 relative">
+              <div class="c-market-indices__sparkline">
                 <area-chart
                   :chart-data="getSparklineData(index)"
                   :options="sparklineOptions"
@@ -134,25 +130,23 @@
 
         <!-- 상세 차트 영역 -->
         <div class="c-content-card p-6">
-          <div class="flex items-center justify-between mb-6">
-            <h3 class="text-lg font-semibold">상세 차트</h3>
-            <div class="flex gap-2 flex-wrap">
+          <div class="c-market-indices__detail-chart">
+            <h3 class="c-market-indices__detail-title">상세 차트</h3>
+            <div class="c-market-indices__detail-actions">
               <button
                 v-for="idx in internationalIndices"
                 :key="idx.name"
                 @click="selectedInternational = idx.name"
                 :class="[
-                  'px-3 py-1 rounded-xl text-sm transition-colors',
-                  selectedInternational === idx.name
-                    ? 'bg-blue-600 text-white'
-                    : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                  'c-market-indices__detail-btn',
+                  selectedInternational === idx.name ? 'c-market-indices__detail-btn--active' : ''
                 ]"
               >
                 {{ idx.name }}
               </button>
             </div>
           </div>
-          <div class="h-80 relative">
+          <div class="c-market-indices__chart-body">
             <line-chart
               :chart-data="getDetailChartData(internationalIndices.find(i => i.name === selectedInternational))"
               :options="detailChartOptions"
@@ -163,22 +157,22 @@
       </div>
 
        <!-- 환율 목록 -->
-      <div v-if="activeTab === 'forex'" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-if="activeTab === 'forex'" class="c-market-indices__stack">
+        <div class="c-market-indices__grid--forex">
           <div
             v-for="rate in exchangeRates"
             :key="rate.name"
              class="c-content-card p-6"
           >
-             <div class="space-y-4">
+             <div class="c-market-indices__card-content">
               <div>
-                <h3 class="text-base font-semibold">{{ rate.name }}</h3>
-                <p class="text-2xl font-bold mt-2">
+                <h3 class="c-market-indices__card-name">{{ rate.name }}</h3>
+                <p class="c-market-indices__card-value">
                   {{ formatNumber(rate.value) }}
                 </p>
                 <div
-                  class="flex items-center gap-1 mt-2"
-                  :class="rate.change >= 0 ? 'text-green-600' : 'text-red-600'"
+                  class="c-market-indices__card-change"
+                  :class="rate.change >= 0 ? 'c-market-indices__card-change--up' : 'c-market-indices__card-change--down'"
                 >
                    <component :is="rate.change >= 0 ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
                   <span class="font-medium">
@@ -189,7 +183,7 @@
                   </span>
                 </div>
               </div>
-              <div class="h-24 relative">
+              <div class="c-market-indices__sparkline">
                 <area-chart
                   :chart-data="getSparklineData(rate)"
                   :options="sparklineOptions"
@@ -203,23 +197,23 @@
       </div>
 
       <!-- 원자재 목록 -->
-      <div v-if="activeTab === 'commodities'" class="space-y-6">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div v-if="activeTab === 'commodities'" class="c-market-indices__stack">
+        <div class="c-market-indices__grid--commodities">
           <div
             v-for="commodity in commodities"
             :key="commodity.name"
              class="c-content-card p-6"
           >
-            <div class="space-y-4">
+            <div class="c-market-indices__card-content">
               <div>
-                <h3 class="text-base font-semibold">{{ commodity.name }}</h3>
-                 <p class="text-2xl font-bold mt-2">
+                <h3 class="c-market-indices__card-name">{{ commodity.name }}</h3>
+                 <p class="c-market-indices__card-value">
                   {{ formatNumber(commodity.value) }}
                 </p>
-                <p v-if="commodity.unit" class="text-xs text-slate-500 mt-1">{{ commodity.unit }}</p>
+                <p v-if="commodity.unit" class="c-market-indices__card-unit">{{ commodity.unit }}</p>
                  <div
-                  class="flex items-center gap-1 mt-2"
-                  :class="commodity.change >= 0 ? 'text-green-600' : 'text-red-600'"
+                  class="c-market-indices__card-change"
+                  :class="commodity.change >= 0 ? 'c-market-indices__card-change--up' : 'c-market-indices__card-change--down'"
                 >
                    <component :is="commodity.change >= 0 ? 'TrendingUp' : 'TrendingDown'" class="w-4 h-4" />
                   <span class="font-medium">
@@ -230,7 +224,7 @@
                   </span>
                 </div>
               </div>
-              <div class="h-24 relative">
+              <div class="c-market-indices__sparkline">
                 <area-chart
                   :chart-data="getSparklineData(commodity)"
                   :options="sparklineOptions"
@@ -400,3 +394,8 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import url('@/assets/css/components/domain/market-indices.css');
+</style>
+

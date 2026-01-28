@@ -12,7 +12,7 @@ export default {
     },
     meta: [{ charset: "utf-8" }, { name: "viewport", content: "width=device-width, initial-scale=1" }, { hid: "description", name: "description", content: "" }, { name: "format-detection", content: "telephone=no" }],
     link: [
-      { rel: "icon", type: "image/x-icon", href: "/favicon.ico" },
+      { rel: "icon", type: "image/x-icon", href: process.env.NODE_ENV === "production" ? "/FAPRO/favicon.ico" : "/favicon.ico" },
       { rel: "stylesheet", href: "https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" }
     ]
   },
@@ -43,7 +43,10 @@ export default {
     cssSourceMap: true,
     postcss: {
       plugins: {
-        'postcss-custom-properties': false
+        "postcss-import": {},
+        tailwindcss: {},
+        autoprefixer: {},
+        "postcss-custom-properties": false
       }
     },
 
@@ -52,8 +55,6 @@ export default {
       // 파일 크기가 크더라도 압축 처리를 진행하여 경고를 제거합니다.
       compact: true
     },
-
-
 
     extend(config, { isDev, isClient }) {
       config.module.rules.push({
@@ -66,6 +67,6 @@ export default {
 
   router: {
     // GitHub Pages 배포 경로 설정
-    base: "/FAPRO/"
+    base: process.env.NODE_ENV === "production" ? "/FAPRO/" : "/"
   }
 };
