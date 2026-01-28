@@ -207,3 +207,7 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@import '@/assets/css/pages/market.css';
+</style>

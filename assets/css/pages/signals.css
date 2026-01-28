@@ -7,8 +7,8 @@
 /* Page Header */
 .p-signals__header {
     @apply flex justify-between items-end;
-    padding-left: var(--padding-h-offset);
-    padding-right: var(--padding-h-offset);
+    padding-left: 0.3125rem;
+    padding-right: 0.3125rem;
 }
 
 .p-signals__header .c-page-header {

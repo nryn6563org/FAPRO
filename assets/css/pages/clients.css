@@ -54,7 +54,8 @@
     @apply absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 w-5 h-5 z-10;
 }
 
-.p-clients__search-input {
+/* Autocomplete 컴포넌트 내부의 input에 스타일을 적용하기 위해 deep selector 사용 */
+.p-clients__search-field ::v-deep .p-clients__search-input {
     @apply !pl-10 w-full border border-slate-200 dark:border-slate-800 rounded-xl h-10 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100;
 }
 

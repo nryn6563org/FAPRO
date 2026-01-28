@@ -238,3 +238,7 @@ export default {
 }
 </script>
 
+<style scoped>
+@import '@/assets/css/pages/clients.css';
+</style>
+
