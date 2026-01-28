@@ -109,10 +109,6 @@ export default {
         // 이미 선택된 경우 아무 동작 안 함 (자동완성에서 선택 시 삭제 방지)
         return
       } else {
-        if (this.selectedIds.length >= 5) {
-          alert('최대 5개까지만 선택할 수 있습니다.')
-          return
-        }
         this.selectedIds.push(id)
       }
     },

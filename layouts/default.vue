@@ -228,6 +228,18 @@
       @close="isIndexModalOpen = false"
       @save="handleIndexSave"
     />
+
+    <!-- 삭제 확인 다이얼로그 -->
+    <Dialog :open="isDeleteConfirmOpen" className="!w-[320px] rounded-xl" @update:open="isDeleteConfirmOpen = $event">
+      <div class="p-6 text-center">
+        <h3 class="text-lg font-bold text-slate-900 dark:text-slate-100 mb-2">삭제 확인</h3>
+        <p class="text-slate-600 dark:text-slate-400 mb-6">선택한 지수를 화면에서 삭제하시겠습니까?</p>
+        <div class="flex justify-end gap-3">
+          <Button variant="outline" @click="cancelDelete">취소</Button>
+          <Button @click="confirmDelete" class="bg-red-600 hover:bg-red-700 text-white border-transparent">삭제</Button>
+        </div>
+      </div>
+    </Dialog>
   </div>
 </template>
 
@@ -268,6 +280,7 @@ import Button from '@/components/common/Button.vue'
 import Input from '@/components/common/Input.vue'
 import GlobalHeader from '@/components/layout/GlobalHeader.vue'
 import IndexSelectionDialog from '@/components/domain/dashboard/IndexSelectionDialog.vue'
+import Dialog from '@/components/common/Dialog.vue'
 
 export default {
   name: 'DefaultLayout',
@@ -304,7 +317,8 @@ export default {
     Button,
     Input,
     GlobalHeader,
-    IndexSelectionDialog
+    IndexSelectionDialog,
+    Dialog
   },
   data() {
     return {
@@ -325,6 +339,10 @@ export default {
       
       // 현재 선택된 지수들의 ID 목록 (기본값 설정)
       selectedIndexIds: ['kospi', 'kosdaq', 'sp500', 'nasdaq', 'usdkrw'],
+
+      // 삭제 확인 모달 상태
+      isDeleteConfirmOpen: false,
+      indexToDelete: null,
 
       sidebarOpen: true, // 사이드바 펼침(true)/접힘(false) 상태
       // 초기 확장 메뉴 설정 (투자정보, 마켓정보, AI추천종목을 기본으로 펼침)
@@ -488,10 +506,24 @@ export default {
     },
 
     /**
-     * 메인화면 지수 카드 삭제 핸들러
+     * 메인화면 지수 카드 삭제 핸들러 (컨펌 모달 오픈)
      */
     removeIndex(id) {
-      this.selectedIndexIds = this.selectedIndexIds.filter(itemId => itemId !== id)
+      this.indexToDelete = id
+      this.isDeleteConfirmOpen = true
+    },
+
+    confirmDelete() {
+      if (this.indexToDelete) {
+        this.selectedIndexIds = this.selectedIndexIds.filter(itemId => itemId !== this.indexToDelete)
+        this.indexToDelete = null
+      }
+      this.isDeleteConfirmOpen = false
+    },
+
+    cancelDelete() {
+      this.indexToDelete = null
+      this.isDeleteConfirmOpen = false
     },
 
 
