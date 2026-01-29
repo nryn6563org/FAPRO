@@ -47,6 +47,21 @@
           v-else-if="widgetId === 'market-news' || widgetId === 'economy-news'" 
         />
 
+        <!-- 7. AI 추천 위젯 -->
+        <AIRecommendWidget 
+          v-else-if="['today-pick-widget', 'daily-stocks-widget', 'recommend-stocks-widget', 'recommend-return-widget'].includes(widgetId)" 
+          :widgetId="widgetId" 
+        />
+
+        <!-- 8. 투자 정보 (이슈, 시세 등) -->
+        <InvestmentInfoWidget 
+          v-else-if="['today-issue-widget', 'price-analysis-widget', 'supply-analysis-widget', 'theme-sector-widget', 'report-analysis-widget', 'disclosure-analysis-widget'].includes(widgetId)" 
+          :widgetId="widgetId" 
+        />
+
+        <!-- 9. Todo 위젯 -->
+        <TodoWidget v-else-if="widgetId === 'todo-widget'" />
+
         <!-- 예외 처리: 데이터가 없는 경우 -->
         <div v-else class="c-widget__fallback">
              <span class="c-widget__fallback-text">데이터 준비중: {{ widgetId }}</span>
@@ -66,6 +81,9 @@ import AIIssueBubbleWidget from './widgets/AIIssueBubbleWidget.vue'
 import SimpleStatWidget from './widgets/SimpleStatWidget.vue'
 import ClientListWidget from './widgets/ClientListWidget.vue'
 import NewsListWidget from './widgets/NewsListWidget.vue'
+import AIRecommendWidget from './widgets/AIRecommendWidget.vue'
+import InvestmentInfoWidget from './widgets/InvestmentInfoWidget.vue'
+import TodoWidget from './widgets/TodoWidget.vue'
 
 export default {
   // 컴포넌트 이름: 대시보드 위젯 컨테이너
@@ -96,7 +114,10 @@ export default {
     AIIssueBubbleWidget,
     SimpleStatWidget,
     ClientListWidget,
-    NewsListWidget
+    NewsListWidget,
+    AIRecommendWidget,
+    InvestmentInfoWidget,
+    TodoWidget
   },
   props: {
     // 위젯 식별자 (ID)

@@ -1,0 +1,233 @@
+/* Todo Widget Styles */
+.c-todo {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0.5rem;
+  gap: 1rem;
+}
+
+.c-todo__calendar {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.c-todo__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.75rem;
+}
+
+.c-todo__month-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.dark .c-todo__month-title {
+  color: #f8fafc;
+}
+
+.c-todo__nav {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.c-todo__nav-btn {
+  padding: 0.25rem;
+  border-radius: 0.25rem;
+  color: #64748b;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+.dark .c-todo__nav-btn {
+  color: #94a3b8;
+}
+
+.c-todo__nav-btn:hover {
+  background-color: #f1f5f9;
+}
+.dark .c-todo__nav-btn:hover {
+  background-color: #334155;
+}
+
+.c-todo__grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.c-todo__weekday {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.c-todo__day {
+  height: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  color: #334155;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+.dark .c-todo__day {
+  color: #cbd5e1;
+}
+
+.c-todo__day:hover {
+  background-color: #f8fafc;
+}
+.dark .c-todo__day:hover {
+  background-color: #1e293b;
+}
+
+.c-todo__day--other {
+  color: #cbd5e1;
+}
+.dark .c-todo__day--other {
+  color: #475569;
+}
+
+.c-todo__day--today {
+  color: #3b82f6;
+  font-weight: 700;
+}
+
+.c-todo__day--selected {
+  background-color: #3b82f6;
+  color: #ffffff;
+}
+.dark .c-todo__day--selected {
+  background-color: #2563eb;
+  color: #ffffff;
+}
+
+.c-todo__day--selected:hover {
+  background-color: #2563eb;
+}
+
+.c-todo__dot {
+  width: 0.25rem;
+  height: 0.25rem;
+  background-color: #3b82f6;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 0.25rem;
+}
+.c-todo__day--selected .c-todo__dot {
+  background-color: #ffffff;
+}
+
+/* Memo Area */
+.c-todo__memo-area {
+  background-color: #f8fafc;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.dark .c-todo__memo-area {
+  background-color: #1e293b;
+  border-color: #334155;
+}
+
+.c-todo__memo-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.c-todo__memo-date {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+.dark .c-todo__memo-date {
+  color: #f8fafc;
+}
+
+.c-todo__memo-actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.c-todo__action-btn {
+  color: #64748b;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+.dark .c-todo__action-btn {
+  color: #94a3b8;
+}
+
+.c-todo__input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.c-todo__input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  resize: none;
+  height: 100%;
+  background-color: #ffffff;
+}
+.dark .c-todo__input {
+  background-color: #0f172a;
+  border-color: #475569;
+  color: #f8fafc;
+}
+
+.c-todo__save-btn {
+  align-self: flex-end;
+  padding: 0.25rem 0.75rem;
+  background-color: #3b82f6;
+  color: #ffffff;
+  border-radius: 0.25rem;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+}
+
+.c-todo__memo-content {
+  font-size: 0.875rem;
+  color: #334155;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  flex: 1;
+  overflow-y: auto;
+}
+.dark .c-todo__memo-content {
+  color: #cbd5e1;
+}
+
+.c-todo__no-memo {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  text-align: center;
+  margin-top: 2rem;
+  cursor: pointer;
+}
+.c-todo__no-memo:hover {
+  text-decoration: underline;
+}
