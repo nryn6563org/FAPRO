@@ -5,10 +5,16 @@
         <h2 class="p-clients__title">고객 관리</h2>
         <p class="p-clients__subtitle">총 {{ clients.length }}명의 고객을 관리하고 있습니다</p>
       </div>
-      <Button class="p-clients__add-btn" @click="isAddDialogOpen = true">
-        <Plus class="p-clients__add-icon" />
-        신규 고객 등록
-      </Button>
+      <div class="p-clients__header-actions">
+        <Button variant="outline" class="p-clients__bulk-btn" @click="isBulkDialogOpen = true">
+          <Upload class="p-clients__add-icon" />
+          고객 한번에 등록
+        </Button>
+        <Button class="p-clients__add-btn" @click="isAddDialogOpen = true">
+          <Plus class="p-clients__add-icon" />
+          신규 고객 등록
+        </Button>
+      </div>
     </div>
 
     <!-- 검색 및 필터 영역 -->
@@ -139,21 +145,29 @@
       :client="selectedClient"
       @update:open="val => !val && (selectedClient = null)"
     />
+
+    <!-- [NEW] 대량 등록 모달 -->
+    <BulkRegisterModal
+      :open="isBulkDialogOpen"
+      @update:open="isBulkDialogOpen = $event"
+      @submit="handleBulkSubmit"
+    />
   </div>
 </template>
 
 <script>
 // Lucide Icons
-import { Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText } from 'lucide-vue'
+import { Plus, Search, ArrowUpDown, Star, Phone, Calendar, FileText, Upload } from 'lucide-vue'
 
 // Common Components
-import Button from '@/components/common/Button.vue'
-import Input from '@/components/common/Input.vue'
+import Button from '@/components/atoms/Button.vue'
+import Input from '@/components/atoms/Input.vue'
 
 // Modular Components
-import ClientRegisterModal from '@/components/domain/clients/ClientRegisterModal.vue'
-import ClientDetailModal from '@/components/domain/clients/ClientDetailModal.vue'
-import Autocomplete from '@/components/common/Autocomplete.vue'
+import ClientRegisterModal from '@/components/organisms/ClientRegisterModal.vue'
+import ClientDetailModal from '@/components/organisms/ClientDetailModal.vue'
+import BulkRegisterModal from '@/components/organisms/BulkRegisterModal.vue'
+import Autocomplete from '@/components/molecules/Autocomplete.vue'
 
 // Data Utility
 import { mockClients, getRiskBadgeClass, getRiskLabel } from '@/utils/client-data'
@@ -173,13 +187,16 @@ export default {
     FileText,
     ClientRegisterModal,
     ClientDetailModal,
-    Autocomplete
+    BulkRegisterModal,
+    Autocomplete,
+    Upload
   },
   data() {
     return {
       clients: mockClients, // 전체 고객 데이터 목록
       searchTerm: '', // 검색어
       isAddDialogOpen: false, // 고객 등록 모달 열림 상태
+      isBulkDialogOpen: false, // 대량 등록 모달 열림 상태
       sortBy: 'aum', // 정렬 기준 (기본값: 자산순)
       selectedClient: null, // 선택된 고객 상세 정보
       // 정렬 옵션 목록
@@ -229,6 +246,10 @@ export default {
       // 등록 로직 (추후 실제 API 연동 가능)
       this.isAddDialogOpen = false
       alert('고객이 등록되었습니다.')
+    },
+    handleBulkSubmit(file) {
+      // 대량 등록 로직 (추후 실제 API 연동 가능)
+      alert(`${file.name} 파일을 통한 대량 등록이 시작되었습니다.`);
     },
     onClientSelect(client) {
       this.searchTerm = client.name

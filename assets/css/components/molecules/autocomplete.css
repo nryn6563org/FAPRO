@@ -1,0 +1,42 @@
+/* Autocomplete Component Styles */
+
+.c-autocomplete {
+    @apply relative w-full;
+}
+
+.c-autocomplete__dropdown {
+    @apply absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-2xl z-[1000] overflow-hidden dark:bg-slate-800 dark:border-slate-700;
+}
+
+.c-autocomplete__list {
+    @apply flex flex-col max-h-60 overflow-y-auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.c-autocomplete__list::-webkit-scrollbar {
+    display: none;
+}
+
+.c-autocomplete__item {
+    @apply px-4 py-3 text-sm text-slate-700 cursor-pointer transition-colors flex items-center gap-3 hover:bg-slate-50 dark:text-slate-200 dark:hover:bg-slate-700;
+}
+
+.c-autocomplete__item--active {
+    @apply bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300;
+}
+
+.c-autocomplete__item-icon {
+    @apply w-4 h-4 text-slate-400;
+}
+
+.c-autocomplete__no-results {
+    @apply px-4 py-8 text-center text-sm text-slate-400 font-medium;
+}
+
+/* Ensure parents don't clip the dropdown */
+.c-dialog__content,
+.p-clients__search-box,
+.c-widget-dialog__header {
+    overflow: visible !important;
+}

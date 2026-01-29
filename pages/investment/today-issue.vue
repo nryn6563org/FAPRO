@@ -47,12 +47,12 @@
 
 <script>
 import { SparklesIcon } from 'lucide-vue'
-import IssueHeader from '@/components/investment/today-issue/IssueHeader.vue'
-import IssueBubbleMap from '@/components/investment/today-issue/IssueBubbleMap.vue'
-import IssueTrendChart from '@/components/investment/today-issue/IssueTrendChart.vue'
-import MajorStocksList from '@/components/investment/today-issue/MajorStocksList.vue'
-import NewsSummary from '@/components/investment/today-issue/NewsSummary.vue'
-import IssueHistory from '@/components/investment/today-issue/IssueHistory.vue'
+import IssueHeader from '@/components/organisms/investment/today-issue/IssueHeader.vue'
+import IssueBubbleMap from '@/components/organisms/investment/today-issue/IssueBubbleMap.vue'
+import IssueTrendChart from '@/components/organisms/investment/today-issue/IssueTrendChart.vue'
+import MajorStocksList from '@/components/organisms/investment/today-issue/MajorStocksList.vue'
+import NewsSummary from '@/components/organisms/investment/today-issue/NewsSummary.vue'
+import IssueHistory from '@/components/organisms/investment/today-issue/IssueHistory.vue'
 
 // 리액트 소스에서 가져온 데이터 (Mock Data)
 import { domesticBubbles, usBubbles, keywordDataMap, allIssues } from '@/utils/today-issue-data'

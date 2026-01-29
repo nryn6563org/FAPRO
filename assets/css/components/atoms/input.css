@@ -1,0 +1,10 @@
+/*
+  입력 필드 스타일 (Input Styles)
+  - 공통 입력 필드의 기본 레이아웃 및 상태(포커스, 비활성화) 스타일 정의
+*/
+.c-input {
+    @apply flex h-9 w-full rounded-xl border border-slate-200 px-3 py-1 text-sm shadow-sm transition-colors focus-visible:outline-none focus-visible:ring-1 bg-transparent disabled:cursor-not-allowed disabled:opacity-50 dark:border-slate-800 dark:text-white dark:focus-visible:ring-slate-300;
+}
+.c-input::placeholder {
+    @apply text-slate-500 dark:text-slate-400;
+}

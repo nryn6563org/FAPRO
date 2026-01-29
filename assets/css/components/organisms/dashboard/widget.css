@@ -1,0 +1,224 @@
+/*
+  위젯 스타일 (Widget Styles)
+  Refactored to Tailwind v3
+*/
+
+/* 위젯 컨테이너 */
+.c-widget {
+    @apply h-full bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col text-left items-start transition-all duration-200 dark:bg-slate-900 dark:border-slate-800 hover:shadow-lg hover:-translate-y-1 dark:hover:shadow-2xl;
+}
+
+.c-widget__header {
+    @apply p-5 pb-2 flex-none w-full;
+}
+
+.c-widget__header-inner {
+    @apply flex items-center justify-between;
+}
+
+.c-widget__title-wrapper {
+    @apply flex items-center gap-2;
+}
+
+.c-widget__icon {
+    @apply w-5 h-5 text-blue-600 dark:text-blue-500;
+}
+
+.c-widget__title {
+    @apply font-semibold text-base text-slate-900 dark:text-slate-100;
+}
+
+/* 위젯 삭제 버튼 (편집모드) */
+.c-widget__remove-btn {
+    @apply text-slate-400 p-1 rounded-full transition-colors hover:text-red-500 hover:bg-slate-100 dark:hover:bg-slate-800;
+}
+
+.c-widget__remove-icon {
+    @apply w-4 h-4;
+}
+
+.c-widget__content {
+    @apply flex-1 p-5 pt-0 min-h-0 relative w-full;
+}
+
+/* 시장 지수 위젯 */
+.c-widget__market-wrapper {
+    @apply h-full flex flex-col relative w-full bg-white dark:bg-slate-900;
+}
+
+.c-widget__value-area {
+    @apply mb-2;
+}
+
+.c-widget__value {
+    @apply text-2xl font-bold dark:text-white;
+}
+
+.c-widget__change {
+    @apply flex items-center gap-1 text-sm;
+}
+
+.c-widget__change-icon {
+    @apply w-4 h-4;
+}
+
+.c-widget__change--up {
+    @apply text-green-600 dark:text-green-400;
+}
+
+.c-widget__change--down {
+    @apply text-red-600 dark:text-red-400;
+}
+
+.c-widget__chart-area {
+    @apply flex-1 min-h-0 relative w-full;
+}
+
+.c-widget__chart-inner {
+    @apply w-full h-full;
+}
+
+/* 매출 위젯 (Revenue) */
+.c-widget__revenue-wrapper {
+    @apply h-full flex flex-col relative w-full;
+}
+
+.c-widget__revenue-value {
+    @apply mb-2;
+}
+
+/* 버블 차트 위젯 (Bubble) */
+.c-widget__bubble-wrapper {
+    @apply h-full flex flex-col relative w-full;
+}
+
+.c-widget__bubble-legend {
+    @apply mt-2 flex flex-wrap gap-2 justify-center;
+}
+
+.c-widget__bubble-legend-item {
+    @apply flex items-center gap-1;
+}
+
+.c-widget__bubble-dot {
+    @apply w-2 h-2 rounded-full;
+}
+
+.c-widget__bubble-label {
+    @apply text-[10px] text-slate-600 dark:text-slate-400;
+}
+
+/* 단순 카운트 위젯 (Count/AUM) */
+.c-widget__simple-wrapper {
+    @apply h-full flex flex-col justify-center;
+}
+
+/* 주요 고객 리스트 위젯 (Top Clients) */
+.c-widget__list-wrapper {
+    @apply h-full overflow-y-auto w-full;
+}
+
+.c-widget__list {
+    @apply space-y-2 w-full;
+}
+
+.c-widget__list-item {
+    @apply flex items-center justify-between p-2 rounded-xl transition-colors w-full border border-transparent hover:bg-slate-50 hover:border-slate-100 dark:hover:bg-slate-800/50 dark:hover:border-slate-800;
+}
+
+.c-widget__client-info {
+    @apply flex items-center gap-3;
+}
+
+.c-widget__avatar {
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0;
+    background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
+}
+
+.c-widget__client-name {
+    @apply text-sm font-medium text-slate-900 whitespace-nowrap dark:text-slate-100;
+}
+
+.c-widget__client-sub {
+    @apply text-xs text-slate-500 whitespace-nowrap dark:text-slate-400;
+}
+
+.c-widget__list-right {
+    @apply text-right;
+}
+
+/* 고객 위험도 태그 */
+.c-widget__tag {
+    @apply inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs whitespace-nowrap;
+}
+
+.c-widget__tag--high {
+    @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+}
+
+.c-widget__tag--medium {
+    @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400;
+}
+
+.c-widget__tag--low {
+    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+}
+
+/* 뉴스 리스트 위젯 */
+.c-widget__news-wrapper {
+    @apply h-full overflow-y-auto w-full pt-2;
+}
+
+.c-widget__news-list {
+    @apply space-y-3 w-full;
+}
+
+.c-widget__news-item {
+    @apply pb-3 border-b border-slate-200 last:border-0 last:pb-0 w-full dark:border-slate-800;
+}
+
+.c-widget__news-title {
+    @apply text-sm font-medium cursor-pointer text-slate-900 transition-colors truncate block w-full hover:text-blue-600 dark:text-slate-100 dark:hover:text-blue-400;
+}
+
+.c-widget__news-meta {
+    @apply flex items-center gap-2 mt-1;
+}
+
+.c-widget__news-source {
+    @apply text-xs text-slate-500 whitespace-nowrap dark:text-slate-400;
+}
+
+.c-widget__news-divider {
+    @apply text-xs text-slate-400;
+}
+
+.c-widget__news-time {
+    @apply text-xs text-slate-500 whitespace-nowrap dark:text-slate-400;
+}
+
+/* 예외/로딩 상태 */
+.c-widget__fallback {
+    @apply h-full flex items-center justify-center bg-slate-50 rounded-xl transition-colors dark:bg-slate-800/50;
+}
+
+.c-widget__fallback-text {
+    @apply text-xs text-slate-400;
+}
+
+/* 유틸리티 */
+.c-widget__chart-container { @apply flex-1 min-h-0 relative w-full; }
+
+/* Edit Animation */
+@keyframes shake {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(0.3deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(-0.3deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.c-widget--editing {
+  animation: shake 0.5s infinite;
+  @apply cursor-move border-blue-400 ring-2 ring-blue-100 dark:border-blue-500 dark:ring-blue-900;
+}

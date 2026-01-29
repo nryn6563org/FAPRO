@@ -133,10 +133,10 @@
 
 <script>
 // 개별 컴포넌트 임포트
-import SupplyAnalysisHeader from '@/components/investment/supply-analysis/SupplyAnalysisHeader.vue'
-import MarketSummarySection from '@/components/investment/supply-analysis/MarketSummarySection.vue'
-import SupplyTabNavigation from '@/components/investment/supply-analysis/SupplyTabNavigation.vue'
-import SupplyDataTable from '@/components/investment/supply-analysis/SupplyDataTable.vue'
+import SupplyAnalysisHeader from '@/components/organisms/investment/supply-analysis/SupplyAnalysisHeader.vue'
+import MarketSummarySection from '@/components/organisms/investment/supply-analysis/MarketSummarySection.vue'
+import SupplyTabNavigation from '@/components/organisms/investment/supply-analysis/SupplyTabNavigation.vue'
+import SupplyDataTable from '@/components/organisms/investment/supply-analysis/SupplyDataTable.vue'
 
 // 데이터 유틸리티 임포트 (Mock Data)
 import {

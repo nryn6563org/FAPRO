@@ -116,8 +116,8 @@
 
 <script>
 import { User, Bell, Shield, Info, Smartphone } from 'lucide-vue'
-import Button from '@/components/common/Button.vue'
-import Input from '@/components/common/Input.vue'
+import Button from '@/components/atoms/Button.vue'
+import Input from '@/components/atoms/Input.vue'
 
 export default {
   name: 'SettingsPage',

@@ -32,10 +32,10 @@
 
 <script>
 // 개별 컴포넌트 임포트
-import ReportAnalysisHeader from '@/components/investment/report-analysis/ReportAnalysisHeader.vue'
-import ReportFilterTabs from '@/components/investment/report-analysis/ReportFilterTabs.vue'
-import ReportDataTable from '@/components/investment/report-analysis/ReportDataTable.vue'
-import ReportDetailModal from '@/components/domain/investment/ReportDetailModal.vue'
+import ReportAnalysisHeader from '@/components/organisms/investment/report-analysis/ReportAnalysisHeader.vue'
+import ReportFilterTabs from '@/components/organisms/investment/report-analysis/ReportFilterTabs.vue'
+import ReportDataTable from '@/components/organisms/investment/report-analysis/ReportDataTable.vue'
+import ReportDetailModal from '@/components/organisms/investment/ReportDetailModal.vue'
 
 // 데이터 유틸리티 임포트 (Mock Data)
 import { reportCategories, mockReportData } from '@/utils/report-analysis-data'

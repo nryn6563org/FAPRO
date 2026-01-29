@@ -1,0 +1,56 @@
+/* Index Selection Dialog Styles - Minimalist V3
+   Refactored to Tailwind v3
+*/
+
+.c-index-dialog__content {
+    @apply w-[480px] max-w-none rounded-xl bg-white dark:bg-slate-900 dark:border-slate-800 !important;
+}
+
+.c-index-dialog {
+    @apply flex flex-col gap-4 p-6;
+}
+
+.c-index-dialog__header {
+    @apply flex flex-col gap-4;
+}
+
+.c-index-dialog__title {
+    @apply text-lg font-extrabold text-slate-900 tracking-tight dark:text-white;
+}
+
+.c-index-dialog__search-box {
+    @apply relative flex items-center;
+}
+
+.c-index-dialog__search-icon {
+    @apply absolute top-[15px] left-4 w-4 h-4 text-slate-400;
+}
+
+.c-index-dialog__search-input {
+    @apply w-full h-11 pl-11 pr-4 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium dark:bg-slate-800 dark:border-slate-700 dark:text-white;
+}
+
+/* 자동완성 아이템 스타일 */
+.c-index-dialog__item {
+    @apply flex items-center justify-between w-full;
+}
+
+.c-index-dialog__item-name {
+    @apply font-bold dark:text-white;
+}
+
+.c-index-dialog__item-badge {
+    @apply text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded dark:bg-slate-900 dark:text-slate-400;
+}
+
+.c-index-dialog__footer {
+    @apply flex items-center justify-center pt-2;
+}
+
+.c-index-dialog__actions {
+    @apply flex items-center gap-2 w-full;
+}
+
+.c-index-dialog__btn {
+    @apply flex-1 h-11 font-bold text-sm rounded-xl transition-all;
+}

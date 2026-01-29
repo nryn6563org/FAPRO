@@ -1,0 +1,74 @@
+/*
+  지수 카드 스타일 (IndexCard Styles)
+  Refactored to Tailwind v3
+*/
+
+.c-index-card {
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm transition-all overflow-hidden dark:bg-slate-900 dark:border-slate-800;
+}
+.c-index-card:hover {
+    @apply shadow-lg;
+}
+
+.c-index-card__header {
+    @apply p-6 pb-3;
+}
+
+.c-index-card__title {
+    @apply text-base font-semibold text-slate-900 dark:text-white;
+}
+
+.c-index-card__body {
+    @apply p-6 pt-0 space-y-4;
+}
+
+/* 값 및 등락률 컨테이너 */
+.c-index-card__value-box {
+    @apply flex items-baseline gap-1 flex-wrap;
+}
+
+.c-index-card__value {
+    @apply text-2xl font-bold text-slate-900 dark:text-white;
+}
+
+.c-index-card__unit {
+    @apply text-xs text-slate-500 mt-1 dark:text-slate-400;
+}
+
+/* 등락률 표시 영역 */
+.c-index-card__change {
+    @apply flex items-center gap-1 mt-2;
+}
+
+.c-index-card__icon {
+    @apply w-4 h-4;
+}
+
+/* 상승 스타일 (초록) */
+.c-index-card__change--up {
+    @apply text-green-600 dark:text-green-400;
+}
+
+/* 하락 스타일 (빨강) */
+.c-index-card__change--down {
+    @apply text-red-600 dark:text-red-400;
+}
+
+.c-index-card__change-val {
+    @apply font-medium;
+}
+
+.c-index-card__change-pct {
+    @apply text-sm;
+}
+
+/* 미니 차트 영역 */
+.c-index-card__chart {
+    @apply h-24 w-full relative;
+}
+
+.c-index-card__chart-inner {
+    @apply w-full h-full;
+}
+
+

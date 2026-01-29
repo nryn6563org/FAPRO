@@ -1,4 +1,6 @@
-/* 전문가용 디자인 시스템 토큰 및 유틸리티 설정 */
+/* 전문가용 디자인 시스템 토큰 및 유틸리티 설정
+   Refactored to Tailwind v3
+*/
 
 @layer components {
   /* 
@@ -6,27 +8,14 @@
    * 모든 콘텐츠 컨테이너에 적용되는 통일된 스타일 (강한 테두리 및 그림자 효과)
    */
   .c-content-card {
-    background-color: #ffffff;
-    border-radius: 2px;
-    border: 1px solid #717478;
+    @apply bg-white rounded-[2px] border border-slate-500 shadow-sm overflow-hidden transition-all duration-200 ease-out dark:bg-slate-800 dark:border-slate-800;
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    overflow: hidden;
-    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-
-  .dark .c-content-card {
-    background-color: #1e293b;
-    border-color: #1e293b;
   }
   
   /* 카드 호버 시 그림자 및 테두리 강조 */
   .c-content-card:hover {
+    @apply border-slate-300 dark:border-slate-700;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    border-color: #cbd5e1;
-  }
-
-  .dark .c-content-card:hover {
-    border-color: #334155;
   }
 
   /*
@@ -34,44 +23,28 @@
    * 수평 패딩 및 규격화된 간격 적용
    */
   .c-page-header {
-    margin-bottom: 1.25rem;
-    padding-left: 0.3125rem;
-    padding-right: 0.3125rem;
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
+    @apply mb-5 px-[5px] flex flex-col gap-1;
   }
 
   /* 페이지 대제목 스타일 (굵게, 마이너스 자간 적용) */
   .c-page-header__title {
-    font-size: 1.5rem;
-    font-weight: 700;
-    letter-spacing: -0.025em;
-    color: #0f172a;
-  }
-  
-  .dark .c-page-header__title {
-    color: white;
+    @apply text-2xl font-bold tracking-tight text-slate-900 dark:text-white;
   }
 
   /* 페이지 부설명 스타일 */
   .c-page-header__desc {
-    font-size: 1rem;
-    color: #64748b;
-    font-weight: 500;
+    @apply text-base text-slate-500 font-medium;
   }
 
   /* 
    * 레이아웃 유틸리티 클래스
    */
   .l-section-gap {
-    margin-bottom: 2.5rem;
+    @apply mb-10;
   }
 
   .l-tab-gap {
-    margin-bottom: 0.625rem;
-    padding-left: 0.3125rem;
-    padding-right: 0.3125rem;
+    @apply mb-2.5 px-[5px];
   }
 
   /* 
@@ -79,80 +52,70 @@
    */
   /* 활성화된 탭 스타일: 브랜드 블루 적용 및 강한 그림자 */
   .investment-tab-trigger--active {
-    background-color: #2563eb !important;
-    color: white !important;
-    font-weight: 700 !important;
-    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
-    border: none !important;
-    transition: all 0.2s ease;
+    @apply bg-blue-600 !important;
+    @apply text-white !important;
+    @apply font-bold !important;
+    @apply shadow-md !important;
+    @apply border-none !important;
+    @apply transition-all duration-200;
+    box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2) !important;
   }
 
   /* 비활성화된 탭 스타일: 슬레이트 그레이 적용 */
   .investment-tab-trigger--inactive {
-    background-color: #f1f5f9 !important;
-    color: #64748b !important;
-    font-weight: 600 !important;
-    border: 1px solid #717478 !important;
-    transition: all 0.2s ease;
+    @apply bg-slate-50 !important;
+    @apply text-slate-500 !important;
+    @apply font-semibold !important;
+    @apply border border-slate-500 !important;
+    @apply transition-all duration-200;
   }
-
   .dark .investment-tab-trigger--inactive {
-    background-color: #1e293b !important;
-    color: #94a3b8 !important;
-    border-color: #334155 !important;
+    @apply bg-slate-900 !important;
+    @apply text-slate-400 !important;
+    @apply border-slate-700 !important;
   }
 
   .investment-tab-trigger--inactive:hover {
-    background-color: #717478 !important;
-    color: #0f172a !important;
+    @apply bg-slate-500 !important;
+    @apply text-slate-900 !important;
   }
-
   .dark .investment-tab-trigger--inactive:hover {
-    background-color: #334155 !important;
-    color: white !important;
+    @apply bg-slate-700 !important;
+    @apply text-white !important;
   }
 
   /* 표준 버튼 활성화 상태 표시 (Active 구분용) */
   .c-button--active {
-    border: 2px solid #2563eb !important;
-    background-color: #eff6ff !important;
-    color: #2563eb !important;
+    @apply border-2 border-blue-600 !important;
+    @apply bg-blue-50 !important;
+    @apply text-blue-600 !important;
   }
-
   .dark .c-button--active {
-    background-color: rgba(37, 99, 235, 0.1) !important;
-    border-color: #3b82f6 !important;
-    color: #60a5fa !important;
+    @apply bg-blue-900/10 !important;
+    @apply border-blue-500 !important;
+    @apply text-blue-400 !important;
   }
 
   /*
    * 글로벌 등락 지표 - 한국 시장 기준 (빨강: 상승, 파랑: 하락)
    */
   .indicator--positive {
-    color: #ef4444 !important;
-    font-weight: 700;
+    @apply text-red-500 font-bold !important;
   }
   
   .indicator--negative {
-    color: #3b82f6 !important;
-    font-weight: 700;
+    @apply text-blue-600 font-bold !important;
   }
 
   .indicator--neutral {
-    color: #94a3b8;
-    font-weight: 500;
+    @apply text-slate-400 font-medium;
   }
 
   /*
    * 투자 도메인 공통 박스 컨테이너 (테이블 등 수록용)
    */
   .c-investment-container {
-    @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm flex flex-col gap-8;
-  }
-
-  .dark .c-investment-container {
-    background-color: #0f172a;
-    border-color: #1e293b;
+    @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm flex flex-col gap-8 dark:bg-slate-900 dark:border-slate-800;
   }
 
   /* 
@@ -163,11 +126,7 @@
   }
 
   .c-investment-header__title {
-    @apply text-[1.75rem] font-bold text-slate-900 leading-tight;
-  }
-
-  .dark .c-investment-header__title {
-    color: #ffffff;
+    @apply text-[1.75rem] font-bold text-slate-900 leading-tight dark:text-white;
   }
 
   .c-investment-header__desc {

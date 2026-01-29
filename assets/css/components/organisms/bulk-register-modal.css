@@ -1,0 +1,139 @@
+/* 
+ * 대량 고객 등록 모달 스타일
+ * Refactored to Tailwind CSS v3
+ */
+
+.c-bulk-register-modal {
+    @apply w-[90%] !important;
+    max-width: 640px !important; /* Keeping legacy max-width as safeguard or convert to max-w-screen-sm */
+    @apply max-w-screen-sm !important;
+}
+
+.c-bulk-register {
+    @apply p-6 flex flex-col gap-6;
+}
+
+.c-bulk-register__title {
+    @apply text-xl font-bold text-slate-900;
+}
+
+.c-bulk-register__body {
+    @apply flex flex-col gap-4;
+}
+
+/* 1. 안내 배너 */
+.c-bulk-register__banner {
+    @apply flex items-start gap-3 p-4 bg-blue-50 border border-blue-200 rounded-lg;
+}
+
+.c-bulk-register__banner-icon {
+    @apply w-5 h-5 text-blue-600 mt-0.5;
+}
+
+.c-bulk-register__banner-content {
+    /* Implicit wrapper */
+}
+
+.c-bulk-register__banner-title {
+    @apply font-semibold text-blue-900 text-sm;
+}
+
+.c-bulk-register__banner-desc {
+    @apply text-xs text-blue-700 mt-1;
+}
+
+/* 2. 샘플 영역 */
+.c-bulk-register__sample {
+    @apply flex items-center justify-between p-3 bg-slate-50 rounded-lg;
+}
+
+.c-bulk-register__sample-info {
+    @apply flex items-center gap-2;
+}
+
+.c-bulk-register__sample-icon {
+    @apply w-4 h-4 text-slate-500;
+}
+
+.c-bulk-register__sample-text {
+    @apply text-[13px] text-slate-700;
+}
+
+/* 3. 드롭존 (Dropzone) */
+.c-bulk-register__dropzone {
+    @apply border-2 border-dashed border-slate-300 rounded-lg p-8 text-center transition-all duration-200 cursor-pointer min-h-[160px] flex items-center justify-center hover:border-blue-500 hover:bg-blue-50/50;
+}
+
+.c-bulk-register__dropzone--active {
+    @apply border-blue-500 bg-blue-50/50;
+}
+
+.c-bulk-register__upload-icon {
+    @apply w-8 h-8 text-slate-400 mb-3 mx-auto;
+}
+
+.c-bulk-register__upload-text {
+    @apply font-medium text-slate-900 text-sm;
+}
+
+.c-bulk-register__upload-subtext {
+    @apply text-xs text-slate-500 mt-1;
+}
+
+/* 파일 정보 표시 */
+.c-bulk-register__file-info {
+    @apply flex items-center gap-4 w-full;
+}
+
+.c-bulk-register__file-avatar {
+    @apply w-12 h-12 bg-green-100 rounded-full flex items-center justify-center;
+}
+
+.c-bulk-register__file-type-icon {
+    @apply w-6 h-6 text-green-600;
+}
+
+.c-bulk-register__file-details {
+    @apply flex-1 text-left;
+}
+
+.c-bulk-register__file-name {
+    @apply font-semibold text-slate-900 text-sm;
+}
+
+.c-bulk-register__file-size {
+    @apply text-xs text-slate-500 mt-0.5;
+}
+
+.c-bulk-register__remove-btn {
+    /* Inherits from Button component styling */
+}
+
+/* 4. 유의사항 */
+.c-bulk-register__notice {
+    @apply bg-amber-50 border border-amber-100 rounded-lg p-3;
+}
+
+.c-bulk-register__notice-header {
+    @apply flex items-center gap-2 mb-2;
+}
+
+.c-bulk-register__notice-icon {
+    @apply w-4 h-4 text-amber-600;
+}
+
+.c-bulk-register__notice-title {
+    @apply text-[13px] font-semibold text-amber-800;
+}
+
+.c-bulk-register__notice-list {
+    @apply list-disc list-inside flex flex-col gap-1;
+}
+
+.c-bulk-register__notice-list li {
+    @apply text-xs text-amber-700;
+}
+
+.c-bulk-register__footer {
+    @apply flex justify-end gap-2 pt-4 border-t border-slate-200;
+}

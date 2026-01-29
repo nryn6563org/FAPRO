@@ -1,0 +1,38 @@
+/* AI Recommend Widget Styles
+   Refactored to Tailwind v3
+*/
+.c-ai-widget {
+  @apply h-full flex flex-col p-2;
+}
+
+.c-ai-widget__header-info {
+  @apply flex justify-between items-center mb-3;
+}
+
+.c-ai-widget__badge {
+  @apply flex items-center text-[11px] font-bold text-violet-600 bg-violet-50 px-2 py-1 rounded dark:bg-violet-600/20 dark:text-violet-400;
+}
+
+.c-ai-widget__date {
+  @apply text-xs text-slate-400;
+}
+
+.c-ai-widget__content {
+  @apply flex-1 rounded-lg border border-slate-100 flex items-center justify-center dark:border-slate-700 bg-[linear-gradient(135deg,#fdfbf7_0%,#fff_100%)] dark:bg-[linear-gradient(135deg,#1e293b_0%,#0f172a_100%)];
+}
+
+.c-ai-widget__placeholder {
+  @apply text-center text-slate-500 text-sm font-medium p-4 dark:text-slate-400;
+}
+
+.c-ai-widget__placeholder-icon {
+  @apply w-10 h-10 mx-auto text-amber-400 mb-2;
+}
+
+.c-ai-widget__footer {
+  @apply mt-4;
+}
+
+.c-ai-widget__action-btn {
+  @apply w-full p-2.5 bg-violet-600 text-white text-sm font-bold rounded-md transition-colors border-none cursor-pointer hover:bg-violet-700;
+}

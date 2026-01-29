@@ -68,10 +68,10 @@
 </template>
 
 <script>
-import PriceAnalysisHeader from '@/components/investment/price-analysis/PriceAnalysisHeader.vue'
-import IndexChartCard from '@/components/investment/price-analysis/IndexChartCard.vue'
-import StatusFilterSection from '@/components/investment/price-analysis/StatusFilterSection.vue'
-import PriceStatusTable from '@/components/investment/price-analysis/PriceStatusTable.vue'
+import PriceAnalysisHeader from '@/components/organisms/investment/price-analysis/PriceAnalysisHeader.vue'
+import IndexChartCard from '@/components/organisms/investment/price-analysis/IndexChartCard.vue'
+import StatusFilterSection from '@/components/organisms/investment/price-analysis/StatusFilterSection.vue'
+import PriceStatusTable from '@/components/organisms/investment/price-analysis/PriceStatusTable.vue'
 
 // 리액트 소스에서 추출된 데이터 (Mock Data)
 import { kospiData, kosdaqData, priceStatusData } from '@/utils/price-analysis-data'

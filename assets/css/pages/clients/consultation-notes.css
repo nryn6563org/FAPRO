@@ -1,0 +1,85 @@
+/* 
+ * 고객상담노트 페이지 스타일
+ */
+
+ .p-clients-notes {
+    @apply flex flex-col gap-6;
+}
+
+/* 검색 및 액션 영역 */
+.c-notes-actions {
+    @apply flex gap-4 items-center;
+}
+
+.c-notes-search {
+    @apply relative flex-1;
+}
+
+.c-notes-search-icon {
+    @apply absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400;
+}
+
+.c-notes-search-input {
+    @apply w-full py-2.5 px-4 pl-10 border border-slate-200 rounded-lg text-sm outline-none transition-colors duration-200 focus:border-blue-600;
+}
+
+/* 상담 노트 테이블 스타일 */
+.c-notes-table {
+    @apply w-full border-collapse;
+}
+
+.c-notes-table th {
+    @apply text-left p-4 bg-slate-50 text-xs font-bold text-slate-600 border-b-2 border-slate-200 uppercase;
+}
+
+.c-notes-table td {
+    @apply p-4 border-b border-slate-100 text-sm text-slate-900 align-top;
+}
+
+.c-notes-table tr:hover td {
+    @apply bg-slate-50;
+}
+
+.c-notes-table__client {
+    @apply font-semibold text-blue-600;
+}
+
+.c-notes-table__date {
+    @apply text-slate-500 text-[13px];
+}
+
+.c-notes-table__title {
+    @apply font-semibold;
+}
+
+.c-notes-table__content {
+    @apply text-slate-600 leading-relaxed;
+}
+
+/* 상담 타입 배지 */
+.c-notes-badge {
+    @apply inline-flex py-0.5 px-2 rounded font-semibold text-xs;
+}
+
+.c-notes-badge--visit { 
+    @apply bg-blue-50 text-blue-600;
+}
+.c-notes-badge--call { 
+    @apply bg-green-50 text-green-600;
+}
+.c-notes-badge--mail { 
+    @apply bg-pink-50 text-pink-600;
+}
+
+/* 작업 버튼 */
+.c-notes-table__actions {
+    @apply flex gap-2;
+}
+
+.c-notes-action-btn {
+    @apply p-1.5 rounded text-slate-400 transition-all duration-200 bg-transparent border-none cursor-pointer hover:bg-slate-100 hover:text-slate-600;
+}
+
+.c-notes-action-btn--delete:hover {
+    @apply bg-red-50 text-red-500;
+}

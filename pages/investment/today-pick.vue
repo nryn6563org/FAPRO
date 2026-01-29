@@ -29,9 +29,9 @@
 
 <script>
 // 컴포넌트 임포트
-import TodayPickHeader from '@/components/investment/today-pick/TodayPickHeader.vue'
-import TodayPickHistoryNav from '@/components/investment/today-pick/TodayPickHistoryNav.vue'
-import TodayPickStockCard from '@/components/investment/today-pick/TodayPickStockCard.vue'
+import TodayPickHeader from '@/components/organisms/investment/today-pick/TodayPickHeader.vue'
+import TodayPickHistoryNav from '@/components/organisms/investment/today-pick/TodayPickHistoryNav.vue'
+import TodayPickStockCard from '@/components/organisms/investment/today-pick/TodayPickStockCard.vue'
 
 // 데이터 임포트 (Mock Data)
 import { historyPicks } from '@/utils/today-pick-data'

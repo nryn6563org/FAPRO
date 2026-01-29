@@ -10,50 +10,51 @@ import { TrendingUp, TrendingDown, DollarSign, Users, Activity, Newspaper, Globe
 // 사용 가능한 위젯 목록
 export const AVAILABLE_WIDGETS = [
   // Market Indices
-  { id: 'kospi', title: 'KOSPI', category: '국내 지수', icon: TrendingUp, defaultSize: 'small' },
-  { id: 'kosdaq', title: 'KOSDAQ', category: '국내 지수', icon: TrendingUp, defaultSize: 'small' },
-  { id: 'sp500', title: 'S&P 500', category: '해외 지수', icon: Globe, defaultSize: 'small' },
-  { id: 'nasdaq', title: 'NASDAQ', category: '해외 지수', icon: Globe, defaultSize: 'small' },
-  { id: 'nikkei', title: 'NIKKEI', category: '해외 지수', icon: Globe, defaultSize: 'small' },
-  { id: 'hangseng', title: 'HANG SENG', category: '해외 지수', icon: Globe, defaultSize: 'small' },
+  { id: "market-ticker", title: "마켓 티커", category: "지수", icon: TrendingUp, defaultSize: "large" },
+  { id: "kospi", title: "KOSPI", category: "국내 지수", icon: TrendingUp, defaultSize: "small" },
+  { id: "kosdaq", title: "KOSDAQ", category: "국내 지수", icon: TrendingUp, defaultSize: "small" },
+  { id: "sp500", title: "S&P 500", category: "해외 지수", icon: Globe, defaultSize: "small" },
+  { id: "nasdaq", title: "NASDAQ", category: "해외 지수", icon: Globe, defaultSize: "small" },
+  { id: "nikkei", title: "NIKKEI", category: "해외 지수", icon: Globe, defaultSize: "small" },
+  { id: "hangseng", title: "HANG SENG", category: "해외 지수", icon: Globe, defaultSize: "small" },
 
   // Exchange Rates
-  { id: 'usd-krw', title: 'USD/KRW', category: '환율', icon: DollarSign, defaultSize: 'small' },
-  { id: 'jpy-krw', title: 'JPY/KRW', category: '환율', icon: DollarSign, defaultSize: 'small' },
-  { id: 'eur-krw', title: 'EUR/KRW', category: '환율', icon: DollarSign, defaultSize: 'small' },
-  { id: 'cny-krw', title: 'CNY/KRW', category: '환율', icon: DollarSign, defaultSize: 'small' },
+  { id: "usd-krw", title: "USD/KRW", category: "환율", icon: DollarSign, defaultSize: "small" },
+  { id: "jpy-krw", title: "JPY/KRW", category: "환율", icon: DollarSign, defaultSize: "small" },
+  { id: "eur-krw", title: "EUR/KRW", category: "환율", icon: DollarSign, defaultSize: "small" },
+  { id: "cny-krw", title: "CNY/KRW", category: "환율", icon: DollarSign, defaultSize: "small" },
 
   // Commodities & Crypto
-  { id: 'wti', title: 'WTI 유가', category: '원자재', icon: Activity, defaultSize: 'small' },
-  { id: 'gold', title: '금', category: '원자재', icon: Award, defaultSize: 'small' },
-  { id: 'bitcoin', title: 'Bitcoin', category: '가상자산', icon: Wallet, defaultSize: 'small' },
-  { id: 'ethereum', title: 'Ethereum', category: '가상자산', icon: Wallet, defaultSize: 'small' },
+  { id: "wti", title: "WTI 유가", category: "원자재", icon: Activity, defaultSize: "small" },
+  { id: "gold", title: "금", category: "원자재", icon: Award, defaultSize: "small" },
+  { id: "bitcoin", title: "Bitcoin", category: "가상자산", icon: Wallet, defaultSize: "small" },
+  { id: "ethereum", title: "Ethereum", category: "가상자산", icon: Wallet, defaultSize: "small" },
 
   // Client & Business
-  { id: 'client-count', title: '총 고객 수', category: '고객 정보', icon: Users, defaultSize: 'small' },
-  { id: 'aum', title: 'AUM', category: '고객 정보', icon: Briefcase, defaultSize: 'small' },
-  { id: 'revenue', title: '월간 수익', category: '고객 정보', icon: Calculator, defaultSize: 'medium' },
-  { id: 'top-clients', title: '주요 고객', category: '고객 정보', icon: Target, defaultSize: 'medium' },
+  { id: "client-count", title: "총 고객 수", category: "고객 정보", icon: Users, defaultSize: "small" },
+  { id: "aum", title: "AUM", category: "고객 정보", icon: Briefcase, defaultSize: "small" },
+  { id: "revenue", title: "월간 수익", category: "고객 정보", icon: Calculator, defaultSize: "medium" },
+  { id: "top-clients", title: "주요 고객", category: "고객 정보", icon: Target, defaultSize: "medium" },
 
   // News
-  { id: 'market-news', title: '시장 뉴스', category: '뉴스', icon: Newspaper, defaultSize: 'large' },
-  { id: 'economy-news', title: '경제 뉴스', category: '뉴스', icon: Building2, defaultSize: 'large' },
-  { id: 'ai-issue-bubble', title: 'AI 이슈 버블', category: '뉴스', icon: Sparkles, defaultSize: 'large' },
+  { id: "market-news", title: "시장 뉴스", category: "뉴스", icon: Newspaper, defaultSize: "large" },
+  { id: "economy-news", title: "경제 뉴스", category: "뉴스", icon: Building2, defaultSize: "large" },
+  { id: "ai-issue-bubble", title: "AI 이슈 버블", category: "뉴스", icon: Sparkles, defaultSize: "large" },
 
   // Investment Info - Market Info
-  { id: 'today-issue-widget', title: '오늘의이슈', category: '투자정보', icon: Lightbulb, defaultSize: 'large' },
-  { id: 'price-analysis-widget', title: '시세분석', category: '투자정보', icon: TrendingUp, defaultSize: 'large' },
-  { id: 'supply-analysis-widget', title: '수급분석', category: '투자정보', icon: TrendingDown, defaultSize: 'large' },
-  { id: 'theme-sector-widget', title: '테마/업종', category: '투자정보', icon: Layers, defaultSize: 'medium' },
-  { id: 'report-analysis-widget', title: '리포트분석', category: '투자정보', icon: FileBarChart, defaultSize: 'large' },
-  { id: 'disclosure-analysis-widget', title: '공시분석', category: '투자정보', icon: ClipboardList, defaultSize: 'large' },
+  { id: "today-issue-widget", title: "오늘의이슈", category: "투자정보", icon: Lightbulb, defaultSize: "large" },
+  { id: "price-analysis-widget", title: "시세분석", category: "투자정보", icon: TrendingUp, defaultSize: "large" },
+  { id: "supply-analysis-widget", title: "수급분석", category: "투자정보", icon: TrendingDown, defaultSize: "large" },
+  { id: "theme-sector-widget", title: "테마/업종", category: "투자정보", icon: Layers, defaultSize: "medium" },
+  { id: "report-analysis-widget", title: "리포트분석", category: "투자정보", icon: FileBarChart, defaultSize: "large" },
+  { id: "disclosure-analysis-widget", title: "공시분석", category: "투자정보", icon: ClipboardList, defaultSize: "large" },
 
   // Investment Info - AI Recommend
-  { id: 'today-pick-widget', title: '오늘의종목Pick', category: 'AI추천', icon: Star, defaultSize: 'large' },
-  { id: 'daily-stocks-widget', title: '종목 일자별보기', category: 'AI추천', icon: CalendarDays, defaultSize: 'large' },
-  { id: 'recommend-stocks-widget', title: '추천종목', category: 'AI추천', icon: Lightbulb, defaultSize: 'large' },
-  { id: 'recommend-return-widget', title: '추천종목수익률', category: 'AI추천', icon: PieChart, defaultSize: 'large' }
-]
+  { id: "today-pick-widget", title: "오늘의종목Pick", category: "AI추천", icon: Star, defaultSize: "large" },
+  { id: "daily-stocks-widget", title: "종목 일자별보기", category: "AI추천", icon: CalendarDays, defaultSize: "large" },
+  { id: "recommend-stocks-widget", title: "추천종목", category: "AI추천", icon: Lightbulb, defaultSize: "large" },
+  { id: "recommend-return-widget", title: "추천종목수익률", category: "AI추천", icon: PieChart, defaultSize: "large" }
+];
 
 // 시장 지수 및 환율 모의 데이터
 export const mockMarketData = {

@@ -1,0 +1,74 @@
+/* 
+ * 뉴스속보 페이지 스타일
+ */
+
+.p-breaking-news {
+    @apply flex flex-col gap-6;
+}
+
+/* 카테고리 탭 영역 */
+.c-news-tabs {
+    @apply flex gap-2 overflow-x-auto pb-2;
+}
+
+.c-news-tabs::-webkit-scrollbar {
+    @apply h-1;
+}
+
+.c-news-tab {
+    @apply px-4 py-2 bg-slate-100 text-slate-500 rounded-full text-sm font-semibold whitespace-nowrap transition-all duration-200 border-none cursor-pointer hover:bg-slate-200;
+}
+
+.c-news-tab--active {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+}
+
+/* 뉴스 리스트 */
+.c-news-list {
+    @apply flex flex-col;
+}
+
+.c-news-item {
+    @apply flex flex-col gap-3 py-5 border-b border-slate-100 transition-all duration-200 last:border-b-0 hover:bg-slate-50 hover:px-2 hover:-mx-2 rounded-lg;
+}
+
+.c-news-item__top {
+    @apply flex items-center gap-3;
+}
+
+/* 뉴스 배지 스타일 */
+.c-news-badge {
+    @apply px-2 py-0.5 rounded text-[10px] font-bold uppercase;
+}
+
+.c-news-badge--new {
+    @apply bg-red-500 text-white;
+}
+
+.c-news-badge--ai {
+    @apply bg-violet-50 text-violet-600 border border-violet-200 flex items-center gap-1;
+}
+
+.c-news-badge--ai-icon {
+    @apply w-3 h-3;
+}
+
+.c-news-item__source {
+    @apply text-xs text-slate-500 font-medium;
+}
+
+.c-news-item__time {
+    @apply text-xs text-slate-400 ml-auto;
+}
+
+.c-news-item__title {
+    @apply text-base font-semibold text-slate-900 leading-relaxed cursor-pointer hover:text-blue-600 hover:underline hover:decoration-blue-600;
+}
+
+.c-news-item__tags {
+    @apply flex flex-wrap gap-2;
+}
+
+.c-news-item__tag {
+    @apply text-xs text-blue-500 bg-blue-50 px-2 py-0.5 rounded;
+}

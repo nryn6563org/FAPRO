@@ -28,10 +28,10 @@
 </template>
 
 <script>
-import MarketIndices from '@/components/domain/MarketIndices'
-import RecommendReturn from '@/components/domain/RecommendReturn'
-import PriceAnalysis from '@/components/domain/PriceAnalysis'
-import ReportAnalysis from '@/components/domain/ReportAnalysis'
+import MarketIndices from '@/components/organisms/MarketIndices.vue'
+import RecommendReturn from '@/components/organisms/RecommendReturn.vue'
+import PriceAnalysis from '@/components/organisms/PriceAnalysis.vue'
+import ReportAnalysis from '@/components/organisms/ReportAnalysis.vue'
 
 export default {
   components: {

@@ -30,9 +30,9 @@
 
 <script>
 // 컴포넌트 임포트
-import RecommendStocksHeader from '@/components/investment/recommend-stocks/RecommendStocksHeader.vue'
-import RecommendHeroCard from '@/components/investment/recommend-stocks/RecommendHeroCard.vue'
-import RecommendStockCard from '@/components/investment/recommend-stocks/RecommendStockCard.vue'
+import RecommendStocksHeader from '@/components/organisms/investment/recommend-stocks/RecommendStocksHeader.vue'
+import RecommendHeroCard from '@/components/organisms/investment/recommend-stocks/RecommendHeroCard.vue'
+import RecommendStockCard from '@/components/organisms/investment/recommend-stocks/RecommendStockCard.vue'
 
 // 데이터 임포트
 import { strategyStocks, categories } from '@/utils/recommend-stocks-data'

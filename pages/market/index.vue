@@ -91,7 +91,7 @@
 </template>
 
 <script>
-import IndexCard from '@/components/domain/dashboard/IndexCard.vue'
+import IndexCard from '@/components/organisms/dashboard/IndexCard.vue'
 import LineChart from '@/components/charts/LineChart'
 
 // 차트 데이터 생성 유틸리티 함수 (랜덤 변동성 적용)

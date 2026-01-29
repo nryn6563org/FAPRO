@@ -1,0 +1,102 @@
+/* Todo Widget Styles
+   Refactored to Tailwind v3
+*/
+.c-todo {
+  @apply flex flex-col h-full p-2 gap-4;
+}
+
+.c-todo__calendar {
+  @apply flex-1 flex flex-col;
+}
+
+.c-todo__header {
+  @apply flex items-center justify-between mb-3;
+}
+
+.c-todo__month-title {
+  @apply text-base font-bold text-slate-900 dark:text-slate-50;
+}
+
+.c-todo__nav {
+  @apply flex gap-1;
+}
+
+.c-todo__nav-btn {
+  @apply p-1 rounded text-slate-500 bg-transparent border-none cursor-pointer transition-colors hover:bg-slate-100 dark:text-slate-400 dark:hover:bg-slate-700;
+}
+
+.c-todo__grid {
+  @apply grid grid-cols-7 gap-1 text-center;
+}
+
+.c-todo__weekday {
+  @apply text-xs text-slate-400 font-semibold mb-1;
+}
+
+.c-todo__day {
+  @apply h-9 flex flex-col items-center justify-center rounded-md text-sm text-slate-700 cursor-pointer transition-all relative hover:bg-slate-50 dark:text-slate-300 dark:hover:bg-slate-800;
+}
+
+.c-todo__day--other {
+  @apply text-slate-300 dark:text-slate-600;
+}
+
+.c-todo__day--today {
+  @apply text-blue-500 font-bold;
+}
+
+.c-todo__day--selected {
+  @apply bg-blue-500 text-white dark:bg-blue-600 dark:text-white;
+}
+
+.c-todo__day--selected:hover {
+  @apply bg-blue-600;
+}
+
+.c-todo__dot {
+  @apply w-1 h-1 bg-blue-500 rounded-full absolute bottom-1;
+}
+.c-todo__day--selected .c-todo__dot {
+  @apply bg-white;
+}
+
+/* Memo Area */
+.c-todo__memo-area {
+  @apply bg-slate-50 rounded-lg p-4 border border-slate-200 h-[200px] flex flex-col dark:bg-slate-900 dark:border-slate-700;
+}
+
+.c-todo__memo-header {
+  @apply flex justify-between items-center mb-3;
+}
+
+.c-todo__memo-date {
+  @apply text-sm font-bold text-slate-900 dark:text-slate-50;
+}
+
+.c-todo__memo-actions {
+  @apply flex gap-2;
+}
+
+.c-todo__action-btn {
+  @apply text-slate-500 bg-transparent border-none cursor-pointer dark:text-slate-400;
+}
+
+.c-todo__input-group {
+  @apply flex flex-col gap-2 flex-1;
+}
+
+.c-todo__input {
+  @apply w-full p-2 border border-slate-300 rounded-md text-sm resize-none h-full bg-white dark:bg-slate-900 dark:border-slate-600 dark:text-slate-50;
+}
+
+.c-todo__save-btn {
+  @apply self-end py-1 px-3 bg-blue-500 text-white rounded text-xs border-none cursor-pointer;
+}
+
+.c-todo__memo-content {
+  @apply text-sm text-slate-700 leading-normal whitespace-pre-wrap flex-1 overflow-y-auto dark:text-slate-300;
+}
+
+.c-todo__no-memo {
+  @apply text-sm text-slate-400 text-center mt-8 cursor-pointer hover:underline;
+}

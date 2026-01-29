@@ -107,8 +107,8 @@
 
 <script>
 import { Send, Bot, User, TrendingUp, BookOpen, Calculator, HelpCircle, DollarSign, BarChart3, Newspaper, Target } from 'lucide-vue'
-import Button from '@/components/common/Button.vue'
-import Input from '@/components/common/Input.vue'
+import Button from '@/components/atoms/Button.vue'
+import Input from '@/components/atoms/Input.vue'
 
 // 모의 답변 데이터 (실제 AI API 연동 전 테스트용)
 const mockResponses = {

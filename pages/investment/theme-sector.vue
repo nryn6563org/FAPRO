@@ -24,9 +24,9 @@
 
 <script>
 // 개별 컴포넌트 임포트
-import ThemeSectorHeader from '@/components/investment/theme-sector/ThemeSectorHeader.vue'
-import ThemeSectorTabs from '@/components/investment/theme-sector/ThemeSectorTabs.vue'
-import CategoryCard from '@/components/investment/theme-sector/CategoryCard.vue'
+import ThemeSectorHeader from '@/components/organisms/investment/theme-sector/ThemeSectorHeader.vue'
+import ThemeSectorTabs from '@/components/organisms/investment/theme-sector/ThemeSectorTabs.vue'
+import CategoryCard from '@/components/organisms/investment/theme-sector/CategoryCard.vue'
 
 // 데이터 유틸리티 임포트 (Mock Data)
 import { mockThemes, mockSectors } from '@/utils/theme-sector-data'

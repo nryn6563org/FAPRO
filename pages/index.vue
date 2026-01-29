@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import CustomizableDashboard from '@/components/domain/dashboard/CustomizableDashboard.vue'
+import CustomizableDashboard from '@/components/organisms/dashboard/CustomizableDashboard.vue'
 
 export default {
   // 컴포넌트 이름: Nuxt 페이지 인덱스

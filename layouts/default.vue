@@ -272,15 +272,16 @@ import {
   LogIn,
   Crown,
   Plus,
-  Trash2
+  Trash2,
+  Newspaper
 } from 'lucide-vue'
 // 공통 컴포넌트 임포트
 // 공통 컴포넌트 임포트
-import Button from '@/components/common/Button.vue'
-import Input from '@/components/common/Input.vue'
-import GlobalHeader from '@/components/layout/GlobalHeader.vue'
-import IndexSelectionDialog from '@/components/domain/dashboard/IndexSelectionDialog.vue'
-import Dialog from '@/components/common/Dialog.vue'
+import Button from '@/components/atoms/Button.vue'
+import Input from '@/components/atoms/Input.vue'
+import GlobalHeader from '@/components/organisms/GlobalHeader.vue'
+import IndexSelectionDialog from '@/components/organisms/dashboard/IndexSelectionDialog.vue'
+import Dialog from '@/components/molecules/Dialog.vue'
 
 export default {
   name: 'DefaultLayout',
@@ -313,6 +314,7 @@ export default {
     Crown,
     Plus,
     Trash2,
+    Newspaper,
     // UI 컴포넌트 등록
     Button,
     Input,
@@ -353,42 +355,51 @@ export default {
       // navItems -> children -> children 구조로 최대 3 depth 지원
       navItems: [
         { id: 'dashboard', label: '대시보드', icon: 'LayoutDashboard', route: '/', color: 'text-blue-600' },
-        { id: 'clients', label: '고객 관리', icon: 'Users', route: '/clients', color: 'text-indigo-600' },
-        { id: 'market', label: '시장 지수', icon: 'TrendingUp', route: '/market', color: 'text-rose-600' },
-        {
-          id: 'investment-info',
-          label: '투자정보',
-          icon: 'FileText',
-          color: 'text-green-600',
+        { 
+          id: 'clients', 
+          label: '고객 관리', 
+          icon: 'Users', 
+          color: 'text-indigo-600',
           children: [
-            {
-              id: 'market-info',
-              label: '마켓정보',
-              icon: 'BarChart3',
-              color: 'text-emerald-600',
-              children: [
-                { id: 'today-issue', label: '오늘의이슈', icon: 'Lightbulb', route: '/investment/today-issue', color: 'text-amber-500' },
-                { id: 'price-analysis', label: '시세분석', icon: 'TrendingUp', route: '/investment/price-analysis', color: 'text-red-500' },
-                { id: 'supply-analysis', label: '수급분석', icon: 'TrendingDown', route: '/investment/supply-analysis', color: 'text-blue-500' },
-                { id: 'theme-sector', label: '테마/업종', icon: 'Layers', route: '/investment/theme-sector', color: 'text-purple-500' },
-                { id: 'report-analysis', label: '리포트분석', icon: 'FileBarChart', route: '/investment/report-analysis', color: 'text-teal-500' },
-                { id: 'disclosure-analysis', label: '공시분석', icon: 'ClipboardList', route: '/investment/disclosure-analysis', color: 'text-cyan-500' }
-              ]
-            },
-            {
-              id: 'ai-recommend',
-              label: 'AI추천종목',
-              icon: 'Star',
-              color: 'text-yellow-600',
-              children: [
-                { id: 'today-pick', label: '오늘의종목Pick', icon: 'Star', route: '/investment/today-pick', color: 'text-yellow-500' },
-                { id: 'recommend-stocks', label: '추천종목', icon: 'Lightbulb', route: '/investment/recommend-stocks', color: 'text-amber-500' }
-              ]
-            }
+            { id: 'client-list', label: '고객리스트', icon: 'Users', route: '/clients', color: 'text-indigo-500' },
+            { id: 'consultation-notes', label: '고객상담노트', icon: 'FileText', route: '/clients/consultation-notes', color: 'text-blue-500' }
           ]
         },
-        { id: 'trading-signals', label: 'AI매매시그널', icon: 'Zap', route: '/ai/signals', color: 'text-violet-600' },
+        {
+          id: 'market-info',
+          label: '마켓정보',
+          icon: 'BarChart3',
+          color: 'text-emerald-600',
+          children: [
+            { id: 'today-issue', label: '오늘의 이슈', icon: 'Lightbulb', route: '/investment/today-issue', color: 'text-amber-500' },
+            { id: 'breaking-news', label: '뉴스속보', icon: 'Newspaper', route: '/market/breaking-news', color: 'text-red-500' },
+            { id: 'price-analysis', label: '시세분석', icon: 'TrendingUp', route: '/investment/price-analysis', color: 'text-red-500' },
+            { id: 'supply-analysis', label: '수급분석', icon: 'TrendingDown', route: '/investment/supply-analysis', color: 'text-blue-500' },
+            { id: 'theme-sector', label: '테마/업종', icon: 'Layers', route: '/investment/theme-sector', color: 'text-purple-500' },
+            { id: 'report-analysis', label: '리포트분석', icon: 'FileBarChart', route: '/investment/report-analysis', color: 'text-teal-500' },
+            { id: 'disclosure-analysis', label: '공시분석', icon: 'ClipboardList', route: '/investment/disclosure-analysis', color: 'text-cyan-500' }
+          ]
+        },
+        {
+          id: 'ai-recommend',
+          label: 'AI추천정보',
+          icon: 'Star',
+          color: 'text-yellow-600',
+          children: [
+            { id: 'trading-signals', label: 'AI매매시그널', icon: 'Zap', route: '/ai/signals', color: 'text-violet-600' },
+            { id: 'recommend-stocks', label: 'AI추천종목', icon: 'Lightbulb', route: '/investment/recommend-stocks', color: 'text-amber-500' }
+          ]
+        },
         { id: 'chatbot', label: 'AI 챗봇', icon: 'MessageSquare', route: '/ai/assistant', color: 'text-fuchsia-600' },
+        { 
+          id: 'tasks', 
+          label: '업무관리', 
+          icon: 'ClipboardList', 
+          color: 'text-slate-600',
+          children: [
+            { id: 'todo-today', label: '오늘 할 일', icon: 'CalendarDays', route: '/tasks/today', color: 'text-blue-600' }
+          ]
+        },
         { id: 'settings', label: '설정', icon: 'Settings', route: '/settings', color: 'text-slate-600' }
       ]
     }

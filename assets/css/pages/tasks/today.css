@@ -1,0 +1,90 @@
+/* 
+ * 오늘 할 일 (캘린더) 페이지 스타일
+ */
+
+.p-tasks-today {
+    @apply flex flex-col gap-6;
+}
+
+.c-todo-calendar {
+    @apply flex flex-col gap-6;
+}
+
+/* 캘린더 헤더 */
+.c-calendar-header {
+    @apply flex items-center justify-between mb-4;
+}
+
+.c-calendar-nav {
+    @apply flex items-center gap-4;
+}
+
+.c-calendar-current {
+    @apply text-xl font-bold text-slate-900;
+}
+
+/* 캘린더 그리드 */
+.c-calendar-grid {
+    @apply grid grid-cols-7 gap-px bg-slate-200 border border-slate-200;
+}
+
+.c-calendar-day-head {
+    @apply bg-slate-50 p-3 text-center text-xs font-bold text-slate-500;
+}
+
+.c-calendar-day-head--sun { 
+    @apply text-red-500; 
+}
+.c-calendar-day-head--sat { 
+    @apply text-blue-500; 
+}
+
+.c-calendar-day {
+    @apply bg-white min-h-[100px] p-2 flex flex-col gap-1 cursor-pointer transition-colors hover:bg-slate-50;
+}
+
+.c-calendar-day--today {
+    @apply bg-blue-50;
+}
+
+.c-calendar-day--selected {
+    @apply bg-blue-100 ring-2 ring-inset ring-blue-600;
+}
+
+.c-calendar-day--outside {
+    @apply bg-slate-50 text-slate-300;
+}
+
+.c-calendar-day__number {
+    @apply text-sm font-semibold;
+}
+
+.c-calendar-day--today .c-calendar-day__number {
+    @apply text-blue-600;
+}
+
+/* 메모 표시기 */
+.c-calendar-day__memo-dot {
+    @apply w-1.5 h-1.5 bg-blue-600 rounded-full mt-auto self-center;
+}
+
+/* 사이드바/하단 메모 상세 영역 */
+.c-todo-memo-detail {
+    @apply p-6 bg-slate-50 rounded-lg border border-slate-200;
+}
+
+.c-todo-memo-header {
+    @apply flex items-center justify-between mb-4;
+}
+
+.c-todo-memo-title {
+    @apply font-bold text-slate-900;
+}
+
+.c-todo-memo-content {
+    @apply text-sm text-slate-600 leading-relaxed bg-white p-4 rounded border border-slate-200;
+}
+
+.c-todo-memo-empty {
+    @apply text-center text-slate-400 py-8 text-sm;
+}

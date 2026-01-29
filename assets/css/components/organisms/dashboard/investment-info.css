@@ -1,0 +1,38 @@
+/* Investment Info Widget Styles
+   Refactored to Tailwind v3
+*/
+.c-investment-widget {
+  @apply h-full flex flex-col p-2;
+}
+
+.c-investment-widget__content {
+  @apply flex-1 flex flex-col gap-4 overflow-hidden;
+}
+
+.c-investment-widget__desc {
+  @apply text-sm text-slate-500 leading-relaxed dark:text-slate-400;
+}
+
+.c-investment-widget__preview {
+  @apply flex-1 bg-slate-50 rounded-lg flex items-center justify-center border border-dashed border-slate-300 min-h-[100px] dark:bg-slate-800 dark:border-slate-700;
+}
+
+.c-investment-widget__placeholder {
+  @apply flex flex-col items-center gap-2 text-slate-400 text-xs font-semibold;
+}
+
+.c-investment-widget__placeholder-icon {
+  @apply w-8 h-8 opacity-50;
+}
+
+.c-investment-widget__footer {
+  @apply mt-4 flex justify-end;
+}
+
+.c-investment-widget__link-btn {
+  @apply flex items-center text-xs font-bold text-blue-600 py-2 px-3 rounded-md bg-blue-50 transition-all border-none cursor-pointer hover:bg-blue-100 dark:bg-blue-900/30 dark:text-blue-400 dark:hover:bg-blue-900/50;
+}
+
+.c-investment-widget__icon-arrow {
+  @apply w-4 h-4 ml-1;
+}

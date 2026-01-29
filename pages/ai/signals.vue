@@ -211,7 +211,7 @@
 
 <script>
 import { Search, Info, Filter, Zap, TrendingUp, TrendingDown, Clock, ChevronRight } from 'lucide-vue'
-import Button from '@/components/common/Button.vue'
+import Button from '@/components/atoms/Button.vue'
 
 export default {
   name: 'TradingSignals',

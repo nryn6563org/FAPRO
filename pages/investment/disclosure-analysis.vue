@@ -36,11 +36,11 @@
 
 <script>
 // 개별 컴포넌트 임포트
-import DisclosureAnalysisHeader from '@/components/investment/disclosure-analysis/DisclosureAnalysisHeader.vue'
-import DisclosureSummaryMetrics from '@/components/investment/disclosure-analysis/DisclosureSummaryMetrics.vue'
-import DisclosureFilterTabs from '@/components/investment/disclosure-analysis/DisclosureFilterTabs.vue'
-import DisclosureSubFilterTabs from '@/components/investment/disclosure-analysis/DisclosureSubFilterTabs.vue'
-import DisclosureDataTable from '@/components/investment/disclosure-analysis/DisclosureDataTable.vue'
+import DisclosureAnalysisHeader from '@/components/organisms/investment/disclosure-analysis/DisclosureAnalysisHeader.vue'
+import DisclosureSummaryMetrics from '@/components/organisms/investment/disclosure-analysis/DisclosureSummaryMetrics.vue'
+import DisclosureFilterTabs from '@/components/organisms/investment/disclosure-analysis/DisclosureFilterTabs.vue'
+import DisclosureSubFilterTabs from '@/components/organisms/investment/disclosure-analysis/DisclosureSubFilterTabs.vue'
+import DisclosureDataTable from '@/components/organisms/investment/disclosure-analysis/DisclosureDataTable.vue'
 
 // 데이터 유틸리티 임포트
 import { disclosureCategories, disclosureSubCategories, mockDisclosureData } from '@/utils/disclosure-analysis-data'
