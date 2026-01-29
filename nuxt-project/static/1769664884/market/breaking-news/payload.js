@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/market/breaking-news", {data:[{}],fetch:{},mutations:void 0});
