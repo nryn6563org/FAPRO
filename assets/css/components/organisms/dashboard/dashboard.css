@@ -262,7 +262,7 @@
 
 /* 다이얼로그 모달 본문 스타일 */
 .c-widget-dialog__dialog-content {
-    @apply max-w-[85rem] h-[85vh] overflow-hidden flex flex-col p-0 border-none shadow-2xl rounded-xl;
+    @apply max-w-[70rem] h-[60vh] overflow-hidden flex flex-col p-0 border-none shadow-2xl rounded-xl;
 }
 
 .c-widget-dialog__search-wrapper {
@@ -286,7 +286,7 @@
 }
 
 .c-widget-dialog__grid {
-    @apply grid grid-cols-4 gap-6 pb-20;
+    @apply grid grid-cols-4 gap-2.5 pb-20;
 }
 
 .c-widget-card__content {

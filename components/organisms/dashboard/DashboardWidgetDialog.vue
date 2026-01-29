@@ -53,16 +53,7 @@
                    </h3>
                    <div class="c-widget-dialog__actions">
                        <!-- 위젯 편집 모드 토글 버튼 -->
-                       <Button
-                           v-if="!isEditMode"
-                           @click="enterEditMode"
-                           variant="outline"
-                           size="sm"
-                           class="c-widget-dialog__btn-edit-mode"
-                       >
-                           <Settings class="c-widget-dialog__btn-edit-mode-icon" />
-                           <span class="c-widget-dialog__btn-edit-mode-text">위젯 편집</span>
-                       </Button>
+                       <!-- 위젯 편집 모드 토글 버튼 삭제됨 -->
 
                        <div class="c-widget-dialog__search-wrapper">
                            <Autocomplete
@@ -104,14 +95,7 @@
                               <Check v-if="tempSelectedWidgets.includes(widget.id)" class="c-widget-card__check-icon" />
                           </div>
 
-                          <!-- [NEW] 삭제 마스킹 (호버 시 노출) -->
-                          <div
-                              v-if="tempSelectedWidgets.includes(widget.id) && !isEditMode"
-                              class="c-widget-card__mask"
-                              @click.stop="toggleTempWidget(widget.id)"
-                          >
-                              <Trash2 class="c-widget-card__delete-icon" />
-                          </div>
+                          <!-- [NEW] 삭제 마스킹 (호버 시 노출) 삭제됨 -->
 
                           <!-- 위젯 아이콘 -->
                           <div :class="['c-widget-card__icon-wrapper', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__icon-wrapper--selected' : '']">
@@ -123,54 +107,14 @@
                               <h4 :class="['c-widget-card__title', tempSelectedWidgets.includes(widget.id) ? 'c-widget-card__title--selected' : '']">{{ widget.title }}</h4>
 
                               <!-- 크기 조절 옵션 (가로 W, 세로 H) - 편집 모드일 때만 표시 -->
-                              <div v-if="isEditMode" class="c-widget-card__size-options" @click.stop>
-                                  <div class="c-widget-card__size-control">
-                                      <span class="c-widget-card__size-label">W</span>
-                                      <!-- 가로 크기 선택 셀렉트 박스 -->
-                                      <select
-                                          :value="getTempWidgetSize(widget.id).w"
-                                          @change="updateWidgetSize(widget.id, 'w', $event.target.value)"
-                                          class="c-widget-card__size-select"
-                                      >
-                                          <option v-for="n in 4" :key="n" :value="n">{{ n }}</option>
-                                      </select>
-                                  </div>
-                                  <div class="c-widget-card__size-control">
-                                      <span class="c-widget-card__size-label">H</span>
-                                      <!-- 세로 크기 선택 셀렉트 박스 -->
-                                      <select
-                                          :value="getTempWidgetSize(widget.id).h"
-                                          @change="updateWidgetSize(widget.id, 'h', $event.target.value)"
-                                          class="c-widget-card__size-select"
-                                      >
-                                          <option v-for="n in 4" :key="n" :value="n">{{ n }}</option>
-                                      </select>
-                                  </div>
-                              </div>
+                              <!-- 크기 조절 옵션 삭제됨 -->
                           </div>
                       </button>
                   </div>
               </div>
 
               <!-- 편집 모드 하단 플로팅 바 -->
-              <transition name="slide-up">
-                  <div v-if="isEditMode" class="c-widget-dialog__edit-mode-bar">
-                      <span class="c-widget-dialog__edit-mode-label">위젯 크기 편집 중</span>
-                      <button
-                          @click="cancelEditMode"
-                          class="c-widget-dialog__edit-mode-btn-cancel"
-                      >
-                          취소
-                      </button>
-                      <button
-                          @click="saveEditMode"
-                          class="c-widget-dialog__edit-mode-btn-save"
-                      >
-                          <Save class="c-widget-dialog__edit-mode-icon" />
-                          저장
-                      </button>
-                  </div>
-              </transition>
+              <!-- 편집 모드 하단 플로팅 바 삭제됨 -->
           </div>
       </div>
   </Dialog>
@@ -178,7 +122,7 @@
 
 <script>
 // 필요한 아이콘 및 컴포넌트 임포트
-import { Search, Check, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart, Settings, X, Save, Trash2 } from 'lucide-vue'
+import { Search, Check, TrendingUp, TrendingDown, Globe, DollarSign, Activity, Award, Wallet, Users, Briefcase, Calculator, Target, Newspaper, Building2, Sparkles, Lightbulb, Layers, FileBarChart, ClipboardList, Star, CalendarDays, PieChart, X } from 'lucide-vue'
 import Dialog from '@/components/molecules/Dialog.vue'
 import Button from '@/components/atoms/Button.vue'
 import Autocomplete from '@/components/molecules/Autocomplete.vue'
@@ -193,9 +137,7 @@ export default {
     Autocomplete,
     Search,
     Check,
-    Settings,
     X,
-    Save,
     // 동적 컴포넌트 매핑을 위한 아이콘 등록
     TrendingUp,
     TrendingDown,
@@ -218,8 +160,7 @@ export default {
     Star,
     CalendarDays,
     CalendarDays,
-    PieChart,
-    Trash2
+    PieChart
   },
   props: {
     // 다이얼로그 노출 여부
@@ -243,8 +184,6 @@ export default {
       activeCategory: '국내 지수', // 현재 활성화된 카테고리 탭
       tempSelectedWidgets: [], // 임시 선택된 위젯 ID 목록
       tempWidgetSizes: {}, // 임시 변경된 위젯 크기 정보
-      isEditMode: false, // 위젯 크기 편집 모드 활성화 여부
-      editModeSnapshot: null, // 편집 모드 진입 시점의 크기 정보 스냅샷 (취소 시 복구용)
       searchQuery: ''
     }
   },
@@ -278,7 +217,6 @@ export default {
       if (val) {
         this.tempSelectedWidgets = [...this.currentWidgets]
         this.tempWidgetSizes = JSON.parse(JSON.stringify(this.currentWidgetSizes))
-        this.isEditMode = false
       }
     }
   },
@@ -310,43 +248,6 @@ export default {
       })
     },
     /**
-     * 특정 위젯의 임시 저장된 크기 반환
-     * 설정된 값이 없으면 기본값 { w: 2, h: 1 } 반환
-     */
-    getTempWidgetSize(widgetId) {
-      return this.tempWidgetSizes[widgetId] || { w: 2, h: 1 }
-    },
-    // 위젯이 선택되었고 특정 크기인지 확인
-    isWidgetSelectedAndSize(widgetId, layout) {
-      if (!this.tempSelectedWidgets.includes(widgetId)) { return false }
-      const size = this.getTempWidgetSize(widgetId)
-      return size.w === layout.w && size.h === layout.h
-    },
-    // 위젯 크기 선택 처리
-    selectWidgetSize(widgetId, layout) {
-      if (!this.tempSelectedWidgets.includes(widgetId)) {
-        this.tempSelectedWidgets.push(widgetId)
-      }
-      this.$set(this.tempWidgetSizes, widgetId, { w: layout.w, h: layout.h })
-    },
-    /**
-     * 위젯의 가로(w) 또는 세로(h) 크기 업데이트
-     * @param {string} widgetId - 대상 위젯 ID
-     * @param {string} dimension - 'w'(가로) 또는 'h'(세로)
-     * @param {string} value - 변경할 값 (문자열로 들어오므로 정수 변환 필요)
-     */
-    updateWidgetSize(widgetId, dimension, value) {
-      const currentSize = this.getTempWidgetSize(widgetId)
-      const newSize = { ...currentSize, [dimension]: parseInt(value) }
-
-      this.$set(this.tempWidgetSizes, widgetId, newSize)
-
-      // 크기를 변경하면 자동으로 해당 위젯을 선택 상태로 변경
-      if (!this.tempSelectedWidgets.includes(widgetId)) {
-        this.tempSelectedWidgets.push(widgetId)
-      }
-    },
-    /**
      * 위젯 선택 상태 토글 (체크박스/카드 클릭 시)
      */
     toggleTempWidget(widgetId) {
@@ -361,32 +262,7 @@ export default {
         }
       }
     },
-    /**
-     * 편집 모드 진입
-     * 현재 사이즈 정보를 스냅샷으로 저장
-     */
-    enterEditMode() {
-      this.editModeSnapshot = JSON.parse(JSON.stringify(this.tempWidgetSizes))
-      this.isEditMode = true
-    },
-    /**
-     * 편집 내용 저장 및 모드 종료
-     */
-    saveEditMode() {
-      this.editModeSnapshot = null
-      this.isEditMode = false
-    },
-    /**
-     * 편집 취소 및 초기화
-     * 스냅샷으로 사이즈 정보 복구
-     */
-    cancelEditMode() {
-      if (this.editModeSnapshot) {
-        this.tempWidgetSizes = JSON.parse(JSON.stringify(this.editModeSnapshot))
-      }
-      this.editModeSnapshot = null
-      this.isEditMode = false
-    }
+
   }
 }
 </script>
