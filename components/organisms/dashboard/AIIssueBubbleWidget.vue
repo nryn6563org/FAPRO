@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import BubbleChart from '@/components/charts/BubbleChart'
+import BubbleChart from '@/components/charts/BubbleChart.vue'
 import { mockAIIssueData } from '@/utils/dashboard-data'
 
 export default {

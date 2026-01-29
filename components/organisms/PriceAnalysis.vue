@@ -163,7 +163,7 @@
 
 <script>
 import { TrendingUp, TrendingDown } from 'lucide-vue'
-import LineChart from '@/components/charts/LineChart'
+import LineChart from '@/components/charts/LineChart.vue'
 
 const now = new Date()
 

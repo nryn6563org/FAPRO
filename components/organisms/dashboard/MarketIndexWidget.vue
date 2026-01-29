@@ -19,7 +19,7 @@
 <script>
 import { TrendingUp, TrendingDown } from 'lucide-vue'
 import { mockMarketData } from '@/utils/dashboard-data'
-import LineChart from '@/components/charts/LineChart'
+import LineChart from '@/components/charts/LineChart.vue'
 
 export default {
   name: 'MarketIndexWidget',

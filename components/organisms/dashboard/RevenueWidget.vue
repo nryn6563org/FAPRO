@@ -15,7 +15,7 @@
 
 <script>
 import { TrendingUp } from 'lucide-vue'
-import BarChart from '@/components/charts/BarChart'
+import BarChart from '@/components/charts/BarChart.vue'
 
 export default {
   name: 'RevenueWidget',

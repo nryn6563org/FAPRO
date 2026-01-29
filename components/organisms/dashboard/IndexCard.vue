@@ -44,7 +44,7 @@
 
 <script>
 import { TrendingUp, TrendingDown } from 'lucide-vue'
-import AreaChart from '@/components/charts/AreaChart'
+import AreaChart from '@/components/charts/AreaChart.vue'
 
 export default {
   // 컴포넌트 이름: 지수 카드

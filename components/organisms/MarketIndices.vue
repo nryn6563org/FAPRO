@@ -242,8 +242,8 @@
 
 <script>
 import { TrendingUp, TrendingDown } from 'lucide-vue'
-import AreaChart from '@/components/charts/AreaChart'
-import LineChart from '@/components/charts/LineChart'
+import AreaChart from '@/components/charts/AreaChart.vue'
+import LineChart from '@/components/charts/LineChart.vue'
 
 // 차트용 더미 데이터 생성 헬퍼 함수
 const generateChartData = (baseValue, volatility = 50) => {

@@ -17,25 +17,9 @@
 </template>
 
 <script>
-import { Line } from 'vue-chartjs'
-
 export default {
   name: 'IssueTrendChart',
-  components: {
-    LineChart: {
-      extends: Line,
-      props: ['chartData', 'options'],
-      mounted() {
-        this.renderChart(this.chartData, this.options)
-      },
-      watch: {
-        chartData() {
-          this.$data._chart.destroy()
-          this.renderChart(this.chartData, this.options)
-        }
-      }
-    }
-  },
+  // LineChart는 ~/components/charts/LineChart.vue를 통해 글로벌로 등록되어 자동 임포트됩니다.
   props: {
     title: {
       type: String,

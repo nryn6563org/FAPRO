@@ -113,8 +113,8 @@
 
 <script>
 import { TrendingUp, Target, Award, CheckCircle2 } from 'lucide-vue'
-import BarChart from '@/components/charts/BarChart'
-import PieChart from '@/components/charts/PieChart'
+import BarChart from '@/components/charts/BarChart.vue'
+import PieChart from '@/components/charts/PieChart.vue'
 
 export default {
   // 컴포넌트 이름: 추천 종목 수익률 분석 (도메인 컴포넌트)

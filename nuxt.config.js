@@ -51,7 +51,7 @@ export default {
       }
     },
 
-    transpile: ["lucide-vue", "tailwind-merge", "clsx", "class-variance-authority"],
+    transpile: ["lucide-vue", "tailwind-merge", "clsx", "class-variance-authority", "echarts", "vue-echarts", "vue-demi", "zrender", "tslib"],
     babel: {
       // 파일 크기가 크더라도 압축 처리를 진행하여 경고를 제거합니다.
       compact: true
@@ -63,6 +63,7 @@ export default {
         include: /node_modules/,
         type: "javascript/auto"
       });
+      config.resolve.alias.vue = "vue/dist/vue.common.js";
     }
   },
 
