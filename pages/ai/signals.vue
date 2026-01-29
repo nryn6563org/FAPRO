@@ -7,7 +7,7 @@
       </div>
       <div class="p-signals__header-actions">
         <Button variant="outline" size="sm" class="p-signals__filter-btn">
-          <Filter class="p-signals__icon-filter" />
+          <FilterIcon class="p-signals__icon-filter" />
           필터 설정
         </Button>
       </div>
@@ -210,7 +210,7 @@
 </template>
 
 <script>
-import { Search, Info, Filter, Zap, TrendingUp, TrendingDown, Clock, ChevronRight } from 'lucide-vue'
+import { Search, Info, Filter as FilterIcon, Zap, TrendingUp, TrendingDown, Clock, ChevronRight } from 'lucide-vue'
 import Button from '@/components/atoms/Button.vue'
 
 export default {
@@ -219,7 +219,7 @@ export default {
     Button,
     Search,
     Info,
-    Filter,
+    FilterIcon,
     Zap,
     TrendingUp,
     TrendingDown,

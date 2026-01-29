@@ -66,14 +66,7 @@ export default {
       return this.allNews.filter(news => news.category === this.activeCategory)
     }
   },
-  head() {
-    return {
-      title: '뉴스속보 - RASSI FApro',
-      link: [
-        { rel: 'stylesheet', href: '@/assets/css/pages/market/breaking-news.css' }
-      ]
-    }
-  }
+
 }
 </script>
 
