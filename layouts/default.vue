@@ -140,15 +140,23 @@
               </div>
             </div>
 
-            <!-- 종목 검색바 및 시장 지수 요약 카드 -->
             <div class="l-main__search-indices-wrapper">
-              <div class="l-main__search-wrapper" @click="isIndexModalOpen = true">
-                <Search class="l-main__search-icon" />
-                <Input
-                  readonly
-                  placeholder="종목명 또는 종목코드를 입력하세요."
-                  class="l-main__search-input"
-                />
+              <div class="l-main__search-container">
+                <button
+                  class="l-main__my-stocks-btn"
+                  @click="$router.push('/investment/my-stocks')"
+                >
+                  <Bookmark class="l-main__my-stocks-icon" />
+                  <span>MY종목</span>
+                </button>
+                <div class="l-main__search-wrapper" @click="isIndexModalOpen = true">
+                  <Search class="l-main__search-icon" />
+                  <Input
+                    readonly
+                    placeholder="종목명 또는 종목코드를 입력하세요."
+                    class="l-main__search-input"
+                  />
+                </div>
               </div>
 
                <!-- 지수 정보 미니 카드 목록 (KOSPI, KOSDAQ 등) -->
@@ -273,7 +281,8 @@ import {
   Crown,
   Plus,
   Trash2,
-  Newspaper
+  Newspaper,
+  Bookmark
 } from 'lucide-vue'
 // 공통 컴포넌트 임포트
 // 공통 컴포넌트 임포트
@@ -315,6 +324,7 @@ export default {
     Plus,
     Trash2,
     Newspaper,
+    Bookmark,
     // UI 컴포넌트 등록
     Button,
     Input,

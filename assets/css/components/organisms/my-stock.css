@@ -1,0 +1,149 @@
+/* My Stock Page Styles */
+
+.p-my-stocks {
+    @apply flex flex-col gap-6;
+}
+
+.p-my-stocks__header {
+    @apply flex items-center justify-between mb-2;
+}
+
+.p-my-stocks__title-group {
+    @apply flex flex-col gap-1;
+}
+
+.p-my-stocks__title {
+    @apply text-2xl font-bold text-slate-900;
+}
+
+.dark .p-my-stocks__title {
+    @apply text-white;
+}
+
+.p-my-stocks__subtitle {
+    @apply text-sm text-slate-500;
+}
+
+.dark .p-my-stocks__subtitle {
+    @apply text-slate-400;
+}
+
+.p-my-stocks__add-btn {
+    @apply flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 text-white font-bold hover:bg-blue-700 transition-colors;
+}
+
+/* Tabs */
+.p-my-stocks__tabs {
+    @apply flex items-center gap-2 p-1 bg-slate-100 rounded-xl w-fit;
+}
+
+.dark .p-my-stocks__tabs {
+    @apply bg-slate-800;
+}
+
+.p-my-stocks__tab {
+    @apply px-6 py-2 rounded-lg text-sm font-bold text-slate-500 transition-all;
+}
+
+.p-my-stocks__tab--active {
+    @apply bg-white text-blue-600 shadow-sm;
+}
+
+.dark .p-my-stocks__tab--active {
+    @apply bg-slate-700 text-blue-400;
+}
+
+/* Grid */
+.p-my-stocks__grid {
+    @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6;
+}
+
+/* Stock Card */
+.c-stock-card {
+    @apply bg-white border border-slate-200 rounded-2xl p-5 relative flex flex-col gap-4 transition-all hover:shadow-lg;
+}
+
+.dark .c-stock-card {
+    @apply bg-slate-900 border-slate-800;
+}
+
+.c-stock-card__header {
+    @apply flex items-center justify-between;
+}
+
+.c-stock-card__info {
+    @apply flex flex-col;
+}
+
+.c-stock-card__name {
+    @apply text-lg font-bold text-slate-900;
+}
+
+.dark .c-stock-card__name {
+    @apply text-white;
+}
+
+.c-stock-card__code {
+    @apply text-xs text-slate-400 font-medium;
+}
+
+.c-stock-card__delete {
+    @apply p-1.5 rounded-lg text-slate-400 hover:bg-red-50 hover:text-red-500 transition-all;
+}
+
+.dark .c-stock-card__delete:hover {
+    @apply bg-red-900/20 text-red-400;
+}
+
+.c-stock-card__price-group {
+    @apply flex items-end gap-2;
+}
+
+.c-stock-card__price {
+    @apply text-xl font-bold text-slate-900;
+}
+
+.dark .c-stock-card__price {
+    @apply text-white;
+}
+
+.c-stock-card__change {
+    @apply text-sm font-bold flex items-center gap-0.5;
+}
+
+.c-stock-card__change--up {
+    @apply text-red-500;
+}
+
+.c-stock-card__change--down {
+    @apply text-blue-500;
+}
+
+/* Chart Selectors */
+.c-stock-card__chart-selectors {
+    @apply flex items-center gap-1 mt-2;
+}
+
+.c-stock-card__chart-selector {
+    @apply px-2 py-1 rounded-md text-[10px] font-bold text-slate-400 border border-slate-100 hover:border-slate-200 transition-all;
+}
+
+.dark .c-stock-card__chart-selector {
+    @apply border-slate-800 text-slate-500 hover:border-slate-700;
+}
+
+.c-stock-card__chart-selector--active {
+    @apply bg-slate-100 text-slate-700 border-slate-200;
+}
+
+.dark .c-stock-card__chart-selector--active {
+    @apply bg-slate-800 text-slate-300 border-slate-700;
+}
+
+.c-stock-card__chart-placeholder {
+    @apply w-full h-32 bg-slate-50 rounded-xl flex items-center justify-center text-xs text-slate-300;
+}
+
+.dark .c-stock-card__chart-placeholder {
+    @apply bg-slate-800/50;
+}
