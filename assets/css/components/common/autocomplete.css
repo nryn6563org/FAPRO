@@ -5,7 +5,11 @@
 }
 
 .c-autocomplete__dropdown {
-    @apply absolute top-full left-0 right-0 mt-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-2xl z-[1000] overflow-hidden;
+    @apply absolute top-full left-0 right-0 mt-1 bg-white border border-slate-200 rounded-xl shadow-2xl z-[1000] overflow-hidden;
+}
+.dark .c-autocomplete__dropdown {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .c-autocomplete__list {
@@ -19,11 +23,24 @@
 }
 
 .c-autocomplete__item {
-    @apply px-4 py-3 text-sm text-slate-700 dark:text-slate-200 cursor-pointer transition-colors flex items-center gap-3 hover:bg-slate-50 dark:hover:bg-slate-700;
+    @apply px-4 py-3 text-sm text-slate-700 cursor-pointer transition-colors flex items-center gap-3;
+}
+.c-autocomplete__item:hover {
+    @apply bg-slate-50;
+}
+.dark .c-autocomplete__item {
+    color: #e2e8f0;
+}
+.dark .c-autocomplete__item:hover {
+    background-color: #334155;
 }
 
 .c-autocomplete__item--active {
-    @apply bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300;
+    @apply bg-blue-50 text-blue-700;
+}
+.dark .c-autocomplete__item--active {
+    background-color: rgba(30, 58, 138, 0.3);
+    color: #93c5fd;
 }
 
 .c-autocomplete__item-icon {

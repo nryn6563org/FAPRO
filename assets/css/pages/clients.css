@@ -14,11 +14,17 @@
 }
 
 .p-clients__title {
-    @apply text-2xl font-bold text-slate-900 dark:text-slate-100;
+    @apply text-2xl font-bold text-slate-900;
+}
+.dark .p-clients__title {
+    color: #f1f5f9;
 }
 
 .p-clients__subtitle {
-    @apply text-sm text-slate-600 mt-1 dark:text-slate-400;
+    @apply text-sm text-slate-600 mt-1;
+}
+.dark .p-clients__subtitle {
+    color: #94a3b8;
 }
 
 .p-clients__add-btn {
@@ -27,7 +33,12 @@
 
 /* AI 고객 검색 박스 영역 */
 .p-clients__search-box {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 transition-shadow duration-300 dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-5 transition-shadow duration-300;
+}
+.dark .p-clients__search-box {
+    background-color: #0f172a;
+    border-color: #1e293b;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
 .p-clients__search-header {
@@ -35,11 +46,17 @@
 }
 
 .p-clients__search-title {
-    @apply text-lg font-bold text-slate-900 mb-1 dark:text-slate-100;
+    @apply text-lg font-bold text-slate-900 mb-1;
+}
+.dark .p-clients__search-title {
+    color: #f1f5f9;
 }
 
 .p-clients__search-desc {
-    @apply text-sm text-slate-500 dark:text-slate-400;
+    @apply text-sm text-slate-500;
+}
+.dark .p-clients__search-desc {
+    color: #94a3b8;
 }
 
 .p-clients__search-form {
@@ -56,7 +73,12 @@
 
 /* Autocomplete 컴포넌트 내부의 input에 스타일을 적용하기 위해 deep selector 사용 */
 .p-clients__search-field ::v-deep .p-clients__search-input {
-    @apply !pl-10 w-full border border-slate-200 dark:border-slate-800 rounded-xl h-10 bg-white dark:bg-slate-800 text-sm text-slate-900 dark:text-slate-100;
+    @apply !pl-10 w-full border border-slate-200 rounded-xl h-10 bg-white text-sm text-slate-900;
+}
+.dark .p-clients__search-field ::v-deep .p-clients__search-input {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
 }
 
 .p-clients__search-btn {
@@ -82,7 +104,10 @@
 }
 
 .p-clients__count {
-    @apply text-sm font-semibold text-slate-600 dark:text-slate-400;
+    @apply text-sm font-semibold text-slate-600;
+}
+.dark .p-clients__count {
+    color: #94a3b8;
 }
 
 .p-clients__sort-actions {
@@ -98,7 +123,10 @@
 }
 
 .p-clients__sort-label {
-    @apply text-sm font-semibold text-slate-600 dark:text-slate-400;
+    @apply text-sm font-semibold text-slate-600;
+}
+.dark .p-clients__sort-label {
+    color: #94a3b8;
 }
 
 .p-clients__sort-btn-group {
@@ -113,12 +141,22 @@
 
 /* 개별 고객 카드 컴포넌트 */
 .c-client-card {
-    @apply w-full bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden flex flex-col dark:bg-slate-900 dark:border-slate-800 dark:shadow-2xl shadow-slate-900/30;
+    @apply w-full bg-white rounded-xl border border-slate-200 shadow-sm transition-all duration-300 ease-in-out overflow-hidden flex flex-col;
+    shadow-color: rgba(15, 23, 42, 0.3);
+}
+.dark .c-client-card {
+    background-color: #1e293b;
+    border-color: #334155;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.4);
 }
 
 /* 카드 호버 효과 */
 .c-client-card:hover {
-    @apply -translate-y-1.5 shadow-xl border-rose-400 dark:shadow-slate-900/60 dark:border-rose-900;
+    @apply -translate-y-1.5 shadow-xl border-rose-400;
+}
+.dark .c-client-card:hover {
+    border-color: #fb7185;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5);
 }
 
 .c-client-card__header {
@@ -135,7 +173,8 @@
 
 /* 프로필 아바타 (그라데이션 적용) */
 .c-client-card__avatar {
-    @apply w-11 h-11 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/30;
+    @apply w-11 h-11 rounded-full flex items-center justify-center text-white font-bold text-lg shadow-md shadow-blue-500/30;
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
 }
 
 .c-client-card__name-wrapper {
@@ -143,7 +182,10 @@
 }
 
 .c-client-card__name {
-    @apply text-base font-bold text-slate-900 dark:text-slate-100;
+    @apply text-base font-bold text-slate-900;
+}
+.dark .c-client-card__name {
+    color: #f1f5f9;
 }
 
 /* 투자 성향 뱃지 공통 스타일 */
@@ -157,11 +199,17 @@
 }
 
 .c-client-card__favorite-btn:hover {
-    @apply bg-slate-100 dark:bg-slate-800;
+    @apply bg-slate-100;
+}
+.dark .c-client-card__favorite-btn:hover {
+    background-color: #334155;
 }
 
 .c-client-card__favorite-icon {
-    @apply w-[1.125rem] h-[1.125rem] text-slate-300 transition-all duration-200 dark:text-slate-600;
+    @apply w-[1.125rem] h-[1.125rem] text-slate-300 transition-all duration-200;
+}
+.dark .c-client-card__favorite-icon {
+    color: #475569;
 }
 
 /* 활성화된 즐겨찾기 아이콘 색상 */
@@ -187,7 +235,10 @@
 }
 
 .c-client-card__metric-value {
-    @apply text-base font-bold text-slate-900 dark:text-slate-100;
+    @apply text-base font-bold text-slate-900;
+}
+.dark .c-client-card__metric-value {
+    color: #f1f5f9;
 }
 
 .c-client-card__return-rate {
@@ -196,7 +247,10 @@
 
 /* 연락처 및 상담 정보 목록 */
 .c-client-card__info-list {
-    @apply flex flex-col gap-2 pt-4 border-t border-slate-100 dark:border-slate-800;
+    @apply flex flex-col gap-2 pt-4 border-t border-slate-100;
+}
+.dark .c-client-card__info-list {
+    border-color: #334155;
 }
 
 .c-client-card__info-item {
@@ -208,7 +262,10 @@
 }
 
 .c-client-card__info-text {
-    @apply text-[13px] text-slate-600 whitespace-nowrap overflow-hidden text-ellipsis dark:text-slate-400;
+    @apply text-[13px] text-slate-600 whitespace-nowrap overflow-hidden text-ellipsis;
+}
+.dark .c-client-card__info-text {
+    color: #94a3b8;
 }
 
 .c-client-card__footer {
@@ -225,6 +282,9 @@
 }
 
 /* 투자 위험 성향별 색상 설정 (공용) */
-.client-badge-risk--low { @apply bg-green-100 text-green-800 dark:bg-green-800/20 dark:text-green-400; }
-.client-badge-risk--mid { @apply bg-yellow-100 text-yellow-800 dark:bg-yellow-800/20 dark:text-yellow-400; }
-.client-badge-risk--high { @apply bg-red-100 text-red-800 dark:bg-red-800/20 dark:text-red-400; }
+.client-badge-risk--low { @apply bg-green-100 text-green-800; }
+.dark .client-badge-risk--low { background-color: rgba(22, 101, 52, 0.2); color: #4ade80; }
+.client-badge-risk--mid { @apply bg-yellow-100 text-yellow-800; }
+.dark .client-badge-risk--mid { background-color: rgba(133, 77, 14, 0.2); color: #facc15; }
+.client-badge-risk--high { @apply bg-red-100 text-red-800; }
+.dark .client-badge-risk--high { background-color: rgba(153, 27, 27, 0.2); color: #f87171; }

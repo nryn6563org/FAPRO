@@ -61,10 +61,9 @@
           >
              <div class="flex items-center gap-4">
                <div
- :class="[
-                 'w-10 h-10 rounded-full flex items-center justify-center font-bold text-white',
-                 getRankColor(index)
-               ]">
+                 :style="getRankStyle(index)"
+                 class="w-10 h-10 rounded-full flex items-center justify-center font-bold text-white"
+               >
                  {{ index + 1 }}
                </div>
                <div>
@@ -234,11 +233,11 @@ export default {
   },
   methods: {
     // 순위별 메달 색상 반환 (1, 2, 3위 강조)
-    getRankColor(index) {
-      if (index === 0) { return 'bg-gradient-to-r from-yellow-400 to-orange-500' }
-      if (index === 1) { return 'bg-gradient-to-r from-gray-300 to-gray-400' }
-      if (index === 2) { return 'bg-gradient-to-r from-amber-600 to-amber-700' }
-      return 'bg-slate-400'
+    getRankStyle(index) {
+      if (index === 0) { return { background: 'linear-gradient(90deg, #fbbf24 0%, #f97316 100%)' } }
+      if (index === 1) { return { background: 'linear-gradient(90deg, #d1d5db 0%, #9ca3af 100%)' } }
+      if (index === 2) { return { background: 'linear-gradient(90deg, #d97706 0%, #b45309 100%)' } }
+      return { backgroundColor: '#94a3b8' }
     }
   }
 }

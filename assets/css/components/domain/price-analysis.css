@@ -9,24 +9,42 @@
 }
 
 .c-price-analysis__title {
-    @apply text-2xl font-bold dark:text-white;
+    @apply text-2xl font-bold;
+}
+.dark .c-price-analysis__title {
+    color: #ffffff;
 }
 
 .c-price-analysis__desc {
-    @apply text-slate-600 mt-1 dark:text-slate-400;
+    @apply text-slate-600 mt-1;
+}
+.dark .c-price-analysis__desc {
+    color: #94a3b8;
 }
 
 /* 주요 지표 섹션 */
 .c-price-analysis__index-section {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm;
+}
+.dark .c-price-analysis__index-section {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-price-analysis__section-header {
-    @apply p-4 bg-gradient-to-r from-blue-50 to-purple-50 border-b border-gray-100 flex justify-between items-center rounded-t-xl dark:from-slate-800 dark:to-slate-900 dark:border-slate-700;
+    @apply p-4 border-b border-gray-100 flex justify-between items-center rounded-t-xl;
+    background: linear-gradient(90deg, #eff6ff 0%, #f5f3ff 100%);
+}
+.dark .c-price-analysis__section-header {
+    background: linear-gradient(90deg, #1e293b 0%, #0f172a 100%);
+    border-color: #334155;
 }
 
 .c-price-analysis__section-title {
-    @apply text-lg font-semibold dark:text-white;
+    @apply text-lg font-semibold;
+}
+.dark .c-price-analysis__section-title {
+    color: #ffffff;
 }
 
 .c-price-analysis__mode-actions {
@@ -34,11 +52,27 @@
 }
 
 .c-price-analysis__mode-btn {
-    @apply px-3 py-1 rounded-xl text-xs font-medium border transition-colors bg-white text-slate-700 border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700;
+    @apply px-3 py-1 rounded-xl text-xs font-medium border transition-colors bg-white text-slate-700 border-slate-300;
+}
+.c-price-analysis__mode-btn:hover {
+    @apply bg-slate-50;
+}
+.dark .c-price-analysis__mode-btn {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border-color: #334155;
+}
+.dark .c-price-analysis__mode-btn:hover {
+    background-color: #334155;
 }
 
 .c-price-analysis__mode-btn--active {
-    @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:text-white dark:border-blue-600;
+    @apply bg-blue-600 text-white border-blue-600;
+}
+.dark .c-price-analysis__mode-btn--active {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
 }
 
 .c-price-analysis__section-body {
@@ -54,19 +88,31 @@
 }
 
 .c-price-analysis__index-name {
-    @apply text-lg font-semibold text-slate-700 dark:text-slate-300;
+    @apply text-lg font-semibold text-slate-700;
+}
+.dark .c-price-analysis__index-name {
+    color: #cbd5e1;
 }
 
 .c-price-analysis__index-value {
-    @apply text-2xl font-bold text-slate-900 dark:text-white;
+    @apply text-2xl font-bold text-slate-900;
+}
+.dark .c-price-analysis__index-value {
+    color: #ffffff;
 }
 
 .c-price-analysis__text--up {
-    @apply text-red-600 dark:text-red-400;
+    @apply text-red-600;
+}
+.dark .c-price-analysis__text--up {
+    color: #f87171;
 }
 
 .c-price-analysis__text--down {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-blue-600;
+}
+.dark .c-price-analysis__text--down {
+    color: #60a5fa;
 }
 
 .c-price-analysis__period-actions {
@@ -74,11 +120,27 @@
 }
 
 .c-price-analysis__period-btn {
-    @apply px-2 py-1 rounded-xl text-xs border transition-colors bg-white text-slate-700 border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700;
+    @apply px-2 py-1 rounded-xl text-xs border transition-colors bg-white text-slate-700 border-slate-300;
+}
+.c-price-analysis__period-btn:hover {
+    @apply bg-slate-50;
+}
+.dark .c-price-analysis__period-btn {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border-color: #334155;
+}
+.dark .c-price-analysis__period-btn:hover {
+    background-color: #334155;
 }
 
 .c-price-analysis__period-btn--active {
-    @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:text-white dark:border-blue-600;
+    @apply bg-blue-600 text-white border-blue-600;
+}
+.dark .c-price-analysis__period-btn--active {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
 }
 
 .c-price-analysis__chart {
@@ -87,7 +149,11 @@
 
 /* 시세 현황 테이블 섹션 */
 .c-price-analysis__table-section {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm transition-colors;
+}
+.dark .c-price-analysis__table-section {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-price-analysis__tab-actions {
@@ -95,11 +161,27 @@
 }
 
 .c-price-analysis__tab-btn {
-    @apply px-3 py-1 rounded-xl text-xs font-medium border transition-colors bg-white text-slate-700 border-slate-300 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700;
+    @apply px-3 py-1 rounded-xl text-xs font-medium border transition-colors bg-white text-slate-700 border-slate-300;
+}
+.c-price-analysis__tab-btn:hover {
+    @apply bg-slate-50;
+}
+.dark .c-price-analysis__tab-btn {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border-color: #334155;
+}
+.dark .c-price-analysis__tab-btn:hover {
+    background-color: #334155;
 }
 
 .c-price-analysis__tab-btn--active {
-    @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:text-white dark:border-blue-600;
+    @apply bg-blue-600 text-white border-blue-600;
+}
+.dark .c-price-analysis__tab-btn--active {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
 }
 
 .c-price-analysis__update-time {
@@ -107,7 +189,10 @@
 }
 
 .c-price-analysis__time-text {
-    @apply text-sm text-slate-600 dark:text-slate-400;
+    @apply text-sm text-slate-600;
+}
+.dark .c-price-analysis__time-text {
+    color: #94a3b8;
 }
 
 .c-price-analysis__table-wrapper {
@@ -119,7 +204,11 @@
 }
 
 .c-price-analysis__th {
-    @apply text-left py-3 px-4 font-semibold text-slate-700 border-b-2 border-slate-300 dark:text-slate-300 dark:border-slate-700;
+    @apply text-left py-3 px-4 font-semibold text-slate-700 border-b-2 border-slate-300;
+}
+.dark .c-price-analysis__th {
+    color: #cbd5e1;
+    border-color: #334155;
 }
 
 .c-price-analysis__th--right {
@@ -127,19 +216,37 @@
 }
 
 .c-price-analysis__tr {
-    @apply border-b border-slate-200 hover:bg-slate-50 transition-colors dark:border-slate-800 dark:hover:bg-slate-800/50;
+    @apply border-b border-slate-200 transition-colors;
+}
+.c-price-analysis__tr:hover {
+    @apply bg-slate-50;
+}
+.dark .c-price-analysis__tr {
+    border-color: #1e293b;
+}
+.dark .c-price-analysis__tr:hover {
+    background-color: rgba(30, 41, 59, 0.5);
 }
 
 .c-price-analysis__td {
-    @apply py-3 px-4 text-sm text-slate-600 dark:text-slate-400;
+    @apply py-3 px-4 text-sm text-slate-600;
+}
+.dark .c-price-analysis__td {
+    color: #94a3b8;
 }
 
 .c-price-analysis__td--stock {
-    @apply font-medium text-slate-900 dark:text-white;
+    @apply font-medium text-slate-900;
+}
+.dark .c-price-analysis__td--stock {
+    color: #ffffff;
 }
 
 .c-price-analysis__td--price {
-    @apply text-right font-medium text-slate-900 dark:text-white;
+    @apply text-right font-medium text-slate-900;
+}
+.dark .c-price-analysis__td--price {
+    color: #ffffff;
 }
 
 .c-price-analysis__td--change {
@@ -147,5 +254,8 @@
 }
 
 .c-price-analysis__td--issue {
-    @apply text-slate-700 dark:text-slate-300;
+    @apply text-slate-700;
+}
+.dark .c-price-analysis__td--issue {
+    color: #cbd5e1;
 }

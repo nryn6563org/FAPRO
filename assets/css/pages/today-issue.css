@@ -1,10 +1,17 @@
 /* Today's Issue Page Styles - Premium 1920x1080 Optimized */
 .p-today-issue {
-  @apply flex flex-col gap-8 min-h-screen dark:bg-[#020617];
+  @apply flex flex-col gap-8 min-h-screen;
+}
+.dark .p-today-issue {
+    background-color: #020617;
 }
 
 .p-today-issue__main-section {
-  @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm dark:bg-[#0f172a] dark:border-slate-800;
+  @apply bg-white border border-slate-200 rounded-xl p-10 shadow-sm;
+}
+.dark .p-today-issue__main-section {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .p-today-issue__section-header {
@@ -16,7 +23,10 @@
 }
 
 .p-today-issue__section-title {
-  @apply text-xl font-bold text-slate-900 dark:text-white/90;
+  @apply text-xl font-bold text-slate-900;
+}
+.dark .p-today-issue__section-title {
+    color: rgba(255, 255, 255, 0.9);
 }
 
 .p-today-issue__keyword-badge {

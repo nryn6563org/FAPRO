@@ -4,7 +4,14 @@
 */
 
 .c-index-card {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-lg transition-all overflow-hidden dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm transition-all overflow-hidden;
+}
+.c-index-card:hover {
+    @apply shadow-lg;
+}
+.dark .c-index-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-index-card__header {
@@ -12,7 +19,10 @@
 }
 
 .c-index-card__title {
-    @apply text-base font-semibold text-slate-900 dark:text-white;
+    @apply text-base font-semibold text-slate-900;
+}
+.dark .c-index-card__title {
+    color: #ffffff;
 }
 
 .c-index-card__body {
@@ -25,11 +35,17 @@
 }
 
 .c-index-card__value {
-    @apply text-2xl font-bold text-slate-900 dark:text-white;
+    @apply text-2xl font-bold text-slate-900;
+}
+.dark .c-index-card__value {
+    color: #ffffff;
 }
 
 .c-index-card__unit {
-    @apply text-xs text-slate-500 mt-1 dark:text-slate-400;
+    @apply text-xs text-slate-500 mt-1;
+}
+.dark .c-index-card__unit {
+    color: #94a3b8;
 }
 
 /* 등락률 표시 영역 */
@@ -43,12 +59,18 @@
 
 /* 상승 스타일 (초록) */
 .c-index-card__change--up {
-    @apply text-green-600 dark:text-green-400;
+    @apply text-green-600;
+}
+.dark .c-index-card__change--up {
+    color: #4ade80;
 }
 
 /* 하락 스타일 (빨강) */
 .c-index-card__change--down {
-    @apply text-red-600 dark:text-red-400;
+    @apply text-red-600;
+}
+.dark .c-index-card__change--down {
+    color: #f87171;
 }
 
 .c-index-card__change-val {

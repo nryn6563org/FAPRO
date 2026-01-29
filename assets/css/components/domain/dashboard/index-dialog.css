@@ -1,7 +1,11 @@
 /* Index Selection Dialog Styles - Minimalist V3 */
 
 .c-index-dialog__content {
-    @apply w-[480px] max-w-none rounded-xl dark:bg-slate-900 dark:border-slate-800 !important;
+    @apply w-[480px] max-w-none rounded-xl !important;
+}
+.dark .c-index-dialog__content {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-index-dialog {
@@ -13,7 +17,10 @@
 }
 
 .c-index-dialog__title {
-    @apply text-lg font-extrabold text-slate-900 dark:text-white tracking-tight;
+    @apply text-lg font-extrabold text-slate-900 tracking-tight;
+}
+.dark .c-index-dialog__title {
+    color: #ffffff;
 }
 
 .c-index-dialog__search-box {
@@ -25,7 +32,12 @@
 }
 
 .c-index-dialog__search-input {
-    @apply w-full h-11 pl-11 pr-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-sm text-slate-900 dark:text-white focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium;
+    @apply w-full h-11 pl-11 pr-4 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 focus:ring-4 focus:ring-blue-500/10 focus:border-blue-500 transition-all outline-none font-medium;
+}
+.dark .c-index-dialog__search-input {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #ffffff;
 }
 
 /* 자동완성 아이템 스타일 */
@@ -34,11 +46,18 @@
 }
 
 .c-index-dialog__item-name {
-    @apply font-bold dark:text-white;
+    @apply font-bold;
+}
+.dark .c-index-dialog__item-name {
+    color: #ffffff;
 }
 
 .c-index-dialog__item-badge {
-    @apply text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded dark:bg-slate-800 dark:text-slate-500;
+    @apply text-[10px] text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded;
+}
+.dark .c-index-dialog__item-badge {
+    background-color: #1e293b;
+    color: #64748b;
 }
 
 .c-index-dialog__footer {

@@ -9,16 +9,26 @@
 }
 
 .c-report-analysis__title {
-    @apply text-2xl font-bold dark:text-white;
+    @apply text-2xl font-bold;
+}
+.dark .c-report-analysis__title {
+    color: #ffffff;
 }
 
 .c-report-analysis__desc {
-    @apply text-slate-600 mt-1 dark:text-slate-400;
+    @apply text-slate-600 mt-1;
+}
+.dark .c-report-analysis__desc {
+    color: #94a3b8;
 }
 
 /* 탭 메뉴 섹션 */
 .c-report-analysis__tabs-card {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-4 dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-4;
+}
+.dark .c-report-analysis__tabs-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-report-analysis__tabs-grid {
@@ -26,16 +36,36 @@
 }
 
 .c-report-analysis__tab-btn {
-    @apply text-xs py-2 rounded-xl transition-colors bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700 dark:hover:bg-slate-700;
+    @apply text-xs py-2 rounded-xl transition-colors bg-white text-slate-700 border border-slate-200;
+}
+.c-report-analysis__tab-btn:hover {
+    @apply bg-slate-50;
+}
+.dark .c-report-analysis__tab-btn {
+    background-color: #1e293b;
+    color: #cbd5e1;
+    border-color: #334155;
+}
+.dark .c-report-analysis__tab-btn:hover {
+    background-color: #334155;
 }
 
 .c-report-analysis__tab-btn--active {
-    @apply bg-blue-600 text-white shadow-sm border-blue-600 dark:bg-blue-600 dark:text-white dark:border-blue-600;
+    @apply bg-blue-600 text-white shadow-sm border-blue-600;
+}
+.dark .c-report-analysis__tab-btn--active {
+    background-color: #3b82f6;
+    color: #ffffff;
+    border-color: #3b82f6;
 }
 
 /* 리포트 리스트 테이블 섹션 */
 .c-report-analysis__list-card {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-6 dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-6;
+}
+.dark .c-report-analysis__list-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-report-analysis__update-info {
@@ -43,7 +73,10 @@
 }
 
 .c-report-analysis__update-text {
-    @apply text-sm text-slate-500 dark:text-slate-400;
+    @apply text-sm text-slate-500;
+}
+.dark .c-report-analysis__update-text {
+    color: #94a3b8;
 }
 
 .c-report-analysis__table-wrapper {
@@ -55,7 +88,11 @@
 }
 
 .c-report-analysis__th {
-    @apply py-3 px-4 font-semibold text-slate-700 border-b-2 border-slate-300 dark:text-slate-300 dark:border-slate-700;
+    @apply py-3 px-4 font-semibold text-slate-700 border-b-2 border-slate-300;
+}
+.dark .c-report-analysis__th {
+    color: #cbd5e1;
+    border-color: #334155;
 }
 
 .c-report-analysis__th--center {
@@ -71,7 +108,16 @@
 }
 
 .c-report-analysis__tr {
-    @apply border-b border-slate-200 hover:bg-slate-50 transition-colors dark:border-slate-800 dark:hover:bg-slate-800/50;
+    @apply border-b border-slate-200 transition-colors;
+}
+.c-report-analysis__tr:hover {
+    @apply bg-slate-50;
+}
+.dark .c-report-analysis__tr {
+    border-color: #1e293b;
+}
+.dark .c-report-analysis__tr:hover {
+    background-color: rgba(30, 41, 59, 0.5);
 }
 
 .c-report-analysis__td {
@@ -79,11 +125,20 @@
 }
 
 .c-report-analysis__td--center {
-    @apply text-center text-slate-600 dark:text-slate-400;
+    @apply text-center text-slate-600;
+}
+.dark .c-report-analysis__td--center {
+    color: #94a3b8;
 }
 
 .c-report-analysis__td--stock {
-    @apply font-medium text-blue-600 cursor-pointer hover:underline dark:text-blue-400;
+    @apply font-medium text-blue-600 cursor-pointer;
+}
+.c-report-analysis__td--stock:hover {
+    @apply underline;
+}
+.dark .c-report-analysis__td--stock {
+    color: #60a5fa;
 }
 
 .c-report-analysis__avatar-box {
@@ -99,23 +154,38 @@
 }
 
 .c-report-analysis__rate--up {
-    @apply text-red-600 dark:text-red-400;
+    @apply text-red-600;
+}
+.dark .c-report-analysis__rate--up {
+    color: #f87171;
 }
 
 .c-report-analysis__rate--down {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-blue-600;
+}
+.dark .c-report-analysis__rate--down {
+    color: #60a5fa;
 }
 
 .c-report-analysis__rate--neutral {
-    @apply text-slate-600 dark:text-slate-400;
+    @apply text-slate-600;
+}
+.dark .c-report-analysis__rate--neutral {
+    color: #94a3b8;
 }
 
 .c-report-analysis__td--value {
-    @apply text-right font-semibold text-slate-900 dark:text-white;
+    @apply text-right font-semibold text-slate-900;
+}
+.dark .c-report-analysis__td--value {
+    color: #ffffff;
 }
 
 .c-report-analysis__td--value-center {
-    @apply text-center font-semibold text-slate-900 dark:text-white;
+    @apply text-center font-semibold text-slate-900;
+}
+.dark .c-report-analysis__td--value-center {
+    color: #ffffff;
 }
 
 .c-report-analysis__rating-badge {
@@ -123,20 +193,38 @@
 }
 
 .c-report-analysis__td--title {
-    @apply text-slate-700 max-w-md truncate cursor-pointer hover:text-blue-600 hover:underline dark:text-slate-300 dark:hover:text-blue-400;
+    @apply text-slate-700 max-w-md truncate cursor-pointer;
+}
+.c-report-analysis__td--title:hover {
+    @apply text-blue-600 underline;
+}
+.dark .c-report-analysis__td--title {
+    color: #cbd5e1;
+}
+.dark .c-report-analysis__td--title:hover {
+    color: #60a5fa;
 }
 
 .c-report-analysis__td--firm {
-    @apply text-center text-slate-600 dark:text-slate-400;
+    @apply text-center text-slate-600;
+}
+.dark .c-report-analysis__td--firm {
+    color: #94a3b8;
 }
 
 /* 페이지네이션 및 하단 설명 */
 .c-report-analysis__footer {
-    @apply flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-slate-200 dark:border-slate-800 gap-4;
+    @apply flex flex-col md:flex-row justify-between items-center mt-6 pt-4 border-t border-slate-200 gap-4;
+}
+.dark .c-report-analysis__footer {
+    border-color: #1e293b;
 }
 
 .c-report-analysis__footer-desc {
-    @apply text-sm text-slate-600 dark:text-slate-400;
+    @apply text-sm text-slate-600;
+}
+.dark .c-report-analysis__footer-desc {
+    color: #94a3b8;
 }
 
 .c-report-analysis__pagination {
@@ -144,11 +232,25 @@
 }
 
 .c-report-analysis__page-btn {
-    @apply px-3 py-1 border border-slate-300 rounded-xl hover:bg-slate-100 disabled:opacity-50 disabled:cursor-not-allowed dark:border-slate-700 dark:text-slate-300 dark:hover:bg-slate-800;
+    @apply px-3 py-1 border border-slate-300 rounded-xl disabled:opacity-50 disabled:cursor-not-allowed;
+}
+.c-report-analysis__page-btn:hover {
+    @apply bg-slate-100;
+}
+.dark .c-report-analysis__page-btn {
+    border-color: #334155;
+    color: #cbd5e1;
+}
+.dark .c-report-analysis__page-btn:hover {
+    background-color: #1e293b;
 }
 
 .c-report-analysis__page-btn--active {
-    @apply bg-blue-600 text-white border-blue-600 dark:bg-blue-600 dark:text-white;
+    @apply bg-blue-600 text-white border-blue-600;
+}
+.dark .c-report-analysis__page-btn--active {
+    background-color: #3b82f6;
+    color: #ffffff;
 }
 
 /* 리포트 상세 모달 */
@@ -157,11 +259,19 @@
 }
 
 .c-report-analysis__modal-backdrop {
-    @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity dark:bg-black dark:bg-opacity-80;
+    @apply fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity;
+}
+.dark .c-report-analysis__modal-backdrop {
+    background-color: #000000;
+    opacity: 0.8;
 }
 
 .c-report-analysis__modal-content {
-    @apply bg-white rounded-xl shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200 dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl shadow-xl transform transition-all sm:max-w-lg sm:w-full max-h-[80vh] flex flex-col pointer-events-auto border border-slate-200;
+}
+.dark .c-report-analysis__modal-content {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-report-analysis__modal-body {
@@ -173,15 +283,27 @@
 }
 
 .c-report-analysis__modal-title {
-    @apply text-lg font-bold pr-8 dark:text-white;
+    @apply text-lg font-bold pr-8;
+}
+.dark .c-report-analysis__modal-title {
+    color: #ffffff;
 }
 
 .c-report-analysis__modal-close {
-    @apply text-slate-400 hover:text-slate-600 dark:hover:text-slate-200;
+    @apply text-slate-400;
+}
+.c-report-analysis__modal-close:hover {
+    @apply text-slate-600;
+}
+.dark .c-report-analysis__modal-close:hover {
+    color: #e2e8f0;
 }
 
 .c-report-analysis__modal-meta {
-    @apply text-sm text-slate-500 mb-6 dark:text-slate-400;
+    @apply text-sm text-slate-500 mb-6;
+}
+.dark .c-report-analysis__modal-meta {
+    color: #94a3b8;
 }
 
 .c-report-analysis__modal-stats {
@@ -189,13 +311,22 @@
 }
 
 .c-report-analysis__stat-label {
-    @apply text-sm text-slate-600 dark:text-slate-400;
+    @apply text-sm text-slate-600;
+}
+.dark .c-report-analysis__stat-label {
+    color: #94a3b8;
 }
 
 .c-report-analysis__stat-value {
-    @apply font-semibold dark:text-white;
+    @apply font-semibold;
+}
+.dark .c-report-analysis__stat-value {
+    color: #ffffff;
 }
 
 .c-report-analysis__modal-text {
-    @apply text-sm text-slate-700 leading-relaxed dark:text-slate-300;
+    @apply text-sm text-slate-700 leading-relaxed;
+}
+.dark .c-report-analysis__modal-text {
+    color: #cbd5e1;
 }

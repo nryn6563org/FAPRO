@@ -6,6 +6,10 @@
 .m-report-detail__header {
     @apply border-b border-slate-100 bg-slate-50/50 p-8 relative;
 }
+.dark .m-report-detail__header {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: #1e293b;
+}
 
 .m-report-detail__meta {
     @apply flex items-center gap-3 mb-2;
@@ -22,6 +26,9 @@
 .m-report-detail__title {
     @apply text-2xl font-bold text-slate-900 leading-tight pr-10;
 }
+.dark .m-report-detail__title {
+    color: #ffffff;
+}
 
 .m-report-detail__body {
     @apply flex-1 overflow-y-auto p-8;
@@ -34,6 +41,10 @@
 .m-report-detail__summary-item {
     @apply bg-slate-50 p-5 rounded-xl border border-slate-100;
 }
+.dark .m-report-detail__summary-item {
+    background-color: #1e293b;
+    border-color: #334155;
+}
 
 .m-report-detail__summary-label {
     @apply text-[10px] font-bold text-slate-400 uppercase mb-1 tracking-wider;
@@ -41,6 +52,9 @@
 
 .m-report-detail__summary-value {
     @apply text-2xl font-bold text-slate-900;
+}
+.dark .m-report-detail__summary-value {
+    color: #ffffff;
 }
 
 .m-report-detail__summary-value--rating {
@@ -50,6 +64,9 @@
 .m-report-detail__section-title {
     @apply font-bold text-lg text-slate-800 flex items-center gap-3 mb-4;
 }
+.dark .m-report-detail__section-title {
+    color: #cbd5e1;
+}
 
 .m-report-detail__section-indicator {
     @apply w-1.5 h-6 bg-blue-600 rounded-full;
@@ -58,9 +75,16 @@
 .m-report-detail__content {
     @apply text-base text-slate-600 leading-relaxed font-medium;
 }
+.dark .m-report-detail__content {
+    color: #94a3b8;
+}
 
 .m-report-detail__footer {
     @apply p-8 border-t border-slate-100 bg-slate-50 flex justify-end gap-3;
+}
+.dark .m-report-detail__footer {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .m-report-detail__btn-secondary {

@@ -1,6 +1,9 @@
 /* Themes/Sectors Page Styles - Premium 1920x1080 Optimized */
 .p-theme-sector {
-  @apply flex flex-col min-h-screen dark:bg-[#020617] gap-8;
+  @apply flex flex-col min-h-screen gap-8;
+}
+.dark .p-theme-sector {
+    background-color: #020617;
 }
 
 .p-theme-sector__grid {

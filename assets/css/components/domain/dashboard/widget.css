@@ -5,7 +5,17 @@
 
 /* 위젯 컨테이너 */
 .c-widget {
-    @apply h-full bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm flex flex-col text-left items-start transition-all duration-200 hover:shadow-lg hover:-translate-y-1;
+    @apply h-full bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col text-left items-start transition-all duration-200;
+}
+.c-widget:hover {
+    @apply shadow-lg -translate-y-1;
+}
+.dark .c-widget {
+    background-color: #0f172a;
+    border-color: #1e293b;
+}
+.dark .c-widget:hover {
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.4);
 }
 
 .c-widget__header {
@@ -21,16 +31,28 @@
 }
 
 .c-widget__icon {
-    @apply w-5 h-5 text-blue-600 dark:text-blue-500;
+    @apply w-5 h-5 text-blue-600;
+}
+.dark .c-widget__icon {
+    color: #3b82f6;
 }
 
 .c-widget__title {
-    @apply font-semibold text-base text-slate-900 dark:text-slate-100;
+    @apply font-semibold text-base text-slate-900;
+}
+.dark .c-widget__title {
+    color: #f1f5f9;
 }
 
 /* 위젯 삭제 버튼 (편집모드) */
 .c-widget__remove-btn {
-    @apply text-slate-400 hover:text-red-500 transition-colors p-1 rounded-full hover:bg-slate-100 dark:hover:bg-slate-700;
+    @apply text-slate-400 p-1 rounded-full transition-colors;
+}
+.c-widget__remove-btn:hover {
+    @apply text-red-500 bg-slate-100;
+}
+.dark .c-widget__remove-btn:hover {
+    background-color: #334155;
 }
 
 .c-widget__remove-icon {
@@ -43,7 +65,10 @@
 
 /* 시장 지수 위젯 */
 .c-widget__market-wrapper {
-    @apply h-full flex flex-col relative w-full bg-white dark:bg-slate-900;
+    @apply h-full flex flex-col relative w-full bg-white;
+}
+.dark .c-widget__market-wrapper {
+    background-color: #0f172a;
 }
 
 .c-widget__value-area {
@@ -51,7 +76,10 @@
 }
 
 .c-widget__value {
-    @apply text-2xl font-bold dark:text-white;
+    @apply text-2xl font-bold;
+}
+.dark .c-widget__value {
+    color: #ffffff;
 }
 
 .c-widget__change {
@@ -63,11 +91,17 @@
 }
 
 .c-widget__change--up {
-    @apply text-green-600 dark:text-green-400;
+    @apply text-green-600;
+}
+.dark .c-widget__change--up {
+    color: #4ade80;
 }
 
 .c-widget__change--down {
-    @apply text-red-600 dark:text-red-400;
+    @apply text-red-600;
+}
+.dark .c-widget__change--down {
+    color: #f87171;
 }
 
 .c-widget__chart-area {
@@ -105,7 +139,10 @@
 }
 
 .c-widget__bubble-label {
-    @apply text-[10px] text-slate-600 dark:text-slate-400;
+    @apply text-[10px] text-slate-600;
+}
+.dark .c-widget__bubble-label {
+    color: #94a3b8;
 }
 
 /* 단순 카운트 위젯 (Count/AUM) */
@@ -123,7 +160,14 @@
 }
 
 .c-widget__list-item {
-    @apply flex items-center justify-between p-2 rounded-xl hover:bg-slate-50 dark:hover:bg-slate-700/50 border border-transparent hover:border-slate-100 dark:hover:border-slate-600 transition-colors w-full;
+    @apply flex items-center justify-between p-2 rounded-xl transition-colors w-full border border-transparent;
+}
+.c-widget__list-item:hover {
+    @apply bg-slate-50 border-slate-100;
+}
+.dark .c-widget__list-item:hover {
+    background-color: rgba(51, 65, 85, 0.5);
+    border-color: #334155;
 }
 
 .c-widget__client-info {
@@ -131,15 +175,22 @@
 }
 
 .c-widget__avatar {
-    @apply w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white text-sm font-semibold flex-shrink-0;
+    @apply w-8 h-8 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0;
+    background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
 }
 
 .c-widget__client-name {
-    @apply text-sm font-medium text-slate-900 dark:text-slate-100 whitespace-nowrap;
+    @apply text-sm font-medium text-slate-900 whitespace-nowrap;
+}
+.dark .c-widget__client-name {
+    color: #f1f5f9;
 }
 
 .c-widget__client-sub {
-    @apply text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap;
+    @apply text-xs text-slate-500 whitespace-nowrap;
+}
+.dark .c-widget__client-sub {
+    color: #94a3b8;
 }
 
 .c-widget__list-right {
@@ -152,15 +203,27 @@
 }
 
 .c-widget__tag--high {
-    @apply bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400;
+    @apply bg-red-100 text-red-700;
+}
+.dark .c-widget__tag--high {
+    background-color: rgba(127, 29, 29, 0.3);
+    color: #f87171;
 }
 
 .c-widget__tag--medium {
-    @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-900/30 dark:text-yellow-400;
+    @apply bg-yellow-100 text-yellow-700;
+}
+.dark .c-widget__tag--medium {
+    background-color: rgba(113, 63, 18, 0.3);
+    color: #fbbf24;
 }
 
 .c-widget__tag--low {
-    @apply bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400;
+    @apply bg-green-100 text-green-700;
+}
+.dark .c-widget__tag--low {
+    background-color: rgba(20, 83, 45, 0.3);
+    color: #4ade80;
 }
 
 /* 뉴스 리스트 위젯 */
@@ -173,11 +236,23 @@
 }
 
 .c-widget__news-item {
-    @apply pb-3 border-b border-slate-200 dark:border-slate-700 last:border-0 last:pb-0 w-full;
+    @apply pb-3 border-b border-slate-200 last:border-0 last:pb-0 w-full;
+}
+.dark .c-widget__news-item {
+    border-color: #334155;
 }
 
 .c-widget__news-title {
-    @apply text-sm font-medium hover:text-blue-600 dark:hover:text-blue-400 cursor-pointer text-slate-900 dark:text-slate-100 transition-colors truncate block w-full;
+    @apply text-sm font-medium cursor-pointer text-slate-900 transition-colors truncate block w-full;
+}
+.c-widget__news-title:hover {
+    @apply text-blue-600;
+}
+.dark .c-widget__news-title {
+    color: #f1f5f9;
+}
+.dark .c-widget__news-title:hover {
+    color: #60a5fa;
 }
 
 .c-widget__news-meta {
@@ -185,7 +260,10 @@
 }
 
 .c-widget__news-source {
-    @apply text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap;
+    @apply text-xs text-slate-500 whitespace-nowrap;
+}
+.dark .c-widget__news-source {
+    color: #94a3b8;
 }
 
 .c-widget__news-divider {
@@ -193,12 +271,18 @@
 }
 
 .c-widget__news-time {
-    @apply text-xs text-slate-500 dark:text-slate-400 whitespace-nowrap;
+    @apply text-xs text-slate-500 whitespace-nowrap;
+}
+.dark .c-widget__news-time {
+    color: #94a3b8;
 }
 
 /* 예외/로딩 상태 */
 .c-widget__fallback {
-    @apply h-full flex items-center justify-center bg-slate-50 dark:bg-slate-700/50 rounded-xl transition-colors;
+    @apply h-full flex items-center justify-center bg-slate-50 rounded-xl transition-colors;
+}
+.dark .c-widget__fallback {
+    background-color: rgba(51, 65, 85, 0.5);
 }
 
 .c-widget__fallback-text {
@@ -219,5 +303,9 @@
 
 .c-widget--editing {
   animation: shake 0.5s infinite;
-  @apply cursor-move border-blue-400 dark:border-blue-500 ring-2 ring-blue-100 dark:ring-blue-900/30;
+  @apply cursor-move border-blue-400 ring-2 ring-blue-100;
+}
+.dark .c-widget--editing {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 2px rgba(30, 58, 138, 0.3);
 }

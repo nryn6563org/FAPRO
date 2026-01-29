@@ -8,7 +8,10 @@
 }
 
 .c-today-pick-header__icon-box {
-  @apply w-12 h-12 rounded bg-amber-50 flex items-center justify-center dark:bg-amber-900/20;
+  @apply w-12 h-12 rounded bg-amber-50 flex items-center justify-center;
+}
+.dark .c-today-pick-header__icon-box {
+    background-color: rgba(251, 191, 36, 0.1);
 }
 
 .c-today-pick-header__icon {
@@ -20,7 +23,10 @@
 }
 
 .c-today-pick-header__title {
-  @apply text-[1.75rem] font-bold text-slate-900 dark:text-white leading-tight;
+  @apply text-[1.75rem] font-bold text-slate-900 leading-tight;
+}
+.dark .c-today-pick-header__title {
+    color: #ffffff;
 }
 
 .c-today-pick-header__desc {

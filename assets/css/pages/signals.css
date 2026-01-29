@@ -33,6 +33,12 @@
 .p-signals__category-card {
     @apply p-10 !rounded-2xl !border-slate-200 !shadow-sm transition-all;
 }
+.dark .p-signals__status-card,
+.dark .p-signals__recent-card,
+.dark .p-signals__category-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
+}
 
 .p-signals__card-title {
     @apply text-[17px] font-bold text-slate-900 tracking-tight flex items-center gap-2;
@@ -211,11 +217,11 @@
 }
 
 .p-signals__feed-header--buy {
-    @apply bg-gradient-to-r from-red-500 to-rose-600;
+    background: linear-gradient(90deg, #ef4444 0%, #e11d48 100%);
 }
 
 .p-signals__feed-header--sell {
-    @apply bg-gradient-to-r from-blue-600 to-indigo-700;
+    background: linear-gradient(90deg, #2563eb 0%, #4338ca 100%);
 }
 
 .p-signals__feed-content {
@@ -348,47 +354,101 @@
 
 /* Dark Mode Overrides (Subtle) */
 .dark .p-signals {
-    @apply bg-slate-950 text-slate-100;
+    background-color: #020617;
+    color: #f1f5f9;
 }
 
 .dark .c-content-card {
-    @apply !bg-slate-800 !border-slate-700;
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .dark .p-signals__card-title,
 .dark .p-signals__stock-name,
 .dark .p-signals__stock-title {
-    @apply text-white;
+    color: #ffffff;
 }
 
 .dark .p-signals__feed-content {
-    @apply bg-slate-800 border-slate-700;
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .dark .p-signals__feed-box {
-    @apply bg-slate-900 border-slate-700 text-slate-100;
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #f1f5f9;
 }
 
 .dark .p-signals__status-banner {
-    @apply bg-slate-900 border-slate-700 text-slate-400;
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #94a3b8;
 }
 
 .dark .p-signals__recent-item {
-    @apply bg-slate-900 border-slate-700 hover:border-slate-500;
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+.dark .p-signals__recent-item:hover {
+    border-color: #64748b;
 }
 
 .dark .p-signals__status-circle--buy {
-    @apply bg-red-950/20 border-red-500;
+    background-color: rgba(69, 10, 10, 0.2);
+    border-color: #ef4444;
 }
 
 .dark .p-signals__status-circle--sell {
-    @apply bg-blue-950/20 border-blue-500;
+    background-color: rgba(30, 58, 138, 0.2);
+    border-color: #3b82f6;
 }
 
 .dark .p-signals__countdown-time {
-    @apply text-white;
+    color: #ffffff;
 }
 
 .dark .p-signals__stock-item:hover {
-    @apply bg-slate-700/50;
+    background-color: rgba(51, 65, 85, 0.5);
+}
+
+.dark .p-signals__countdown {
+    color: #94a3b8;
+}
+
+.dark .p-signals__countdown-time {
+    color: #ffffff;
+}
+
+.dark .p-signals__feed-count--buy {
+    color: #ef4444;
+}
+
+.dark .p-signals__feed-count--sell {
+    color: #60a5fa;
+}
+
+.dark .p-signals__feed-item--buy .p-signals__feed-time::after {
+    background-color: rgba(239, 68, 68, 0.2);
+}
+
+.dark .p-signals__feed-item--sell .p-signals__feed-time::after {
+    background-color: rgba(59, 130, 246, 0.2);
+}
+
+.dark .p-signals__stock-icon--ai {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #94a3b8;
+}
+
+.dark .p-signals__stock-icon--hot {
+    background-color: rgba(251, 146, 60, 0.1);
+    border-color: rgba(251, 146, 60, 0.2);
+}
+
+.dark .p-signals__stock-icon--top {
+    background-color: rgba(239, 68, 68, 0.1);
+    border-color: rgba(239, 68, 68, 0.2);
 }

@@ -52,6 +52,20 @@ export default {
     contentClass() {
       return cn(this.className)
     }
+  },
+  mounted() {
+    // ESC 키로 모달 닫기
+    document.addEventListener('keydown', this.handleKeydown)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.handleKeydown)
+  },
+  methods: {
+    handleKeydown(e) {
+      if (e.key === 'Escape' && this.open) {
+        this.$emit('update:open', false)
+      }
+    }
   }
 }
 </script>

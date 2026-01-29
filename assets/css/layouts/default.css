@@ -1,7 +1,11 @@
 /* Default Layout Styles */
 
 .l-default {
-    @apply flex flex-col h-screen bg-white dark:bg-slate-950 font-sans min-w-[1920px] overflow-x-auto overflow-y-hidden transition-colors duration-300;
+    @apply flex flex-col h-screen bg-white font-sans min-w-[1920px] overflow-x-auto overflow-y-hidden transition-colors duration-300;
+}
+.dark .l-default {
+    background-color: #020617;
+    color: #f8fafc;
 }
 
 .l-default__container {
@@ -10,7 +14,12 @@
 
 /* Sidebar */
 .l-sidebar {
-    @apply bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-100 transition-all duration-300 flex flex-col border-r border-slate-200 dark:border-slate-700;
+    @apply bg-white text-slate-700 transition-all duration-300 flex flex-col border-r border-slate-200;
+}
+.dark .l-sidebar {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #f1f5f9;
 }
 
 .l-sidebar--open {
@@ -22,15 +31,33 @@
 }
 
 .l-sidebar__nav {
-    @apply flex-1 px-3 py-4 overflow-y-auto dark:bg-slate-800;
+    @apply flex-1 px-3 py-4 overflow-y-auto;
+}
+.dark .l-sidebar__nav {
+    background-color: #1e293b;
 }
 
 .l-sidebar__item {
-    @apply w-full flex items-center gap-3 px-3 py-2.5 rounded-xl mb-1 transition-colors text-base text-slate-700 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-slate-100;
+    @apply w-full flex items-center gap-3 px-3 py-2.5 rounded-xl mb-1 transition-colors text-base text-slate-700 hover:bg-slate-100 hover:text-blue-700;
+}
+.dark .l-sidebar__item {
+    color: #94a3b8;
+}
+.dark .l-sidebar__item:hover {
+    background-color: #1e293b;
+    color: #f1f5f9;
 }
 
 .l-sidebar__item--active {
-    @apply bg-blue-50 text-blue-700 font-bold dark:bg-blue-900/40 dark:text-blue-200 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/40 dark:hover:text-blue-200;
+    @apply bg-blue-50 text-blue-700 font-bold hover:bg-blue-50 hover:text-blue-700;
+}
+.dark .l-sidebar__item--active {
+    background-color: rgba(30, 58, 138, 0.4);
+    color: #bfdbfe;
+}
+.dark .l-sidebar__item--active:hover {
+    background-color: rgba(30, 58, 138, 0.4);
+    color: #bfdbfe;
 }
 
 .l-sidebar__icon {
@@ -38,7 +65,10 @@
 }
 
 .l-sidebar__icon--active {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-blue-600;
+}
+.dark .l-sidebar__icon--active {
+    color: #60a5fa;
 }
 
 .l-sidebar__icon--inactive {
@@ -59,19 +89,46 @@
 }
 
 .l-sidebar__subitem {
-    @apply w-full flex items-center gap-2 px-3 py-2 rounded-xl mb-1 transition-colors text-[15px] font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-blue-700 dark:hover:text-slate-200;
+    @apply w-full flex items-center gap-2 px-3 py-2 rounded-xl mb-1 transition-colors text-[15px] font-medium text-slate-600;
+}
+.l-sidebar__subitem:hover {
+    @apply bg-slate-50 text-blue-700;
+}
+.dark .l-sidebar__subitem {
+    color: #94a3b8;
+}
+.dark .l-sidebar__subitem:hover {
+    background-color: #0f172a;
+    color: #f1f5f9;
 }
 
 .l-sidebar__subitem--active {
-    @apply bg-blue-50 text-blue-700 font-bold dark:bg-blue-900/30 dark:text-blue-300 hover:bg-blue-50 hover:text-blue-700 dark:hover:bg-blue-900/30 dark:hover:text-blue-300;
+    @apply bg-blue-50 text-blue-700 font-bold;
+}
+.l-sidebar__subitem--active:hover {
+    @apply bg-blue-50 text-blue-700;
+}
+.dark .l-sidebar__subitem--active {
+    background-color: rgba(30, 58, 138, 0.3);
+    color: #93c5fd;
+}
+.dark .l-sidebar__subitem--active:hover {
+    background-color: rgba(30, 58, 138, 0.3);
+    color: #93c5fd;
 }
 
 .l-sidebar__subicon--active {
-    @apply text-blue-600 dark:text-blue-400;
+    @apply text-blue-600;
+}
+.dark .l-sidebar__subicon--active {
+    color: #60a5fa;
 }
 
 .l-sidebar__subicon--inactive {
-    @apply text-slate-400 dark:text-slate-500;
+    @apply text-slate-400;
+}
+.dark .l-sidebar__subicon--inactive {
+    color: #64748b;
 }
 
 /* Main Content Area */
@@ -81,11 +138,18 @@
 
 /* Sub-Header (Welcome, Index) */
 .l-main__header {
-    @apply bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 px-6 py-4 transition-colors duration-300;
+    @apply bg-white border-b border-slate-200 px-6 py-4 transition-colors duration-300;
+}
+.dark .l-main__header {
+    background-color: #020617;
+    border-color: #1e293b;
 }
 
 .l-main__welcome {
-    @apply flex items-center justify-between text-slate-900 dark:text-slate-100;
+    @apply flex items-center justify-between text-slate-900;
+}
+.dark .l-main__welcome {
+    color: #f1f5f9;
 }
 
 /* Search Input Wrapper */
@@ -98,7 +162,15 @@
 }
 
 .l-main__search-wrapper .l-main__search-input {
-    @apply pl-10 bg-slate-50 dark:bg-slate-700 border-slate-200 dark:border-slate-600 dark:text-slate-100 dark:placeholder-slate-400 pointer-events-none;
+    @apply pl-10 bg-slate-50 border-slate-200 pointer-events-none;
+}
+.dark .l-main__search-wrapper .l-main__search-input {
+    background-color: #334155;
+    border-color: #475569;
+    color: #f1f5f9;
+}
+.dark .l-main__search-wrapper .l-main__search-input::placeholder {
+    color: #94a3b8;
 }
 
 /* Index Cards Scroller */
@@ -113,7 +185,14 @@
 }
 
 .c-mini-card {
-    @apply flex flex-col justify-between bg-white dark:bg-slate-800 shadow-sm hover:shadow-md transition-all rounded-xl px-4 py-3 min-w-[160px] border border-slate-100 dark:border-slate-700 h-24 relative overflow-hidden;
+    @apply flex flex-col justify-between bg-white shadow-sm transition-all rounded-xl px-4 py-3 min-w-[160px] border border-slate-100 h-24 relative overflow-hidden;
+}
+.c-mini-card:hover {
+    @apply shadow-md;
+}
+.dark .c-mini-card {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .c-mini-card__content {
@@ -125,7 +204,10 @@
 }
 
 .c-mini-card__title {
-    @apply text-xs text-slate-500 dark:text-slate-400 font-semibold;
+    @apply text-xs text-slate-500 font-semibold;
+}
+.dark .c-mini-card__title {
+    color: #94a3b8;
 }
 
 .c-mini-card__change {
@@ -133,15 +215,26 @@
 }
 
 .c-mini-card__change--up {
-    @apply bg-red-50 dark:bg-red-900/30 text-red-600 dark:text-red-400;
+    @apply bg-red-50 text-red-600;
+}
+.dark .c-mini-card__change--up {
+    background-color: rgba(127, 29, 29, 0.3);
+    color: #f87171;
 }
 
 .c-mini-card__change--down {
-    @apply bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400;
+    @apply bg-blue-50 text-blue-600;
+}
+.dark .c-mini-card__change--down {
+    background-color: rgba(30, 58, 138, 0.3);
+    color: #60a5fa;
 }
 
 .c-mini-card__value {
-    @apply text-lg font-bold text-slate-900 dark:text-slate-100 tracking-tight;
+    @apply text-lg font-bold text-slate-900 tracking-tight;
+}
+.dark .c-mini-card__value {
+    color: #f1f5f9;
 }
 
 
@@ -168,16 +261,26 @@
 
 /* Page Content */
 .l-main__content {
-    @apply flex-1 overflow-auto p-[60px_40px_100px] bg-white dark:bg-slate-950 transition-colors duration-300;
+    @apply flex-1 overflow-auto p-[60px_40px_100px] bg-white transition-colors duration-300;
+}
+.dark .l-main__content {
+    background-color: #020617;
 }
 
 /* Footer */
 .l-footer {
-    @apply bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800 px-6 py-4 transition-colors duration-300;
+    @apply bg-white border-t border-slate-200 px-6 py-4 transition-colors duration-300;
+}
+.dark .l-footer {
+    background-color: #020617;
+    border-color: #1e293b;
 }
 
 .l-footer__inner {
-    @apply flex items-center justify-between text-xs text-slate-500 dark:text-slate-500;
+    @apply flex items-center justify-between text-xs text-slate-500;
+}
+.dark .l-footer__inner {
+    color: #64748b;
 }
 
 .l-footer__links {
@@ -185,14 +288,21 @@
 }
 
 .l-footer__link {
-    @apply hover:text-blue-600 dark:hover:text-blue-400 transition-colors;
+    @apply transition-colors;
+}
+.l-footer__link:hover {
+    @apply text-blue-600;
+}
+.dark .l-footer__link:hover {
+    color: #60a5fa;
 }
 
 
 
 /* Sidebar Upgrade Plan Button */
 .l-sidebar__upgrade-btn {
-    @apply w-full flex items-center gap-3 px-3 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300;
+    @apply w-full flex items-center gap-3 px-3 py-3 rounded-xl text-white hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300;
+    background: linear-gradient(90deg, #2563eb 0%, #4f46e5 100%);
 }
 
 .l-sidebar__upgrade-icon {
@@ -230,24 +340,49 @@
 }
 
 .l-main__welcome-date {
-    @apply text-xs text-slate-500 dark:text-slate-400 font-medium;
+    @apply text-xs text-slate-500 font-medium;
+}
+.dark .l-main__welcome-date {
+    color: #94a3b8;
 }
 
 .c-mini-card--kospi {
-    @apply bg-gray-50 dark:bg-gray-800 border-gray-100 dark:border-gray-700;
+    @apply bg-gray-50 border-gray-100;
+}
+.dark .c-mini-card--kospi {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .c-mini-card--kosdaq {
-    @apply bg-slate-50 dark:bg-slate-800 border-slate-100 dark:border-slate-700;
+    @apply bg-slate-50 border-slate-100;
+}
+.dark .c-mini-card--kosdaq {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 /* Add Button Card (Dashed) */
 .c-mini-card--add {
-    @apply border-dashed border-2 border-red-200 dark:border-red-900/30 justify-center items-center cursor-pointer hover:bg-red-50 dark:hover:bg-red-900/20 hover:border-red-300 dark:hover:border-red-800 transition-all;
+    @apply border-dashed border-2 border-red-200 justify-center items-center cursor-pointer transition-all;
+}
+.c-mini-card--add:hover {
+    @apply bg-red-50 border-red-300;
+}
+.dark .c-mini-card--add {
+    border-color: rgba(127, 29, 29, 0.3);
+}
+.dark .c-mini-card--add:hover {
+    background-color: rgba(127, 29, 29, 0.1);
+    border-color: rgba(127, 29, 29, 0.5);
 }
 
 .c-mini-card__add-icon {
     @apply w-6 h-6 text-white font-bold rounded-full bg-red-200;
+}
+.dark .c-mini-card__add-icon {
+    background-color: rgba(127, 29, 29, 0.5);
+    color: #f87171;
 }
 
 .l-main__search-indices-wrapper {
@@ -273,11 +408,17 @@
 }
 
 .c-dialog-title {
-    @apply text-lg font-bold text-slate-900 dark:text-slate-100 mb-2;
+    @apply text-lg font-bold text-slate-900 mb-2;
+}
+.dark .c-dialog-title {
+    color: #f1f5f9;
 }
 
 .c-dialog-desc {
-    @apply text-slate-600 dark:text-slate-400 mb-6;
+    @apply text-slate-600 mb-6;
+}
+.dark .c-dialog-desc {
+    color: #94a3b8;
 }
 
 .c-dialog-actions {

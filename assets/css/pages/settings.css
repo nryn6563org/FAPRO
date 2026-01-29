@@ -10,7 +10,11 @@
 
 /* 사이드바 네비게이션 영역 */
 .p-settings__sidebar {
-    @apply bg-white border border-slate-200 rounded-xl p-2 h-fit dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white border border-slate-200 rounded-xl p-2 h-fit;
+}
+.dark .p-settings__sidebar {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .p-settings__nav-item {
@@ -19,7 +23,11 @@
 
 /* 활성화된 네비게이션 항목 */
 .p-settings__nav-item--active {
-    @apply bg-blue-50 text-blue-600 dark:bg-blue-600/10 dark:text-blue-400;
+    @apply bg-blue-50 text-blue-600;
+}
+.dark .p-settings__nav-item--active {
+    background-color: rgba(30, 58, 138, 0.2);
+    color: #60a5fa;
 }
 
 .p-settings__nav-item--inactive {
@@ -27,7 +35,11 @@
 }
 
 .p-settings__nav-item--inactive:hover {
-    @apply bg-slate-50 text-slate-900 dark:bg-slate-800 dark:text-white;
+    @apply bg-slate-50 text-slate-900;
+}
+.dark .p-settings__nav-item--inactive:hover {
+    background-color: #1e293b;
+    color: #ffffff;
 }
 
 /* 메인 콘텐츠 영역 */
@@ -36,12 +48,20 @@
 }
 
 .p-settings__section-card {
-    @apply bg-white border border-slate-200 rounded-xl overflow-hidden dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white border border-slate-200 rounded-xl overflow-hidden;
+}
+.dark .p-settings__section-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 /* 프로필 섹션 헤더 스타일 */
 .p-settings__profile-header {
-    @apply p-6 bg-slate-50 border-b border-slate-100 flex items-center gap-6 dark:bg-slate-800/50 dark:border-slate-800;
+    @apply p-6 bg-slate-50 border-b border-slate-100 flex items-center gap-6;
+}
+.dark .p-settings__profile-header {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: #1e293b;
 }
 
 .p-settings__avatar {
@@ -49,7 +69,10 @@
 }
 
 .p-settings__profile-info h3 {
-    @apply text-xl font-bold text-slate-900 dark:text-white;
+    @apply text-xl font-bold text-slate-900;
+}
+.dark .p-settings__profile-info h3 {
+    color: #ffffff;
 }
 
 .p-settings__profile-info p {
@@ -70,7 +93,10 @@
 }
 
 .p-settings__label {
-    @apply text-[13px] font-bold text-slate-700 dark:text-slate-300;
+    @apply text-[13px] font-bold text-slate-700;
+}
+.dark .p-settings__label {
+    color: #cbd5e1;
 }
 
 .p-settings__actions {
@@ -83,15 +109,25 @@
 }
 
 .p-settings__noti-item {
-    @apply flex items-center justify-between px-5 py-4 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 dark:bg-slate-800/50 dark:border-slate-800;
+    @apply flex items-center justify-between px-5 py-4 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200;
+}
+.dark .p-settings__noti-item {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: #1e293b;
 }
 
 .p-settings__noti-item:hover {
-    @apply border-blue-100 dark:border-blue-900/30;
+    @apply border-blue-100;
+}
+.dark .p-settings__noti-item:hover {
+    border-color: rgba(30, 58, 138, 0.3);
 }
 
 .p-settings__noti-title {
-    @apply text-sm font-bold text-slate-800 dark:text-slate-200;
+    @apply text-sm font-bold text-slate-800;
+}
+.dark .p-settings__noti-title {
+    color: #e2e8f0;
 }
 
 .p-settings__noti-desc {
@@ -108,7 +144,10 @@
 }
 
 .p-settings__switch--off {
-    @apply bg-slate-300 dark:bg-slate-700;
+    @apply bg-slate-300;
+}
+.dark .p-settings__switch--off {
+    background-color: #334155;
 }
 
 .p-settings__switch-dot {
@@ -125,7 +164,10 @@
 }
 
 .p-settings__info-row {
-    @apply flex justify-between py-4 border-b border-slate-50 dark:border-slate-800;
+    @apply flex justify-between py-4 border-b border-slate-50;
+}
+.dark .p-settings__info-row {
+    border-color: #1e293b;
 }
 
 .p-settings__info-label {
@@ -133,7 +175,10 @@
 }
 
 .p-settings__info-value {
-    @apply text-sm font-bold text-slate-800 dark:text-slate-200;
+    @apply text-sm font-bold text-slate-800;
+}
+.dark .p-settings__info-value {
+    color: #e2e8f0;
 }
 
 .p-settings__info-value--active {

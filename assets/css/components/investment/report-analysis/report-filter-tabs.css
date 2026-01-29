@@ -8,9 +8,24 @@
 }
 
 .c-report-filter__btn--active {
-  @apply bg-slate-100 text-blue-600 border-blue-200 shadow-sm dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400;
+  @apply bg-slate-100 text-blue-600 border-blue-200 shadow-sm;
+}
+.dark .c-report-filter__btn--active {
+    background-color: rgba(30, 58, 138, 0.2);
+    border-color: rgba(30, 58, 138, 0.4);
+    color: #60a5fa;
 }
 
 .c-report-filter__btn--inactive {
-  @apply bg-white text-slate-400 hover:text-slate-900 dark:bg-slate-900 dark:border-slate-800 dark:hover:text-white;
+  @apply bg-white text-slate-400 border-slate-200;
+}
+.c-report-filter__btn--inactive:hover {
+    @apply text-slate-900;
+}
+.dark .c-report-filter__btn--inactive {
+    background-color: #0f172a;
+    border-color: #1e293b;
+}
+.dark .c-report-filter__btn--inactive:hover {
+    @apply text-white;
 }

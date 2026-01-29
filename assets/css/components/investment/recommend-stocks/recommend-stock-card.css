@@ -1,7 +1,10 @@
 /* RecommendStockCard Component Styles */
 .c-recommend-card {
-  @apply w-[calc((100%-48px)/3)] shrink-0 bg-white border border-slate-100 rounded-2xl p-[10px_12px] shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex items-start gap-4 relative;  
-  
+  @apply w-[calc((100%-48px)/3)] shrink-0 bg-white border border-slate-100 rounded-2xl p-[10px_12px] shadow-sm transition-all duration-300 flex items-start gap-4 relative;  
+}
+.dark .c-recommend-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-recommend-card__yield-section {
@@ -43,7 +46,10 @@
 }
 
 .c-recommend-card__name {
-  @apply text-lg font-bold text-slate-900 dark:text-white truncate;
+  @apply text-lg font-bold text-slate-900 truncate;
+}
+.dark .c-recommend-card__name {
+    color: #ffffff;
 }
 
 .c-recommend-card__desc {
@@ -55,7 +61,12 @@
 }
 
 .c-recommend-card__tag {
-  @apply px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[10px] font-bold dark:bg-blue-900/20 dark:border-blue-800 dark:text-blue-400;
+  @apply px-2 py-0.5 rounded-full border border-blue-200 bg-blue-50 text-blue-600 text-[10px] font-bold;
+}
+.dark .c-recommend-card__tag {
+    background-color: rgba(30, 58, 138, 0.2);
+    border-color: rgba(30, 58, 138, 0.4);
+    color: #60a5fa;
 }
 
 .c-recommend-card__history {

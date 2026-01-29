@@ -1,10 +1,17 @@
 .c-recommend-hero {
-  @apply relative mx-auto mb-12 rounded-[24px] p-10 flex flex-col items-center text-center gap-6 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.02),0_12px_24px_-4px_rgba(0,0,0,0.04),0_24px_48px_-8px_rgba(0,0,0,0.06)] border border-blue-100 dark:bg-slate-900 dark:border-slate-800;
+  @apply relative mx-auto mb-12 rounded-[24px] p-10 flex flex-col items-center text-center gap-6 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.02),0_12px_24px_-4px_rgba(0,0,0,0.04),0_24px_48px_-8px_rgba(0,0,0,0.06)] border border-blue-100;
   max-width: 520px;
+}
+.dark .c-recommend-hero {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-recommend-hero__badge {
-  @apply px-4 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-black uppercase tracking-[0.1em] shadow-sm dark:bg-blue-600;
+  @apply px-4 py-1.5 rounded-full bg-slate-900 text-white text-[11px] font-black uppercase tracking-[0.1em] shadow-sm;
+}
+.dark .c-recommend-hero__badge {
+    background-color: #2563eb;
 }
 
 .c-recommend-hero__inner {
@@ -16,7 +23,10 @@
 }
 
 .c-recommend-hero__intro-title {
-  @apply text-[22px] font-bold text-slate-900 leading-tight dark:text-white;
+  @apply text-[22px] font-bold text-slate-900 leading-tight;
+}
+.dark .c-recommend-hero__intro-title {
+    color: #ffffff;
 }
 
 .c-recommend-hero__intro-subtitle {
@@ -40,7 +50,10 @@
 }
 
 .c-recommend-hero__stock {
-  @apply flex flex-col items-center py-2.5 px-8 rounded-full bg-slate-50 dark:bg-slate-800;
+  @apply flex flex-col items-center py-2.5 px-8 rounded-full bg-slate-50;
+}
+.dark .c-recommend-hero__stock {
+    background-color: #1e293b;
 }
 
 .c-recommend-hero__name-group {
@@ -48,7 +61,10 @@
 }
 
 .c-recommend-hero__name {
-  @apply text-[18px] font-bold text-slate-900 dark:text-white;
+  @apply text-[18px] font-bold text-slate-900;
+}
+.dark .c-recommend-hero__name {
+    color: #ffffff;
 }
 
 .c-recommend-hero__ticker {

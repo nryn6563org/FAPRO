@@ -6,7 +6,10 @@
 }
 
 .c-major-stocks__title {
-  @apply text-sm font-bold text-slate-900 mb-1 dark:text-white;
+  @apply text-sm font-bold text-slate-900 mb-1;
+}
+.dark .c-major-stocks__title {
+    color: #ffffff;
 }
 
 .c-major-stocks__list {
@@ -14,11 +17,18 @@
 }
 
 .c-major-stocks__item {
-  @apply flex items-center justify-between gap-3 px-4 py-3 bg-white border border-slate-100 rounded shadow-sm min-w-[140px] dark:bg-slate-900 dark:border-slate-800;
+  @apply flex items-center justify-between gap-3 px-4 py-3 bg-white border border-slate-100 rounded shadow-sm min-w-[140px];
+}
+.dark .c-major-stocks__item {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-major-stocks__name {
-  @apply text-xs font-bold text-slate-800 dark:text-slate-200;
+  @apply text-xs font-bold text-slate-800;
+}
+.dark .c-major-stocks__name {
+    color: #e2e8f0;
 }
 
 .c-major-stocks__rate {
@@ -27,7 +37,11 @@
 
 /* NewsSummary */
 .c-news-summary {
-  @apply bg-blue-50/50 border border-blue-100 rounded-xl p-6 flex flex-col gap-3 dark:bg-blue-900/10 dark:border-blue-900/20;
+  @apply bg-blue-50/50 border border-blue-100 rounded-xl p-6 flex flex-col gap-3;
+}
+.dark .c-news-summary {
+    background-color: rgba(30, 58, 138, 0.1);
+    border-color: rgba(30, 58, 138, 0.2);
 }
 
 .c-news-summary__header {
@@ -39,9 +53,15 @@
 }
 
 .c-news-summary__title {
-  @apply text-sm font-bold text-slate-900 dark:text-white line-clamp-1;
+  @apply text-sm font-bold text-slate-900;
+}
+.dark .c-news-summary__title {
+    color: #ffffff;
 }
 
 .c-news-summary__content {
-  @apply text-xs font-medium text-slate-600 dark:text-slate-400 leading-relaxed line-clamp-2;
+  @apply text-xs font-medium text-slate-600 leading-relaxed line-clamp-2;
+}
+.dark .c-news-summary__content {
+    color: #94a3b8;
 }

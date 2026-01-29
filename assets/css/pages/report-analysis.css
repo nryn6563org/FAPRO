@@ -1,6 +1,9 @@
 /* Report Analysis Page Styles - Premium 1920x1080 Optimized */
 .p-report-analysis {
-  @apply flex flex-col w-full min-h-screen dark:bg-[#020617] gap-8;
+  @apply flex flex-col w-full min-h-screen gap-8;
+}
+.dark .p-report-analysis {
+    background-color: #020617;
 }
 
 .p-report-analysis__content {

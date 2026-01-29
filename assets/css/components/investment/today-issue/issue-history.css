@@ -8,7 +8,10 @@
 }
 
 .c-issue-history__title {
-  @apply text-xl font-bold text-slate-900 dark:text-white;
+  @apply text-xl font-bold text-slate-900;
+}
+.dark .c-issue-history__title {
+    color: #ffffff;
 }
 
 .c-issue-history__desc {
@@ -20,15 +23,29 @@
 }
 
 .c-issue-history__item {
-  @apply flex gap-6 p-6 bg-white border border-slate-200 border-l-4 border-l-blue-600 rounded-xl shadow-sm transition-all hover:shadow-md dark:bg-slate-900 dark:border-slate-800;
+  @apply flex gap-6 p-6 bg-white border border-slate-200 border-l-4 border-l-blue-600 rounded-xl shadow-sm transition-all;
+}
+.c-issue-history__item:hover {
+    @apply shadow-md;
+}
+.dark .c-issue-history__item {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-issue-history__date-box {
-  @apply flex flex-col items-center justify-center min-w-[70px] h-20 bg-slate-50 rounded border border-slate-100 dark:bg-slate-800 dark:border-slate-700;
+  @apply flex flex-col items-center justify-center min-w-[70px] h-20 bg-slate-50 rounded border border-slate-100;
+}
+.dark .c-issue-history__date-box {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .c-issue-history__date-text {
-  @apply text-sm font-bold text-slate-900 dark:text-white;
+  @apply text-sm font-bold text-slate-900;
+}
+.dark .c-issue-history__date-text {
+    color: #ffffff;
 }
 
 .c-issue-history__content {
@@ -40,7 +57,10 @@
 }
 
 .c-issue-history__item-title {
-  @apply text-lg font-bold text-slate-900 dark:text-white;
+  @apply text-lg font-bold text-slate-900;
+}
+.dark .c-issue-history__item-title {
+    color: #ffffff;
 }
 
 .c-issue-history__change-rate {
@@ -56,17 +76,30 @@
 }
 
 .c-issue-history__summary {
-  @apply flex items-start gap-2 bg-slate-50 p-4 rounded dark:bg-slate-800/50;
+  @apply flex items-start gap-2 bg-slate-50 p-4 rounded;
+}
+.dark .c-issue-history__summary {
+    background-color: rgba(30, 41, 59, 0.5);
 }
 
 .c-issue-history__summary-tag {
-  @apply px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-bold rounded whitespace-nowrap dark:bg-blue-900/30 dark:text-blue-400;
+  @apply px-2 py-0.5 bg-blue-100 text-blue-600 text-[10px] font-bold rounded whitespace-nowrap;
+}
+.dark .c-issue-history__summary-tag {
+    background-color: rgba(30, 58, 138, 0.3);
+    color: #60a5fa;
 }
 
 .c-issue-history__summary-text {
-  @apply text-xs font-bold text-slate-600 leading-relaxed dark:text-slate-400;
+  @apply text-xs font-bold text-slate-600 leading-relaxed;
+}
+.dark .c-issue-history__summary-text {
+    color: #94a3b8;
 }
 
 .c-issue-history__detail {
-  @apply text-sm font-medium text-slate-500 dark:text-slate-500 leading-relaxed line-clamp-2;
+  @apply text-sm font-medium text-slate-500 leading-relaxed line-clamp-2;
+}
+.dark .c-issue-history__detail {
+    color: #64748b;
 }

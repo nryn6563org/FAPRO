@@ -17,13 +17,21 @@
 /* 다이얼로그 본문 (Content) */
 .c-dialog__content {
     /* 프리미엄 그림자 효과 및 배경 설정 */
-    @apply relative bg-white dark:bg-slate-900 w-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] dark:shadow-[0_32px_64px_-12_rgba(0,0,0,0.6)] flex flex-col z-10 overflow-hidden;
+    @apply relative bg-white w-full shadow-[0_32px_64px_-12px_rgba(0,0,0,0.2)] flex flex-col z-10 overflow-hidden;
     /* transition properties are handled via .zoom classes */
+}
+.dark .c-dialog__content {
+    background-color: #0f172a;
+    box-shadow: 0 32px 64px -12px rgba(0, 0, 0, 0.6);
 }
 
 /* 닫기 버튼 스타일 */
 .c-dialog__close {
-    @apply absolute top-2.5 right-5 p-2 rounded-full text-slate-400 bg-slate-100 dark:bg-slate-800 dark:text-white transition-all z-20;
+    @apply absolute top-2.5 right-5 p-2 rounded-full text-slate-400 bg-slate-100 transition-all z-20;
+}
+.dark .c-dialog__close {
+    background-color: #1e293b;
+    color: #ffffff;
 }
 
 /* 줌 인/아웃 애니메이션 (Vue Transition) */

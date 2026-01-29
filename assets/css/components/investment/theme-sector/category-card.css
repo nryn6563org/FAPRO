@@ -1,11 +1,21 @@
 /* CategoryCard Component Styles */
 .c-category-card {
-  @apply bg-white border border-slate-200 rounded-xl p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
+  @apply bg-white border border-slate-200 rounded-xl p-8 shadow-sm transition-all duration-300 flex flex-col gap-6;
+}
+.c-category-card:hover {
+    @apply shadow-xl -translate-y-1;
+}
+.dark .c-category-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 /* Header */
 .c-category-card__header {
-  @apply flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800;
+  @apply flex items-center justify-between pb-4 border-b border-slate-100;
+}
+.dark .c-category-card__header {
+    border-color: #1e293b;
 }
 
 .c-category-card__info {
@@ -17,11 +27,17 @@
 }
 
 .c-category-card__icon-wrapper--positive {
-  @apply bg-red-50 text-red-500 dark:bg-red-500/10;
+  @apply bg-red-50 text-red-500;
+}
+.dark .c-category-card__icon-wrapper--positive {
+    background-color: rgba(239, 68, 68, 0.1);
 }
 
 .c-category-card__icon-wrapper--negative {
-  @apply bg-blue-50 text-blue-500 dark:bg-blue-500/10;
+  @apply bg-blue-50 text-blue-500;
+}
+.dark .c-category-card__icon-wrapper--negative {
+    background-color: rgba(59, 130, 246, 0.1);
 }
 
 .c-category-card__icon {
@@ -33,7 +49,10 @@
 }
 
 .c-category-card__name {
-  @apply text-lg font-bold text-slate-900 dark:text-white;
+  @apply text-lg font-bold text-slate-900;
+}
+.dark .c-category-card__name {
+    color: #ffffff;
 }
 
 .c-category-card__count {
@@ -58,7 +77,12 @@
 }
 
 .c-category-card__th {
-  @apply py-1.5 px-2.5 text-left text-[12px] font-medium text-slate-600 uppercase tracking-widest border-b border-slate-50 dark:border-slate-800 bg-gray-100 dark:bg-slate-800 dark:text-slate-300;
+  @apply py-1.5 px-2.5 text-left text-[12px] font-medium text-slate-600 uppercase tracking-widest border-b border-slate-50 bg-gray-100;
+}
+.dark .c-category-card__th {
+    border-color: #1e293b;
+    background-color: #1e293b;
+    color: #cbd5e1;
 }
 
 .c-category-card__th--right {
@@ -66,11 +90,21 @@
 }
 
 .c-category-card__tr {
-  @apply transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/20;
+  @apply transition-colors;
+}
+.c-category-card__tr:hover {
+    @apply bg-slate-50/50;
+}
+.dark .c-category-card__tr:hover {
+    background-color: rgba(30, 41, 59, 0.2);
 }
 
 .c-category-card__td {
-  @apply py-3 px-2 text-[13px] font-bold text-slate-700 dark:text-slate-300 border-b border-slate-50/50 dark:border-slate-800/50;
+  @apply py-3 px-2 text-[13px] font-bold text-slate-700 border-b border-slate-50/50;
+}
+.dark .c-category-card__td {
+    color: #cbd5e1;
+    border-color: rgba(30, 41, 59, 0.5);
 }
 
 .c-category-card__td--right {
@@ -87,7 +121,10 @@
 }
 
 .c-category-card__stock-name {
-  @apply truncate max-w-[100px] text-slate-900 font-bold dark:text-slate-200;
+  @apply truncate max-w-[100px] text-slate-900 font-bold;
+}
+.dark .c-category-card__stock-name {
+    color: #e2e8f0;
 }
 
 /* Indicators handled by design-system.css */

@@ -106,7 +106,7 @@
 
                           <!-- [NEW] 삭제 마스킹 (호버 시 노출) -->
                           <div
-                              v-if="tempSelectedWidgets.includes(widget.id)"
+                              v-if="tempSelectedWidgets.includes(widget.id) && !isEditMode"
                               class="c-widget-card__mask"
                               @click.stop="toggleTempWidget(widget.id)"
                           >

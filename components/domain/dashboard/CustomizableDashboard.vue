@@ -146,7 +146,19 @@ export default {
       }
     }
   },
+  mounted() {
+    // ESC 키로 편집 모드 취소
+    document.addEventListener('keydown', this.handleKeydown)
+  },
+  beforeDestroy() {
+    document.removeEventListener('keydown', this.handleKeydown)
+  },
   methods: {
+    handleKeydown(e) {
+      if (e.key === 'Escape' && this.isEditing) {
+        this.handleCancelEdit()
+      }
+    },
     /**
      * 위젯 그리드 클래스 생성
      * @param {string} widgetId - 위젯 ID

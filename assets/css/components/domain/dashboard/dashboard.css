@@ -9,11 +9,17 @@
 }
 
 .c-dashboard-header__title {
-    @apply text-2xl font-bold dark:text-white;
+    @apply text-2xl font-bold;
+}
+.dark .c-dashboard-header__title {
+    color: #ffffff;
 }
 
 .c-dashboard-header__desc {
-    @apply text-slate-600 dark:text-slate-400 mt-1 text-[13px];
+    @apply text-slate-600 mt-1 text-[13px];
+}
+.dark .c-dashboard-header__desc {
+    color: #94a3b8;
 }
 
 /* 우측 상단 액션 버튼 그룹 */
@@ -23,7 +29,18 @@
 
 /* 위젯 편집 버튼 */
 .c-dashboard-header__btn-edit {
-    @apply gap-2 bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700;
+    @apply gap-2 bg-white border-slate-200 text-slate-700;
+}
+.c-dashboard-header__btn-edit:hover {
+    @apply bg-slate-50;
+}
+.dark .c-dashboard-header__btn-edit {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
+}
+.dark .c-dashboard-header__btn-edit:hover {
+    background-color: #334155;
 }
 
 /* 정보 추가 버튼 */
@@ -126,16 +143,31 @@
 
 /* 드래그 핸들 (편집 모드 시 노출) */
 .c-dashboard__drag-handle {
-    @apply absolute -left-3 top-[-10px] z-20 cursor-move bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 rounded-full p-1.5 shadow-md hover:scale-110 transition-transform hover:border-blue-500 flex items-center justify-center;
+    @apply absolute -left-3 top-[-10px] z-20 cursor-move bg-white border border-slate-200 rounded-full p-1.5 shadow-md flex items-center justify-center;
+    transition: transform 0.2s, border-color 0.2s;
+}
+.c-dashboard__drag-handle:hover {
+    @apply scale-110 border-blue-500;
+}
+.dark .c-dashboard__drag-handle {
+    background-color: #334155;
+    border-color: #475569;
 }
 
 .c-dashboard__drag-icon {
-    @apply w-4 h-4 text-slate-600 dark:text-slate-300;
+    @apply w-4 h-4 text-slate-600;
+}
+.dark .c-dashboard__drag-icon {
+    color: #cbd5e1;
 }
 
 /* 드래그 고스트 스타일 (이동 중인 아이템 잔상) */
 .ghost-card {
-    @apply relative opacity-60 bg-red-50 dark:bg-red-900/10 border-2 border-dashed border-red-400 dark:border-red-500 rounded overflow-hidden flex items-center justify-center;
+    @apply relative opacity-60 bg-red-50 border-2 border-dashed border-red-400 rounded overflow-hidden flex items-center justify-center;
+}
+.dark .ghost-card {
+    background-color: rgba(127, 29, 29, 0.1);
+    border-color: #ef4444;
 }
 
 .ghost-card::before {
@@ -157,7 +189,11 @@
 
 /* 빈 상태 (Empty State) - 위젯 없을 때 */
 .c-dashboard__empty {
-    @apply flex items-center justify-center p-16 border dark:border-slate-700 rounded bg-white dark:bg-slate-800 transition-colors;
+    @apply flex items-center justify-center p-16 border rounded bg-white transition-colors;
+}
+.dark .c-dashboard__empty {
+    border-color: #334155;
+    background-color: #1e293b;
 }
 
 .c-dashboard__empty-content {
@@ -165,15 +201,24 @@
 }
 
 .c-dashboard__empty-icon {
-    @apply w-16 h-16 text-slate-300 dark:text-slate-600 mx-auto mb-4;
+    @apply w-16 h-16 text-slate-300 mx-auto mb-4;
+}
+.dark .c-dashboard__empty-icon {
+    color: #475569;
 }
 
 .c-dashboard__empty-title {
-    @apply text-xl font-semibold mb-2 dark:text-white;
+    @apply text-xl font-semibold mb-2;
+}
+.dark .c-dashboard__empty-title {
+    color: #ffffff;
 }
 
 .c-dashboard__empty-desc {
-    @apply text-slate-600 dark:text-slate-400 mb-6;
+    @apply text-slate-600 mb-6;
+}
+.dark .c-dashboard__empty-desc {
+    color: #94a3b8;
 }
 
 .c-dashboard__btn-add {
@@ -186,25 +231,38 @@
 
 /* 위젯 다이얼로그 스타일 - 프리미엄 디자인 적용 (Refinement) */
 #dashboard-widget-modal {
-    @apply flex h-full overflow-hidden;
+    @apply flex h-full overflow-hidden rounded-xl;
 }
 
 /* 좌측 사이드바 (카테고리) */
 .c-widget-dialog__sidebar {
-    @apply w-72 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)];
+    @apply w-72 bg-white border-r border-slate-200 flex flex-col shadow-[4px_0_24px_rgba(0,0,0,0.02)];
     z-index: 10;
+}
+.dark .c-widget-dialog__sidebar {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .c-widget-dialog__sidebar-header {
-    @apply p-8 border-b border-slate-100 dark:border-slate-700;
+    @apply p-8 border-b border-slate-100;
+}
+.dark .c-widget-dialog__sidebar-header {
+    border-color: #334155;
 }
 
 .c-widget-dialog__sidebar-title {
-    @apply text-xl font-bold text-slate-900 dark:text-white tracking-tight;
+    @apply text-xl font-bold text-slate-900 tracking-tight;
+}
+.dark .c-widget-dialog__sidebar-title {
+    color: #ffffff;
 }
 
 .c-widget-dialog__sidebar-desc {
-    @apply text-[11px] font-bold text-slate-400 dark:text-slate-500 mt-2 uppercase tracking-wider;
+    @apply text-[11px] font-bold text-slate-400 mt-2 uppercase tracking-wider;
+}
+.dark .c-widget-dialog__sidebar-desc {
+    @apply text-slate-500;
 }
 
 .c-widget-dialog__category-list {
@@ -213,20 +271,42 @@
 
 /* 카테고리 버튼 */
 .c-widget-dialog__category-btn {
-    @apply w-full text-left px-5 py-3.5 text-[13px] font-bold transition-all flex items-center justify-between text-slate-500 dark:text-slate-400 rounded hover:bg-slate-50 dark:hover:bg-slate-700/50;
+    @apply w-full text-left px-5 py-3.5 text-[13px] font-bold transition-all flex items-center justify-between text-slate-500 rounded;
+}
+.c-widget-dialog__category-btn:hover {
+    @apply bg-slate-50;
+}
+.dark .c-widget-dialog__category-btn {
+    color: #94a3b8;
+}
+.dark .c-widget-dialog__category-btn:hover {
+    background-color: rgba(51, 65, 85, 0.5);
 }
 
 /* 활성 카테고리 버튼 */
 .c-widget-dialog__category-btn--active {
-    @apply bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400 shadow-sm ring-1 ring-blue-100 dark:ring-blue-900/30;
+    @apply bg-blue-50 text-blue-600 shadow-sm ring-1 ring-blue-100;
 }
+  .dark .c-widget-dialog__category-btn--active {
+    background-color: rgba(30, 58, 138, 0.2);
+    color: #60a5fa;
+    box-shadow: 0 0 0 1px rgba(30, 58, 138, 0.3);
+  }
 
 .c-widget-dialog__category-count {
-    @apply text-[10px] bg-slate-100 dark:bg-slate-800 text-slate-400 dark:text-slate-500 px-2 py-0.5 rounded-xl font-bold;
+    @apply text-[10px] bg-slate-100 text-slate-400 px-2 py-0.5 rounded-xl font-bold;
+}
+.dark .c-widget-dialog__category-count {
+    background-color: #1e293b;
+    color: #64748b;
 }
 
 .c-widget-dialog__footer {
-    @apply p-6 border-t border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800;
+    @apply p-6 border-t border-slate-100 bg-white;
+}
+.dark .c-widget-dialog__footer {
+    border-color: #334155;
+    background-color: #1e293b;
 }
 
 .c-widget-dialog__footer-actions {
@@ -234,24 +314,53 @@
 }
 
 .c-widget-dialog__btn-cancel {
-    @apply flex-1 h-11 border-slate-200 dark:border-slate-700 text-slate-500 font-bold hover:bg-slate-50 dark:hover:bg-slate-700 rounded;
+    @apply flex-1 h-11 border-slate-200 text-slate-500 font-bold rounded;
+}
+.c-widget-dialog__btn-cancel:hover {
+    @apply bg-slate-50;
+}
+.dark .c-widget-dialog__btn-cancel {
+    border-color: #334155;
+}
+.dark .c-widget-dialog__btn-cancel:hover {
+    background-color: #334155;
 }
 
 .c-widget-dialog__btn-apply {
-    @apply flex-1 h-11 bg-slate-900 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500 text-white font-bold shadow-lg shadow-slate-900/10 dark:shadow-blue-900/20 rounded;
+    @apply flex-1 h-11 bg-slate-900 text-white font-bold shadow-lg shadow-slate-900/10 rounded;
+}
+.c-widget-dialog__btn-apply:hover {
+    @apply bg-slate-800;
+}
+.dark .c-widget-dialog__btn-apply {
+    background-color: #2563eb;
+    box-shadow: 0 10px 15px -3px rgba(30, 58, 138, 0.2);
+}
+.dark .c-widget-dialog__btn-apply:hover {
+    background-color: #3b82f6;
 }
 
 /* 우측 콘텐츠 영역 (위젯 그리드) */
 .c-widget-dialog__content {
-    @apply flex-1 flex flex-col bg-slate-50 dark:bg-slate-950 min-h-0;
+    @apply flex-1 flex flex-col bg-slate-50 min-h-0;
+}
+.dark .c-widget-dialog__content {
+    background-color: #020617;
 }
 
 .c-widget-dialog__content-header {
-    @apply p-[32px_60px_32px_40px] border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-10;
+    @apply p-[32px_60px_32px_40px] border-b border-slate-100 bg-white/80 backdrop-blur-md flex items-center justify-between sticky top-0 z-10;
+}
+.dark .c-widget-dialog__content-header {
+    border-color: #1e293b;
+    background-color: rgba(15, 23, 42, 0.8);
 }
 
 .c-widget-dialog__content-title {
-    @apply font-bold text-xl text-slate-900 dark:text-white flex items-center gap-2;
+    @apply font-bold text-xl text-slate-900 flex items-center gap-2;
+}
+.dark .c-widget-dialog__content-title {
+    color: #ffffff;
 }
 
 .c-widget-dialog__content-subtitle {
@@ -272,7 +381,11 @@
 }
 
 .c-widget-dialog__search-input {
-    @apply pl-11 pr-6 py-2.5 text-sm border-none bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white rounded focus:ring-2 focus:ring-blue-500/20 w-80 transition-all font-bold;
+    @apply pl-11 pr-6 py-2.5 text-sm border-none bg-slate-100 text-slate-900 rounded focus:ring-2 focus:ring-blue-500/20 w-80 transition-all font-bold;
+}
+.dark .c-widget-dialog__search-input {
+    background-color: #1e293b;
+    color: #ffffff;
 }
 
 
@@ -307,16 +420,33 @@
 
 /* 위젯 선택 카드 스타일 (Enhanced Widget Card) */
 .c-widget-card {
-    @apply relative flex flex-col items-start p-[12px_20px] rounded border-2 transition-all duration-300 text-left bg-white dark:bg-slate-900 border-white dark:border-slate-800 shadow-sm hover:translate-y-[-4px] hover:shadow-xl;
+    @apply relative flex flex-col items-start p-[12px_20px] rounded border-2 transition-all duration-300 text-left bg-white border-white shadow-sm;
+}
+.c-widget-card:hover {
+    @apply translate-y-[-4px] shadow-xl;
+}
+.dark .c-widget-card {
+    background-color: #0f172a;
+    border-color: #0f172a;
+}
+.dark .c-widget-card:hover {
+    border-color: #1e293b;
 }
 
 /* 선택된 위젯 카드 강조 */
 .c-widget-card--selected {
-    @apply border-blue-500 ring-4 ring-blue-500/10 bg-blue-50/10 dark:bg-blue-900/5;
+    @apply border-blue-500 ring-4 ring-blue-500/10 bg-blue-50/10;
+}
+.dark .c-widget-card--selected {
+    background-color: rgba(30, 58, 138, 0.05);
 }
 
 .c-widget-card__checkbox {
-    @apply absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800;
+    @apply absolute top-6 right-6 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all border-slate-200 bg-white;
+}
+.dark .c-widget-card__checkbox {
+    border-color: #334155;
+    background-color: #1e293b;
 }
 
 .c-widget-card__checkbox--checked {
@@ -328,7 +458,11 @@
 }
 
 .c-widget-card__icon-wrapper {
-    @apply w-14 h-14 rounded flex items-center justify-center mb-6 transition-all bg-slate-50 dark:bg-slate-800 text-slate-500 dark:text-slate-400 shadow-sm;
+    @apply w-14 h-14 rounded flex items-center justify-center mb-6 transition-all bg-slate-50 text-slate-500 shadow-sm;
+}
+.dark .c-widget-card__icon-wrapper {
+    background-color: #1e293b;
+    color: #94a3b8;
 }
 
 .c-widget-card--selected .c-widget-card__icon-wrapper {
@@ -336,12 +470,18 @@
 }
 
 .c-widget-card__title {
-    @apply font-bold text-base mb-3 text-slate-800 dark:text-slate-100 leading-tight;
+    @apply font-bold text-base mb-3 text-slate-800 leading-tight;
+}
+.dark .c-widget-card__title {
+    color: #f1f5f9;
 }
 
 /* 위젯 사이즈 조절 옵션 */
 .c-widget-card__size-options {
-    @apply flex items-center gap-3 mt-auto pt-4 w-full border-t border-slate-50 dark:border-slate-800;
+    @apply flex items-center gap-3 mt-auto pt-4 w-full border-t border-slate-50;
+}
+.dark .c-widget-card__size-options {
+    border-color: #1e293b;
 }
 
 .c-widget-card__size-control {
@@ -353,12 +493,17 @@
 }
 
 .c-widget-card__size-select {
-    @apply text-xs font-bold py-1.5 pl-3 pr-8 border-none bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded focus:ring-2 focus:ring-blue-500/20 appearance-none transition-colors;
+    @apply text-xs font-bold py-1.5 pl-3 pr-8 border-none bg-slate-100 text-slate-700 rounded focus:ring-2 focus:ring-blue-500/20 appearance-none transition-colors;
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
     background-position: right 0.5rem center;
     background-repeat: no-repeat;
     background-size: 1rem;
     min-width: 4rem;
+}
+
+.dark .c-widget-card__size-select {
+    background-color: #1e293b;
+    color: #cbd5e1;
 }
 
 /* 위젯 다이얼로그 전용 편집 모드 플로팅 바 */
@@ -393,7 +538,11 @@
 
 /* 위젯 편집 모드 진입 버튼 */
 .c-widget-dialog__btn-edit-mode {
-    @apply flex items-center gap-2 px-3 h-10 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 transition-colors;
+    @apply flex items-center gap-2 px-3 h-10 border-slate-200 bg-white transition-colors;
+}
+.dark .c-widget-dialog__btn-edit-mode {
+    border-color: #334155;
+    background-color: #1e293b;
 }
 
 .c-widget-dialog__btn-edit-mode-icon {
@@ -401,5 +550,8 @@
 }
 
 .c-widget-dialog__btn-edit-mode-text {
-    @apply text-xs font-bold text-slate-600 dark:text-slate-300;
+    @apply text-xs font-bold text-slate-600;
+}
+.dark .c-widget-dialog__btn-edit-mode-text {
+    color: #cbd5e1;
 }

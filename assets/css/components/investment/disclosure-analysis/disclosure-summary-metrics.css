@@ -10,7 +10,14 @@
 
 /* 개별 메트릭 카드 */
 .c-disclosure-metrics__card {
-  @apply bg-white border border-slate-200 rounded p-8 shadow-sm transition-all duration-300 hover:shadow-xl hover:-translate-y-1 dark:bg-slate-900 dark:border-slate-800 flex items-center gap-6;
+  @apply bg-white border border-slate-200 rounded p-8 shadow-sm transition-all duration-300 flex items-center gap-6;
+}
+.c-disclosure-metrics__card:hover {
+    @apply shadow-xl -translate-y-1;
+}
+.dark .c-disclosure-metrics__card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 /* 아이콘 박스 (배경색 포함) */
@@ -33,5 +40,8 @@
 
 /* 값 텍스트 (숫자 강조) */
 .c-disclosure-metrics__value {
-  @apply text-[1.5rem] font-bold text-slate-900 dark:text-white leading-tight;
+  @apply text-[1.5rem] font-bold text-slate-900 leading-tight;
+}
+.dark .c-disclosure-metrics__value {
+    color: #ffffff;
 }

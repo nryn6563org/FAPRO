@@ -14,7 +14,11 @@
 
 
 .c-issue-header__market {
-  @apply py-4 bg-white border border-slate-200 rounded-xl shadow-sm dark:bg-slate-900 dark:border-slate-800;
+  @apply py-4 bg-white border border-slate-200 rounded-xl shadow-sm;
+}
+.dark .c-issue-header__market {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-issue-header__market-container {
@@ -31,11 +35,17 @@
 }
 
 .c-issue-header__market-name {
-  @apply text-sm font-bold text-slate-600 dark:text-slate-400;
+  @apply text-sm font-bold text-slate-600;
+}
+.dark .c-issue-header__market-name {
+    color: #94a3b8;
 }
 
 .c-issue-header__market-value {
-  @apply text-sm font-bold text-slate-900 dark:text-white;
+  @apply text-sm font-bold text-slate-900;
+}
+.dark .c-issue-header__market-value {
+    color: #ffffff;
 }
 
 .c-issue-header__market-change {

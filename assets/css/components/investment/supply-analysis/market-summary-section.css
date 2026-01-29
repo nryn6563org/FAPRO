@@ -4,7 +4,11 @@
 }
 
 .c-market-summary__card {
-  @apply w-[calc((100%-170px)/8)] bg-white border border-slate-200 rounded-xl p-4 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-3;
+  @apply w-[calc((100%-170px)/8)] bg-white border border-slate-200 rounded-xl p-4 shadow-sm transition-all duration-300 flex flex-col gap-3;
+}
+.dark .c-market-summary__card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-market-summary__card:hover {
@@ -16,7 +20,10 @@
 }
 
 .c-market-summary__value {
-  @apply text-2xl font-bold text-slate-900 dark:text-white tabular-nums;
+  @apply text-2xl font-bold text-slate-900 tabular-nums;
+}
+.dark .c-market-summary__value {
+    color: #ffffff;
 }
 
 .c-market-summary__trend {

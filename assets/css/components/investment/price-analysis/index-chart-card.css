@@ -1,5 +1,9 @@
 .c-index-chart-card {
-  @apply bg-white border border-slate-200 rounded-xl p-6 shadow-sm transition-all duration-300 dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6;
+  @apply bg-white border border-slate-200 rounded-xl p-6 shadow-sm transition-all duration-300 flex flex-col gap-6;
+}
+.dark .c-index-chart-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-index-chart-card:hover {
@@ -23,7 +27,10 @@
 }
 
 .c-index-chart-card__value {
-  @apply text-3xl font-bold text-slate-900 dark:text-white tabular-nums;
+  @apply text-3xl font-bold text-slate-900 tabular-nums;
+}
+.dark .c-index-chart-card__value {
+    color: #ffffff;
 }
 
 .c-index-chart-card__change {
@@ -46,7 +53,10 @@
 }
 
 .c-index-chart-card__period-selector {
-  @apply flex items-center gap-1 bg-slate-100 p-1 rounded w-fit dark:bg-slate-800;
+  @apply flex items-center gap-1 bg-slate-100 p-1 rounded w-fit;
+}
+.dark .c-index-chart-card__period-selector {
+    background-color: #1e293b;
 }
 
 .c-index-chart-card__period-btn {
@@ -54,9 +64,19 @@
 }
 
 .c-index-chart-card__period-btn--active {
-  @apply bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white;
+  @apply bg-white text-slate-900 shadow-sm;
+}
+.dark .c-index-chart-card__period-btn--active {
+    background-color: #334155;
+    color: #ffffff;
 }
 
 .c-index-chart-card__period-btn--inactive {
-  @apply text-slate-400 hover:text-slate-600 dark:hover:text-slate-200;
+  @apply text-slate-400;
+}
+.c-index-chart-card__period-btn--inactive:hover {
+    @apply text-slate-600;
+}
+.dark .c-index-chart-card__period-btn--inactive:hover {
+    @apply text-slate-200;
 }

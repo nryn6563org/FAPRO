@@ -4,11 +4,21 @@
 }
 
 .c-today-pick-nav__selector {
-  @apply flex items-center justify-center gap-8 py-4 px-10 bg-white border border-slate-200 rounded-full shadow-lg dark:bg-slate-900 dark:border-slate-800 transition-all;
+  @apply flex items-center justify-center gap-8 py-4 px-10 bg-white border border-slate-200 rounded-full shadow-lg transition-all;
+}
+.dark .c-today-pick-nav__selector {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-today-pick-nav__btn {
-  @apply text-slate-400 hover:text-slate-900 transition-colors dark:hover:text-white outline-none disabled:opacity-30 disabled:cursor-not-allowed;
+  @apply text-slate-400 transition-colors outline-none disabled:opacity-30 disabled:cursor-not-allowed;
+}
+.c-today-pick-nav__btn:hover {
+    @apply text-slate-900;
+}
+.dark .c-today-pick-nav__btn:hover {
+    @apply text-white;
 }
 
 .c-today-pick-nav__btn.swiper-button-disabled {
@@ -20,7 +30,10 @@
 }
 
 .c-today-pick-nav__date {
-  @apply text-[1.25rem] font-bold text-slate-900 dark:text-white min-w-[220px] text-center select-none;
+  @apply text-[1.25rem] font-bold text-slate-900 min-w-[220px] text-center select-none;
+}
+.dark .c-today-pick-nav__date {
+    color: #ffffff;
 }
 
 .c-today-pick-nav__indicators {
@@ -29,7 +42,10 @@
 
 /* Swiper pagination classes integration */
 .c-today-pick-nav__indicator {
-  @apply w-2 h-2 rounded-full transition-all duration-300 bg-slate-200 dark:bg-slate-800 cursor-pointer;
+  @apply w-2 h-2 rounded-full transition-all duration-300 bg-slate-200 cursor-pointer;
+}
+.dark .c-today-pick-nav__indicator {
+    background-color: #1e293b;
 }
 
 .c-today-pick-nav__indicator--active {

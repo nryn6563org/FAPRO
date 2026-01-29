@@ -1,11 +1,17 @@
 /* ClientDetailModal Component Styles */
 .c-client-detail {
-  @apply flex flex-col bg-white dark:bg-slate-900 h-full max-h-[90vh] overflow-hidden;
+  @apply flex flex-col bg-white h-full max-h-[90vh] overflow-hidden;
+}
+.dark .c-client-detail {
+    background-color: #0f172a;
 }
 
 /* Header Section */
 .c-client-detail__header {
-  @apply p-8 flex items-center justify-between border-b border-slate-300 dark:border-slate-800;
+  @apply p-8 flex items-center justify-between border-b border-slate-300;
+}
+.dark .c-client-detail__header {
+    border-color: #1e293b;
 }
 
 .c-client-detail__profile {
@@ -13,7 +19,12 @@
 }
 
 .c-client-detail__avatar {
-  @apply w-20 h-20 rounded-xl bg-slate-100 flex items-center justify-center text-3xl font-bold text-slate-800 shadow-sm border border-white dark:bg-slate-800 dark:text-white dark:border-slate-700;
+  @apply w-20 h-20 rounded-xl bg-slate-100 flex items-center justify-center text-3xl font-bold text-slate-800 shadow-sm border border-white;
+}
+.dark .c-client-detail__avatar {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #334155;
 }
 
 .c-client-detail__info-group {
@@ -25,7 +36,10 @@
 }
 
 .c-client-detail__name {
-  @apply text-[2rem] font-bold text-slate-900 dark:text-white;
+  @apply text-[2rem] font-bold text-slate-900;
+}
+.dark .c-client-detail__name {
+    color: #ffffff;
 }
 
 .c-client-detail__risk-badge {
@@ -39,15 +53,25 @@
 
 /* Left Sidebar (Columns 1-4) */
 .c-client-detail__sidebar {
-  @apply lg:col-span-4 flex flex-col gap-6 lg:pr-8 lg:border-r lg:border-slate-300 lg:dark:border-slate-800;
+  @apply lg:col-span-4 flex flex-col gap-6 lg:pr-8 lg:border-r lg:border-slate-300;
+}
+.dark .c-client-detail__sidebar {
+    border-color: #1e293b;
 }
 
 .c-client-detail__section-card {
-  @apply bg-slate-50 rounded-xl p-6 border border-slate-100 dark:bg-slate-800/50 dark:border-slate-800;
+  @apply bg-slate-50 rounded-xl p-6 border border-slate-100;
+}
+.dark .c-client-detail__section-card {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: #1e293b;
 }
 
 .c-client-detail__section-title {
-  @apply text-sm font-bold text-slate-900 mb-4 flex items-center gap-2 dark:text-white;
+  @apply text-sm font-bold text-slate-900 mb-4 flex items-center gap-2;
+}
+.dark .c-client-detail__section-title {
+    color: #ffffff;
 }
 
 .c-client-detail__metric-grid {
@@ -55,7 +79,11 @@
 }
 
 .c-client-detail__metric-box {
-  @apply bg-white p-4 rounded-xl shadow-sm border border-slate-50 dark:bg-slate-900 dark:border-slate-800;
+  @apply bg-white p-4 rounded-xl shadow-sm border border-slate-50;
+}
+.dark .c-client-detail__metric-box {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-client-detail__metric-label {
@@ -63,7 +91,10 @@
 }
 
 .c-client-detail__metric-val {
-  @apply text-lg font-bold text-slate-900 dark:text-white;
+  @apply text-lg font-bold text-slate-900;
+}
+.dark .c-client-detail__metric-val {
+    color: #ffffff;
 }
 
 .c-client-detail__contact-list {
@@ -71,7 +102,10 @@
 }
 
 .c-client-detail__contact-item {
-  @apply flex items-center gap-3 text-sm font-bold text-slate-600 dark:text-slate-400;
+  @apply flex items-center gap-3 text-sm font-bold text-slate-600;
+}
+.dark .c-client-detail__contact-item {
+    color: #94a3b8;
 }
 
 .c-client-detail__contact-icon {
@@ -89,7 +123,10 @@
 }
 
 .c-portfolio-bar {
-  @apply h-8 w-full flex rounded-full overflow-hidden shadow-inner bg-slate-100 dark:bg-slate-800;
+  @apply h-8 w-full flex rounded-full overflow-hidden shadow-inner bg-slate-100;
+}
+.dark .c-portfolio-bar {
+    background-color: #1e293b;
 }
 
 .c-portfolio-bar__segment {
@@ -115,15 +152,29 @@
 
 /* Tabs and Table */
 .c-client-detail__tabs {
-  @apply flex items-center gap-1 mb-4 bg-white/50 p-1 rounded-xl border border-slate-100 dark:bg-slate-900/50 dark:border-slate-800;
+  @apply flex items-center gap-1 mb-4 bg-white/50 p-1 rounded-xl border border-slate-100;
+}
+.dark .c-client-detail__tabs {
+    background-color: rgba(15, 23, 42, 0.5);
+    border-color: #1e293b;
 }
 
 .c-client-detail__tab {
-  @apply flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-400 hover:text-slate-600 dark:hover:text-slate-300;
+  @apply flex-1 py-2.5 text-xs font-bold rounded-xl transition-all text-slate-400;
+}
+.c-client-detail__tab:hover {
+    @apply text-slate-600;
+}
+.dark .c-client-detail__tab:hover {
+    color: #cbd5e1;
 }
 
 .c-client-detail__tab--active {
-  @apply bg-blue-600 text-white shadow-md dark:bg-blue-500 dark:text-white;
+  @apply bg-blue-600 text-white shadow-md;
+}
+.dark .c-client-detail__tab--active {
+    background-color: #3b82f6;
+    color: #ffffff;
 }
 
 .c-asset-table {
@@ -131,26 +182,47 @@
 }
 
 .c-asset-table__th {
-  @apply py-3 px-4 text-[11px] font-bold text-slate-400 border-b-2 border-slate-300 dark:border-slate-800 text-left;
+  @apply py-3 px-4 text-[11px] font-bold text-slate-400 border-b-2 border-slate-300 text-left;
+}
+.dark .c-asset-table__th {
+    border-color: #1e293b;
 }
 
 .c-asset-table__tr {
-  @apply transition-colors hover:bg-slate-50/50 dark:hover:bg-slate-800/30;
+  @apply transition-colors;
+}
+.c-asset-table__tr:hover {
+    @apply bg-slate-50/50;
+}
+.dark .c-asset-table__tr:hover {
+    background-color: rgba(30, 41, 59, 0.3);
 }
 
 .c-asset-table__td {
-  @apply py-4 px-4 text-sm font-bold text-slate-900 dark:text-white border-b border-slate-300 dark:border-slate-800;
+  @apply py-4 px-4 text-sm font-bold text-slate-900 border-b border-slate-300;
+}
+.dark .c-asset-table__td {
+    color: #ffffff;
+    border-color: #1e293b;
 }
 
 .c-asset-table__td--right { @apply text-right; }
 
 /* Memo and Footer */
 .c-client-detail__memo {
-  @apply p-6 bg-blue-50/50 rounded-xl border border-blue-100/50 text-sm font-bold text-blue-900 leading-relaxed dark:bg-blue-900/10 dark:border-blue-900/20 dark:text-blue-300;
+  @apply p-6 bg-blue-50/50 rounded-xl border border-blue-100/50 text-sm font-bold text-blue-900 leading-relaxed;
+}
+.dark .c-client-detail__memo {
+    background-color: rgba(30, 58, 138, 0.1);
+    border-color: rgba(30, 58, 138, 0.2);
+    color: #93c5fd;
 }
 
 .c-client-detail__footer {
-  @apply p-8 border-t border-slate-300 dark:border-slate-800 flex items-center justify-end gap-3;
+  @apply p-8 border-t border-slate-300 flex items-center justify-end gap-3;
+}
+.dark .c-client-detail__footer {
+    border-color: #1e293b;
 }
 
 .c-client-detail__btn {
@@ -162,5 +234,16 @@
 }
 
 .c-client-detail__btn--outline {
-  @apply border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 dark:border-slate-700 dark:text-slate-400;
+  @apply border-slate-200 text-slate-600;
+}
+.c-client-detail__btn--outline:hover {
+    @apply bg-slate-50 border-slate-300;
+}
+.dark .c-client-detail__btn--outline {
+    border-color: #334155;
+    color: #94a3b8;
+}
+.dark .c-client-detail__btn--outline:hover {
+    background-color: #1e293b;
+    border-color: #475569;
 }

@@ -39,6 +39,7 @@ export default {
   modules: [],
 
   build: {
+    publicPath: "/nuxt-project/",
     // CSS Source Map enabled for debugging
     cssSourceMap: true,
     postcss: {
@@ -66,7 +67,6 @@ export default {
   },
 
   router: {
-    // GitHub Pages 배포 경로 설정
     base: process.env.NODE_ENV === "production" ? "/FAPRO/" : "/"
   }
 };

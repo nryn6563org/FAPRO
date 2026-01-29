@@ -11,24 +11,43 @@
 /* 페이지 헤더 영역 (제목 및 부설명) */
 
 .p-market__title {
-    @apply text-2xl font-bold text-slate-900 dark:text-white;
+    @apply text-2xl font-bold text-slate-900;
+}
+.dark .p-market__title {
+    color: #ffffff;
 }
 
 .p-market__desc {
-    @apply text-slate-600 mt-1 dark:text-slate-400;
+    @apply text-slate-600 mt-1;
+}
+.dark .p-market__desc {
+    color: #94a3b8;
 }
 
 /* 시장 분류 탭 (국내, 해외, 환율 등) */
 .p-market__tabs {
-    @apply bg-slate-100 p-1 rounded-xl inline-flex dark:bg-slate-800;
+    @apply bg-slate-100 p-1 rounded-xl inline-flex;
+}
+.dark .p-market__tabs {
+    background-color: #1e293b;
 }
 
 .p-market__tab-btn {
-    @apply px-4 py-2 text-sm font-bold rounded-xl transition-all text-slate-500 hover:text-slate-900 dark:hover:text-white;
+    @apply px-4 py-2 text-sm font-bold rounded-xl transition-all text-slate-500;
+}
+.p-market__tab-btn:hover {
+    @apply text-slate-900;
+}
+.dark .p-market__tab-btn:hover {
+    color: #ffffff;
 }
 
 .p-market__tab-btn--active {
-    @apply bg-white text-slate-900 shadow-sm dark:bg-slate-700 dark:text-white;
+    @apply bg-white text-slate-900 shadow-sm;
+}
+.dark .p-market__tab-btn--active {
+    background-color: #334155;
+    color: #ffffff;
 }
 
 /* 주요 지표 그리드 레이아웃 */
@@ -49,7 +68,11 @@
 
 /* 차트 섹션 카드 스타일 */
 .c-market-chart {
-    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-8 dark:bg-slate-900 dark:border-slate-800;
+    @apply bg-white rounded-xl border border-slate-200 shadow-sm p-8;
+}
+.dark .c-market-chart {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .c-market-chart__header {
@@ -57,7 +80,10 @@
 }
 
 .c-market-chart__title {
-    @apply text-lg font-bold text-slate-900 dark:text-white;
+    @apply text-lg font-bold text-slate-900;
+}
+.dark .c-market-chart__title {
+    color: #ffffff;
 }
 
 /* 차트 컨트롤 액션 그룹 (기간 선택 등) */
@@ -66,11 +92,27 @@
 }
 
 .c-market-chart__action-btn {
-    @apply px-4 py-1.5 rounded text-xs font-bold transition-all text-slate-700 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700;
+    @apply px-4 py-1.5 rounded text-xs font-bold transition-all text-slate-700 bg-slate-100;
+}
+.c-market-chart__action-btn:hover {
+    @apply bg-slate-200;
+}
+.dark .c-market-chart__action-btn {
+    background-color: #1e293b;
+    color: #cbd5e1;
+}
+.dark .c-market-chart__action-btn:hover {
+    background-color: #334155;
 }
 
 .c-market-chart__action-btn--active {
-    @apply bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-600 dark:hover:bg-blue-500;
+    @apply bg-blue-600 text-white;
+}
+.c-market-chart__action-btn--active:hover {
+    @apply bg-blue-700;
+}
+.dark .c-market-chart__action-btn--active:hover {
+    background-color: #3b82f6;
 }
 
 /* 차트 렌더링 영역 가로/세로 크기 정의 */

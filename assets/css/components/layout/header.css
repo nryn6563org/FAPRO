@@ -5,7 +5,12 @@
 
 /* 헤더 컨테이너 */
 .l-header {
-    @apply h-16 bg-white dark:bg-slate-800 text-slate-800 dark:text-white border-b border-slate-200 dark:border-slate-700 flex items-center justify-between px-4 z-50 transition-colors duration-300;
+    @apply h-16 bg-white text-slate-800 border-b border-slate-200 flex items-center justify-between px-4 z-50 transition-colors duration-300;
+}
+.dark .l-header {
+    background-color: #1e293b;
+    color: #ffffff;
+    border-color: #334155;
 }
 
 /* 좌측 영역 (로고 + 토글) */
@@ -15,7 +20,16 @@
 
 /* 사이드바 토글 버튼 */
 .l-header__toggle-btn {
-    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded transition-colors flex items-center justify-center;
+    @apply p-2 text-blue-600 rounded transition-colors flex items-center justify-center;
+}
+.l-header__toggle-btn:hover {
+    @apply bg-slate-100;
+}
+.dark .l-header__toggle-btn {
+    color: #94a3b8;
+}
+.dark .l-header__toggle-btn:hover {
+    background-color: #334155;
 }
 
 /* 기본 아이콘 크기 */
@@ -35,7 +49,8 @@
 
 /* 로고 아이콘 */
 .l-header__logo {
-    @apply w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center flex-shrink-0 overflow-hidden shadow-lg;
+    @apply w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden shadow-lg;
+    background: linear-gradient(135deg, #3b82f6 0%, #9333ea 100%);
 }
 
 /* 로고 텍스트 */
@@ -45,7 +60,10 @@
 
 /* 헤더 타이틀 */
 .l-header__title {
-    @apply text-lg font-bold text-slate-900 dark:text-white leading-none;
+    @apply text-lg font-bold text-slate-900 leading-none;
+}
+.dark .l-header__title {
+    color: #ffffff;
 }
 
 /* 우측 영역 (테마 + 프로필) */
@@ -61,20 +79,46 @@
 
 /* 언어/자동번역 버튼 */
 .l-header__lang-btn {
-    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded transition-all duration-200 flex items-center justify-center relative;
+    @apply p-2 text-blue-600 rounded transition-all duration-200 flex items-center justify-center relative;
+}
+.l-header__lang-btn:hover {
+    @apply bg-slate-100;
+}
+.dark .l-header__lang-btn {
+    color: #94a3b8;
+}
+.dark .l-header__lang-btn:hover {
+    background-color: #334155;
 }
 
 .l-header__lang-btn--active {
-    @apply text-blue-700 bg-blue-50 dark:bg-blue-900/40 dark:text-blue-300 shadow-inner;
+    @apply text-blue-700 bg-blue-50 shadow-inner;
+}
+.dark .l-header__lang-btn--active {
+    background-color: rgba(30, 58, 138, 0.4);
+    color: #93c5fd;
 }
 
 /* 언어 선택 드롭다운 메뉴 */
 .l-header__lang-menu {
-    @apply absolute right-0 top-full mt-2 w-40 bg-white dark:bg-slate-800 rounded shadow-xl border border-slate-200 dark:border-slate-700 py-1 z-50 overflow-hidden;
+    @apply absolute right-0 top-full mt-2 w-40 bg-white rounded shadow-xl border border-slate-200 py-1 z-50 overflow-hidden;
+}
+.dark .l-header__lang-menu {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 .l-header__lang-item {
-    @apply w-full text-left px-4 py-2.5 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-700 flex items-center gap-3 transition-colors font-medium;
+    @apply w-full text-left px-4 py-2.5 text-sm text-slate-700 flex items-center gap-3 transition-colors font-medium;
+}
+.l-header__lang-item:hover {
+    @apply bg-slate-50;
+}
+.dark .l-header__lang-item {
+    color: #e2e8f0;
+}
+.dark .l-header__lang-item:hover {
+    background-color: #334155;
 }
 
 .l-header__lang-flag {
@@ -88,17 +132,39 @@
 
 /* 테마 변경 버튼 */
 .l-header__theme-btn {
-    @apply p-2 text-blue-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 rounded transition-colors flex items-center justify-center;
+    @apply p-2 text-blue-600 rounded transition-colors flex items-center justify-center;
+}
+.l-header__theme-btn:hover {
+    @apply bg-slate-100;
+}
+.dark .l-header__theme-btn {
+    color: #94a3b8;
+}
+.dark .l-header__theme-btn:hover {
+    background-color: #334155;
 }
 
 /* 테마 드롭다운 메뉴 */
 .l-header__theme-menu {
-    @apply absolute right-0 top-full mt-2 w-32 bg-white dark:bg-slate-800 rounded shadow-xl border border-slate-200 dark:border-slate-700 py-1 z-50;
+    @apply absolute right-0 top-full mt-2 w-32 bg-white rounded shadow-xl border border-slate-200 py-1 z-50;
+}
+.dark .l-header__theme-menu {
+    background-color: #1e293b;
+    border-color: #334155;
 }
 
 /* 테마 드롭다운 아이템 */
 .l-header__theme-item {
-    @apply w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 flex items-center gap-2;
+    @apply w-full text-left px-4 py-2 text-sm text-slate-700 flex items-center gap-2;
+}
+.l-header__theme-item:hover {
+    @apply bg-slate-100;
+}
+.dark .l-header__theme-item {
+    color: #e2e8f0;
+}
+.dark .l-header__theme-item:hover {
+    background-color: #334155;
 }
 
 /* 사용자 프로필 래퍼 */
@@ -118,27 +184,50 @@
 
 /* 사용자 이름 */
 .l-header__user-name {
-    @apply text-sm font-medium text-slate-900 dark:text-white;
+    @apply text-sm font-medium text-slate-900;
+}
+.dark .l-header__user-name {
+    color: #ffffff;
 }
 
 /* 사용자 등급/직급 */
 .l-header__user-rank {
-    @apply text-xs text-slate-500 dark:text-slate-400;
+    @apply text-xs text-slate-500;
+}
+.dark .l-header__user-rank {
+    color: #94a3b8;
 }
 
 /* 사용자 아바타 */
 .l-header__user-avatar {
-    @apply w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 flex items-center justify-center overflow-hidden;
+    @apply w-8 h-8 rounded-full bg-slate-100 border border-slate-200 flex items-center justify-center overflow-hidden;
+}
+.dark .l-header__user-avatar {
+    background-color: #334155;
+    border-color: #475569;
 }
 
 /* 사용자 아이콘 */
 .l-header__user-icon {
-    @apply w-4 h-4 text-blue-600 dark:text-slate-300;
+    @apply w-4 h-4 text-blue-600;
+}
+.dark .l-header__user-icon {
+    color: #cbd5e1;
 }
 
 /* 로그아웃 버튼 */
 .l-header__logout-btn {
-    @apply text-blue-600 dark:text-slate-400 hover:text-red-500 transition-colors p-2 rounded hover:bg-slate-100 dark:hover:bg-slate-800;
+    @apply text-blue-600 transition-colors p-2 rounded;
+}
+.l-header__logout-btn:hover {
+    @apply bg-slate-100 text-red-500;
+}
+.dark .l-header__logout-btn {
+    color: #94a3b8;
+}
+.dark .l-header__logout-btn:hover {
+    background-color: #1e293b;
+    color: #ef4444;
 }
 
 /* 로그인 버튼 래퍼 */

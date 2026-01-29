@@ -22,7 +22,17 @@
 /* 2. 스타일 변형 (Variants) */
 /* 기본 스타일 (Primary) */
 .c-button--default {
-    @apply bg-primary text-primary-foreground hover:bg-primary/90;
+    @apply bg-blue-600 text-white;
+}
+.c-button--default:hover {
+    @apply bg-blue-700;
+}
+.dark .c-button--default {
+    background-color: #3b82f6;
+    color: #ffffff;
+}
+.dark .c-button--default:hover {
+    background-color: #2563eb;
 }
 
 /* 파괴적 동작 (Destructive) - 예: 삭제 */
@@ -32,17 +42,49 @@
 
 /* 아웃라인 스타일 (Outline) */
 .c-button--outline {
-    @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+    @apply border bg-white text-slate-900;
+    border-color: #e2e8f0;
+}
+.c-button--outline:hover {
+    @apply bg-slate-50;
+}
+.dark .c-button--outline {
+    background-color: transparent;
+    border-color: #334155;
+    color: #f1f5f9;
+}
+.dark .c-button--outline:hover {
+    background-color: #1e293b;
 }
 
 /* 보조 스타일 (Secondary) */
 .c-button--secondary {
-    @apply bg-secondary text-secondary-foreground hover:bg-secondary/80;
+    @apply text-slate-900;
+    background-color: #f1f5f9;
+}
+.c-button--secondary:hover {
+    background-color: rgba(241, 245, 249, 0.8);
+}
+.dark .c-button--secondary {
+    background-color: #1e293b;
+    color: #f1f5f9;
+}
+.dark .c-button--secondary:hover {
+    background-color: #334155;
 }
 
 /* 고스트 스타일 (Ghost) - 배경 없음, 호버 시 배경 표시 */
 .c-button--ghost {
-    @apply hover:bg-accent hover:text-accent-foreground;
+    @apply text-slate-700;
+}
+.c-button--ghost:hover {
+    @apply bg-slate-100;
+}
+.dark .c-button--ghost {
+    color: #cbd5e1;
+}
+.dark .c-button--ghost:hover {
+    background-color: #1e293b;
 }
 
 /* 링크 스타일 (Link) - 텍스트 링크 형태 */

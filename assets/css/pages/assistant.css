@@ -11,11 +11,18 @@
 
 /* Chat Area */
 .p-assistant__chat-panel {
-    @apply flex flex-col h-[700px] bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm dark:bg-slate-900 dark:border-slate-800;
+    @apply flex flex-col h-[700px] bg-white rounded-xl border border-slate-200 overflow-hidden shadow-sm;
+}
+.dark .p-assistant__chat-panel {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .p-assistant__chat-header {
-    @apply p-6 border-b border-slate-100 flex items-center justify-between dark:border-slate-800;
+    @apply p-6 border-b border-slate-100 flex items-center justify-between;
+}
+.dark .p-assistant__chat-header {
+    border-color: #1e293b;
 }
 
 .p-assistant__bot-info {
@@ -23,11 +30,15 @@
 }
 
 .p-assistant__bot-avatar {
-    @apply w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-blue-500/30;
+    @apply w-12 h-12 rounded-full flex items-center justify-center text-white shadow-lg shadow-blue-500/30;
+    background: linear-gradient(135deg, #3b82f6 0%, #4f46e5 100%);
 }
 
 .p-assistant__bot-name {
-    @apply text-lg font-bold text-slate-900 dark:text-white;
+    @apply text-lg font-bold text-slate-900;
+}
+.dark .p-assistant__bot-name {
+    color: #ffffff;
 }
 
 .p-assistant__bot-status {
@@ -40,7 +51,10 @@
 
 /* Messages */
 .p-assistant__messages {
-    @apply flex-1 p-6 overflow-y-auto flex flex-col gap-6 bg-slate-50 dark:bg-slate-950;
+    @apply flex-1 p-6 overflow-y-auto flex flex-col gap-6 bg-slate-50;
+}
+.dark .p-assistant__messages {
+    background-color: #020617;
 }
 
 .p-assistant__message {
@@ -72,7 +86,12 @@
 }
 
 .p-assistant__msg-bubble--bot {
-    @apply bg-white border border-slate-200 text-slate-800 rounded-xl rounded-tl-none dark:bg-slate-900 dark:border-slate-800 dark:text-slate-200;
+    @apply bg-white border border-slate-200 text-slate-800 rounded-xl rounded-tl-none;
+}
+.dark .p-assistant__msg-bubble--bot {
+    background-color: #1e293b;
+    border-color: #334155;
+    color: #e2e8f0;
 }
 
 .p-assistant__msg-bubble--user {
@@ -85,7 +104,11 @@
 
 /* Input Area */
 .p-assistant__input-panel {
-    @apply p-6 bg-white border-t border-slate-100 dark:bg-slate-900 dark:border-slate-800;
+    @apply p-6 bg-white border-t border-slate-100;
+}
+.dark .p-assistant__input-panel {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .p-assistant__input-container {
@@ -102,11 +125,18 @@
 }
 
 .p-assistant__suggest-card {
-    @apply p-6 bg-white rounded-xl border border-slate-200 shadow-sm dark:bg-slate-900 dark:border-slate-800 flex flex-col gap-6 h-full overflow-hidden;
+    @apply p-6 bg-white rounded-xl border border-slate-200 shadow-sm flex flex-col gap-6 h-full overflow-hidden;
+}
+.dark .p-assistant__suggest-card {
+    background-color: #0f172a;
+    border-color: #1e293b;
 }
 
 .p-assistant__suggest-tabs {
-    @apply flex border-b border-slate-100 dark:border-slate-800;
+    @apply flex border-b border-slate-100;
+}
+.dark .p-assistant__suggest-tabs {
+    border-color: #1e293b;
 }
 
 .p-assistant__suggest-tab {
@@ -136,11 +166,19 @@
 }
 
 .p-assistant__suggest-list::-webkit-scrollbar-thumb {
-    @apply bg-slate-200 rounded-full dark:bg-slate-800;
+    @apply bg-slate-200 rounded-full;
+}
+.dark .p-assistant__suggest-list::-webkit-scrollbar-thumb {
+    background-color: #334155;
 }
 
 .p-assistant__suggest-item {
-    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 dark:bg-slate-800/50 dark:border-slate-800 dark:text-slate-400 flex items-center gap-3;
+    @apply w-full p-4 text-left text-[13px] font-bold text-slate-600 rounded-xl border border-slate-100 bg-slate-50 transition-all duration-200 flex items-center gap-3;
+}
+.dark .p-assistant__suggest-item {
+    background-color: rgba(30, 41, 59, 0.5);
+    border-color: #1e293b;
+    color: #94a3b8;
 }
 
 .p-assistant__suggest-item span {
@@ -148,5 +186,10 @@
 }
 
 .p-assistant__suggest-item:hover {
-    @apply translate-x-1 bg-white border-blue-200 text-blue-600 shadow-sm dark:bg-slate-800 dark:border-blue-900/30 dark:text-blue-400;
+    @apply translate-x-1 bg-white border-blue-200 text-blue-600 shadow-sm;
+}
+.dark .p-assistant__suggest-item:hover {
+    background-color: #1e293b;
+    border-color: rgba(30, 58, 138, 0.3);
+    color: #60a5fa;
 }

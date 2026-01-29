@@ -4,7 +4,10 @@
 }
 
 .c-report-table__thead {
-  @apply border-b-2 border-slate-100 dark:border-slate-800;
+  @apply border-b-2 border-slate-100;
+}
+.dark .c-report-table__thead {
+    border-color: #1e293b;
 }
 
 .c-report-table__th {
@@ -15,11 +18,23 @@
 .c-report-table__th--center { @apply text-center; }
 
 .c-report-table__tr {
-  @apply border-b border-slate-50 hover:bg-slate-50/50 transition-colors dark:border-slate-800/50 dark:hover:bg-slate-800/20;
+  @apply border-b border-slate-50 transition-colors;
+}
+.c-report-table__tr:hover {
+    @apply bg-slate-50/50;
+}
+.dark .c-report-table__tr {
+    border-color: rgba(30, 41, 59, 0.5);
+}
+.dark .c-report-table__tr:hover {
+    background-color: rgba(30, 41, 59, 0.2);
 }
 
 .c-report-table__td {
-  @apply py-5 px-4 text-[14px] font-bold text-slate-700 dark:text-slate-300;
+  @apply py-5 px-4 text-[14px] font-bold text-slate-700;
+}
+.dark .c-report-table__td {
+    color: #cbd5e1;
 }
 
 .c-report-table__td--right { @apply text-right tabular-nums; }
@@ -35,7 +50,10 @@
 }
 
 .c-report-table__stock-name {
-  @apply font-bold text-slate-900 dark:text-white;
+  @apply font-bold text-slate-900;
+}
+.dark .c-report-table__stock-name {
+    color: #ffffff;
 }
 
 /* Status Badges */
@@ -43,13 +61,28 @@
   @apply inline-flex items-center justify-center px-3 py-1 rounded-full text-[11px] font-bold min-w-[70px];
 }
 
-.c-report-table__badge--buy { @apply bg-red-50 text-red-500 border border-red-100 dark:bg-red-500/10 dark:border-red-500/20; }
-.c-report-table__badge--hold { @apply bg-orange-50 text-orange-500 border border-orange-100 dark:bg-orange-500/10 dark:border-orange-500/20; }
-.c-report-table__badge--sell { @apply bg-blue-50 text-blue-500 border border-blue-100 dark:bg-blue-500/10 dark:border-blue-500/20; }
+.c-report-table__badge--buy { @apply bg-red-50 text-red-500 border border-red-100; }
+.dark .c-report-table__badge--buy { 
+    background-color: rgba(239, 68, 68, 0.1); 
+    border-color: rgba(239, 68, 68, 0.2); 
+}
+.c-report-table__badge--hold { @apply bg-orange-50 text-orange-500 border border-orange-100; }
+.dark .c-report-table__badge--hold { 
+    background-color: rgba(249, 115, 22, 0.1); 
+    border-color: rgba(249, 115, 22, 0.2); 
+}
+.c-report-table__badge--sell { @apply bg-blue-50 text-blue-500 border border-blue-100; }
+.dark .c-report-table__badge--sell { 
+    background-color: rgba(59, 130, 246, 0.1); 
+    border-color: rgba(59, 130, 246, 0.2); 
+}
 
 /* Report Title Link */
 .c-report-table__title {
-  @apply text-slate-900 font-bold cursor-pointer hover:text-blue-500 hover:underline transition-all dark:text-slate-200;
+  @apply text-slate-900 font-bold cursor-pointer hover:text-blue-500 hover:underline transition-all;
+}
+.dark .c-report-table__title {
+    color: #e2e8f0;
 }
 
 .c-report-table__firm {
@@ -58,7 +91,10 @@
 
 /* Footer Section */
 .c-report-table__footer {
-  @apply flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-slate-50 dark:border-slate-800;
+  @apply flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4 border-t border-slate-50;
+}
+.dark .c-report-table__footer {
+    border-color: #1e293b;
 }
 
 .c-report-table__guide {
@@ -75,9 +111,23 @@
 }
 
 .c-report-pager__btn--active {
-  @apply bg-slate-900 text-white border-slate-900 shadow-md dark:bg-blue-600 dark:border-blue-600;
+  @apply bg-slate-900 text-white border-slate-900 shadow-md;
+}
+.dark .c-report-pager__btn--active {
+    background-color: #2563eb;
+    border-color: #2563eb;
 }
 
 .c-report-pager__btn--inactive {
-  @apply bg-white text-slate-400 hover:text-slate-900 dark:bg-slate-900 dark:border-slate-800 dark:hover:text-white;
+  @apply bg-white text-slate-400 border-slate-200;
+}
+.c-report-pager__btn--inactive:hover {
+    @apply text-slate-900;
+}
+.dark .c-report-pager__btn--inactive {
+    background-color: #0f172a;
+    border-color: #1e293b;
+}
+.dark .c-report-pager__btn--inactive:hover {
+    @apply text-white;
 }
